@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mimi Muscu exercise",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "category",
+    "difficulty",
+    "mode",
+    "prescription",
+    "constraints",
+    "muscles",
+    "coaching",
+    "visual"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_]+$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "difficulty": {
+      "enum": [
+        "beginner",
+        "intermediate",
+        "advanced"
+      ]
+    },
+    "mode": {
+      "enum": [
+        "reps",
+        "time"
+      ]
+    },
+    "prescription": {
+      "type": "object",
+      "required": [
+        "base",
+        "min",
+        "max",
+        "step",
+        "per_side"
+      ]
+    },
+    "constraints": {
+      "type": "object",
+      "required": [
+        "quiet",
+        "impact",
+        "equipment"
+      ]
+    },
+    "muscles": {
+      "type": "object",
+      "required": [
+        "primary",
+        "secondary"
+      ]
+    },
+    "coaching": {
+      "type": "object",
+      "required": [
+        "tips",
+        "mistakes",
+        "breathing",
+        "easier",
+        "harder"
+      ]
+    },
+    "visual": {
+      "type": "object",
+      "required": [
+        "provider",
+        "asset_id"
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mimi Muscu workout file v3",
+  "type": "object",
+  "required": [
+    "app",
+    "type",
+    "version",
+    "name",
+    "blocks"
+  ],
+  "properties": {
+    "app": {
+      "const": "mimi-muscu"
+    },
+    "type": {
+      "const": "workout-session"
+    },
+    "version": {
+      "const": 3
+    },
+    "name": {
+      "type": "string"
+    },
+    "blocks": {
+      "type": "array",
+      "minItems": 1
+    }
+  }
+}
