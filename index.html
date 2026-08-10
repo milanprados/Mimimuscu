@@ -1,205 +1,292 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#050607"><link rel="manifest" href="./manifest.json"><link rel="apple-touch-icon" href="./assets/icons/icon-192.png"><link rel="stylesheet" href="./styles.css"><title>Mimi Muscu</title></head><body>
-<div class="app">
-  <div class="topbar"><div class="brand"><h1>Mimi Muscu</h1><small>Silencieux • poids du corps • adaptatif</small></div><div class="yellow" id="homeLevel">LV 1</div></div>
   <nav class="tabs"><button class="active" data-tab="session">Accueil</button><button data-tab="exercises">Exos</button><button data-tab="progress">Progrès</button><button data-tab="profile">Profil</button></nav>
-  <main>
-    <section id="sessionTab">
-      <div class="dashboard-hero">
-  <div class="dash-kicker" id="dashKicker">AUJOURD'HUI</div>
-  <div class="dash-row">
-    <div>
-      <h2 id="sessionName">Push + jambes</h2>
-      <div class="muted" id="sessionLabel">Semaine 1 • Jour 1/6</div>
-    </div>
-    <div class="readiness" id="readiness">PRÊT</div>
-  </div>
-  <div class="dash-stats">
-    <span>⏱ <b id="dashDuration">~20 min</b></span>
-    <span>🎯 <b id="sessionFocus">Pecs • épaules • jambes</b></span>
-  </div>
-  <button class="primary-btn yellow-bg" id="quickStart">GO</button>
-  <button class="ghost" id="prepareSession" style="margin-top:8px;width:100%">Voir & modifier</button>
-</div>
-
-
-<div class="card coach-card" id="dailyCoachCard">
-  <div class="section-head"><strong>Coach du jour</strong><span class="yellow">Adaptatif</span></div>
-  <p id="dailyCoachText" class="muted">Je prépare ta recommandation.</p>
-</div>
-
-<div class="card">
-  <div class="section-head"><strong>Objectifs</strong><button class="text-btn" id="openMilestones">Voir tout</button></div>
-  <div id="milestonePreview"></div>
-</div>
-
-  <p class="muted">Ton recalibrage est prêt. Environ 10 minutes.</p>
-  <button class="ghost" id="startBenchmark" style="width:100%">Lancer le test</button>
-</div>
-      <div class="card cycle-card">
-  <div class="section-head">
-    <div>
-      <strong>Programme 4 semaines</strong>
-      <small class="muted" style="display:block;margin-top:3px">6 séances / semaine • 1 jour de repos • full body</small>
-    </div>
-    <strong class="yellow" id="cycleProgressText">1 / 24</strong>
-  </div>
-  <div class="cycle-label" id="cycleLabel">Cycle 1 • Semaine 1/4 • Jour 1/6</div>
-  <div class="milestone-bar cycle-bar"><div id="cycleProgressBar" style="width:4%"></div></div>
-</div>
-
-      <div class="card">
-        <div class="program-row">
-          <div>
-            <strong>Mes séances</strong>
-            <small class="muted">Créées ou importées</small>
-          </div>
-          <button class="ghost" id="newCustomSession">＋ Nouvelle</button>
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#090a0c">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
+  <link rel="stylesheet" href="./styles.css?v=27">
+  <title>Mimi Muscu</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand-lockup">
+        <div class="brand-mark">M</div>
+        <div>
+          <strong>Mimi Muscu</strong>
+          <small>20 min · full body · 6j/7</small>
         </div>
-        <div id="customSessionList" style="margin-top:10px"></div>
-        <div class="secondary-row" style="margin-top:10px">
-          <button class="ghost" id="importSessionBtn">Importer un fichier</button>
-          <button class="ghost" id="showSessionFormat">Format JSON</button>
-        </div>
-        <input id="sessionFileInput" type="file" accept=".json,application/json" class="hidden">
       </div>
+      <div class="level-chip" id="homeLevel">LV 1</div>
+    </header>
 
-      <div class="card"><strong>Aujourd’hui</strong><p class="muted" id="todayText">Aucune séance terminée.</p><button class="ghost hidden" id="redoSession">Refaire la séance</button></div>
-    </section>
-    <section id="exercisesTab" class="hidden">
-      <div class="card"><strong>Dictionnaire des exercices</strong><input class="search" id="search" type="search" placeholder="Rechercher un exercice…"><div class="chips" id="chips"></div></div><div id="exerciseList"></div>
-    </section>
-    <section id="progressTab" class="hidden">
-      <div class="metric-grid"><div class="metric"><strong id="sessions">0</strong><span>séances</span></div><div class="metric"><strong id="xp">0</strong><span>XP</span></div><div class="metric"><strong id="streak">0</strong><span>streak</span></div><div class="metric"><strong id="totalReps">0</strong><span>reps</span></div></div>
-      <div class="card"><strong>Objectifs actuels</strong><div id="targets"></div></div>
-      <div class="card">
-  <div class="section-head"><strong>Évolution physique</strong><button class="text-btn" id="addMeasurement">＋ Mesure</button></div>
-  <div class="body-summary" id="bodySummary"></div>
-  <div class="mini-chart" id="weightChart"></div>
-</div>
-<div class="card"><strong>Historique</strong><div id="history"></div></div>
-    </section>
-    <section id="profileTab" class="hidden">
-      <div class="card"><strong>Profil</strong><label class="profile-label">Âge<input id="age" type="number"></label><label class="profile-label">Taille (cm)<input id="height" type="number"></label><label class="profile-label">Poids (kg)<input id="weight" type="number" step="0.1"></label><button class="primary-btn yellow-bg" id="saveProfile">Enregistrer</button></div>
-      <div class="card">
-  <div class="section-head"><strong>Adaptation automatique</strong><span class="yellow">Active</span></div>
-  <p class="muted">Les reps et durées évoluent selon tes résultats et ton ressenti. Aucune difficulté à choisir manuellement.</p>
-  <input id="autoSuggest" type="checkbox" checked class="hidden">
-</div>
-<div class="card">
-  <div class="section-head"><strong>Sauvegarde</strong><span class="muted">locale → fichier</span></div>
-  <p class="muted">Exporte tout : profil, historique, XP, mesures, records, réglages et séances perso.</p>
-  <div class="secondary-row">
-    <button class="ghost" id="exportBackup">Exporter tout</button>
-    <button class="ghost" id="importBackup">Importer</button>
+    <main id="appMain">
+      <section id="sessionTab" class="screen" aria-hidden="false">
+        <div class="screen-intro home-intro">
+          <span class="eyebrow">AUJOURD'HUI</span>
+          <h1 id="sessionName">Fondations A</h1>
+          <p id="sessionLabel">Semaine 1 · Jour 1/6</p>
+        </div>
+
+        <article class="today-card">
+          <div class="today-top">
+            <div class="status-pill" id="readiness">PROGRESSION</div>
+            <div class="today-duration"><span>Durée</span><strong id="dashDuration">~20 min</strong></div>
+          </div>
+          <div class="phase-route" aria-label="Déroulé de la séance">
+            <div><span class="phase-dot warm"></span><strong>Échauffement</strong><small>mise en route</small></div>
+            <div><span class="phase-dot main"></span><strong>Full body</strong><small>2 tours</small></div>
+            <div><span class="phase-dot cool"></span><strong>Retour au calme</strong><small>mobilité</small></div>
+          </div>
+          <p class="today-focus" id="sessionFocus">Technique · force générale</p>
+          <button class="hero-go" id="quickStart"><span>▶</span> Lancer la séance</button>
+          <button class="hero-edit" id="prepareSession">Voir le détail & modifier</button>
+        </article>
+
+        <article class="cycle-panel">
+          <div class="section-title">
+            <div>
+              <span class="eyebrow">CYCLE EN COURS</span>
+              <strong id="cycleLabel">Cycle 1 · Semaine 1/4 · Jour 1/6</strong>
+            </div>
+            <b id="cycleProgressText">1 / 24</b>
+          </div>
+          <div class="progress-track"><span id="cycleProgressBar" style="width:4%"></span></div>
+        </article>
+
+        <article class="coach-note">
+          <div class="coach-icon">↗</div>
+          <div>
+            <span class="eyebrow">COACH DU JOUR</span>
+            <p id="dailyCoachText">Priorité au mouvement propre et régulier.</p>
+          </div>
+        </article>
+
+        <article class="section-block">
+          <div class="section-title">
+            <div><span class="eyebrow">OBJECTIFS</span><strong>Repères du moment</strong></div>
+            <button class="link-btn" id="openMilestones">Tout voir</button>
+          </div>
+          <div id="milestonePreview"></div>
+        </article>
+
+        <article class="section-block custom-library">
+          <div class="section-title">
+            <div><span class="eyebrow">À TOI</span><strong>Mes séances</strong></div>
+            <button class="compact-btn" id="newCustomSession">＋ Créer</button>
+          </div>
+          <div id="customSessionList"></div>
+          <div class="library-actions">
+            <button id="importSessionBtn">Importer</button>
+            <button id="showSessionFormat">Format JSON</button>
+          </div>
+          <input id="sessionFileInput" type="file" accept=".json,application/json" class="hidden">
+        </article>
+
+        <article class="today-done">
+          <span class="eyebrow">AUJOURD'HUI</span>
+          <p id="todayText">Aucune séance terminée.</p>
+          <button class="link-btn hidden" id="redoSession">Refaire la séance</button>
+        </article>
+      </section>
+
+      <section id="exercisesTab" class="screen hidden" aria-hidden="true">
+        <div class="screen-intro">
+          <span class="eyebrow">BIBLIOTHÈQUE</span>
+          <h1>Exercices</h1>
+          <p id="exerciseCount">111 exercices</p>
+        </div>
+        <div class="search-panel">
+          <div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Chercher un mouvement"></div>
+          <div class="chips" id="chips"></div>
+        </div>
+        <div id="exerciseList" class="exercise-list"></div>
+      </section>
+
+      <section id="progressTab" class="screen hidden" aria-hidden="true">
+        <div class="screen-intro">
+          <span class="eyebrow">TABLEAU DE BORD</span>
+          <h1>Progression</h1>
+          <p>Ce qui monte, ce qui tient, ce qui change.</p>
+        </div>
+
+        <div class="metric-grid">
+          <div class="metric"><span>Séances</span><strong id="sessions">0</strong></div>
+          <div class="metric"><span>XP</span><strong id="xp">0</strong></div>
+          <div class="metric"><span>Série</span><strong id="streak">0</strong></div>
+          <div class="metric"><span>Répétitions</span><strong id="totalReps">0</strong></div>
+        </div>
+
+        <article class="section-block body-card">
+          <div class="section-title"><div><span class="eyebrow">PHYSIQUE</span><strong>Mesures</strong></div><button class="compact-btn" id="addMeasurement">＋ Ajouter</button></div>
+          <div class="body-summary" id="bodySummary"></div>
+          <div class="mini-chart" id="weightChart"></div>
+        </article>
+
+        <article class="section-block">
+          <div class="section-title"><div><span class="eyebrow">ADAPTATION</span><strong>Objectifs actuels</strong></div></div>
+          <div id="targets" class="targets-list"></div>
+        </article>
+
+        <article class="section-block">
+          <div class="section-title"><div><span class="eyebrow">JOURNAL</span><strong>Historique</strong></div></div>
+          <div id="history"></div>
+        </article>
+      </section>
+
+      <section id="profileTab" class="screen hidden" aria-hidden="true">
+        <div class="screen-intro">
+          <span class="eyebrow">RÉGLAGES</span>
+          <h1>Profil</h1>
+          <p>Ton niveau se règle tout seul. Ici, tu gardes juste tes données propres.</p>
+        </div>
+
+        <article class="profile-identity">
+          <div class="avatar-mark">MM</div>
+          <div><strong>Profil sportif</strong><small>Les données restent sur cet appareil.</small></div>
+        </article>
+
+        <article class="section-block form-card">
+          <div class="form-grid">
+            <label><span>Âge</span><input id="age" type="number" inputmode="numeric"></label>
+            <label><span>Taille</span><div class="unit-input"><input id="height" type="number" inputmode="numeric"><b>cm</b></div></label>
+            <label class="wide"><span>Poids</span><div class="unit-input"><input id="weight" type="number" step="0.1" inputmode="decimal"><b>kg</b></div></label>
+          </div>
+          <button class="primary-btn" id="saveProfile">Enregistrer</button>
+        </article>
+
+        <article class="adapt-card">
+          <div class="adapt-status"><span></span>Adaptation automatique active</div>
+          <p>Les reps et les temps évoluent selon tes résultats et ton ressenti. Rien à régler à la main.</p>
+          <input id="autoSuggest" type="checkbox" checked class="hidden">
+        </article>
+
+        <article class="section-block">
+          <div class="section-title"><div><span class="eyebrow">DONNÉES</span><strong>Sauvegarde</strong></div></div>
+          <p class="section-copy">Exporte profil, historique, records, mensurations et séances personnalisées.</p>
+          <div class="two-actions">
+            <button id="exportBackup">Exporter</button>
+            <button id="importBackup">Importer</button>
+          </div>
+          <input id="backupFileInput" type="file" accept=".json,application/json" class="hidden">
+          <small id="backupStatus"></small>
+        </article>
+
+        <article class="section-block coach-export">
+          <div class="section-title"><div><span class="eyebrow">COACH IA</span><strong>Bilan pour ChatGPT</strong></div></div>
+          <textarea id="coachPrompt" readonly></textarea>
+          <button class="primary-btn" id="openChat">Copier & ouvrir ChatGPT</button>
+        </article>
+      </section>
+    </main>
+
+    <nav class="tabs" aria-label="Navigation principale">
+      <button class="active" data-tab="session" aria-current="page"><span>⌂</span><small>Accueil</small></button>
+      <button data-tab="exercises"><span>◈</span><small>Exos</small></button>
+      <button data-tab="progress"><span>▥</span><small>Progrès</small></button>
+      <button data-tab="profile"><span>○</span><small>Profil</small></button>
+    </nav>
   </div>
-  <input id="backupFileInput" type="file" accept=".json,application/json" class="hidden">
-  <small class="muted" id="backupStatus"></small>
-</div>
-<div class="card"><strong>Coach IA</strong><p class="muted">Génère un bilan de ta dernière séance pour ChatGPT.</p><textarea id="coachPrompt" readonly></textarea><button class="primary-btn" id="openChat">Copier et ouvrir ChatGPT</button></div>
-    </section>
-  </main>
-</div>
 
-
-<div class="modal hidden" id="milestoneModal">
-  <div class="modal-head"><button id="closeMilestoneModal">‹</button><h2>Objectifs</h2><div></div></div>
-  <div id="milestoneList"></div>
-</div>
-
-<div class="modal hidden" id="measurementModal">
-  <div class="modal-head"><button id="closeMeasurementModal">‹</button><h2>Nouvelle mesure</h2><div></div></div>
-  <div class="card">
-    <label class="profile-label">Poids (kg)<input id="measureWeight" type="number" step="0.1"></label>
-    <label class="profile-label">Tour de taille (cm)<input id="measureWaist" type="number" step="0.1"></label>
-    <label class="profile-label">Note (optionnel)<input id="measureNote" maxlength="120"></label>
-    <button class="primary-btn yellow-bg" id="saveMeasurement">Enregistrer</button>
-  </div>
-</div>
-
-<div class="modal hidden" id="customEditor">
-  <div class="modal-head">
-    <button id="closeCustomEditor">‹</button>
-    <h2 id="customEditorTitle">Nouvelle séance</h2>
-    <div></div>
+  <div class="modal hidden" id="milestoneModal" aria-hidden="true">
+    <div class="modal-shell">
+      <header class="modal-head"><button id="closeMilestoneModal">←</button><div><span class="eyebrow">OBJECTIFS</span><h2>Mes repères</h2></div><span></span></header>
+      <div id="milestoneList"></div>
+    </div>
   </div>
 
-  <div class="card">
-    <label class="profile-label">Nom
-      <input id="customName" maxlength="80" placeholder="Ex : Pecs express">
-    </label>
-    <label class="profile-label">Description
-      <input id="customDescription" maxlength="240" placeholder="Ex : 20 min, haut du corps">
-    </label>
+  <div class="modal hidden" id="measurementModal" aria-hidden="true">
+    <div class="modal-shell compact-modal">
+      <header class="modal-head"><button id="closeMeasurementModal">←</button><div><span class="eyebrow">PROGRESSION</span><h2>Nouvelle mesure</h2></div><span></span></header>
+      <div class="modal-form">
+        <label><span>Poids (kg)</span><input id="measureWeight" type="number" step="0.1"></label>
+        <label><span>Tour de taille (cm)</span><input id="measureWaist" type="number" step="0.1"></label>
+        <label><span>Note</span><input id="measureNote" maxlength="120"></label>
+        <button class="primary-btn" id="saveMeasurement">Enregistrer</button>
+      </div>
+    </div>
   </div>
 
-  <div id="customEditorList"></div>
-  <button class="add-exercise" id="customAddExercise">＋ Ajouter un exercice</button>
-
-  <div class="planner-actions">
-    <button class="ghost" id="deleteCustomSession">Supprimer</button>
-    <button class="primary-btn yellow-bg" id="saveCustomSession">Enregistrer</button>
-  </div>
-</div>
-
-<div class="modal hidden" id="formatModal">
-  <div class="modal-head">
-    <button id="closeFormatModal">‹</button>
-    <h2>Format de séance</h2>
-    <div></div>
-  </div>
-  <div class="card">
-    <p class="muted">C’est ce format que je pourrai te générer quand tu m’enverras un lien ou une séance trouvée ailleurs.</p>
-    <pre id="formatExample" style="white-space:pre-wrap;word-break:break-word;background:#0c0d0f;padding:12px;border-radius:12px;font-size:12px"></pre>
-  </div>
-</div>
-
-<div class="modal hidden" id="planner">
-  <div class="modal-head">
-    <button id="closePlanner">‹</button>
-    <h2>Préparer la séance</h2>
-    <div></div>
+  <div class="modal hidden" id="customEditor" aria-hidden="true">
+    <div class="modal-shell">
+      <header class="modal-head"><button id="closeCustomEditor">←</button><div><span class="eyebrow">MES SÉANCES</span><h2 id="customEditorTitle">Nouvelle séance</h2></div><span></span></header>
+      <div class="modal-form inline-form">
+        <label><span>Nom</span><input id="customName" maxlength="80" placeholder="Ex : Full body rapide"></label>
+        <label><span>Description</span><input id="customDescription" maxlength="240" placeholder="Optionnel"></label>
+      </div>
+      <div id="customEditorList"></div>
+      <button class="add-exercise" id="customAddExercise">＋ Ajouter un exercice</button>
+      <div class="planner-actions">
+        <button class="destructive-btn" id="deleteCustomSession">Supprimer</button>
+        <button class="primary-btn" id="saveCustomSession">Enregistrer</button>
+      </div>
+    </div>
   </div>
 
-  <div class="card planner-summary">
-    <div class="muted" id="plannerLabel"></div>
-    <h3 id="plannerName" style="margin:5px 0"></h3>
-    <div class="muted" id="plannerMeta"></div>
+  <div class="modal hidden" id="formatModal" aria-hidden="true">
+    <div class="modal-shell">
+      <header class="modal-head"><button id="closeFormatModal">←</button><div><span class="eyebrow">IMPORT</span><h2>Format JSON</h2></div><span></span></header>
+      <p class="section-copy">Format que Mimi Muscu peut importer directement.</p>
+      <pre id="formatExample"></pre>
+    </div>
   </div>
 
-  <div id="plannerList"></div>
-
-  <div class="planner-actions">
-    <button class="ghost" id="resetPlanner">Réinitialiser</button>
-    <button class="primary-btn yellow-bg" id="startPlannedSession">Démarrer cette séance</button>
+  <div class="modal hidden" id="planner" aria-hidden="true">
+    <div class="modal-shell planner-shell">
+      <header class="modal-head"><button id="closePlanner">←</button><div><span class="eyebrow">AVANT DE COMMENCER</span><h2>Ta séance</h2></div><span></span></header>
+      <div class="planner-summary">
+        <span id="plannerLabel"></span>
+        <h3 id="plannerName"></h3>
+        <p id="plannerMeta"></p>
+      </div>
+      <div id="plannerList"></div>
+      <div class="planner-actions">
+        <button class="soft-btn" id="resetPlanner">Réinitialiser</button>
+        <button class="primary-btn" id="startPlannedSession">Démarrer</button>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="modal hidden" id="exercisePicker">
-  <div class="modal-head">
-    <button id="closePicker">‹</button>
-    <h2>Choisir un exercice</h2>
-    <div></div>
+  <div class="modal hidden" id="exercisePicker" aria-hidden="true">
+    <div class="modal-shell">
+      <header class="modal-head"><button id="closePicker">←</button><div><span class="eyebrow">REMPLACER</span><h2>Choisir un exercice</h2></div><span></span></header>
+      <div class="search-wrap picker-search"><span>⌕</span><input id="pickerSearch" type="search" placeholder="Rechercher"></div>
+      <div id="pickerList"></div>
+    </div>
   </div>
-  <input class="search" id="pickerSearch" type="search" placeholder="Rechercher…">
-  <div id="pickerList"></div>
-</div>
 
-<div class="focus hidden" id="focus"><div class="focus-head"><button id="exitFocus">✕</button><div class="focus-center"><small id="focusPhase"></small><strong id="focusStep"></strong><em id="focusXp"></em></div><button id="audio">🔊</button></div><div class="focus-content" id="focusContent"></div></div>
-<div class="modal hidden" id="modal"><div class="modal-head"><button id="closeModal">‹</button><h2 id="modalTitle"></h2><div></div></div><div id="modalBody"></div></div>
-<div class="update-toast hidden" id="updateToast">
-  <span>Nouvelle version de Mimi Muscu disponible</span>
-  <button id="applyUpdate">Mettre à jour</button>
-</div>
-<script type="module">
-  import("./js/v26/app.js?v=26.0").catch(error => {
-    console.error("[Mimi Muscu] Erreur de démarrage", error);
-    const box = document.createElement("div");
-    box.className = "boot-error";
-    box.innerHTML = `
-      <strong>Mimi Muscu n’a pas réussi à démarrer.</strong>
-      <span>${String(error?.message || error)}<br><small>Étape: ${window.__MIMI_BOOT__?.step || "import"}</small></span>
-      <button onclick="location.reload()">Réessayer</button>
-    `;
-    document.body.appendChild(box);
-  });
-</script></body></html>
+  <div class="focus hidden" id="focus" aria-hidden="true">
+    <header class="focus-head">
+      <button id="exitFocus">×</button>
+      <div class="focus-center"><small id="focusPhase"></small><strong id="focusStep"></strong><em id="focusXp"></em></div>
+      <button id="audio">🔊</button>
+    </header>
+    <div class="focus-progress"><span></span></div>
+    <div class="focus-content" id="focusContent"></div>
+  </div>
+
+  <div class="modal hidden exercise-guide-modal" id="modal" aria-hidden="true">
+    <div class="modal-shell guide-shell">
+      <header class="modal-head guide-head"><button id="closeModal">←</button><div><span class="eyebrow">EXERCICE</span><h2 id="modalTitle"></h2></div><span></span></header>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="update-toast hidden" id="updateToast">
+    <span>Nouvelle version disponible</span><button id="applyUpdate">Mettre à jour</button>
+  </div>
+
+  <script type="module">
+    import("./js/v27/app.js?v=27.0").catch(error=>{
+      console.error("[Mimi Muscu] Erreur de démarrage",error);
+      const box=document.createElement("div");
+      box.className="boot-error";
+      box.innerHTML=`<strong>Mimi Muscu n’a pas réussi à démarrer.</strong><span>${String(error?.message||error)}<br><small>Étape : ${window.__MIMI_BOOT__?.step||"import"}</small></span><button onclick="location.reload()">Réessayer</button>`;
+      document.body.appendChild(box);
+    });
+  </script>
+</body>
+</html>

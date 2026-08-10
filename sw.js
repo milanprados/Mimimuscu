@@ -1,14 +1,14 @@
-const VERSION="mimi-muscu-v26";
+const VERSION="mimi-muscu-v27";
 const APP_CACHE=`${VERSION}-app`;
 const DATA_CACHE=`${VERSION}-data`;
 const IMAGE_CACHE=`${VERSION}-images`;
 
 const APP_SHELL=[
   "./","./index.html","./styles.css","./manifest.json",
-  "./js/v26/app.js","./js/v26/helpers.js",
-  "./js/v26/core/data.js","./js/v26/core/engine.js","./js/v26/core/state.js","./js/v26/core/migrations.js",
-  "./js/v26/ui/workout-ui.js","./js/v26/ui/dictionary.js","./js/v26/ui/sessions.js","./js/v26/ui/dashboard.js","./js/v26/ui/profile-progress.js",
-  "./js/v26/utils/backup.js","./js/v26/utils/preload.js",
+  "./js/v27/app.js","./js/v27/helpers.js",
+  "./js/v27/core/data.js","./js/v27/core/engine.js","./js/v27/core/state.js","./js/v27/core/migrations.js",
+  "./js/v27/ui/workout-ui.js","./js/v27/ui/dictionary.js","./js/v27/ui/sessions.js","./js/v27/ui/dashboard.js","./js/v27/ui/profile-progress.js",
+  "./js/v27/utils/backup.js","./js/v27/utils/preload.js",
   "./assets/icons/icon-192.png","./assets/icons/icon-512.png"
 ];
 
