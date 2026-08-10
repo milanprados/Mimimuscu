@@ -1,0 +1,602 @@
+{
+  "pushups": {
+    "provider": "local",
+    "start": "assets/exercises/pushups/start.webp",
+    "end": "assets/exercises/pushups/end.webp",
+    "thumb": "assets/exercises/pushups/thumb.webp"
+  },
+  "incline_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/incline_pushups/start.webp",
+    "end": "assets/exercises/incline_pushups/end.webp",
+    "thumb": "assets/exercises/incline_pushups/thumb.webp"
+  },
+  "knee_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/knee_pushups/start.webp",
+    "end": "assets/exercises/knee_pushups/end.webp",
+    "thumb": "assets/exercises/knee_pushups/thumb.webp"
+  },
+  "wide_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/wide_pushups/start.webp",
+    "end": "assets/exercises/wide_pushups/end.webp",
+    "thumb": "assets/exercises/wide_pushups/thumb.webp"
+  },
+  "close_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/close_pushups/start.webp",
+    "end": "assets/exercises/close_pushups/end.webp",
+    "thumb": "assets/exercises/close_pushups/thumb.webp"
+  },
+  "diamond_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/diamond_pushups/start.webp",
+    "end": "assets/exercises/diamond_pushups/end.webp",
+    "thumb": "assets/exercises/diamond_pushups/thumb.webp"
+  },
+  "tempo_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/tempo_pushups/start.webp",
+    "end": "assets/exercises/tempo_pushups/end.webp",
+    "thumb": "assets/exercises/tempo_pushups/thumb.webp"
+  },
+  "pause_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/pause_pushups/start.webp",
+    "end": "assets/exercises/pause_pushups/end.webp",
+    "thumb": "assets/exercises/pause_pushups/thumb.webp"
+  },
+  "decline_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/decline_pushups/start.webp",
+    "end": "assets/exercises/decline_pushups/end.webp",
+    "thumb": "assets/exercises/decline_pushups/thumb.webp"
+  },
+  "staggered_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/staggered_pushups/start.webp",
+    "end": "assets/exercises/staggered_pushups/end.webp",
+    "thumb": "assets/exercises/staggered_pushups/thumb.webp"
+  },
+  "archer_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/archer_pushups/start.webp",
+    "end": "assets/exercises/archer_pushups/end.webp",
+    "thumb": "assets/exercises/archer_pushups/thumb.webp"
+  },
+  "pseudo_planche_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/pseudo_planche_pushups/start.webp",
+    "end": "assets/exercises/pseudo_planche_pushups/end.webp",
+    "thumb": "assets/exercises/pseudo_planche_pushups/thumb.webp"
+  },
+  "spiderman_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/spiderman_pushups/start.webp",
+    "end": "assets/exercises/spiderman_pushups/end.webp",
+    "thumb": "assets/exercises/spiderman_pushups/thumb.webp"
+  },
+  "shoulder_tap_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/shoulder_tap_pushups/start.webp",
+    "end": "assets/exercises/shoulder_tap_pushups/end.webp",
+    "thumb": "assets/exercises/shoulder_tap_pushups/thumb.webp"
+  },
+  "pike": {
+    "provider": "local",
+    "start": "assets/exercises/pike/start.webp",
+    "end": "assets/exercises/pike/end.webp",
+    "thumb": "assets/exercises/pike/thumb.webp"
+  },
+  "elevated_pike_pushups": {
+    "provider": "local",
+    "start": "assets/exercises/elevated_pike_pushups/start.webp",
+    "end": "assets/exercises/elevated_pike_pushups/end.webp",
+    "thumb": "assets/exercises/elevated_pike_pushups/thumb.webp"
+  },
+  "wall_handstand_hold": {
+    "provider": "local",
+    "start": "assets/exercises/wall_handstand_hold/start.webp",
+    "end": "assets/exercises/wall_handstand_hold/end.webp",
+    "thumb": "assets/exercises/wall_handstand_hold/thumb.webp"
+  },
+  "handstand_pushup_wall": {
+    "provider": "local",
+    "start": "assets/exercises/handstand_pushup_wall/start.webp",
+    "end": "assets/exercises/handstand_pushup_wall/end.webp",
+    "thumb": "assets/exercises/handstand_pushup_wall/thumb.webp"
+  },
+  "triceps_dips_chair": {
+    "provider": "local",
+    "start": "assets/exercises/triceps_dips_chair/start.webp",
+    "end": "assets/exercises/triceps_dips_chair/end.webp",
+    "thumb": "assets/exercises/triceps_dips_chair/thumb.webp"
+  },
+  "plank_to_pushup": {
+    "provider": "local",
+    "start": "assets/exercises/plank_to_pushup/start.webp",
+    "end": "assets/exercises/plank_to_pushup/end.webp",
+    "thumb": "assets/exercises/plank_to_pushup/thumb.webp"
+  },
+  "squat": {
+    "provider": "local",
+    "start": "assets/exercises/squat/start.webp",
+    "end": "assets/exercises/squat/end.webp",
+    "thumb": "assets/exercises/squat/thumb.webp"
+  },
+  "slow_squat": {
+    "provider": "local",
+    "start": "assets/exercises/slow_squat/start.webp",
+    "end": "assets/exercises/slow_squat/end.webp",
+    "thumb": "assets/exercises/slow_squat/thumb.webp"
+  },
+  "pause_squat": {
+    "provider": "local",
+    "start": "assets/exercises/pause_squat/start.webp",
+    "end": "assets/exercises/pause_squat/end.webp",
+    "thumb": "assets/exercises/pause_squat/thumb.webp"
+  },
+  "pulse_squat": {
+    "provider": "local",
+    "start": "assets/exercises/pulse_squat/start.webp",
+    "end": "assets/exercises/pulse_squat/end.webp",
+    "thumb": "assets/exercises/pulse_squat/thumb.webp"
+  },
+  "sumo_squat": {
+    "provider": "local",
+    "start": "assets/exercises/sumo_squat/start.webp",
+    "end": "assets/exercises/sumo_squat/end.webp",
+    "thumb": "assets/exercises/sumo_squat/thumb.webp"
+  },
+  "narrow_squat": {
+    "provider": "local",
+    "start": "assets/exercises/narrow_squat/start.webp",
+    "end": "assets/exercises/narrow_squat/end.webp",
+    "thumb": "assets/exercises/narrow_squat/thumb.webp"
+  },
+  "wall_sit": {
+    "provider": "local",
+    "start": "assets/exercises/wall_sit/start.webp",
+    "end": "assets/exercises/wall_sit/end.webp",
+    "thumb": "assets/exercises/wall_sit/thumb.webp"
+  },
+  "reverse_lunge": {
+    "provider": "local",
+    "start": "assets/exercises/reverse_lunge/start.webp",
+    "end": "assets/exercises/reverse_lunge/end.webp",
+    "thumb": "assets/exercises/reverse_lunge/thumb.webp"
+  },
+  "forward_lunge": {
+    "provider": "local",
+    "start": "assets/exercises/forward_lunge/start.webp",
+    "end": "assets/exercises/forward_lunge/end.webp",
+    "thumb": "assets/exercises/forward_lunge/thumb.webp"
+  },
+  "walking_lunge": {
+    "provider": "local",
+    "start": "assets/exercises/walking_lunge/start.webp",
+    "end": "assets/exercises/walking_lunge/end.webp",
+    "thumb": "assets/exercises/walking_lunge/thumb.webp"
+  },
+  "split_squat": {
+    "provider": "local",
+    "start": "assets/exercises/split_squat/start.webp",
+    "end": "assets/exercises/split_squat/end.webp",
+    "thumb": "assets/exercises/split_squat/thumb.webp"
+  },
+  "bulgarian_split_squat": {
+    "provider": "local",
+    "start": "assets/exercises/bulgarian_split_squat/start.webp",
+    "end": "assets/exercises/bulgarian_split_squat/end.webp",
+    "thumb": "assets/exercises/bulgarian_split_squat/thumb.webp"
+  },
+  "curtsy_lunge": {
+    "provider": "local",
+    "start": "assets/exercises/curtsy_lunge/start.webp",
+    "end": "assets/exercises/curtsy_lunge/end.webp",
+    "thumb": "assets/exercises/curtsy_lunge/thumb.webp"
+  },
+  "lateral_lunge": {
+    "provider": "local",
+    "start": "assets/exercises/lateral_lunge/start.webp",
+    "end": "assets/exercises/lateral_lunge/end.webp",
+    "thumb": "assets/exercises/lateral_lunge/thumb.webp"
+  },
+  "cossack_squat": {
+    "provider": "local",
+    "start": "assets/exercises/cossack_squat/start.webp",
+    "end": "assets/exercises/cossack_squat/end.webp",
+    "thumb": "assets/exercises/cossack_squat/thumb.webp"
+  },
+  "step_up": {
+    "provider": "local",
+    "start": "assets/exercises/step_up/start.webp",
+    "end": "assets/exercises/step_up/end.webp",
+    "thumb": "assets/exercises/step_up/thumb.webp"
+  },
+  "single_leg_squat_box": {
+    "provider": "local",
+    "start": "assets/exercises/single_leg_squat_box/start.webp",
+    "end": "assets/exercises/single_leg_squat_box/end.webp",
+    "thumb": "assets/exercises/single_leg_squat_box/thumb.webp"
+  },
+  "pistol_squat": {
+    "provider": "local",
+    "start": "assets/exercises/pistol_squat/start.webp",
+    "end": "assets/exercises/pistol_squat/end.webp",
+    "thumb": "assets/exercises/pistol_squat/thumb.webp"
+  },
+  "glute_bridge": {
+    "provider": "local",
+    "start": "assets/exercises/glute_bridge/start.webp",
+    "end": "assets/exercises/glute_bridge/end.webp",
+    "thumb": "assets/exercises/glute_bridge/thumb.webp"
+  },
+  "single_leg_glute_bridge": {
+    "provider": "local",
+    "start": "assets/exercises/single_leg_glute_bridge/start.webp",
+    "end": "assets/exercises/single_leg_glute_bridge/end.webp",
+    "thumb": "assets/exercises/single_leg_glute_bridge/thumb.webp"
+  },
+  "frog_pumps": {
+    "provider": "local",
+    "start": "assets/exercises/frog_pumps/start.webp",
+    "end": "assets/exercises/frog_pumps/end.webp",
+    "thumb": "assets/exercises/frog_pumps/thumb.webp"
+  },
+  "hip_thrust_floor": {
+    "provider": "local",
+    "start": "assets/exercises/hip_thrust_floor/start.webp",
+    "end": "assets/exercises/hip_thrust_floor/end.webp",
+    "thumb": "assets/exercises/hip_thrust_floor/thumb.webp"
+  },
+  "donkey_kicks": {
+    "provider": "local",
+    "start": "assets/exercises/donkey_kicks/start.webp",
+    "end": "assets/exercises/donkey_kicks/end.webp",
+    "thumb": "assets/exercises/donkey_kicks/thumb.webp"
+  },
+  "fire_hydrants": {
+    "provider": "local",
+    "start": "assets/exercises/fire_hydrants/start.webp",
+    "end": "assets/exercises/fire_hydrants/end.webp",
+    "thumb": "assets/exercises/fire_hydrants/thumb.webp"
+  },
+  "side_lying_leg_raise": {
+    "provider": "local",
+    "start": "assets/exercises/side_lying_leg_raise/start.webp",
+    "end": "assets/exercises/side_lying_leg_raise/end.webp",
+    "thumb": "assets/exercises/side_lying_leg_raise/thumb.webp"
+  },
+  "clamshell": {
+    "provider": "local",
+    "start": "assets/exercises/clamshell/start.webp",
+    "end": "assets/exercises/clamshell/end.webp",
+    "thumb": "assets/exercises/clamshell/thumb.webp"
+  },
+  "standing_calf_raise": {
+    "provider": "local",
+    "start": "assets/exercises/standing_calf_raise/start.webp",
+    "end": "assets/exercises/standing_calf_raise/end.webp",
+    "thumb": "assets/exercises/standing_calf_raise/thumb.webp"
+  },
+  "single_leg_calf_raise": {
+    "provider": "local",
+    "start": "assets/exercises/single_leg_calf_raise/start.webp",
+    "end": "assets/exercises/single_leg_calf_raise/end.webp",
+    "thumb": "assets/exercises/single_leg_calf_raise/thumb.webp"
+  },
+  "tibialis_raise_wall": {
+    "provider": "local",
+    "start": "assets/exercises/tibialis_raise_wall/start.webp",
+    "end": "assets/exercises/tibialis_raise_wall/end.webp",
+    "thumb": "assets/exercises/tibialis_raise_wall/thumb.webp"
+  },
+  "good_morning": {
+    "provider": "local",
+    "start": "assets/exercises/good_morning/start.webp",
+    "end": "assets/exercises/good_morning/end.webp",
+    "thumb": "assets/exercises/good_morning/thumb.webp"
+  },
+  "plank": {
+    "provider": "local",
+    "start": "assets/exercises/plank/start.webp",
+    "end": "assets/exercises/plank/end.webp",
+    "thumb": "assets/exercises/plank/thumb.webp"
+  },
+  "high_plank": {
+    "provider": "local",
+    "start": "assets/exercises/high_plank/start.webp",
+    "end": "assets/exercises/high_plank/end.webp",
+    "thumb": "assets/exercises/high_plank/thumb.webp"
+  },
+  "side_plank_left": {
+    "provider": "local",
+    "start": "assets/exercises/side_plank_left/start.webp",
+    "end": "assets/exercises/side_plank_left/end.webp",
+    "thumb": "assets/exercises/side_plank_left/thumb.webp"
+  },
+  "side_plank_right": {
+    "provider": "local",
+    "start": "assets/exercises/side_plank_right/start.webp",
+    "end": "assets/exercises/side_plank_right/end.webp",
+    "thumb": "assets/exercises/side_plank_right/thumb.webp"
+  },
+  "side_plank_reach": {
+    "provider": "local",
+    "start": "assets/exercises/side_plank_reach/start.webp",
+    "end": "assets/exercises/side_plank_reach/end.webp",
+    "thumb": "assets/exercises/side_plank_reach/thumb.webp"
+  },
+  "dead_bug": {
+    "provider": "local",
+    "start": "assets/exercises/dead_bug/start.webp",
+    "end": "assets/exercises/dead_bug/end.webp",
+    "thumb": "assets/exercises/dead_bug/thumb.webp"
+  },
+  "bird_dog": {
+    "provider": "local",
+    "start": "assets/exercises/bird_dog/start.webp",
+    "end": "assets/exercises/bird_dog/end.webp",
+    "thumb": "assets/exercises/bird_dog/thumb.webp"
+  },
+  "reverse_crunch": {
+    "provider": "local",
+    "start": "assets/exercises/reverse_crunch/start.webp",
+    "end": "assets/exercises/reverse_crunch/end.webp",
+    "thumb": "assets/exercises/reverse_crunch/thumb.webp"
+  },
+  "crunch": {
+    "provider": "local",
+    "start": "assets/exercises/crunch/start.webp",
+    "end": "assets/exercises/crunch/end.webp",
+    "thumb": "assets/exercises/crunch/thumb.webp"
+  },
+  "sit_up": {
+    "provider": "local",
+    "start": "assets/exercises/sit_up/start.webp",
+    "end": "assets/exercises/sit_up/end.webp",
+    "thumb": "assets/exercises/sit_up/thumb.webp"
+  },
+  "bicycle_crunch": {
+    "provider": "local",
+    "start": "assets/exercises/bicycle_crunch/start.webp",
+    "end": "assets/exercises/bicycle_crunch/end.webp",
+    "thumb": "assets/exercises/bicycle_crunch/thumb.webp"
+  },
+  "heel_taps": {
+    "provider": "local",
+    "start": "assets/exercises/heel_taps/start.webp",
+    "end": "assets/exercises/heel_taps/end.webp",
+    "thumb": "assets/exercises/heel_taps/thumb.webp"
+  },
+  "leg_raise": {
+    "provider": "local",
+    "start": "assets/exercises/leg_raise/start.webp",
+    "end": "assets/exercises/leg_raise/end.webp",
+    "thumb": "assets/exercises/leg_raise/thumb.webp"
+  },
+  "flutter_kicks": {
+    "provider": "local",
+    "start": "assets/exercises/flutter_kicks/start.webp",
+    "end": "assets/exercises/flutter_kicks/end.webp",
+    "thumb": "assets/exercises/flutter_kicks/thumb.webp"
+  },
+  "scissor_kicks": {
+    "provider": "local",
+    "start": "assets/exercises/scissor_kicks/start.webp",
+    "end": "assets/exercises/scissor_kicks/end.webp",
+    "thumb": "assets/exercises/scissor_kicks/thumb.webp"
+  },
+  "hollow_hold": {
+    "provider": "local",
+    "start": "assets/exercises/hollow_hold/start.webp",
+    "end": "assets/exercises/hollow_hold/end.webp",
+    "thumb": "assets/exercises/hollow_hold/thumb.webp"
+  },
+  "hollow_rocks": {
+    "provider": "local",
+    "start": "assets/exercises/hollow_rocks/start.webp",
+    "end": "assets/exercises/hollow_rocks/end.webp",
+    "thumb": "assets/exercises/hollow_rocks/thumb.webp"
+  },
+  "v_up": {
+    "provider": "local",
+    "start": "assets/exercises/v_up/start.webp",
+    "end": "assets/exercises/v_up/end.webp",
+    "thumb": "assets/exercises/v_up/thumb.webp"
+  },
+  "tuck_up": {
+    "provider": "local",
+    "start": "assets/exercises/tuck_up/start.webp",
+    "end": "assets/exercises/tuck_up/end.webp",
+    "thumb": "assets/exercises/tuck_up/thumb.webp"
+  },
+  "russian_twist": {
+    "provider": "local",
+    "start": "assets/exercises/russian_twist/start.webp",
+    "end": "assets/exercises/russian_twist/end.webp",
+    "thumb": "assets/exercises/russian_twist/thumb.webp"
+  },
+  "plank_shoulder_taps": {
+    "provider": "local",
+    "start": "assets/exercises/plank_shoulder_taps/start.webp",
+    "end": "assets/exercises/plank_shoulder_taps/end.webp",
+    "thumb": "assets/exercises/plank_shoulder_taps/thumb.webp"
+  },
+  "plank_knee_to_elbow": {
+    "provider": "local",
+    "start": "assets/exercises/plank_knee_to_elbow/start.webp",
+    "end": "assets/exercises/plank_knee_to_elbow/end.webp",
+    "thumb": "assets/exercises/plank_knee_to_elbow/thumb.webp"
+  },
+  "bear_hold": {
+    "provider": "local",
+    "start": "assets/exercises/bear_hold/start.webp",
+    "end": "assets/exercises/bear_hold/end.webp",
+    "thumb": "assets/exercises/bear_hold/thumb.webp"
+  },
+  "bear_shoulder_taps": {
+    "provider": "local",
+    "start": "assets/exercises/bear_shoulder_taps/start.webp",
+    "end": "assets/exercises/bear_shoulder_taps/end.webp",
+    "thumb": "assets/exercises/bear_shoulder_taps/thumb.webp"
+  },
+  "mountain_climbers_slow": {
+    "provider": "local",
+    "start": "assets/exercises/mountain_climbers_slow/start.webp",
+    "end": "assets/exercises/mountain_climbers_slow/end.webp",
+    "thumb": "assets/exercises/mountain_climbers_slow/thumb.webp"
+  },
+  "superman": {
+    "provider": "local",
+    "start": "assets/exercises/superman/start.webp",
+    "end": "assets/exercises/superman/end.webp",
+    "thumb": "assets/exercises/superman/thumb.webp"
+  },
+  "superman_pull": {
+    "provider": "local",
+    "start": "assets/exercises/superman_pull/start.webp",
+    "end": "assets/exercises/superman_pull/end.webp",
+    "thumb": "assets/exercises/superman_pull/thumb.webp"
+  },
+  "reverse_snow_angel": {
+    "provider": "local",
+    "start": "assets/exercises/reverse_snow_angel/start.webp",
+    "end": "assets/exercises/reverse_snow_angel/end.webp",
+    "thumb": "assets/exercises/reverse_snow_angel/thumb.webp"
+  },
+  "prone_y_raise": {
+    "provider": "local",
+    "start": "assets/exercises/prone_y_raise/start.webp",
+    "end": "assets/exercises/prone_y_raise/end.webp",
+    "thumb": "assets/exercises/prone_y_raise/thumb.webp"
+  },
+  "prone_t_raise": {
+    "provider": "local",
+    "start": "assets/exercises/prone_t_raise/start.webp",
+    "end": "assets/exercises/prone_t_raise/end.webp",
+    "thumb": "assets/exercises/prone_t_raise/thumb.webp"
+  },
+  "prone_w_raise": {
+    "provider": "local",
+    "start": "assets/exercises/prone_w_raise/start.webp",
+    "end": "assets/exercises/prone_w_raise/end.webp",
+    "thumb": "assets/exercises/prone_w_raise/thumb.webp"
+  },
+  "prone_ytw": {
+    "provider": "local",
+    "start": "assets/exercises/prone_ytw/start.webp",
+    "end": "assets/exercises/prone_ytw/end.webp",
+    "thumb": "assets/exercises/prone_ytw/thumb.webp"
+  },
+  "swimmers": {
+    "provider": "local",
+    "start": "assets/exercises/swimmers/start.webp",
+    "end": "assets/exercises/swimmers/end.webp",
+    "thumb": "assets/exercises/swimmers/thumb.webp"
+  },
+  "cobra_hold": {
+    "provider": "local",
+    "start": "assets/exercises/cobra_hold/start.webp",
+    "end": "assets/exercises/cobra_hold/end.webp",
+    "thumb": "assets/exercises/cobra_hold/thumb.webp"
+  },
+  "wall_angel": {
+    "provider": "local",
+    "start": "assets/exercises/wall_angel/start.webp",
+    "end": "assets/exercises/wall_angel/end.webp",
+    "thumb": "assets/exercises/wall_angel/thumb.webp"
+  },
+  "mountain_climbers": {
+    "provider": "local",
+    "start": "assets/exercises/mountain_climbers/start.webp",
+    "end": "assets/exercises/mountain_climbers/end.webp",
+    "thumb": "assets/exercises/mountain_climbers/thumb.webp"
+  },
+  "burpee": {
+    "provider": "local",
+    "start": "assets/exercises/burpee/start.webp",
+    "end": "assets/exercises/burpee/end.webp",
+    "thumb": "assets/exercises/burpee/thumb.webp"
+  },
+  "burpee_no_jump": {
+    "provider": "local",
+    "start": "assets/exercises/burpee_no_jump/start.webp",
+    "end": "assets/exercises/burpee_no_jump/end.webp",
+    "thumb": "assets/exercises/burpee_no_jump/thumb.webp"
+  },
+  "squat_thrust": {
+    "provider": "local",
+    "start": "assets/exercises/squat_thrust/start.webp",
+    "end": "assets/exercises/squat_thrust/end.webp",
+    "thumb": "assets/exercises/squat_thrust/thumb.webp"
+  },
+  "jumping_jacks": {
+    "provider": "local",
+    "start": "assets/exercises/jumping_jacks/start.webp",
+    "end": "assets/exercises/jumping_jacks/end.webp",
+    "thumb": "assets/exercises/jumping_jacks/thumb.webp"
+  },
+  "step_jacks": {
+    "provider": "local",
+    "start": "assets/exercises/step_jacks/start.webp",
+    "end": "assets/exercises/step_jacks/end.webp",
+    "thumb": "assets/exercises/step_jacks/thumb.webp"
+  },
+  "high_knees": {
+    "provider": "local",
+    "start": "assets/exercises/high_knees/start.webp",
+    "end": "assets/exercises/high_knees/end.webp",
+    "thumb": "assets/exercises/high_knees/thumb.webp"
+  },
+  "march_high_knees": {
+    "provider": "local",
+    "start": "assets/exercises/march_high_knees/start.webp",
+    "end": "assets/exercises/march_high_knees/end.webp",
+    "thumb": "assets/exercises/march_high_knees/thumb.webp"
+  },
+  "butt_kicks": {
+    "provider": "local",
+    "start": "assets/exercises/butt_kicks/start.webp",
+    "end": "assets/exercises/butt_kicks/end.webp",
+    "thumb": "assets/exercises/butt_kicks/thumb.webp"
+  },
+  "skaters": {
+    "provider": "local",
+    "start": "assets/exercises/skaters/start.webp",
+    "end": "assets/exercises/skaters/end.webp",
+    "thumb": "assets/exercises/skaters/thumb.webp"
+  },
+  "squat_jump": {
+    "provider": "local",
+    "start": "assets/exercises/squat_jump/start.webp",
+    "end": "assets/exercises/squat_jump/end.webp",
+    "thumb": "assets/exercises/squat_jump/thumb.webp"
+  },
+  "jump_lunge": {
+    "provider": "local",
+    "start": "assets/exercises/jump_lunge/start.webp",
+    "end": "assets/exercises/jump_lunge/end.webp",
+    "thumb": "assets/exercises/jump_lunge/thumb.webp"
+  },
+  "broad_jump": {
+    "provider": "local",
+    "start": "assets/exercises/broad_jump/start.webp",
+    "end": "assets/exercises/broad_jump/end.webp",
+    "thumb": "assets/exercises/broad_jump/thumb.webp"
+  },
+  "inchworm": {
+    "provider": "local",
+    "start": "assets/exercises/inchworm/start.webp",
+    "end": "assets/exercises/inchworm/end.webp",
+    "thumb": "assets/exercises/inchworm/thumb.webp"
+  },
+  "walkout_pushup": {
+    "provider": "local",
+    "start": "assets/exercises/walkout_pushup/start.webp",
+    "end": "assets/exercises/walkout_pushup/end.webp",
+    "thumb": "assets/exercises/walkout_pushup/thumb.webp"
+  }
+}
