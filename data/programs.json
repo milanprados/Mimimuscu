@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "levels": {
+    "beginner": {
+      "name": "Débutant",
+      "sessions_per_week": 3
+    },
+    "intermediate": {
+      "name": "Intermédiaire",
+      "sessions_per_week": 4
+    },
+    "advanced": {
+      "name": "Avancé",
+      "sessions_per_week": 4
+    }
+  },
+  "programs": {
+    "beginner": [
+      {
+        "key": "A",
+        "name": "Push + jambes",
+        "focus": "Pecs • épaules • jambes",
+        "blocks": [
+          {
+            "type": "circuit",
+            "rounds": 1,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "items": [
+              "pushups",
+              "squat",
+              "glute_bridge",
+              "plank",
+              "pushups",
+              "reverse_lunge",
+              "reverse_snow_angel",
+              "dead_bug"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "Dos + posture + core",
+        "focus": "Dos • épaules • abdos",
+        "blocks": [
+          {
+            "type": "circuit",
+            "rounds": 1,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "items": [
+              "pike",
+              "reverse_snow_angel",
+              "reverse_lunge",
+              "dead_bug",
+              "knee_pushups",
+              "superman_pull",
+              "glute_bridge",
+              "side_plank_left"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "C",
+        "name": "Full body",
+        "focus": "Corps entier",
+        "blocks": [
+          {
+            "type": "circuit",
+            "rounds": 1,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "items": [
+              "pushups",
+              "reverse_lunge",
+              "reverse_snow_angel",
+              "plank",
+              "pike",
+              "slow_squat",
+              "reverse_crunch",
+              "glute_bridge"
+            ]
+          }
+        ]
+      }
+    ],
+    "intermediate": [
+      {
+        "key": "A",
+        "name": "Pecs + épaules",
+        "focus": "Pecs • épaules • triceps",
+        "blocks": [
+          {
+            "type": "circuit",
+            "rounds": 1,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "items": [
+              "tempo_pushups",
+              "pike",
+              "split_squat",
+              "dead_bug",
+              "wide_pushups",
+              "close_pushups",
+              "wall_sit",
+              "plank"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "Jambes + dos",
+        "focus": "Jambes • dos • posture",
+        "blocks": [
+          {
+            "type": "circuit",
+            "rounds": 1,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "items": [
+              "split_squat",
+              "single_leg_glute_bridge",
+              "reverse_snow_angel",
+              "hollow_hold",
+              "reverse_lunge",
+              "single_leg_calf_raise",
+              "superman_pull",
+              "side_plank_reach"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "C",
+        "name": "Push + core",
+        "focus": "Pecs • épaules • abdos",
+        "blocks": [
+          {
+            "type": "circuit",
+            "rounds": 1,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "items": [
+              "pushups",
+              "pike",
+              "bear_hold",
+              "reverse_crunch",
+              "tempo_pushups",
+              "prone_ytw",
+              "dead_bug",
+              "side_plank_left"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "D",
+        "name": "Full body dense",
+        "focus": "Corps entier • densité",
+        "blocks": [
+          {
+            "type": "circuit",
+            "rounds": 1,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "items": [
+              "close_pushups",
+              "slow_squat",
+              "superman_pull",
+              "plank",
+              "wide_pushups",
+              "reverse_lunge",
+              "single_leg_glute_bridge",
+              "hollow_hold"
+            ]
+          }
+        ]
+      }
+    ],
+    "advanced": [
+      {
+        "key": "A",
+        "name": "Push hypertrophie",
+        "focus": "Pecs • épaules • triceps",
+        "blocks": [
+          {
+            "type": "circuit",
+            "rounds": 1,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "items": [
+              "tempo_pushups",
+              "pike",
+              "close_pushups",
+              "split_squat",
+              "wide_pushups",
+              "tempo_pushups",
+              "bear_hold",
+              "hollow_hold"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "Jambes + chaîne postérieure",
+        "focus": "Jambes • fessiers • dos",
+        "blocks": [
+          {
+            "type": "circuit",
+            "rounds": 1,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "items": [
+              "split_squat",
+              "single_leg_glute_bridge",
+              "wall_sit",
+              "reverse_snow_angel",
+              "reverse_lunge",
+              "single_leg_calf_raise",
+              "superman_pull",
+              "side_plank_reach"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "C",
+        "name": "Épaules + core",
+        "focus": "Épaules • abdos • posture",
+        "blocks": [
+          {
+            "type": "circuit",
+            "rounds": 1,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "items": [
+              "pike",
+              "tempo_pushups",
+              "prone_ytw",
+              "hollow_hold",
+              "close_pushups",
+              "bear_hold",
+              "reverse_crunch",
+              "side_plank_reach"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "D",
+        "name": "Full body intensif",
+        "focus": "Corps entier",
+        "blocks": [
+          {
+            "type": "circuit",
+            "rounds": 1,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "items": [
+              "tempo_pushups",
+              "split_squat",
+              "superman_pull",
+              "plank",
+              "pike",
+              "single_leg_glute_bridge",
+              "wide_pushups",
+              "hollow_hold"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
