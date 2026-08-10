@@ -190,4 +190,16 @@
   <span>Nouvelle version de Mimi Muscu disponible</span>
   <button id="applyUpdate">Mettre à jour</button>
 </div>
-<script type="module" src="./js/app.js"></script></body></html>
+<script type="module">
+  import("./js/app.js").catch(error => {
+    console.error("[Mimi Muscu] Erreur de démarrage", error);
+    const box = document.createElement("div");
+    box.className = "boot-error";
+    box.innerHTML = `
+      <strong>Mimi Muscu n’a pas réussi à démarrer.</strong>
+      <span>${String(error?.message || error)}</span>
+      <button onclick="location.reload()">Réessayer</button>
+    `;
+    document.body.appendChild(box);
+  });
+</script></body></html>

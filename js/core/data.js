@@ -1,6 +1,7 @@
 
 const loadJson = async path => {
-  const response=await fetch(path,{cache:"no-store"});
+  const url = new URL(path, import.meta.url);
+  const response=await fetch(url,{cache:"no-store"});
   if(!response.ok) throw new Error(`Impossible de charger ${path}`);
   return response.json();
 };
