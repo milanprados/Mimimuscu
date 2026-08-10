@@ -129,3 +129,6 @@ body{background:
 .analysis-card{background:linear-gradient(145deg,#171a1e,#111316);border:1px solid #2d3137;border-radius:18px;padding:14px;text-align:left;margin:12px 0}
 .analysis-card h3{margin:0 0 7px;color:var(--yellow);font-size:14px}.analysis-card p{margin:5px 0;font-size:12px;line-height:1.45;color:#ddd}
 @media(max-width:390px){.dash-row h2{font-size:27px}.dash-stats{flex-direction:column;gap:5px}}
+
+.update-toast{position:fixed;left:12px;right:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:3000;background:#171a1e;border:1px solid #3a3f46;border-radius:16px;padding:11px 12px;display:flex;justify-content:space-between;align-items:center;gap:10px;box-shadow:0 12px 35px #0008}
+.update-toast span{font-size:12px}.update-toast button{background:var(--yellow);color:#111;border-radius:10px;padding:8px 10px;font-weight:900}

@@ -1,24 +1,34 @@
-Mimi Muscu — GitHub Pages build
+Mimi Muscu V22 — Foundation
 
-Cette version est prête à être déposée à la racine d’un dépôt GitHub Pages.
+Cette version est prête pour GitHub Pages.
 
-Déploiement :
-1. Crée un dépôt public GitHub, par exemple "mimi-muscu".
-2. Dézippe cette archive.
-3. Envoie TOUS les fichiers à la racine du dépôt (index.html doit être à la racine).
-4. GitHub → Settings → Pages.
-5. Source : "Deploy from a branch".
-6. Branche : main.
-7. Dossier : / (root).
-8. Save.
+Architecture :
+- data/exercises.json : catalogue d’exercices
+- data/programs.json : programmes Débutant / Intermédiaire / Avancé
+- data/milestones.json : objectifs
+- data/benchmarks.json : tests périodiques
+- data/schema/ : schémas des formats
+- js/core/ : moteur, données, stockage, migrations
+- js/ui/ : écrans et interactions
+- js/utils/ : sauvegarde + préchargement
+- tools/validate-data.mjs : validation du catalogue/programmes
+- tests/run-tests.mjs : tests du compilateur de séances
+- sw.js : cache PWA par stratégie
 
-L’app sera disponible à une adresse du type :
-https://TON-PSEUDO.github.io/mimi-muscu/
+Nouveautés :
+- sauvegarde complète export/import
+- migrations versionnées
+- workout JSON v3 avec exercise/circuit/superset
+- programmes externalisés
+- validation automatique des références
+- tests automatisés
+- préchargement du prochain exercice
+- cache app/data/images séparé
+- notification de nouvelle version
 
-Important :
-- Tous les chemins locaux sont relatifs.
-- Le manifest utilise start_url "./" et scope "./".
-- Le service worker fonctionne dans un sous-dossier GitHub Pages sans connaître le nom du dépôt.
-- Le cache PWA est versionné "mimi-muscu-v20-github".
-- Le catalogue exercises.json contient 100 exercices.
-- Le format d’import/export de séances utilise désormais app: "mimi-muscu".
+Tests locaux (facultatif) :
+npm run check
+
+Déploiement GitHub Pages :
+remplace le contenu du repo par le contenu de ce ZIP.
+URL inchangée.

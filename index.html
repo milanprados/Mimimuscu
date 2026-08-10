@@ -1,4 +1,4 @@
-<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#050607"><link rel="manifest" href="./manifest.json"><link rel="apple-touch-icon" href="./icon-192.png"><link rel="stylesheet" href="./styles.css"><title>Mimi Muscu</title></head><body>
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#050607"><link rel="manifest" href="./manifest.json"><link rel="apple-touch-icon" href="./assets/icons/icon-192.png"><link rel="stylesheet" href="./styles.css"><title>Mimi Muscu</title></head><body>
 <div class="app">
   <div class="topbar"><div class="brand"><h1>Mimi Muscu</h1><small>Silencieux • poids du corps • adaptatif</small></div><div class="yellow" id="homeLevel">LV 1</div></div>
   <nav class="tabs"><button class="active" data-tab="session">Accueil</button><button data-tab="exercises">Exos</button><button data-tab="progress">Progrès</button><button data-tab="profile">Profil</button></nav>
@@ -84,6 +84,16 @@
     <select id="defaultDuration"><option value="10">10 min</option><option value="15">15 min</option><option value="22">22 min</option><option value="30">30 min</option></select>
   </label>
   <label class="toggle-row"><span>Suggestions automatiques</span><input id="autoSuggest" type="checkbox"></label>
+</div>
+<div class="card">
+  <div class="section-head"><strong>Sauvegarde</strong><span class="muted">locale → fichier</span></div>
+  <p class="muted">Exporte tout : profil, historique, XP, mesures, records, réglages et séances perso.</p>
+  <div class="secondary-row">
+    <button class="ghost" id="exportBackup">Exporter tout</button>
+    <button class="ghost" id="importBackup">Importer</button>
+  </div>
+  <input id="backupFileInput" type="file" accept=".json,application/json" class="hidden">
+  <small class="muted" id="backupStatus"></small>
 </div>
 <div class="card"><strong>Coach IA</strong><p class="muted">Génère un bilan de ta dernière séance pour ChatGPT.</p><textarea id="coachPrompt" readonly></textarea><button class="primary-btn" id="openChat">Copier et ouvrir ChatGPT</button></div>
     </section>
@@ -176,4 +186,8 @@
 
 <div class="focus hidden" id="focus"><div class="focus-head"><button id="exitFocus">✕</button><div class="focus-center"><small id="focusPhase"></small><strong id="focusStep"></strong><em id="focusXp"></em></div><button id="audio">🔊</button></div><div class="focus-content" id="focusContent"></div></div>
 <div class="modal hidden" id="modal"><div class="modal-head"><button id="closeModal">‹</button><h2 id="modalTitle"></h2><div></div></div><div id="modalBody"></div></div>
-<script type="module" src="./app.js"></script></body></html>
+<div class="update-toast hidden" id="updateToast">
+  <span>Nouvelle version de Mimi Muscu disponible</span>
+  <button id="applyUpdate">Mettre à jour</button>
+</div>
+<script type="module" src="./js/app.js"></script></body></html>

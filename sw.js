@@ -1,45 +1,61 @@
-const CACHE = "mimi-muscu-v20-github";
-const CORE = [
-  "./",
-  "./index.html",
-  "./styles.css",
-  "./app.js",
-  "./engine.js",
-  "./data.js",
-  "./exercises.json",
-  "./state.js",
-  "./manifest.json",
-  "./icon-192.png",
-  "./icon-512.png"
+const VERSION="mimi-muscu-v22";
+const APP_CACHE=`${VERSION}-app`;
+const DATA_CACHE=`${VERSION}-data`;
+const IMAGE_CACHE=`${VERSION}-images`;
+
+const APP_SHELL=[
+  "./","./index.html","./styles.css","./manifest.json",
+  "./js/app.js","./js/helpers.js",
+  "./js/core/data.js","./js/core/engine.js","./js/core/state.js","./js/core/migrations.js",
+  "./js/ui/workout-ui.js","./js/ui/dictionary.js","./js/ui/sessions.js","./js/ui/dashboard.js","./js/ui/profile-progress.js",
+  "./js/utils/backup.js","./js/utils/preload.js",
+  "./assets/icons/icon-192.png","./assets/icons/icon-512.png"
 ];
 
-self.addEventListener("install", event => {
+self.addEventListener("install",event=>{
   self.skipWaiting();
-  event.waitUntil(
-    caches.open(CACHE).then(cache => cache.addAll(CORE))
-  );
+  event.waitUntil(caches.open(APP_CACHE).then(cache=>cache.addAll(APP_SHELL)));
 });
 
-self.addEventListener("activate", event => {
+self.addEventListener("activate",event=>{
   event.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key))))
-      .then(() => self.clients.claim())
+      .then(keys=>Promise.all(keys.filter(k=>!k.startsWith(VERSION)).map(k=>caches.delete(k))))
+      .then(()=>self.clients.claim())
   );
 });
 
-self.addEventListener("fetch", event => {
-  if (event.request.method !== "GET") return;
+async function networkFirst(request,cacheName){
+  const cache=await caches.open(cacheName);
+  try{
+    const response=await fetch(request,{cache:"no-store"});
+    if(response.ok)cache.put(request,response.clone());
+    return response;
+  }catch(_){
+    return (await cache.match(request)) || Response.error();
+  }
+}
 
-  event.respondWith(
-    fetch(event.request, { cache: "no-store" })
-      .then(response => {
-        const copy = response.clone();
-        caches.open(CACHE).then(cache => cache.put(event.request, copy));
-        return response;
-      })
-      .catch(() =>
-        caches.match(event.request).then(cached => cached || caches.match("./index.html"))
-      )
-  );
+async function cacheFirst(request,cacheName){
+  const cache=await caches.open(cacheName);
+  const cached=await cache.match(request);
+  if(cached)return cached;
+  const response=await fetch(request);
+  if(response.ok)cache.put(request,response.clone());
+  return response;
+}
+
+self.addEventListener("fetch",event=>{
+  if(event.request.method!=="GET")return;
+  const url=new URL(event.request.url);
+
+  if(url.pathname.endsWith(".json") && url.pathname.includes("/data/")){
+    event.respondWith(networkFirst(event.request,DATA_CACHE));return;
+  }
+  if(event.request.destination==="image"){
+    event.respondWith(cacheFirst(event.request,IMAGE_CACHE));return;
+  }
+  if(url.origin===self.location.origin){
+    event.respondWith(networkFirst(event.request,APP_CACHE));return;
+  }
 });
