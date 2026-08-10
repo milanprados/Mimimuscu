@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#090a0c">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=29">
+  <link rel="stylesheet" href="./styles.css?v=30">
   <title>Mimi Muscu</title>
 </head>
 <body>
@@ -43,6 +43,19 @@
           <p class="today-focus" id="sessionFocus">Technique · force générale</p>
           <button class="hero-go" id="quickStart"><span>▶</span> Lancer la séance</button>
           <button class="hero-edit" id="prepareSession">Voir le détail & modifier</button>
+        </article>
+
+        <article class="calendar-home-card">
+          <div class="calendar-home-head">
+            <div><span class="eyebrow">PLANNING</span><strong id="calendarTodayDate">Aujourd’hui</strong></div>
+            <button class="link-btn" id="openCalendar">Calendrier →</button>
+          </div>
+          <div class="home-week-strip" id="homeWeekStrip"></div>
+          <div class="calendar-today-row">
+            <div><span class="calendar-status planned" id="calendarTodayBadge">PRÉVU</span></div>
+            <div><strong id="calendarTodayTitle">Séance du jour</strong><small id="calendarTodaySub"></small></div>
+          </div>
+          <div class="home-upcoming" id="homeUpcoming"></div>
         </article>
 
         <article class="cycle-panel">
@@ -139,6 +152,14 @@
           <div class="section-title"><div><span class="eyebrow">ADAPTATION</span><strong>Objectifs actuels</strong></div></div>
           <p class="section-copy">Ce sont les cibles utilisées par les prochaines séances. Elles montent ou descendent selon tes performances.</p>
           <div id="targets" class="targets-list rich-targets"></div>
+        </article>
+
+        <article class="section-block calendar-progress-card">
+          <div class="section-title">
+            <div><span class="eyebrow">PLANNING</span><strong>Calendrier d’entraînement</strong></div>
+            <button class="compact-btn" id="openCalendarProgress">Ouvrir</button>
+          </div>
+          <p class="section-copy">Retrouve les séances faites, les prochains jours du cycle et ton jour de repos.</p>
         </article>
 
         <article class="section-block body-card">
@@ -284,6 +305,59 @@
     </nav>
   </div>
 
+  <div class="modal hidden calendar-modal" id="calendarModal" aria-hidden="true">
+    <div class="modal-shell calendar-shell">
+      <header class="modal-head">
+        <button id="closeCalendar">←</button>
+        <div><span class="eyebrow">PLANNING</span><h2>Calendrier</h2></div>
+        <button class="calendar-today-btn" id="calendarTodayBtn">Auj.</button>
+      </header>
+
+      <div class="calendar-toolbar">
+        <button id="calendarPrev">‹</button>
+        <strong id="calendarMonthLabel">août 2026</strong>
+        <button id="calendarNext">›</button>
+      </div>
+
+      <div class="calendar-legend">
+        <span><i class="done"></i>Fait</span>
+        <span><i class="planned"></i>Prévu</span>
+        <span><i class="rest"></i>Repos</span>
+        <span><i class="today"></i>Aujourd’hui</span>
+      </div>
+
+      <div class="calendar-weekdays"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+
+      <article class="calendar-selected-card">
+        <span class="eyebrow" id="calendarSelectedDate">Aujourd’hui</span>
+        <div id="calendarSelected"></div>
+      </article>
+
+      <article class="calendar-agenda-card">
+        <div class="section-title"><div><span class="eyebrow">À VENIR</span><strong>Prochains jours</strong></div></div>
+        <div id="calendarUpcomingList"></div>
+      </article>
+
+      <article class="calendar-settings-card">
+        <div>
+          <span class="eyebrow">RYTHME HEBDO</span>
+          <strong>Jour de repos</strong>
+          <small>Les séances futures se décalent automatiquement si tu rates une journée.</small>
+        </div>
+        <select id="restDaySelect">
+          <option value="1">Lundi</option>
+          <option value="2">Mardi</option>
+          <option value="3">Mercredi</option>
+          <option value="4">Jeudi</option>
+          <option value="5">Vendredi</option>
+          <option value="6">Samedi</option>
+          <option value="0">Dimanche</option>
+        </select>
+      </article>
+    </div>
+  </div>
+
   <div class="modal hidden" id="milestoneModal" aria-hidden="true">
     <div class="modal-shell">
       <header class="modal-head"><button id="closeMilestoneModal">←</button><div><span class="eyebrow">OBJECTIFS</span><h2>Mes repères</h2></div><span></span></header>
@@ -406,7 +480,7 @@
   </div>
 
   <script type="module">
-    import("./js/v29/app.js?v=29.0").catch(error=>{
+    import("./js/v30/app.js?v=30.0").catch(error=>{
       console.error("[Mimi Muscu] Erreur de démarrage",error);
       const box=document.createElement("div");
       box.className="boot-error";

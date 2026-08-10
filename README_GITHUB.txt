@@ -1,7 +1,10 @@
-Mimi Muscu V29 — Profil & progression
+Mimi Muscu V30 — Calendrier
 
-Nouvelle page profil riche et nouveau tableau de progression.
-Le système utilise un indice personnel : 100 = ton niveau au démarrage,
-pas un classement par rapport à la population.
+Nouveau calendrier d'entraînement :
+- résumé semaine sur l'accueil
+- calendrier mensuel complet
+- historique réel
+- planning futur glissant
+- jour de repos configurable
 
-Upload complet recommandé, puis Push sur GitHub.
+Upload complet recommandé puis Push.
