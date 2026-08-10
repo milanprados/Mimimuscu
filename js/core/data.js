@@ -53,7 +53,14 @@ export const EXERCISE_LOAD={
 
 export function workoutTemplate(program){
   const list=PROGRAMS[program.level]||PROGRAMS.beginner;
-  return list[(program.index||0)%list.length];
+  const template=list[(program.index||0)%list.length];
+  // Compatibility/API layer:
+  // UI modules can consume a simple ids[] list even though programs.json
+  // now stores generic blocks (exercise/circuit/superset).
+  return {
+    ...template,
+    ids: compileBlocksToSessionExercises(template.blocks||[]).map(item=>item.id)
+  };
 }
 
 export function compileBlocksToSessionExercises(blocks=[]){

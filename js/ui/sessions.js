@@ -109,7 +109,10 @@ export function initSessions({
     finally{$("#sessionFileInput").value=""}
   }
 
-  const defaultPlannerIds=()=>[...workoutTemplate(state.program).ids];
+  const defaultPlannerIds=()=>{
+    const ids=workoutTemplate(state.program).ids;
+    return Array.isArray(ids)?[...ids]:[];
+  };
   function loadPlanner(){
     const tpl=workoutTemplate(state.program),draft=state.sessionDraft;
     const valid=draft&&draft.templateKey===tpl.key&&draft.level===state.program.level;

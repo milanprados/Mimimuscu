@@ -28,8 +28,9 @@ export function initDashboard({
 
   function adaptiveSessionBase(){
     const tpl=workoutTemplate(state.program);
+    const ids=Array.isArray(tpl.ids)?tpl.ids:[];
     return {id:`program-${tpl.key}`,name:tpl.name,description:tpl.focus,level:state.program.level,
-      exercises:tpl.ids.map((id,index)=>({id,restAfter:index===3?45:25}))};
+      exercises:ids.map((id,index)=>({id,restAfter:index===3?45:25}))};
   }
   function sessionForToday(){return compressSessionForDuration(adaptiveSessionBase(),selectedDuration())}
   function milestoneProgress(m){const best=state.bests[m.exerciseId]||0;return Math.max(0,Math.min(100,Math.round(best/m.value*100)))}

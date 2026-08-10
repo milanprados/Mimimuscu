@@ -191,7 +191,7 @@
   <button id="applyUpdate">Mettre à jour</button>
 </div>
 <script type="module">
-  import("./js/app.js").catch(error => {
+  import("./js/app.js?v=22.2").catch(error => {
     console.error("[Mimi Muscu] Erreur de démarrage", error);
     const box = document.createElement("div");
     box.className = "boot-error";
