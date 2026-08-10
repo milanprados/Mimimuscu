@@ -2,7 +2,7 @@
   "schema_version": 1,
   "catalog_id": "mimi-muscu-bodyweight-core",
   "name": "Mimi Muscu — Bodyweight Exercise Catalog",
-  "description": "100 exercices au poids du corps parmi les plus courants et populaires. Ce n'est pas un classement mondial objectif. Les métadonnées quiet/impact/equipment permettent au moteur de respecter les contraintes de séance.",
+  "description": "Catalogue Mimi Muscu : exercices poids du corps silencieux, renforcement, mobilité et retour au calme.",
   "defaults": {
     "preferred_quiet": true,
     "preferred_equipment": "none"
@@ -4411,6 +4411,490 @@
         "end": "assets/svg_exercises/Pushups/end.svg",
         "thumb": "assets/svg_exercises/Pushups/thumb.svg",
         "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "arm_circles",
+      "name": "Cercles de bras",
+      "aliases": [],
+      "category": "Mobilité",
+      "movement_pattern": "mobility",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 35,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Épaules",
+        "secondary": "Haut du dos"
+      },
+      "coaching": {
+        "tips": [
+          "Épaules basses, bras presque tendus.",
+          "Fais de grands cercles contrôlés, sans élan brusque."
+        ],
+        "mistakes": [
+          "Ne force jamais l’amplitude au-delà d’un étirement confortable."
+        ],
+        "breathing": "Respiration lente et régulière.",
+        "easier": "Réduis l’amplitude.",
+        "harder": "Tiens quelques secondes de plus sans forcer."
+      },
+      "visual": {
+        "provider": "local",
+        "start": "assets/svg_exercises/Arm_Circles/start.svg",
+        "end": "assets/svg_exercises/Arm_Circles/end.svg",
+        "thumb": "assets/svg_exercises/Arm_Circles/thumb.svg",
+        "asset_id": "Arm_Circles"
+      }
+    },
+    {
+      "id": "cat_cow",
+      "name": "Chat-vache",
+      "aliases": [],
+      "category": "Mobilité",
+      "movement_pattern": "mobility",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 35,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Colonne vertébrale • core",
+        "secondary": "Épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Alterne dos rond et légère extension.",
+          "Bouge vertèbre par vertèbre, sans chercher une grande amplitude."
+        ],
+        "mistakes": [
+          "Ne force jamais l’amplitude au-delà d’un étirement confortable."
+        ],
+        "breathing": "Respiration lente et régulière.",
+        "easier": "Réduis l’amplitude.",
+        "harder": "Tiens quelques secondes de plus sans forcer."
+      },
+      "visual": {
+        "provider": "local",
+        "start": "assets/svg_exercises/Cat_Cow/start.svg",
+        "end": "assets/svg_exercises/Cat_Cow/end.svg",
+        "thumb": "assets/svg_exercises/Cat_Cow/thumb.svg",
+        "asset_id": "Cat_Cow"
+      }
+    },
+    {
+      "id": "child_pose",
+      "name": "Posture de l’enfant",
+      "aliases": [],
+      "category": "Mobilité",
+      "movement_pattern": "mobility",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Dos • épaules",
+        "secondary": "Hanches"
+      },
+      "coaching": {
+        "tips": [
+          "Recule doucement les hanches vers les talons.",
+          "Allonge les bras devant toi et relâche la nuque."
+        ],
+        "mistakes": [
+          "Ne force jamais l’amplitude au-delà d’un étirement confortable."
+        ],
+        "breathing": "Respiration lente et régulière.",
+        "easier": "Réduis l’amplitude.",
+        "harder": "Tiens quelques secondes de plus sans forcer."
+      },
+      "visual": {
+        "provider": "local",
+        "start": "assets/svg_exercises/Child_Pose/start.svg",
+        "end": "assets/svg_exercises/Child_Pose/end.svg",
+        "thumb": "assets/svg_exercises/Child_Pose/thumb.svg",
+        "asset_id": "Child_Pose"
+      }
+    },
+    {
+      "id": "chest_opener",
+      "name": "Ouverture de poitrine",
+      "aliases": [],
+      "category": "Mobilité",
+      "movement_pattern": "mobility",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux • épaules",
+        "secondary": "Haut du dos"
+      },
+      "coaching": {
+        "tips": [
+          "Ouvre la poitrine sans cambrer excessivement.",
+          "Garde les épaules loin des oreilles."
+        ],
+        "mistakes": [
+          "Ne force jamais l’amplitude au-delà d’un étirement confortable."
+        ],
+        "breathing": "Respiration lente et régulière.",
+        "easier": "Réduis l’amplitude.",
+        "harder": "Tiens quelques secondes de plus sans forcer."
+      },
+      "visual": {
+        "provider": "local",
+        "start": "assets/svg_exercises/Chest_Opener/start.svg",
+        "end": "assets/svg_exercises/Chest_Opener/end.svg",
+        "thumb": "assets/svg_exercises/Chest_Opener/thumb.svg",
+        "asset_id": "Chest_Opener"
+      }
+    },
+    {
+      "id": "hamstring_stretch",
+      "name": "Étirement ischios debout",
+      "aliases": [],
+      "category": "Mobilité",
+      "movement_pattern": "mobility",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Ischios",
+        "secondary": "Mollets • bas du dos"
+      },
+      "coaching": {
+        "tips": [
+          "Bascule depuis les hanches, dos long.",
+          "Arrête-toi dès que l’arrière des jambes tire confortablement."
+        ],
+        "mistakes": [
+          "Ne force jamais l’amplitude au-delà d’un étirement confortable."
+        ],
+        "breathing": "Respiration lente et régulière.",
+        "easier": "Réduis l’amplitude.",
+        "harder": "Tiens quelques secondes de plus sans forcer."
+      },
+      "visual": {
+        "provider": "local",
+        "start": "assets/svg_exercises/Hamstring_Stretch/start.svg",
+        "end": "assets/svg_exercises/Hamstring_Stretch/end.svg",
+        "thumb": "assets/svg_exercises/Hamstring_Stretch/thumb.svg",
+        "asset_id": "Hamstring_Stretch"
+      }
+    },
+    {
+      "id": "hip_flexor_stretch_left",
+      "name": "Étirement fléchisseur hanche gauche",
+      "aliases": [],
+      "category": "Mobilité",
+      "movement_pattern": "mobility",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 25,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Fléchisseurs de hanche",
+        "secondary": "Quadriceps"
+      },
+      "coaching": {
+        "tips": [
+          "Rétroverse légèrement le bassin.",
+          "Avance doucement le bassin sans cambrer."
+        ],
+        "mistakes": [
+          "Ne force jamais l’amplitude au-delà d’un étirement confortable."
+        ],
+        "breathing": "Respiration lente et régulière.",
+        "easier": "Réduis l’amplitude.",
+        "harder": "Tiens quelques secondes de plus sans forcer."
+      },
+      "visual": {
+        "provider": "local",
+        "start": "assets/svg_exercises/Hip_Flexor_Stretch/start.svg",
+        "end": "assets/svg_exercises/Hip_Flexor_Stretch/end.svg",
+        "thumb": "assets/svg_exercises/Hip_Flexor_Stretch/thumb.svg",
+        "asset_id": "Hip_Flexor_Stretch"
+      }
+    },
+    {
+      "id": "hip_flexor_stretch_right",
+      "name": "Étirement fléchisseur hanche droite",
+      "aliases": [],
+      "category": "Mobilité",
+      "movement_pattern": "mobility",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 25,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Fléchisseurs de hanche",
+        "secondary": "Quadriceps"
+      },
+      "coaching": {
+        "tips": [
+          "Rétroverse légèrement le bassin.",
+          "Avance doucement le bassin sans cambrer."
+        ],
+        "mistakes": [
+          "Ne force jamais l’amplitude au-delà d’un étirement confortable."
+        ],
+        "breathing": "Respiration lente et régulière.",
+        "easier": "Réduis l’amplitude.",
+        "harder": "Tiens quelques secondes de plus sans forcer."
+      },
+      "visual": {
+        "provider": "local",
+        "start": "assets/svg_exercises/Hip_Flexor_Stretch/start.svg",
+        "end": "assets/svg_exercises/Hip_Flexor_Stretch/end.svg",
+        "thumb": "assets/svg_exercises/Hip_Flexor_Stretch/thumb.svg",
+        "asset_id": "Hip_Flexor_Stretch"
+      }
+    },
+    {
+      "id": "quad_stretch_left",
+      "name": "Étirement quadriceps gauche",
+      "aliases": [],
+      "category": "Mobilité",
+      "movement_pattern": "mobility",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 25,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps",
+        "secondary": "Fléchisseurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Bouge lentement et sans douleur.",
+          "Respire de façon calme et régulière."
+        ],
+        "mistakes": [
+          "Ne force jamais l’amplitude au-delà d’un étirement confortable."
+        ],
+        "breathing": "Respiration lente et régulière.",
+        "easier": "Réduis l’amplitude.",
+        "harder": "Tiens quelques secondes de plus sans forcer."
+      },
+      "visual": {
+        "provider": "local",
+        "start": "assets/svg_exercises/Quad_Stretch/start.svg",
+        "end": "assets/svg_exercises/Quad_Stretch/end.svg",
+        "thumb": "assets/svg_exercises/Quad_Stretch/thumb.svg",
+        "asset_id": "Quad_Stretch"
+      }
+    },
+    {
+      "id": "quad_stretch_right",
+      "name": "Étirement quadriceps droit",
+      "aliases": [],
+      "category": "Mobilité",
+      "movement_pattern": "mobility",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 25,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps",
+        "secondary": "Fléchisseurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Bouge lentement et sans douleur.",
+          "Respire de façon calme et régulière."
+        ],
+        "mistakes": [
+          "Ne force jamais l’amplitude au-delà d’un étirement confortable."
+        ],
+        "breathing": "Respiration lente et régulière.",
+        "easier": "Réduis l’amplitude.",
+        "harder": "Tiens quelques secondes de plus sans forcer."
+      },
+      "visual": {
+        "provider": "local",
+        "start": "assets/svg_exercises/Quad_Stretch/start.svg",
+        "end": "assets/svg_exercises/Quad_Stretch/end.svg",
+        "thumb": "assets/svg_exercises/Quad_Stretch/thumb.svg",
+        "asset_id": "Quad_Stretch"
+      }
+    },
+    {
+      "id": "spinal_twist_left",
+      "name": "Rotation allongée gauche",
+      "aliases": [],
+      "category": "Mobilité",
+      "movement_pattern": "mobility",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 25,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Obliques • colonne",
+        "secondary": "Fessiers"
+      },
+      "coaching": {
+        "tips": [
+          "Bouge lentement et sans douleur.",
+          "Respire de façon calme et régulière."
+        ],
+        "mistakes": [
+          "Ne force jamais l’amplitude au-delà d’un étirement confortable."
+        ],
+        "breathing": "Respiration lente et régulière.",
+        "easier": "Réduis l’amplitude.",
+        "harder": "Tiens quelques secondes de plus sans forcer."
+      },
+      "visual": {
+        "provider": "local",
+        "start": "assets/svg_exercises/Spinal_Twist/start.svg",
+        "end": "assets/svg_exercises/Spinal_Twist/end.svg",
+        "thumb": "assets/svg_exercises/Spinal_Twist/thumb.svg",
+        "asset_id": "Spinal_Twist"
+      }
+    },
+    {
+      "id": "spinal_twist_right",
+      "name": "Rotation allongée droite",
+      "aliases": [],
+      "category": "Mobilité",
+      "movement_pattern": "mobility",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 25,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Obliques • colonne",
+        "secondary": "Fessiers"
+      },
+      "coaching": {
+        "tips": [
+          "Bouge lentement et sans douleur.",
+          "Respire de façon calme et régulière."
+        ],
+        "mistakes": [
+          "Ne force jamais l’amplitude au-delà d’un étirement confortable."
+        ],
+        "breathing": "Respiration lente et régulière.",
+        "easier": "Réduis l’amplitude.",
+        "harder": "Tiens quelques secondes de plus sans forcer."
+      },
+      "visual": {
+        "provider": "local",
+        "start": "assets/svg_exercises/Spinal_Twist/start.svg",
+        "end": "assets/svg_exercises/Spinal_Twist/end.svg",
+        "thumb": "assets/svg_exercises/Spinal_Twist/thumb.svg",
+        "asset_id": "Spinal_Twist"
       }
     }
   ]

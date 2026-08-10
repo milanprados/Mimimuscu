@@ -1,275 +1,3173 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "cycle_weeks": 4,
+  "sessions_per_week": 6,
+  "rest_days_per_week": 1,
   "levels": {
-    "beginner": {
-      "name": "Débutant",
-      "sessions_per_week": 3
-    },
-    "intermediate": {
-      "name": "Intermédiaire",
-      "sessions_per_week": 4
-    },
-    "advanced": {
-      "name": "Avancé",
-      "sessions_per_week": 4
+    "adaptive": {
+      "name": "Routine 20 min",
+      "sessions_per_week": 6
     }
   },
   "programs": {
-    "beginner": [
+    "adaptive": [
       {
-        "key": "A",
-        "name": "Push + jambes",
-        "focus": "Pecs • épaules • jambes",
+        "key": "W1D1",
+        "week": 1,
+        "day": 1,
+        "name": "Fondations A",
+        "focus": "Technique • force générale",
+        "intensity": "progression",
+        "duration_min": 20,
         "blocks": [
           {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "step_jacks",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "slow_squat",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
             "type": "circuit",
-            "rounds": 1,
+            "phase": "Bloc principal",
+            "rounds": 2,
             "rest_between_exercises_sec": 25,
             "rest_between_rounds_sec": 45,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
             "items": [
               "pushups",
               "squat",
+              "reverse_snow_angel",
               "glute_bridge",
-              "plank",
-              "pushups",
+              "dead_bug",
+              "pike"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W1D2",
+        "week": 1,
+        "day": 2,
+        "name": "Fondations B",
+        "focus": "Full body léger • contrôle",
+        "intensity": "léger",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 40,
+            "target_scale": 0.78,
+            "track": true,
+            "adaptive": false,
+            "items": [
+              "incline_pushups",
               "reverse_lunge",
+              "superman_pull",
+              "frog_pumps",
+              "plank",
+              "bird_dog"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W1D3",
+        "week": 1,
+        "day": 3,
+        "name": "Volume propre",
+        "focus": "Full body • volume modéré",
+        "intensity": "progression",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "inchworm",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
+            "items": [
+              "wide_pushups",
+              "sumo_squat",
+              "prone_y_raise",
+              "glute_bridge",
+              "reverse_crunch",
+              "pike"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_right",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W1D4",
+        "week": 1,
+        "day": 4,
+        "name": "Technique & posture",
+        "focus": "Full body léger • posture",
+        "intensity": "léger",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "step_jacks",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "slow_squat",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 40,
+            "target_scale": 0.78,
+            "track": true,
+            "adaptive": false,
+            "items": [
+              "pushups",
+              "good_morning",
+              "reverse_snow_angel",
+              "side_lying_leg_raise",
+              "dead_bug",
+              "bear_hold"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W1D5",
+        "week": 1,
+        "day": 5,
+        "name": "Force A",
+        "focus": "Full body • tension contrôlée",
+        "intensity": "progression",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 45,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
+            "items": [
+              "tempo_pushups",
+              "reverse_lunge",
+              "superman_pull",
+              "single_leg_glute_bridge",
+              "hollow_hold",
+              "pike"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W1D6",
+        "week": 1,
+        "day": 6,
+        "name": "Flow silencieux",
+        "focus": "Full body • cardio doux",
+        "intensity": "léger",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "inchworm",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 20,
+            "rest_between_rounds_sec": 35,
+            "target_scale": 0.72,
+            "track": true,
+            "adaptive": false,
+            "items": [
+              "burpee_no_jump",
+              "squat",
+              "pushups",
+              "mountain_climbers_slow",
               "reverse_snow_angel",
               "dead_bug"
             ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_right",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
           }
         ]
       },
       {
-        "key": "B",
-        "name": "Dos + posture + core",
-        "focus": "Dos • épaules • abdos",
+        "key": "W2D1",
+        "week": 2,
+        "day": 1,
+        "name": "Progression A",
+        "focus": "Full body • triceps + jambes",
+        "intensity": "progression",
+        "duration_min": 20,
         "blocks": [
           {
-            "type": "circuit",
-            "rounds": 1,
-            "rest_between_exercises_sec": 25,
-            "rest_between_rounds_sec": 45,
-            "items": [
-              "pike",
-              "reverse_snow_angel",
-              "reverse_lunge",
-              "dead_bug",
-              "knee_pushups",
-              "superman_pull",
-              "glute_bridge",
-              "side_plank_left"
-            ]
-          }
-        ]
-      },
-      {
-        "key": "C",
-        "name": "Full body",
-        "focus": "Corps entier",
-        "blocks": [
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
           {
             "type": "circuit",
-            "rounds": 1,
-            "rest_between_exercises_sec": 25,
-            "rest_between_rounds_sec": 45,
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 23,
+            "rest_between_rounds_sec": 42,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
             "items": [
-              "pushups",
-              "reverse_lunge",
-              "reverse_snow_angel",
-              "plank",
-              "pike",
+              "close_pushups",
               "slow_squat",
-              "reverse_crunch",
-              "glute_bridge"
+              "prone_t_raise",
+              "single_leg_glute_bridge",
+              "plank_shoulder_taps",
+              "pike"
             ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
           }
         ]
-      }
-    ],
-    "intermediate": [
+      },
       {
-        "key": "A",
-        "name": "Pecs + épaules",
-        "focus": "Pecs • épaules • triceps",
+        "key": "W2D2",
+        "week": 2,
+        "day": 2,
+        "name": "Unilatéral",
+        "focus": "Full body léger • stabilité",
+        "intensity": "léger",
+        "duration_min": 20,
         "blocks": [
           {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "inchworm",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
             "type": "circuit",
-            "rounds": 1,
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 23,
+            "rest_between_rounds_sec": 40,
+            "target_scale": 0.82,
+            "track": true,
+            "adaptive": false,
+            "items": [
+              "staggered_pushups",
+              "split_squat",
+              "superman_pull",
+              "frog_pumps",
+              "side_plank_reach",
+              "bird_dog"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_right",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W2D3",
+        "week": 2,
+        "day": 3,
+        "name": "Contrôle",
+        "focus": "Full body • pauses propres",
+        "intensity": "progression",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "step_jacks",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "slow_squat",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 23,
+            "rest_between_rounds_sec": 42,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
+            "items": [
+              "pause_pushups",
+              "sumo_squat",
+              "prone_ytw",
+              "glute_bridge",
+              "reverse_crunch",
+              "pike"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W2D4",
+        "week": 2,
+        "day": 4,
+        "name": "Posture + core",
+        "focus": "Full body léger • récupération active",
+        "intensity": "léger",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
             "rest_between_exercises_sec": 25,
-            "rest_between_rounds_sec": 45,
+            "rest_between_rounds_sec": 40,
+            "target_scale": 0.78,
+            "track": true,
+            "adaptive": false,
+            "items": [
+              "incline_pushups",
+              "good_morning",
+              "reverse_snow_angel",
+              "fire_hydrants",
+              "dead_bug",
+              "bear_hold"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W2D5",
+        "week": 2,
+        "day": 5,
+        "name": "Tension",
+        "focus": "Full body • tempo",
+        "intensity": "progression",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "inchworm",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 23,
+            "rest_between_rounds_sec": 42,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
             "items": [
               "tempo_pushups",
-              "pike",
-              "split_squat",
-              "dead_bug",
-              "wide_pushups",
+              "reverse_lunge",
+              "superman_pull",
+              "single_leg_glute_bridge",
+              "hollow_hold",
+              "pike"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_right",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W2D6",
+        "week": 2,
+        "day": 6,
+        "name": "Conditioning doux",
+        "focus": "Full body • densité sans impact",
+        "intensity": "léger",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "step_jacks",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "slow_squat",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 20,
+            "rest_between_rounds_sec": 35,
+            "target_scale": 0.75,
+            "track": true,
+            "adaptive": false,
+            "items": [
+              "burpee_no_jump",
+              "slow_squat",
+              "pushups",
+              "mountain_climbers_slow",
+              "prone_y_raise",
+              "bird_dog"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W3D1",
+        "week": 3,
+        "day": 1,
+        "name": "Tempo A",
+        "focus": "Full body • contrôle lent",
+        "intensity": "progression",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "inchworm",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 22,
+            "rest_between_rounds_sec": 40,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
+            "items": [
+              "tempo_pushups",
+              "pause_squat",
+              "reverse_snow_angel",
+              "single_leg_glute_bridge",
+              "plank_shoulder_taps",
+              "pike"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_right",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W3D2",
+        "week": 3,
+        "day": 2,
+        "name": "Plans différents",
+        "focus": "Full body léger • latéral",
+        "intensity": "léger",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "step_jacks",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "slow_squat",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 24,
+            "rest_between_rounds_sec": 40,
+            "target_scale": 0.82,
+            "track": true,
+            "adaptive": false,
+            "items": [
               "close_pushups",
-              "wall_sit",
+              "lateral_lunge",
+              "superman_pull",
+              "frog_pumps",
+              "side_plank_reach",
+              "bird_dog"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W3D3",
+        "week": 3,
+        "day": 3,
+        "name": "Tension continue",
+        "focus": "Full body • amplitude",
+        "intensity": "progression",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 22,
+            "rest_between_rounds_sec": 40,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
+            "items": [
+              "pause_pushups",
+              "narrow_squat",
+              "prone_ytw",
+              "glute_bridge",
+              "reverse_crunch",
+              "pike"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W3D4",
+        "week": 3,
+        "day": 4,
+        "name": "Décrassage",
+        "focus": "Full body léger • mobilité active",
+        "intensity": "léger",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "inchworm",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 42,
+            "target_scale": 0.75,
+            "track": true,
+            "adaptive": false,
+            "items": [
+              "incline_pushups",
+              "good_morning",
+              "swimmers",
+              "clamshell",
+              "dead_bug",
+              "bear_hold"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_right",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W3D5",
+        "week": 3,
+        "day": 5,
+        "name": "Force B",
+        "focus": "Full body • unilatéral",
+        "intensity": "progression",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "step_jacks",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "slow_squat",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 22,
+            "rest_between_rounds_sec": 40,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
+            "items": [
+              "staggered_pushups",
+              "split_squat",
+              "reverse_snow_angel",
+              "single_leg_glute_bridge",
+              "hollow_hold",
+              "pike"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W3D6",
+        "week": 3,
+        "day": 6,
+        "name": "Full body continu",
+        "focus": "Full body • cardio contrôlé",
+        "intensity": "léger",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 20,
+            "rest_between_rounds_sec": 35,
+            "target_scale": 0.78,
+            "track": true,
+            "adaptive": false,
+            "items": [
+              "burpee_no_jump",
+              "sumo_squat",
+              "pushups",
+              "mountain_climbers_slow",
+              "superman_pull",
+              "bicycle_crunch"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W4D1",
+        "week": 4,
+        "day": 1,
+        "name": "Consolidation A",
+        "focus": "Full body • meilleur mouvement",
+        "intensity": "progression",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "step_jacks",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "slow_squat",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 20,
+            "rest_between_rounds_sec": 38,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
+            "items": [
+              "tempo_pushups",
+              "slow_squat",
+              "prone_ytw",
+              "single_leg_glute_bridge",
+              "plank_shoulder_taps",
+              "pike"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W4D2",
+        "week": 4,
+        "day": 2,
+        "name": "Consolidation B",
+        "focus": "Full body léger • stabilité",
+        "intensity": "léger",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 22,
+            "rest_between_rounds_sec": 38,
+            "target_scale": 0.82,
+            "track": true,
+            "adaptive": false,
+            "items": [
+              "close_pushups",
+              "reverse_lunge",
+              "superman_pull",
+              "frog_pumps",
+              "side_plank_reach",
+              "bird_dog"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W4D3",
+        "week": 4,
+        "day": 3,
+        "name": "Consolidation C",
+        "focus": "Full body • volume propre",
+        "intensity": "progression",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "inchworm",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 20,
+            "rest_between_rounds_sec": 38,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
+            "items": [
+              "wide_pushups",
+              "sumo_squat",
+              "reverse_snow_angel",
+              "glute_bridge",
+              "reverse_crunch",
+              "pike"
+            ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_right",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          }
+        ]
+      },
+      {
+        "key": "W4D4",
+        "week": 4,
+        "day": 4,
+        "name": "Récup active",
+        "focus": "Full body léger • technique",
+        "intensity": "léger",
+        "duration_min": 20,
+        "blocks": [
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "step_jacks",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "slow_squat",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "circuit",
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 25,
+            "rest_between_rounds_sec": 42,
+            "target_scale": 0.72,
+            "track": true,
+            "adaptive": false,
+            "items": [
+              "incline_pushups",
+              "good_morning",
+              "swimmers",
+              "fire_hydrants",
+              "dead_bug",
               "plank"
             ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
           }
         ]
       },
       {
-        "key": "B",
-        "name": "Jambes + dos",
-        "focus": "Jambes • dos • posture",
+        "key": "W4D5",
+        "week": 4,
+        "day": 5,
+        "name": "Pic du mois",
+        "focus": "Full body • tension",
+        "intensity": "progression",
+        "duration_min": 20,
         "blocks": [
           {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "good_morning",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
             "type": "circuit",
-            "rounds": 1,
-            "rest_between_exercises_sec": 25,
-            "rest_between_rounds_sec": 45,
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 20,
+            "rest_between_rounds_sec": 38,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
             "items": [
+              "pause_pushups",
               "split_squat",
-              "single_leg_glute_bridge",
-              "reverse_snow_angel",
-              "hollow_hold",
-              "reverse_lunge",
-              "single_leg_calf_raise",
               "superman_pull",
-              "side_plank_reach"
+              "single_leg_glute_bridge",
+              "hollow_hold",
+              "pike"
             ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hip_flexor_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "hamstring_stretch",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
           }
         ]
       },
       {
-        "key": "C",
-        "name": "Push + core",
-        "focus": "Pecs • épaules • abdos",
+        "key": "W4D6",
+        "week": 4,
+        "day": 6,
+        "name": "Bilan full body",
+        "focus": "Full body • consolidation",
+        "intensity": "progression",
+        "duration_min": 20,
         "blocks": [
           {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "march_high_knees",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "arm_circles",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "inchworm",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Échauffement",
+            "exercise_id": "cat_cow",
+            "sets": 1,
+            "rest_after_sec": 15,
+            "target_override": 35,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
             "type": "circuit",
-            "rounds": 1,
-            "rest_between_exercises_sec": 25,
-            "rest_between_rounds_sec": 45,
+            "phase": "Bloc principal",
+            "rounds": 2,
+            "rest_between_exercises_sec": 20,
+            "rest_between_rounds_sec": 40,
+            "target_scale": 1.0,
+            "track": true,
+            "adaptive": true,
             "items": [
               "pushups",
-              "pike",
-              "bear_hold",
-              "reverse_crunch",
-              "tempo_pushups",
-              "prone_ytw",
-              "dead_bug",
-              "side_plank_left"
-            ]
-          }
-        ]
-      },
-      {
-        "key": "D",
-        "name": "Full body dense",
-        "focus": "Corps entier • densité",
-        "blocks": [
-          {
-            "type": "circuit",
-            "rounds": 1,
-            "rest_between_exercises_sec": 25,
-            "rest_between_rounds_sec": 45,
-            "items": [
-              "close_pushups",
-              "slow_squat",
-              "superman_pull",
-              "plank",
-              "wide_pushups",
-              "reverse_lunge",
-              "single_leg_glute_bridge",
-              "hollow_hold"
-            ]
-          }
-        ]
-      }
-    ],
-    "advanced": [
-      {
-        "key": "A",
-        "name": "Push hypertrophie",
-        "focus": "Pecs • épaules • triceps",
-        "blocks": [
-          {
-            "type": "circuit",
-            "rounds": 1,
-            "rest_between_exercises_sec": 25,
-            "rest_between_rounds_sec": 45,
-            "items": [
-              "tempo_pushups",
-              "pike",
-              "close_pushups",
-              "split_squat",
-              "wide_pushups",
-              "tempo_pushups",
-              "bear_hold",
-              "hollow_hold"
-            ]
-          }
-        ]
-      },
-      {
-        "key": "B",
-        "name": "Jambes + chaîne postérieure",
-        "focus": "Jambes • fessiers • dos",
-        "blocks": [
-          {
-            "type": "circuit",
-            "rounds": 1,
-            "rest_between_exercises_sec": 25,
-            "rest_between_rounds_sec": 45,
-            "items": [
-              "split_squat",
-              "single_leg_glute_bridge",
-              "wall_sit",
+              "squat",
               "reverse_snow_angel",
               "reverse_lunge",
-              "single_leg_calf_raise",
-              "superman_pull",
-              "side_plank_reach"
-            ]
-          }
-        ]
-      },
-      {
-        "key": "C",
-        "name": "Épaules + core",
-        "focus": "Épaules • abdos • posture",
-        "blocks": [
-          {
-            "type": "circuit",
-            "rounds": 1,
-            "rest_between_exercises_sec": 25,
-            "rest_between_rounds_sec": 45,
-            "items": [
-              "pike",
-              "tempo_pushups",
-              "prone_ytw",
-              "hollow_hold",
-              "close_pushups",
-              "bear_hold",
-              "reverse_crunch",
-              "side_plank_reach"
-            ]
-          }
-        ]
-      },
-      {
-        "key": "D",
-        "name": "Full body intensif",
-        "focus": "Corps entier",
-        "blocks": [
-          {
-            "type": "circuit",
-            "rounds": 1,
-            "rest_between_exercises_sec": 25,
-            "rest_between_rounds_sec": 45,
-            "items": [
-              "tempo_pushups",
-              "split_squat",
-              "superman_pull",
               "plank",
-              "pike",
-              "single_leg_glute_bridge",
-              "wide_pushups",
-              "hollow_hold"
+              "pike"
             ]
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "child_pose",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "quad_stretch_right",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "chest_opener",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 30,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_left",
+            "sets": 1,
+            "rest_after_sec": 5,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
+          },
+          {
+            "type": "exercise",
+            "phase": "Retour au calme",
+            "exercise_id": "spinal_twist_right",
+            "sets": 1,
+            "rest_after_sec": 0,
+            "target_override": 25,
+            "mode_override": "time",
+            "track": false,
+            "adaptive": false
           }
         ]
       }

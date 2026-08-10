@@ -9,24 +9,18 @@
   <div class="dash-row">
     <div>
       <h2 id="sessionName">Push + jambes</h2>
-      <div class="muted" id="sessionLabel">Séance A • Débutant</div>
+      <div class="muted" id="sessionLabel">Semaine 1 • Jour 1/6</div>
     </div>
     <div class="readiness" id="readiness">PRÊT</div>
   </div>
   <div class="dash-stats">
-    <span>⏱ <b id="dashDuration">22 min</b></span>
+    <span>⏱ <b id="dashDuration">~20 min</b></span>
     <span>🎯 <b id="sessionFocus">Pecs • épaules • jambes</b></span>
   </div>
   <button class="primary-btn yellow-bg" id="quickStart">GO</button>
   <button class="ghost" id="prepareSession" style="margin-top:8px;width:100%">Voir & modifier</button>
 </div>
 
-<div class="duration-switch" id="durationSwitch">
-  <button data-duration="10">10 min</button>
-  <button data-duration="15">15 min</button>
-  <button class="active" data-duration="22">22 min</button>
-  <button data-duration="30">30 min</button>
-</div>
 
 <div class="card coach-card" id="dailyCoachCard">
   <div class="section-head"><strong>Coach du jour</strong><span class="yellow">Adaptatif</span></div>
@@ -38,12 +32,20 @@
   <div id="milestonePreview"></div>
 </div>
 
-<div class="card hidden" id="benchmarkCard">
-  <div class="section-head"><strong>Test de progression</strong><span class="tag">4 semaines</span></div>
   <p class="muted">Ton recalibrage est prêt. Environ 10 minutes.</p>
   <button class="ghost" id="startBenchmark" style="width:100%">Lancer le test</button>
 </div>
-      <div class="card"><div class="program-row"><div><strong id="programName">Débutant</strong><small class="muted" id="programFrequency">3 séances / semaine</small></div><select id="programLevel"><option value="beginner">Débutant</option><option value="intermediate">Intermédiaire</option><option value="advanced">Avancé</option></select></div><div class="next-session"><small>Rotation automatique</small><strong id="rotationText">A → B → C</strong></div></div>
+      <div class="card cycle-card">
+  <div class="section-head">
+    <div>
+      <strong>Programme 4 semaines</strong>
+      <small class="muted" style="display:block;margin-top:3px">6 séances / semaine • 1 jour de repos • full body</small>
+    </div>
+    <strong class="yellow" id="cycleProgressText">1 / 24</strong>
+  </div>
+  <div class="cycle-label" id="cycleLabel">Cycle 1 • Semaine 1/4 • Jour 1/6</div>
+  <div class="milestone-bar cycle-bar"><div id="cycleProgressBar" style="width:4%"></div></div>
+</div>
 
       <div class="card">
         <div class="program-row">
@@ -79,11 +81,9 @@
     <section id="profileTab" class="hidden">
       <div class="card"><strong>Profil</strong><label class="profile-label">Âge<input id="age" type="number"></label><label class="profile-label">Taille (cm)<input id="height" type="number"></label><label class="profile-label">Poids (kg)<input id="weight" type="number" step="0.1"></label><button class="primary-btn yellow-bg" id="saveProfile">Enregistrer</button></div>
       <div class="card">
-  <strong>Préférences</strong>
-  <label class="profile-label">Durée par défaut
-    <select id="defaultDuration"><option value="10">10 min</option><option value="15">15 min</option><option value="22">22 min</option><option value="30">30 min</option></select>
-  </label>
-  <label class="toggle-row"><span>Suggestions automatiques</span><input id="autoSuggest" type="checkbox"></label>
+  <div class="section-head"><strong>Adaptation automatique</strong><span class="yellow">Active</span></div>
+  <p class="muted">Les reps et durées évoluent selon tes résultats et ton ressenti. Aucune difficulté à choisir manuellement.</p>
+  <input id="autoSuggest" type="checkbox" checked class="hidden">
 </div>
 <div class="card">
   <div class="section-head"><strong>Sauvegarde</strong><span class="muted">locale → fichier</span></div>
@@ -191,7 +191,7 @@
   <button id="applyUpdate">Mettre à jour</button>
 </div>
 <script type="module">
-  import("./js/v25_1/app.js?v=25.1").catch(error => {
+  import("./js/v26/app.js?v=26.0").catch(error => {
     console.error("[Mimi Muscu] Erreur de démarrage", error);
     const box = document.createElement("div");
     box.className = "boot-error";
