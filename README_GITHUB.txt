@@ -1,10 +1,9 @@
-Mimi Muscu V23 — Stable runtime
+Mimi Muscu V25
 
-IMPORTANT : upload complet recommandé.
+Base stable + illustrations SVG locales.
+Cette version remplace les visuels photo/bitmap par des SVG légers et cohérents.
 
-Cette version utilise un nouveau dossier `js/v23/`.
-Les anciens dossiers JS peuvent rester dans GitHub sans être exécutés,
-mais il est plus propre de remplacer entièrement le contenu du repo.
-
-Après déploiement, le boot doit afficher l'app normalement.
-En cas d'erreur, la boîte rouge affiche désormais aussi `Étape: ...`.
+Déploiement conseillé :
+- remplacer le contenu du repo par celui du ZIP
+- laisser GitHub Pages redéployer
+- sur iPhone, recharger une fois l'app / Safari

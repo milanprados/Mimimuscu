@@ -27,7 +27,7 @@ export function initDictionary({EXERCISES}) {
 
     $("#exerciseList").innerHTML=list.map(([id,e])=>`
       <button class="exercise-card" data-id="${id}">
-        <img src="${e.images[0]}" alt="">
+        <img src="${e.thumb||e.images[0]}" alt="" loading="lazy" decoding="async">
         <div>
           <strong>${e.name}</strong>
           <small>${e.primary} · ${e.secondary}</small>
@@ -44,7 +44,7 @@ export function initDictionary({EXERCISES}) {
     $("#modalTitle").textContent=e.name;
     $("#modalBody").innerHTML=`
       <div class="guide-images">
-        <div><span>Départ</span><img src="${e.images[0]}" alt=""></div>
+        <div><span>Départ</span><img src="${e.thumb||e.images[0]}" alt="" loading="lazy" decoding="async"></div>
         <div><span>Fin</span><img src="${e.images[1]}" alt=""></div>
       </div>
       <div class="guide-section"><h3>Muscles principaux</h3><p>${e.primary} • ${e.secondary}</p></div>

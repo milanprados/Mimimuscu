@@ -23,7 +23,10 @@ const normalize=raw=>({
   primary:raw.muscles.primary,secondary:raw.muscles.secondary,
   tips:raw.coaching.tips,mistakes:raw.coaching.mistakes,breathing:raw.coaching.breathing,
   easy:raw.coaching.easier,hard:raw.coaching.harder,
-  images:[`${ROOT}${raw.visual.asset_id}/0.jpg`,`${ROOT}${raw.visual.asset_id}/1.jpg`]
+  images:raw.visual?.provider==="local"
+    ? [`../../../${raw.visual.start}`,`../../../${raw.visual.end}`]
+    : [`${ROOT}${raw.visual.asset_id}/0.jpg`,`${ROOT}${raw.visual.asset_id}/1.jpg`],
+  thumb:raw.visual?.provider==="local" ? `../../../${raw.visual.thumb}` : null
 });
 export const EXERCISES=Object.fromEntries(EXERCISE_CATALOG.exercises.map(raw=>[raw.id,normalize(raw)]));
 
