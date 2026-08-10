@@ -1,0 +1,806 @@
+{
+  "schema_version": 1,
+  "families": [
+    {
+      "id": "pushups",
+      "name": "Pompes",
+      "category": "Haut du corps",
+      "description": "Le grand mouvement de poussée au poids du corps pour les pectoraux, triceps, épaules et le gainage.",
+      "base_id": "pushups",
+      "variants": {
+        "easier": [
+          "incline_pushups",
+          "knee_pushups"
+        ],
+        "standard": [
+          "pushups"
+        ],
+        "variations": [
+          "wide_pushups",
+          "close_pushups",
+          "tempo_pushups",
+          "pause_pushups",
+          "staggered_pushups",
+          "spiderman_pushups",
+          "shoulder_tap_pushups"
+        ],
+        "harder": [
+          "diamond_pushups",
+          "decline_pushups",
+          "archer_pushups",
+          "pseudo_planche_pushups"
+        ]
+      },
+      "search_terms": [
+        "Pompes",
+        "Haut du corps",
+        "Le grand mouvement de poussée au poids du corps pour les pectoraux, triceps, épaules et le gainage.",
+        "Pompes inclinées",
+        "Pompes sur genoux",
+        "Pompes classiques",
+        "Pompes larges",
+        "Pompes serrées",
+        "Pompes tempo",
+        "Pompes avec pause",
+        "Pompes décalées",
+        "Pompes Spiderman",
+        "Pompes + touche épaule",
+        "Pompes diamant",
+        "Pompes déclinées",
+        "Pompes archer",
+        "Pseudo planche push-ups",
+        "Pectoraux",
+        "Triceps",
+        "Pectoraux • triceps",
+        "Pectoraux • core",
+        "Haut des pectoraux • épaules",
+        "Épaules • pectoraux"
+      ]
+    },
+    {
+      "id": "pike_handstand",
+      "name": "Pike & équilibre renversé",
+      "category": "Haut du corps",
+      "description": "La poussée verticale au poids du corps : épaules et triceps deviennent progressivement les moteurs principaux.",
+      "base_id": "pike",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "pike"
+        ],
+        "variations": [
+          "wall_handstand_hold"
+        ],
+        "harder": [
+          "elevated_pike_pushups",
+          "handstand_pushup_wall"
+        ]
+      },
+      "search_terms": [
+        "Pike & équilibre renversé",
+        "Haut du corps",
+        "La poussée verticale au poids du corps : épaules et triceps deviennent progressivement les moteurs principaux.",
+        "Pike push-up",
+        "Handstand au mur",
+        "Pike push-up pieds surélevés",
+        "Handstand push-up au mur",
+        "Deltoïdes",
+        "Épaules • core",
+        "Épaules • triceps"
+      ]
+    },
+    {
+      "id": "dips_triceps",
+      "name": "Triceps & dips",
+      "category": "Haut du corps",
+      "description": "Des mouvements dominants triceps qui renforcent l’extension des bras et la stabilité des épaules.",
+      "base_id": "triceps_dips_chair",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "triceps_dips_chair"
+        ],
+        "variations": [
+          "plank_to_pushup"
+        ],
+        "harder": []
+      },
+      "search_terms": [
+        "Triceps & dips",
+        "Haut du corps",
+        "Des mouvements dominants triceps qui renforcent l’extension des bras et la stabilité des épaules.",
+        "Dips sur chaise",
+        "Planche vers pompe",
+        "Triceps",
+        "Triceps • épaules • core"
+      ]
+    },
+    {
+      "id": "squats",
+      "name": "Squats",
+      "category": "Jambes",
+      "description": "La famille fondamentale de flexion des jambes pour quadriceps, fessiers, adducteurs et contrôle du tronc.",
+      "base_id": "squat",
+      "variants": {
+        "easier": [
+          "wall_sit"
+        ],
+        "standard": [
+          "squat"
+        ],
+        "variations": [
+          "slow_squat",
+          "pause_squat",
+          "pulse_squat",
+          "sumo_squat",
+          "narrow_squat",
+          "single_leg_squat_box"
+        ],
+        "harder": [
+          "pistol_squat"
+        ]
+      },
+      "search_terms": [
+        "Squats",
+        "Jambes",
+        "La famille fondamentale de flexion des jambes pour quadriceps, fessiers, adducteurs et contrôle du tronc.",
+        "Chaise au mur",
+        "Squats lents",
+        "Squats avec pause",
+        "Squats pulsés",
+        "Squats sumo",
+        "Squats pieds serrés",
+        "Squat une jambe vers support",
+        "Pistol squat",
+        "Quadriceps",
+        "Quadriceps • fessiers",
+        "Adducteurs • fessiers"
+      ]
+    },
+    {
+      "id": "lunges",
+      "name": "Fentes",
+      "category": "Jambes",
+      "description": "Travail unilatéral des jambes pour développer force, équilibre, stabilité et symétrie entre les deux côtés.",
+      "base_id": "reverse_lunge",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "reverse_lunge"
+        ],
+        "variations": [
+          "forward_lunge",
+          "walking_lunge",
+          "split_squat",
+          "curtsy_lunge",
+          "lateral_lunge"
+        ],
+        "harder": [
+          "bulgarian_split_squat",
+          "cossack_squat"
+        ]
+      },
+      "search_terms": [
+        "Fentes",
+        "Jambes",
+        "Travail unilatéral des jambes pour développer force, équilibre, stabilité et symétrie entre les deux côtés.",
+        "Fentes arrière",
+        "Fentes avant",
+        "Fentes marchées",
+        "Split squats",
+        "Fentes révérence",
+        "Fentes latérales",
+        "Bulgarian split squats",
+        "Cossack squats",
+        "Quadriceps • fessiers",
+        "Fessiers • quadriceps",
+        "Adducteurs • fessiers",
+        "Adducteurs • quadriceps"
+      ]
+    },
+    {
+      "id": "glute_bridge",
+      "name": "Pont fessier",
+      "category": "Fessiers",
+      "description": "Extensions de hanche au sol centrées sur les fessiers et les ischios, faciles à progresser sans matériel.",
+      "base_id": "glute_bridge",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "glute_bridge"
+        ],
+        "variations": [
+          "frog_pumps",
+          "hip_thrust_floor"
+        ],
+        "harder": [
+          "single_leg_glute_bridge"
+        ]
+      },
+      "search_terms": [
+        "Pont fessier",
+        "Fessiers",
+        "Extensions de hanche au sol centrées sur les fessiers et les ischios, faciles à progresser sans matériel.",
+        "Frog pumps",
+        "Hip thrust au sol",
+        "Pont fessier une jambe",
+        "Fessiers • ischios"
+      ]
+    },
+    {
+      "id": "glute_isolation",
+      "name": "Fessiers au sol",
+      "category": "Fessiers",
+      "description": "Mouvements ciblés pour les fessiers et la stabilité de hanche, utiles en activation et en complément.",
+      "base_id": "donkey_kicks",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "donkey_kicks"
+        ],
+        "variations": [
+          "fire_hydrants",
+          "side_lying_leg_raise",
+          "clamshell"
+        ],
+        "harder": []
+      },
+      "search_terms": [
+        "Fessiers au sol",
+        "Fessiers",
+        "Mouvements ciblés pour les fessiers et la stabilité de hanche, utiles en activation et en complément.",
+        "Donkey kicks",
+        "Fire hydrants",
+        "Élévations latérales de jambe",
+        "Clamshells",
+        "Moyen fessier"
+      ]
+    },
+    {
+      "id": "calves",
+      "name": "Mollets & chevilles",
+      "category": "Jambes",
+      "description": "Renforcement du bas de jambe pour mollets, cheville, équilibre et contrôle des appuis.",
+      "base_id": "standing_calf_raise",
+      "variants": {
+        "easier": [
+          "tibialis_raise_wall"
+        ],
+        "standard": [
+          "standing_calf_raise"
+        ],
+        "variations": [],
+        "harder": [
+          "single_leg_calf_raise"
+        ]
+      },
+      "search_terms": [
+        "Mollets & chevilles",
+        "Jambes",
+        "Renforcement du bas de jambe pour mollets, cheville, équilibre et contrôle des appuis.",
+        "Tibialis raises au mur",
+        "Mollets debout",
+        "Mollets une jambe",
+        "Tibial antérieur",
+        "Mollets"
+      ]
+    },
+    {
+      "id": "hip_hinge",
+      "name": "Charnière de hanche",
+      "category": "Jambes",
+      "description": "Apprentissage de la flexion de hanche avec dos long pour solliciter ischios, fessiers et chaîne postérieure.",
+      "base_id": "good_morning",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "good_morning"
+        ],
+        "variations": [],
+        "harder": []
+      },
+      "search_terms": [
+        "Charnière de hanche",
+        "Jambes",
+        "Apprentissage de la flexion de hanche avec dos long pour solliciter ischios, fessiers et chaîne postérieure.",
+        "Good mornings",
+        "Ischios • fessiers"
+      ]
+    },
+    {
+      "id": "stepups",
+      "name": "Montées sur support",
+      "category": "Jambes",
+      "description": "Mouvement unilatéral fonctionnel pour quadriceps et fessiers avec une forte demande de stabilité.",
+      "base_id": "step_up",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "step_up"
+        ],
+        "variations": [],
+        "harder": []
+      },
+      "search_terms": [
+        "Montées sur support",
+        "Jambes",
+        "Mouvement unilatéral fonctionnel pour quadriceps et fessiers avec une forte demande de stabilité.",
+        "Step-ups",
+        "Quadriceps • fessiers"
+      ]
+    },
+    {
+      "id": "front_plank",
+      "name": "Planche avant",
+      "category": "Core",
+      "description": "Gainage anti-extension pour apprendre à garder bassin, côtes et colonne alignés sous tension.",
+      "base_id": "plank",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "plank"
+        ],
+        "variations": [
+          "high_plank",
+          "plank_knee_to_elbow"
+        ],
+        "harder": [
+          "plank_shoulder_taps"
+        ]
+      },
+      "search_terms": [
+        "Planche avant",
+        "Core",
+        "Gainage anti-extension pour apprendre à garder bassin, côtes et colonne alignés sous tension.",
+        "Planche haute",
+        "Planche genou-coude",
+        "Touches d’épaules en planche",
+        "Abdominaux",
+        "Abdominaux • obliques",
+        "Abdominaux • épaules"
+      ]
+    },
+    {
+      "id": "side_plank",
+      "name": "Planche latérale",
+      "category": "Core",
+      "description": "Gainage latéral des obliques, du moyen fessier et de la stabilité d’épaule.",
+      "base_id": "side_plank_left",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "side_plank_left",
+          "side_plank_right"
+        ],
+        "variations": [],
+        "harder": [
+          "side_plank_reach"
+        ]
+      },
+      "search_terms": [
+        "Planche latérale",
+        "Core",
+        "Gainage latéral des obliques, du moyen fessier et de la stabilité d’épaule.",
+        "Planche latérale gauche",
+        "Planche latérale droite",
+        "Planche latérale avec rotation",
+        "Obliques"
+      ]
+    },
+    {
+      "id": "core_control",
+      "name": "Core contrôle",
+      "category": "Core",
+      "description": "Exercices où le tronc doit résister au mouvement des membres plutôt que multiplier les flexions.",
+      "base_id": "dead_bug",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "dead_bug"
+        ],
+        "variations": [
+          "bird_dog",
+          "bear_hold"
+        ],
+        "harder": [
+          "bear_shoulder_taps"
+        ]
+      },
+      "search_terms": [
+        "Core contrôle",
+        "Core",
+        "Exercices où le tronc doit résister au mouvement des membres plutôt que multiplier les flexions.",
+        "Dead bug",
+        "Bird dog",
+        "Bear hold",
+        "Bear shoulder taps",
+        "Abdominaux profonds",
+        "Core • lombaires",
+        "Abdominaux • épaules"
+      ]
+    },
+    {
+      "id": "hollow_legs",
+      "name": "Hollow & jambes",
+      "category": "Core",
+      "description": "Travail abdominal anti-extension avec des leviers de bras ou de jambes progressivement plus exigeants.",
+      "base_id": "hollow_hold",
+      "variants": {
+        "easier": [
+          "flutter_kicks",
+          "scissor_kicks"
+        ],
+        "standard": [
+          "hollow_hold"
+        ],
+        "variations": [
+          "leg_raise"
+        ],
+        "harder": [
+          "hollow_rocks"
+        ]
+      },
+      "search_terms": [
+        "Hollow & jambes",
+        "Core",
+        "Travail abdominal anti-extension avec des leviers de bras ou de jambes progressivement plus exigeants.",
+        "Flutter kicks",
+        "Scissor kicks",
+        "Hollow hold",
+        "Relevés de jambes",
+        "Hollow rocks",
+        "Abdominaux"
+      ]
+    },
+    {
+      "id": "crunch_rotation",
+      "name": "Crunchs & rotations",
+      "category": "Core",
+      "description": "Flexions et rotations du tronc pour grand droit et obliques avec des amplitudes contrôlées.",
+      "base_id": "reverse_crunch",
+      "variants": {
+        "easier": [
+          "crunch",
+          "heel_taps"
+        ],
+        "standard": [
+          "reverse_crunch"
+        ],
+        "variations": [
+          "sit_up",
+          "bicycle_crunch",
+          "russian_twist",
+          "tuck_up"
+        ],
+        "harder": [
+          "v_up"
+        ]
+      },
+      "search_terms": [
+        "Crunchs & rotations",
+        "Core",
+        "Flexions et rotations du tronc pour grand droit et obliques avec des amplitudes contrôlées.",
+        "Crunch",
+        "Heel taps",
+        "Reverse crunch",
+        "Sit-up",
+        "Bicycle crunch",
+        "Russian twists",
+        "Tuck-ups",
+        "V-ups",
+        "Grand droit",
+        "Obliques",
+        "Abdominaux",
+        "Obliques • abdominaux"
+      ]
+    },
+    {
+      "id": "back_extension",
+      "name": "Extension du dos",
+      "category": "Dos",
+      "description": "Renforcement au sol de la chaîne postérieure : dos, fessiers et arrière des épaules.",
+      "base_id": "superman",
+      "variants": {
+        "easier": [
+          "cobra_hold"
+        ],
+        "standard": [
+          "superman"
+        ],
+        "variations": [
+          "superman_pull",
+          "swimmers"
+        ],
+        "harder": []
+      },
+      "search_terms": [
+        "Extension du dos",
+        "Dos",
+        "Renforcement au sol de la chaîne postérieure : dos, fessiers et arrière des épaules.",
+        "Cobra hold",
+        "Superman",
+        "Superman pull",
+        "Swimmers au sol",
+        "Lombaires • haut du dos",
+        "Lombaires • dos",
+        "Haut du dos"
+      ]
+    },
+    {
+      "id": "scapular_posture",
+      "name": "Posture & omoplates",
+      "category": "Dos",
+      "description": "Travail précis des omoplates, trapèzes, rhomboïdes et arrière d’épaules pour équilibrer la posture.",
+      "base_id": "reverse_snow_angel",
+      "variants": {
+        "easier": [
+          "wall_angel"
+        ],
+        "standard": [
+          "reverse_snow_angel"
+        ],
+        "variations": [
+          "prone_y_raise",
+          "prone_t_raise",
+          "prone_w_raise"
+        ],
+        "harder": [
+          "prone_ytw"
+        ]
+      },
+      "search_terms": [
+        "Posture & omoplates",
+        "Dos",
+        "Travail précis des omoplates, trapèzes, rhomboïdes et arrière d’épaules pour équilibrer la posture.",
+        "Wall angels",
+        "Reverse snow angels",
+        "Y raise au sol",
+        "T raise au sol",
+        "W raise au sol",
+        "Y-T-W au sol",
+        "Haut du dos • épaules",
+        "Haut du dos • arrière d’épaules",
+        "Trapèzes inférieurs",
+        "Arrière d’épaules • trapèzes",
+        "Rhomboïdes • coiffe"
+      ]
+    },
+    {
+      "id": "mountain_climbers",
+      "name": "Mountain climbers",
+      "category": "Cardio",
+      "description": "Gainage dynamique associant stabilité des épaules, abdominaux, hanches et travail des jambes.",
+      "base_id": "mountain_climbers_slow",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "mountain_climbers_slow"
+        ],
+        "variations": [],
+        "harder": [
+          "mountain_climbers"
+        ]
+      },
+      "search_terms": [
+        "Mountain climbers",
+        "Cardio",
+        "Gainage dynamique associant stabilité des épaules, abdominaux, hanches et travail des jambes.",
+        "Mountain climbers lents",
+        "Abdominaux • fléchisseurs",
+        "Core • quadriceps"
+      ]
+    },
+    {
+      "id": "burpees",
+      "name": "Burpees",
+      "category": "Cardio",
+      "description": "Enchaînements full body qui font monter le cardio ; la référence Mimi Muscu reste la version sans saut.",
+      "base_id": "burpee_no_jump",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "burpee_no_jump"
+        ],
+        "variations": [
+          "squat_thrust"
+        ],
+        "harder": [
+          "burpee"
+        ]
+      },
+      "search_terms": [
+        "Burpees",
+        "Cardio",
+        "Enchaînements full body qui font monter le cardio ; la référence Mimi Muscu reste la version sans saut.",
+        "Burpees sans saut",
+        "Squat thrust",
+        "Corps entier",
+        "Core • jambes"
+      ]
+    },
+    {
+      "id": "cardio_low",
+      "name": "Cardio debout",
+      "category": "Cardio",
+      "description": "Mouvements debout simples pour élever le rythme cardiaque avec des versions silencieuses ou plus dynamiques.",
+      "base_id": "march_high_knees",
+      "variants": {
+        "easier": [
+          "step_jacks"
+        ],
+        "standard": [
+          "march_high_knees"
+        ],
+        "variations": [
+          "butt_kicks",
+          "high_knees"
+        ],
+        "harder": [
+          "jumping_jacks",
+          "skaters"
+        ]
+      },
+      "search_terms": [
+        "Cardio debout",
+        "Cardio",
+        "Mouvements debout simples pour élever le rythme cardiaque avec des versions silencieuses ou plus dynamiques.",
+        "Step jacks",
+        "Marche genoux hauts",
+        "Talons-fesses",
+        "Montées de genoux",
+        "Jumping jacks",
+        "Skaters",
+        "Corps entier",
+        "Quadriceps • core",
+        "Ischios • mollets",
+        "Quadriceps • fléchisseurs",
+        "Fessiers • quadriceps"
+      ]
+    },
+    {
+      "id": "power_jumps",
+      "name": "Sauts & puissance",
+      "category": "Cardio",
+      "description": "Mouvements explosifs à impact élevé, conservés dans le catalogue mais exclus de la routine silencieuse.",
+      "base_id": "squat_jump",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "squat_jump"
+        ],
+        "variations": [
+          "jump_lunge"
+        ],
+        "harder": [
+          "broad_jump"
+        ]
+      },
+      "search_terms": [
+        "Sauts & puissance",
+        "Cardio",
+        "Mouvements explosifs à impact élevé, conservés dans le catalogue mais exclus de la routine silencieuse.",
+        "Squat jumps",
+        "Fentes sautées",
+        "Sauts en longueur",
+        "Quadriceps • fessiers",
+        "Fessiers • quadriceps"
+      ]
+    },
+    {
+      "id": "walkouts",
+      "name": "Walkouts",
+      "category": "Full body",
+      "description": "Transitions debout-sol combinant mobilité des ischios, gainage et stabilité des épaules.",
+      "base_id": "inchworm",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "inchworm"
+        ],
+        "variations": [],
+        "harder": [
+          "walkout_pushup"
+        ]
+      },
+      "search_terms": [
+        "Walkouts",
+        "Full body",
+        "Transitions debout-sol combinant mobilité des ischios, gainage et stabilité des épaules.",
+        "Inchworms",
+        "Walkout + pompe",
+        "Épaules • core",
+        "Pectoraux • core"
+      ]
+    },
+    {
+      "id": "upper_mobility",
+      "name": "Mobilité épaules",
+      "category": "Mobilité",
+      "description": "Mouvements doux pour préparer les épaules et ouvrir la poitrine avant ou après une séance.",
+      "base_id": "arm_circles",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "arm_circles",
+          "chest_opener"
+        ],
+        "variations": [],
+        "harder": []
+      },
+      "search_terms": [
+        "Mobilité épaules",
+        "Mobilité",
+        "Mouvements doux pour préparer les épaules et ouvrir la poitrine avant ou après une séance.",
+        "Cercles de bras",
+        "Ouverture de poitrine",
+        "Épaules",
+        "Pectoraux • épaules"
+      ]
+    },
+    {
+      "id": "spine_mobility",
+      "name": "Mobilité du dos",
+      "category": "Mobilité",
+      "description": "Mobilité douce de la colonne et relâchement du dos pour l’échauffement et le retour au calme.",
+      "base_id": "cat_cow",
+      "variants": {
+        "easier": [
+          "child_pose"
+        ],
+        "standard": [
+          "cat_cow"
+        ],
+        "variations": [
+          "spinal_twist_left",
+          "spinal_twist_right"
+        ],
+        "harder": []
+      },
+      "search_terms": [
+        "Mobilité du dos",
+        "Mobilité",
+        "Mobilité douce de la colonne et relâchement du dos pour l’échauffement et le retour au calme.",
+        "Posture de l’enfant",
+        "Chat-vache",
+        "Rotation allongée gauche",
+        "Rotation allongée droite",
+        "Dos • épaules",
+        "Colonne vertébrale • core",
+        "Obliques • colonne"
+      ]
+    },
+    {
+      "id": "lower_stretches",
+      "name": "Étirements jambes & hanches",
+      "category": "Mobilité",
+      "description": "Étirements simples des ischios, quadriceps et fléchisseurs de hanche pour le retour au calme.",
+      "base_id": "hamstring_stretch",
+      "variants": {
+        "easier": [],
+        "standard": [
+          "hamstring_stretch"
+        ],
+        "variations": [
+          "hip_flexor_stretch_left",
+          "hip_flexor_stretch_right",
+          "quad_stretch_left",
+          "quad_stretch_right"
+        ],
+        "harder": []
+      },
+      "search_terms": [
+        "Étirements jambes & hanches",
+        "Mobilité",
+        "Étirements simples des ischios, quadriceps et fléchisseurs de hanche pour le retour au calme.",
+        "Étirement ischios debout",
+        "Étirement fléchisseur hanche gauche",
+        "Étirement fléchisseur hanche droite",
+        "Étirement quadriceps gauche",
+        "Étirement quadriceps droit",
+        "Ischios",
+        "Fléchisseurs de hanche",
+        "Quadriceps"
+      ]
+    }
+  ]
+}
