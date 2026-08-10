@@ -1,0 +1,4117 @@
+{
+  "schema_version": 1,
+  "catalog_id": "mimi-muscu-bodyweight-core",
+  "name": "Mimi Muscu — Bodyweight Exercise Catalog",
+  "description": "100 exercices au poids du corps parmi les plus courants et populaires. Ce n'est pas un classement mondial objectif. Les métadonnées quiet/impact/equipment permettent au moteur de respecter les contraintes de séance.",
+  "defaults": {
+    "preferred_quiet": true,
+    "preferred_equipment": "none"
+  },
+  "exercises": [
+    {
+      "id": "pushups",
+      "name": "Pompes classiques",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux",
+        "secondary": "Triceps • deltoïdes antérieurs"
+      },
+      "coaching": {
+        "tips": [
+          "Mains légèrement plus larges que les épaules.",
+          "Corps droit de la tête aux talons.",
+          "Descends poitrine et bassin ensemble."
+        ],
+        "mistakes": [
+          "Coudes ouverts à 90°.",
+          "Bassin qui tombe.",
+          "Amplitude trop courte."
+        ],
+        "breathing": "Inspire en descendant, expire en poussant.",
+        "easier": "Pompes inclinées ou sur les genoux.",
+        "harder": "Pompes tempo ou déclinées."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "incline_pushups",
+      "name": "Pompes inclinées",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux",
+        "secondary": "Triceps • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Support plus haut.",
+        "harder": "Support plus bas puis pompes classiques."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "knee_pushups",
+      "name": "Pompes sur genoux",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux",
+        "secondary": "Triceps • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pompes inclinées.",
+        "harder": "Pompes classiques."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "wide_pushups",
+      "name": "Pompes larges",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux",
+        "secondary": "Épaules • triceps"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Réduis la largeur des mains.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Wide-Grip_Push-Up"
+      }
+    },
+    {
+      "id": "close_pushups",
+      "name": "Pompes serrées",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Triceps",
+        "secondary": "Pectoraux • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pompes classiques.",
+        "harder": "Pompes serrées tempo."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Close-Grip_Push-Up_off_of_a_Dumbbell"
+      }
+    },
+    {
+      "id": "diamond_pushups",
+      "name": "Pompes diamant",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 6,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Triceps",
+        "secondary": "Pectoraux • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pompes serrées.",
+        "harder": "Pieds surélevés."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Close-Grip_Push-Up_off_of_a_Dumbbell"
+      }
+    },
+    {
+      "id": "tempo_pushups",
+      "name": "Pompes tempo",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 6,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux",
+        "secondary": "Triceps • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Descends en 3–5 secondes.",
+          "Marque une courte pause en bas.",
+          "Remonte sans perdre le gainage."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Tempo 2 secondes.",
+        "harder": "Pause plus longue en bas."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "pause_pushups",
+      "name": "Pompes avec pause",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 6,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux",
+        "secondary": "Triceps • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pause courte.",
+        "harder": "Pause de 3 secondes en bas."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "decline_pushups",
+      "name": "Pompes déclinées",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 6,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "support"
+      },
+      "muscles": {
+        "primary": "Haut des pectoraux • épaules",
+        "secondary": "Triceps"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pompes classiques.",
+        "harder": "Pieds plus hauts."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Decline_Push-Up"
+      }
+    },
+    {
+      "id": "staggered_pushups",
+      "name": "Pompes décalées",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux • triceps",
+        "secondary": "Épaules • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pompes classiques.",
+        "harder": "Décalage plus grand."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "archer_pushups",
+      "name": "Pompes archer",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "advanced",
+      "mode": "reps",
+      "prescription": {
+        "base": 4,
+        "min": 2,
+        "max": 16,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux",
+        "secondary": "Triceps • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pompes larges.",
+        "harder": "Pompes archer plus profondes."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "pseudo_planche_pushups",
+      "name": "Pseudo planche push-ups",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "advanced",
+      "mode": "reps",
+      "prescription": {
+        "base": 5,
+        "min": 2,
+        "max": 15,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Épaules • pectoraux",
+        "secondary": "Triceps • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Lean moins prononcé.",
+        "harder": "Lean plus prononcé."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "spiderman_pushups",
+      "name": "Pompes Spiderman",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 6,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux • core",
+        "secondary": "Triceps • obliques"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pompes classiques.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "shoulder_tap_pushups",
+      "name": "Pompes + touche épaule",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "horizontal_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 6,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux • core",
+        "secondary": "Triceps • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Touche épaule sans pompe.",
+        "harder": "Pieds rapprochés."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Push_Up_to_Side_Plank"
+      }
+    },
+    {
+      "id": "pike",
+      "name": "Pike push-up",
+      "aliases": [],
+      "category": "Épaules",
+      "movement_pattern": "vertical_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 6,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Deltoïdes",
+        "secondary": "Triceps • haut des pectoraux"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Amplitude réduite.",
+        "harder": "Pieds surélevés."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Handstand_Push-Ups"
+      }
+    },
+    {
+      "id": "elevated_pike_pushups",
+      "name": "Pike push-up pieds surélevés",
+      "aliases": [],
+      "category": "Épaules",
+      "movement_pattern": "vertical_push",
+      "difficulty": "advanced",
+      "mode": "reps",
+      "prescription": {
+        "base": 5,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "support"
+      },
+      "muscles": {
+        "primary": "Deltoïdes",
+        "secondary": "Triceps • haut des pectoraux"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pike push-up classique.",
+        "harder": "Handstand push-up assisté."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Handstand_Push-Ups"
+      }
+    },
+    {
+      "id": "wall_handstand_hold",
+      "name": "Handstand au mur",
+      "aliases": [],
+      "category": "Épaules",
+      "movement_pattern": "vertical_push",
+      "difficulty": "advanced",
+      "mode": "time",
+      "prescription": {
+        "base": 20,
+        "min": 10,
+        "max": 60,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "wall"
+      },
+      "muscles": {
+        "primary": "Épaules • core",
+        "secondary": "Triceps • trapèzes"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pike hold.",
+        "harder": "Plus de temps ou moins d’appui."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Handstand_Push-Ups"
+      }
+    },
+    {
+      "id": "handstand_pushup_wall",
+      "name": "Handstand push-up au mur",
+      "aliases": [],
+      "category": "Épaules",
+      "movement_pattern": "vertical_push",
+      "difficulty": "advanced",
+      "mode": "reps",
+      "prescription": {
+        "base": 3,
+        "min": 1,
+        "max": 15,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "wall"
+      },
+      "muscles": {
+        "primary": "Épaules • triceps",
+        "secondary": "Haut des pectoraux • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pike push-up.",
+        "harder": "Amplitude complète."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Handstand_Push-Ups"
+      }
+    },
+    {
+      "id": "triceps_dips_chair",
+      "name": "Dips sur chaise",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "vertical_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "chair"
+      },
+      "muscles": {
+        "primary": "Triceps",
+        "secondary": "Épaules • pectoraux"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Genoux pliés.",
+        "harder": "Jambes tendues."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bench_Dips"
+      }
+    },
+    {
+      "id": "plank_to_pushup",
+      "name": "Planche vers pompe",
+      "aliases": [],
+      "category": "Push",
+      "movement_pattern": "vertical_push",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Triceps • épaules • core",
+        "secondary": "Pectoraux"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Sur les genoux.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Plank"
+      }
+    },
+    {
+      "id": "squat",
+      "name": "Squats",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "squat",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 15,
+        "min": 4,
+        "max": 30,
+        "step": 2,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Ischios • adducteurs"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Squat vers une chaise.",
+        "harder": "Squat tempo ou pause."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "slow_squat",
+      "name": "Squats lents",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "squat",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 2,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Ischios • core"
+      },
+      "coaching": {
+        "tips": [
+          "Descends en 3 secondes.",
+          "Talons au sol.",
+          "Genoux dans l’axe des pieds."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Réduis l’amplitude ou le nombre de répétitions.",
+        "harder": "Pause en bas."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "pause_squat",
+      "name": "Squats avec pause",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "squat",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Ischios • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pause plus courte.",
+        "harder": "Pause de 3–5 secondes."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "pulse_squat",
+      "name": "Squats pulsés",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "squat",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 15,
+        "min": 4,
+        "max": 30,
+        "step": 2,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Adducteurs"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Squat classique.",
+        "harder": "Plus de pulsations."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "sumo_squat",
+      "name": "Squats sumo",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "squat",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 15,
+        "min": 4,
+        "max": 30,
+        "step": 2,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Adducteurs • fessiers",
+        "secondary": "Quadriceps"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Amplitude réduite.",
+        "harder": "Pause en bas."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "narrow_squat",
+      "name": "Squats pieds serrés",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "squat",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps",
+        "secondary": "Fessiers • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Écarte légèrement les pieds.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "wall_sit",
+      "name": "Chaise au mur",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "isometric_squat",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 120,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "wall"
+      },
+      "muscles": {
+        "primary": "Quadriceps",
+        "secondary": "Fessiers • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Descends moins bas.",
+        "harder": "Plus longtemps."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Wall_Sit"
+      }
+    },
+    {
+      "id": "reverse_lunge",
+      "name": "Fentes arrière",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "lunge",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Ischios • mollets"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Appui léger sur un mur.",
+        "harder": "Pause en bas."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Walking_Lunge"
+      }
+    },
+    {
+      "id": "forward_lunge",
+      "name": "Fentes avant",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "lunge",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Ischios • mollets"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Fentes arrière.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Walking_Lunge"
+      }
+    },
+    {
+      "id": "walking_lunge",
+      "name": "Fentes marchées",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "lunge",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": false,
+        "impact": "medium",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Ischios • mollets"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Fentes arrière sur place.",
+        "harder": "Pas plus longs."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Walking_Lunge"
+      }
+    },
+    {
+      "id": "split_squat",
+      "name": "Split squats",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "lunge",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Ischios • adducteurs"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Tiens un mur.",
+        "harder": "Pause en bas."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Walking_Lunge"
+      }
+    },
+    {
+      "id": "bulgarian_split_squat",
+      "name": "Bulgarian split squats",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "lunge",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "support"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Ischios"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Split squat.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Walking_Lunge"
+      }
+    },
+    {
+      "id": "curtsy_lunge",
+      "name": "Fentes révérence",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "lunge",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Fessiers • quadriceps",
+        "secondary": "Adducteurs"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Fente arrière.",
+        "harder": "Amplitude plus grande."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Walking_Lunge"
+      }
+    },
+    {
+      "id": "lateral_lunge",
+      "name": "Fentes latérales",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "lunge",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Adducteurs • fessiers",
+        "secondary": "Quadriceps"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Petite amplitude.",
+        "harder": "Amplitude plus profonde."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Walking_Lunge"
+      }
+    },
+    {
+      "id": "cossack_squat",
+      "name": "Cossack squats",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "lunge",
+      "difficulty": "advanced",
+      "mode": "reps",
+      "prescription": {
+        "base": 6,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Adducteurs • quadriceps",
+        "secondary": "Fessiers • mobilité"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Fente latérale.",
+        "harder": "Amplitude complète."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "step_up",
+      "name": "Step-ups",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "step",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "medium",
+        "equipment": "step"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Mollets"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Marche plus basse.",
+        "harder": "Marche plus haute."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Walking_Lunge"
+      }
+    },
+    {
+      "id": "single_leg_squat_box",
+      "name": "Squat une jambe vers support",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "single_leg_squat",
+      "difficulty": "advanced",
+      "mode": "reps",
+      "prescription": {
+        "base": 5,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "support"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Support plus haut.",
+        "harder": "Support plus bas."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "pistol_squat",
+      "name": "Pistol squat",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "single_leg_squat",
+      "difficulty": "advanced",
+      "mode": "reps",
+      "prescription": {
+        "base": 3,
+        "min": 1,
+        "max": 12,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Core • mobilité"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pistol assisté.",
+        "harder": "Amplitude complète contrôlée."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "glute_bridge",
+      "name": "Pont fessier",
+      "aliases": [],
+      "category": "Fessiers",
+      "movement_pattern": "hip_extension",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 15,
+        "min": 4,
+        "max": 30,
+        "step": 2,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Fessiers",
+        "secondary": "Ischios • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Amplitude confortable.",
+        "harder": "Pont une jambe."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Butt_Lift_Bridge"
+      }
+    },
+    {
+      "id": "single_leg_glute_bridge",
+      "name": "Pont fessier une jambe",
+      "aliases": [],
+      "category": "Fessiers",
+      "movement_pattern": "hip_extension",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Fessiers • ischios",
+        "secondary": "Core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pont à deux jambes.",
+        "harder": "Pause en haut."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Butt_Lift_Bridge"
+      }
+    },
+    {
+      "id": "frog_pumps",
+      "name": "Frog pumps",
+      "aliases": [],
+      "category": "Fessiers",
+      "movement_pattern": "hip_extension",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 20,
+        "min": 4,
+        "max": 30,
+        "step": 2,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Fessiers",
+        "secondary": "Adducteurs"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pont fessier.",
+        "harder": "Pause en haut."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Butt_Lift_Bridge"
+      }
+    },
+    {
+      "id": "hip_thrust_floor",
+      "name": "Hip thrust au sol",
+      "aliases": [],
+      "category": "Fessiers",
+      "movement_pattern": "hip_extension",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 15,
+        "min": 4,
+        "max": 30,
+        "step": 2,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Fessiers",
+        "secondary": "Ischios • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pont fessier.",
+        "harder": "Une jambe."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Butt_Lift_Bridge"
+      }
+    },
+    {
+      "id": "donkey_kicks",
+      "name": "Donkey kicks",
+      "aliases": [],
+      "category": "Fessiers",
+      "movement_pattern": "hip_extension",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Fessiers",
+        "secondary": "Ischios • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Petite amplitude.",
+        "harder": "Pause en haut."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Butt_Lift_Bridge"
+      }
+    },
+    {
+      "id": "fire_hydrants",
+      "name": "Fire hydrants",
+      "aliases": [],
+      "category": "Fessiers",
+      "movement_pattern": "hip_abduction",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Moyen fessier",
+        "secondary": "Core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Petite amplitude.",
+        "harder": "Pause en haut."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Butt_Lift_Bridge"
+      }
+    },
+    {
+      "id": "side_lying_leg_raise",
+      "name": "Élévations latérales de jambe",
+      "aliases": [],
+      "category": "Fessiers",
+      "movement_pattern": "hip_abduction",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 15,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Moyen fessier",
+        "secondary": "Abducteurs"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Amplitude réduite.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Butt_Lift_Bridge"
+      }
+    },
+    {
+      "id": "clamshell",
+      "name": "Clamshells",
+      "aliases": [],
+      "category": "Fessiers",
+      "movement_pattern": "hip_abduction",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 15,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Moyen fessier",
+        "secondary": "Rotateurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Amplitude réduite.",
+        "harder": "Pause en haut."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Butt_Lift_Bridge"
+      }
+    },
+    {
+      "id": "standing_calf_raise",
+      "name": "Mollets debout",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "calf_raise",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 20,
+        "min": 4,
+        "max": 30,
+        "step": 2,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Mollets",
+        "secondary": "Chevilles"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Appui sur un mur.",
+        "harder": "Une jambe."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "single_leg_calf_raise",
+      "name": "Mollets une jambe",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "calf_raise",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Mollets",
+        "secondary": "Chevilles"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Deux jambes.",
+        "harder": "Pause en haut."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "tibialis_raise_wall",
+      "name": "Tibialis raises au mur",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "ankle",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 20,
+        "min": 4,
+        "max": 30,
+        "step": 2,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "wall"
+      },
+      "muscles": {
+        "primary": "Tibial antérieur",
+        "secondary": "Chevilles"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pieds plus proches du mur.",
+        "harder": "Pieds plus loin."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "good_morning",
+      "name": "Good mornings",
+      "aliases": [],
+      "category": "Jambes",
+      "movement_pattern": "hip_hinge",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 15,
+        "min": 4,
+        "max": 30,
+        "step": 2,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Ischios • fessiers",
+        "secondary": "Lombaires • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Amplitude réduite.",
+        "harder": "Tempo 4 secondes."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Good_Morning"
+      }
+    },
+    {
+      "id": "plank",
+      "name": "Planche avant",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_extension",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 120,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux",
+        "secondary": "Fessiers • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Genoux au sol.",
+        "harder": "Plus longtemps."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Plank"
+      }
+    },
+    {
+      "id": "high_plank",
+      "name": "Planche haute",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_extension",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 120,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux",
+        "secondary": "Épaules • triceps"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Genoux au sol.",
+        "harder": "Pieds rapprochés."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Plank"
+      }
+    },
+    {
+      "id": "side_plank_left",
+      "name": "Planche latérale gauche",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_lateral_flexion",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 25,
+        "min": 10,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Obliques",
+        "secondary": "Moyen fessier • épaule"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Genoux pliés.",
+        "harder": "Jambe supérieure levée."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Side_Bridge"
+      }
+    },
+    {
+      "id": "side_plank_right",
+      "name": "Planche latérale droite",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_lateral_flexion",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 25,
+        "min": 10,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Obliques",
+        "secondary": "Moyen fessier • épaule"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Genoux pliés.",
+        "harder": "Jambe supérieure levée."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Side_Bridge"
+      }
+    },
+    {
+      "id": "side_plank_reach",
+      "name": "Planche latérale avec rotation",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "rotation",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Obliques",
+        "secondary": "Épaules • transverse"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Planche latérale statique.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Side_Bridge"
+      }
+    },
+    {
+      "id": "dead_bug",
+      "name": "Dead bug",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_extension",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux profonds",
+        "secondary": "Fléchisseurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Bouge seulement jambes ou bras.",
+        "harder": "Jambes plus basses."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Dead_Bug"
+      }
+    },
+    {
+      "id": "bird_dog",
+      "name": "Bird dog",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_rotation",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Core • lombaires",
+        "secondary": "Fessiers • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Bouge un seul membre.",
+        "harder": "Pause plus longue."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Superman"
+      }
+    },
+    {
+      "id": "reverse_crunch",
+      "name": "Reverse crunch",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "spinal_flexion",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux",
+        "secondary": "Obliques"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Petite amplitude.",
+        "harder": "Descente lente."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Reverse_Crunch"
+      }
+    },
+    {
+      "id": "crunch",
+      "name": "Crunch",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "spinal_flexion",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 15,
+        "min": 4,
+        "max": 30,
+        "step": 2,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Grand droit",
+        "secondary": "Obliques"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Petite amplitude.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Reverse_Crunch"
+      }
+    },
+    {
+      "id": "sit_up",
+      "name": "Sit-up",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "spinal_flexion",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux",
+        "secondary": "Fléchisseurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Crunch.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Reverse_Crunch"
+      }
+    },
+    {
+      "id": "bicycle_crunch",
+      "name": "Bicycle crunch",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "rotation",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Obliques • abdominaux",
+        "secondary": "Fléchisseurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Mouvement plus lent.",
+        "harder": "Extension complète de jambe."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Reverse_Crunch"
+      }
+    },
+    {
+      "id": "heel_taps",
+      "name": "Heel taps",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "lateral_flexion",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 15,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Obliques",
+        "secondary": "Grand droit"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Rapproche les pieds.",
+        "harder": "Éloigne les pieds."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Reverse_Crunch"
+      }
+    },
+    {
+      "id": "leg_raise",
+      "name": "Relevés de jambes",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "hip_flexion",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux",
+        "secondary": "Fléchisseurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Genoux pliés.",
+        "harder": "Jambes tendues plus basses."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Reverse_Crunch"
+      }
+    },
+    {
+      "id": "flutter_kicks",
+      "name": "Flutter kicks",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_extension",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux",
+        "secondary": "Fléchisseurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Jambes plus hautes.",
+        "harder": "Jambes plus basses."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Reverse_Crunch"
+      }
+    },
+    {
+      "id": "scissor_kicks",
+      "name": "Scissor kicks",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_extension",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux",
+        "secondary": "Adducteurs • fléchisseurs"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Jambes plus hautes.",
+        "harder": "Jambes plus basses."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Reverse_Crunch"
+      }
+    },
+    {
+      "id": "hollow_hold",
+      "name": "Hollow hold",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_extension",
+      "difficulty": "intermediate",
+      "mode": "time",
+      "prescription": {
+        "base": 20,
+        "min": 10,
+        "max": 60,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux",
+        "secondary": "Fléchisseurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Genoux pliés.",
+        "harder": "Jambes plus basses."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Plank"
+      }
+    },
+    {
+      "id": "hollow_rocks",
+      "name": "Hollow rocks",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_extension",
+      "difficulty": "advanced",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux",
+        "secondary": "Fléchisseurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Hollow hold.",
+        "harder": "Bras au-dessus de la tête."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Plank"
+      }
+    },
+    {
+      "id": "v_up",
+      "name": "V-ups",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "spinal_flexion",
+      "difficulty": "advanced",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux",
+        "secondary": "Fléchisseurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Tuck-ups.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Reverse_Crunch"
+      }
+    },
+    {
+      "id": "tuck_up",
+      "name": "Tuck-ups",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "spinal_flexion",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux",
+        "secondary": "Fléchisseurs de hanche"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Reverse crunch.",
+        "harder": "V-ups."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Reverse_Crunch"
+      }
+    },
+    {
+      "id": "russian_twist",
+      "name": "Russian twists",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "rotation",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Obliques",
+        "secondary": "Abdominaux"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Talons au sol.",
+        "harder": "Pieds décollés."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Reverse_Crunch"
+      }
+    },
+    {
+      "id": "plank_shoulder_taps",
+      "name": "Touches d’épaules en planche",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_rotation",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux • épaules",
+        "secondary": "Obliques • triceps"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pieds plus écartés.",
+        "harder": "Pieds rapprochés."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Push_Up_to_Side_Plank"
+      }
+    },
+    {
+      "id": "plank_knee_to_elbow",
+      "name": "Planche genou-coude",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "dynamic_core",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux • obliques",
+        "secondary": "Épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Mouvement plus lent.",
+        "harder": "Pause genou-coude."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Mountain_Climbers"
+      }
+    },
+    {
+      "id": "bear_hold",
+      "name": "Bear hold",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_extension",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 25,
+        "min": 10,
+        "max": 75,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux • épaules",
+        "secondary": "Quadriceps"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Séries courtes.",
+        "harder": "Bear shoulder taps."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Plank"
+      }
+    },
+    {
+      "id": "bear_shoulder_taps",
+      "name": "Bear shoulder taps",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "anti_rotation",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux • épaules",
+        "secondary": "Quadriceps • obliques"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Bear hold.",
+        "harder": "Pieds/genoux plus rapprochés."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Plank"
+      }
+    },
+    {
+      "id": "mountain_climbers_slow",
+      "name": "Mountain climbers lents",
+      "aliases": [],
+      "category": "Core",
+      "movement_pattern": "dynamic_core",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Abdominaux • fléchisseurs",
+        "secondary": "Épaules • quadriceps"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Très lent.",
+        "harder": "Pause genou poitrine."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Mountain_Climbers"
+      }
+    },
+    {
+      "id": "superman",
+      "name": "Superman",
+      "aliases": [],
+      "category": "Dos",
+      "movement_pattern": "spinal_extension",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 12,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Lombaires • dos",
+        "secondary": "Fessiers • arrière d’épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Lève seulement bras ou jambes.",
+        "harder": "Maintien en haut."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Superman"
+      }
+    },
+    {
+      "id": "superman_pull",
+      "name": "Superman pull",
+      "aliases": [],
+      "category": "Dos",
+      "movement_pattern": "scapular_retraction",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Haut du dos",
+        "secondary": "Arrière d’épaules • lombaires"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Poitrine au sol.",
+        "harder": "Pause coudes en arrière."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Superman"
+      }
+    },
+    {
+      "id": "reverse_snow_angel",
+      "name": "Reverse snow angels",
+      "aliases": [],
+      "category": "Dos",
+      "movement_pattern": "scapular_control",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Haut du dos • arrière d’épaules",
+        "secondary": "Trapèzes"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pose les bras entre les reps.",
+        "harder": "Pause bras au-dessus."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Superman"
+      }
+    },
+    {
+      "id": "prone_y_raise",
+      "name": "Y raise au sol",
+      "aliases": [],
+      "category": "Dos",
+      "movement_pattern": "scapular_control",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Trapèzes inférieurs",
+        "secondary": "Arrière d’épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Petite amplitude.",
+        "harder": "Pause en haut."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Superman"
+      }
+    },
+    {
+      "id": "prone_t_raise",
+      "name": "T raise au sol",
+      "aliases": [],
+      "category": "Dos",
+      "movement_pattern": "scapular_control",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Arrière d’épaules • trapèzes",
+        "secondary": "Rhomboïdes"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Petite amplitude.",
+        "harder": "Pause en haut."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Superman"
+      }
+    },
+    {
+      "id": "prone_w_raise",
+      "name": "W raise au sol",
+      "aliases": [],
+      "category": "Dos",
+      "movement_pattern": "scapular_control",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Rhomboïdes • coiffe",
+        "secondary": "Trapèzes"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Petite amplitude.",
+        "harder": "Pause en haut."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Superman"
+      }
+    },
+    {
+      "id": "prone_ytw",
+      "name": "Y-T-W au sol",
+      "aliases": [],
+      "category": "Dos",
+      "movement_pattern": "scapular_control",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 6,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Haut du dos • arrière d’épaules",
+        "secondary": "Coiffe des rotateurs"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Une lettre à la fois.",
+        "harder": "Pause 2 s à chaque position."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Superman"
+      }
+    },
+    {
+      "id": "swimmers",
+      "name": "Swimmers au sol",
+      "aliases": [],
+      "category": "Dos",
+      "movement_pattern": "spinal_extension",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Lombaires • haut du dos",
+        "secondary": "Fessiers • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Mouvement plus petit.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Superman"
+      }
+    },
+    {
+      "id": "cobra_hold",
+      "name": "Cobra hold",
+      "aliases": [],
+      "category": "Dos",
+      "movement_pattern": "spinal_extension",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 20,
+        "min": 10,
+        "max": 60,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Lombaires • haut du dos",
+        "secondary": "Fessiers"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Décolle moins le buste.",
+        "harder": "Bras plus loin."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Superman"
+      }
+    },
+    {
+      "id": "wall_angel",
+      "name": "Wall angels",
+      "aliases": [],
+      "category": "Dos",
+      "movement_pattern": "scapular_control",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "wall"
+      },
+      "muscles": {
+        "primary": "Haut du dos • épaules",
+        "secondary": "Trapèzes • mobilité"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Amplitude réduite.",
+        "harder": "Mouvement plus lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Superman"
+      }
+    },
+    {
+      "id": "mountain_climbers",
+      "name": "Mountain climbers",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "conditioning",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 20,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": false,
+        "impact": "medium",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Core • quadriceps",
+        "secondary": "Épaules • fléchisseurs"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Version lente.",
+        "harder": "Plus rapide."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Mountain_Climbers"
+      }
+    },
+    {
+      "id": "burpee",
+      "name": "Burpees",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "conditioning",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": false,
+        "impact": "high",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Corps entier",
+        "secondary": "Pecs • jambes • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Burpee sans saut.",
+        "harder": "Burpee avec pompe."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "burpee_no_jump",
+      "name": "Burpees sans saut",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "conditioning",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Corps entier",
+        "secondary": "Pecs • jambes • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Step-back burpee.",
+        "harder": "Ajoute une pompe."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "squat_thrust",
+      "name": "Squat thrust",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "conditioning",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": false,
+        "impact": "medium",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Core • jambes",
+        "secondary": "Épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Recule les pieds un par un.",
+        "harder": "Plus rapide."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Mountain_Climbers"
+      }
+    },
+    {
+      "id": "jumping_jacks",
+      "name": "Jumping jacks",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "conditioning",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 120,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": false,
+        "impact": "high",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Corps entier",
+        "secondary": "Mollets • épaules"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Step jacks.",
+        "harder": "Plus rapide."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "step_jacks",
+      "name": "Step jacks",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "conditioning",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 120,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Corps entier",
+        "secondary": "Épaules • jambes"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Amplitude réduite.",
+        "harder": "Cadence plus rapide."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "high_knees",
+      "name": "Montées de genoux",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "conditioning",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": false,
+        "impact": "high",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fléchisseurs",
+        "secondary": "Core • mollets"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Marche genoux hauts.",
+        "harder": "Cadence rapide."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "march_high_knees",
+      "name": "Marche genoux hauts",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "conditioning",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 120,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • core",
+        "secondary": "Fléchisseurs"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Genoux moins hauts.",
+        "harder": "Plus rapide."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "butt_kicks",
+      "name": "Talons-fesses",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "conditioning",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": false,
+        "impact": "medium",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Ischios • mollets",
+        "secondary": "Quadriceps"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Marche talons-fesses.",
+        "harder": "Cadence rapide."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "skaters",
+      "name": "Skaters",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "conditioning",
+      "difficulty": "beginner",
+      "mode": "time",
+      "prescription": {
+        "base": 30,
+        "min": 15,
+        "max": 90,
+        "step": 5,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": false,
+        "impact": "high",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Fessiers • quadriceps",
+        "secondary": "Adducteurs • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Pas latéraux sans saut.",
+        "harder": "Sauts plus longs."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Walking_Lunge"
+      }
+    },
+    {
+      "id": "squat_jump",
+      "name": "Squat jumps",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "power",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 10,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": false,
+        "impact": "high",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Mollets • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Squats rapides sans saut.",
+        "harder": "Sauts plus explosifs."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "jump_lunge",
+      "name": "Fentes sautées",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "power",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": true
+      },
+      "constraints": {
+        "quiet": false,
+        "impact": "high",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Quadriceps • fessiers",
+        "secondary": "Mollets • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Fentes alternées sans saut.",
+        "harder": "Cadence plus rapide."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Walking_Lunge"
+      }
+    },
+    {
+      "id": "broad_jump",
+      "name": "Sauts en longueur",
+      "aliases": [],
+      "category": "Cardio",
+      "movement_pattern": "power",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 6,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": false,
+        "impact": "high",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Fessiers • quadriceps",
+        "secondary": "Mollets • core"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Squat explosif sans saut.",
+        "harder": "Sauts plus longs."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Bodyweight_Squat"
+      }
+    },
+    {
+      "id": "inchworm",
+      "name": "Inchworms",
+      "aliases": [],
+      "category": "Full body",
+      "movement_pattern": "mobility_strength",
+      "difficulty": "beginner",
+      "mode": "reps",
+      "prescription": {
+        "base": 8,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Épaules • core",
+        "secondary": "Ischios • pectoraux"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Amplitude réduite.",
+        "harder": "Ajoute une pompe."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    },
+    {
+      "id": "walkout_pushup",
+      "name": "Walkout + pompe",
+      "aliases": [],
+      "category": "Full body",
+      "movement_pattern": "mobility_strength",
+      "difficulty": "intermediate",
+      "mode": "reps",
+      "prescription": {
+        "base": 6,
+        "min": 4,
+        "max": 30,
+        "step": 1,
+        "per_side": false
+      },
+      "constraints": {
+        "quiet": true,
+        "impact": "low",
+        "equipment": "none"
+      },
+      "muscles": {
+        "primary": "Pectoraux • core",
+        "secondary": "Épaules • ischios"
+      },
+      "coaching": {
+        "tips": [
+          "Mouvement contrôlé.",
+          "Garde une posture stable."
+        ],
+        "mistakes": [
+          "Ne sacrifie pas la technique pour aller plus vite."
+        ],
+        "breathing": "Respire régulièrement.",
+        "easier": "Walkout sans pompe.",
+        "harder": "Tempo lent."
+      },
+      "visual": {
+        "provider": "free-exercise-db",
+        "asset_id": "Pushups"
+      }
+    }
+  ]
+}

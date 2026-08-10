@@ -1,0 +1,11 @@
+{
+  "name": "mimi-muscu",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node tools/validate-data.mjs",
+    "test": "node tests/run-tests.mjs",
+    "check": "npm run validate && npm test && npm run runtime-test",
+    "runtime-test": "node tests/runtime-compat.test.mjs"
+  }
+}

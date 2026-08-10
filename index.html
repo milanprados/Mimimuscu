@@ -1,0 +1,205 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"><meta name="theme-color" content="#050607"><link rel="manifest" href="./manifest.json"><link rel="apple-touch-icon" href="./assets/icons/icon-192.png"><link rel="stylesheet" href="./styles.css"><title>Mimi Muscu</title></head><body>
+<div class="app">
+  <div class="topbar"><div class="brand"><h1>Mimi Muscu</h1><small>Silencieux • poids du corps • adaptatif</small></div><div class="yellow" id="homeLevel">LV 1</div></div>
+  <nav class="tabs"><button class="active" data-tab="session">Accueil</button><button data-tab="exercises">Exos</button><button data-tab="progress">Progrès</button><button data-tab="profile">Profil</button></nav>
+  <main>
+    <section id="sessionTab">
+      <div class="dashboard-hero">
+  <div class="dash-kicker" id="dashKicker">AUJOURD'HUI</div>
+  <div class="dash-row">
+    <div>
+      <h2 id="sessionName">Push + jambes</h2>
+      <div class="muted" id="sessionLabel">Séance A • Débutant</div>
+    </div>
+    <div class="readiness" id="readiness">PRÊT</div>
+  </div>
+  <div class="dash-stats">
+    <span>⏱ <b id="dashDuration">22 min</b></span>
+    <span>🎯 <b id="sessionFocus">Pecs • épaules • jambes</b></span>
+  </div>
+  <button class="primary-btn yellow-bg" id="quickStart">GO</button>
+  <button class="ghost" id="prepareSession" style="margin-top:8px;width:100%">Voir & modifier</button>
+</div>
+
+<div class="duration-switch" id="durationSwitch">
+  <button data-duration="10">10 min</button>
+  <button data-duration="15">15 min</button>
+  <button class="active" data-duration="22">22 min</button>
+  <button data-duration="30">30 min</button>
+</div>
+
+<div class="card coach-card" id="dailyCoachCard">
+  <div class="section-head"><strong>Coach du jour</strong><span class="yellow">Adaptatif</span></div>
+  <p id="dailyCoachText" class="muted">Je prépare ta recommandation.</p>
+</div>
+
+<div class="card">
+  <div class="section-head"><strong>Objectifs</strong><button class="text-btn" id="openMilestones">Voir tout</button></div>
+  <div id="milestonePreview"></div>
+</div>
+
+<div class="card hidden" id="benchmarkCard">
+  <div class="section-head"><strong>Test de progression</strong><span class="tag">4 semaines</span></div>
+  <p class="muted">Ton recalibrage est prêt. Environ 10 minutes.</p>
+  <button class="ghost" id="startBenchmark" style="width:100%">Lancer le test</button>
+</div>
+      <div class="card"><div class="program-row"><div><strong id="programName">Débutant</strong><small class="muted" id="programFrequency">3 séances / semaine</small></div><select id="programLevel"><option value="beginner">Débutant</option><option value="intermediate">Intermédiaire</option><option value="advanced">Avancé</option></select></div><div class="next-session"><small>Rotation automatique</small><strong id="rotationText">A → B → C</strong></div></div>
+
+      <div class="card">
+        <div class="program-row">
+          <div>
+            <strong>Mes séances</strong>
+            <small class="muted">Créées ou importées</small>
+          </div>
+          <button class="ghost" id="newCustomSession">＋ Nouvelle</button>
+        </div>
+        <div id="customSessionList" style="margin-top:10px"></div>
+        <div class="secondary-row" style="margin-top:10px">
+          <button class="ghost" id="importSessionBtn">Importer un fichier</button>
+          <button class="ghost" id="showSessionFormat">Format JSON</button>
+        </div>
+        <input id="sessionFileInput" type="file" accept=".json,application/json" class="hidden">
+      </div>
+
+      <div class="card"><strong>Aujourd’hui</strong><p class="muted" id="todayText">Aucune séance terminée.</p><button class="ghost hidden" id="redoSession">Refaire la séance</button></div>
+    </section>
+    <section id="exercisesTab" class="hidden">
+      <div class="card"><strong>Dictionnaire des exercices</strong><input class="search" id="search" type="search" placeholder="Rechercher un exercice…"><div class="chips" id="chips"></div></div><div id="exerciseList"></div>
+    </section>
+    <section id="progressTab" class="hidden">
+      <div class="metric-grid"><div class="metric"><strong id="sessions">0</strong><span>séances</span></div><div class="metric"><strong id="xp">0</strong><span>XP</span></div><div class="metric"><strong id="streak">0</strong><span>streak</span></div><div class="metric"><strong id="totalReps">0</strong><span>reps</span></div></div>
+      <div class="card"><strong>Objectifs actuels</strong><div id="targets"></div></div>
+      <div class="card">
+  <div class="section-head"><strong>Évolution physique</strong><button class="text-btn" id="addMeasurement">＋ Mesure</button></div>
+  <div class="body-summary" id="bodySummary"></div>
+  <div class="mini-chart" id="weightChart"></div>
+</div>
+<div class="card"><strong>Historique</strong><div id="history"></div></div>
+    </section>
+    <section id="profileTab" class="hidden">
+      <div class="card"><strong>Profil</strong><label class="profile-label">Âge<input id="age" type="number"></label><label class="profile-label">Taille (cm)<input id="height" type="number"></label><label class="profile-label">Poids (kg)<input id="weight" type="number" step="0.1"></label><button class="primary-btn yellow-bg" id="saveProfile">Enregistrer</button></div>
+      <div class="card">
+  <strong>Préférences</strong>
+  <label class="profile-label">Durée par défaut
+    <select id="defaultDuration"><option value="10">10 min</option><option value="15">15 min</option><option value="22">22 min</option><option value="30">30 min</option></select>
+  </label>
+  <label class="toggle-row"><span>Suggestions automatiques</span><input id="autoSuggest" type="checkbox"></label>
+</div>
+<div class="card">
+  <div class="section-head"><strong>Sauvegarde</strong><span class="muted">locale → fichier</span></div>
+  <p class="muted">Exporte tout : profil, historique, XP, mesures, records, réglages et séances perso.</p>
+  <div class="secondary-row">
+    <button class="ghost" id="exportBackup">Exporter tout</button>
+    <button class="ghost" id="importBackup">Importer</button>
+  </div>
+  <input id="backupFileInput" type="file" accept=".json,application/json" class="hidden">
+  <small class="muted" id="backupStatus"></small>
+</div>
+<div class="card"><strong>Coach IA</strong><p class="muted">Génère un bilan de ta dernière séance pour ChatGPT.</p><textarea id="coachPrompt" readonly></textarea><button class="primary-btn" id="openChat">Copier et ouvrir ChatGPT</button></div>
+    </section>
+  </main>
+</div>
+
+
+<div class="modal hidden" id="milestoneModal">
+  <div class="modal-head"><button id="closeMilestoneModal">‹</button><h2>Objectifs</h2><div></div></div>
+  <div id="milestoneList"></div>
+</div>
+
+<div class="modal hidden" id="measurementModal">
+  <div class="modal-head"><button id="closeMeasurementModal">‹</button><h2>Nouvelle mesure</h2><div></div></div>
+  <div class="card">
+    <label class="profile-label">Poids (kg)<input id="measureWeight" type="number" step="0.1"></label>
+    <label class="profile-label">Tour de taille (cm)<input id="measureWaist" type="number" step="0.1"></label>
+    <label class="profile-label">Note (optionnel)<input id="measureNote" maxlength="120"></label>
+    <button class="primary-btn yellow-bg" id="saveMeasurement">Enregistrer</button>
+  </div>
+</div>
+
+<div class="modal hidden" id="customEditor">
+  <div class="modal-head">
+    <button id="closeCustomEditor">‹</button>
+    <h2 id="customEditorTitle">Nouvelle séance</h2>
+    <div></div>
+  </div>
+
+  <div class="card">
+    <label class="profile-label">Nom
+      <input id="customName" maxlength="80" placeholder="Ex : Pecs express">
+    </label>
+    <label class="profile-label">Description
+      <input id="customDescription" maxlength="240" placeholder="Ex : 20 min, haut du corps">
+    </label>
+  </div>
+
+  <div id="customEditorList"></div>
+  <button class="add-exercise" id="customAddExercise">＋ Ajouter un exercice</button>
+
+  <div class="planner-actions">
+    <button class="ghost" id="deleteCustomSession">Supprimer</button>
+    <button class="primary-btn yellow-bg" id="saveCustomSession">Enregistrer</button>
+  </div>
+</div>
+
+<div class="modal hidden" id="formatModal">
+  <div class="modal-head">
+    <button id="closeFormatModal">‹</button>
+    <h2>Format de séance</h2>
+    <div></div>
+  </div>
+  <div class="card">
+    <p class="muted">C’est ce format que je pourrai te générer quand tu m’enverras un lien ou une séance trouvée ailleurs.</p>
+    <pre id="formatExample" style="white-space:pre-wrap;word-break:break-word;background:#0c0d0f;padding:12px;border-radius:12px;font-size:12px"></pre>
+  </div>
+</div>
+
+<div class="modal hidden" id="planner">
+  <div class="modal-head">
+    <button id="closePlanner">‹</button>
+    <h2>Préparer la séance</h2>
+    <div></div>
+  </div>
+
+  <div class="card planner-summary">
+    <div class="muted" id="plannerLabel"></div>
+    <h3 id="plannerName" style="margin:5px 0"></h3>
+    <div class="muted" id="plannerMeta"></div>
+  </div>
+
+  <div id="plannerList"></div>
+
+  <div class="planner-actions">
+    <button class="ghost" id="resetPlanner">Réinitialiser</button>
+    <button class="primary-btn yellow-bg" id="startPlannedSession">Démarrer cette séance</button>
+  </div>
+</div>
+
+<div class="modal hidden" id="exercisePicker">
+  <div class="modal-head">
+    <button id="closePicker">‹</button>
+    <h2>Choisir un exercice</h2>
+    <div></div>
+  </div>
+  <input class="search" id="pickerSearch" type="search" placeholder="Rechercher…">
+  <div id="pickerList"></div>
+</div>
+
+<div class="focus hidden" id="focus"><div class="focus-head"><button id="exitFocus">✕</button><div class="focus-center"><small id="focusPhase"></small><strong id="focusStep"></strong><em id="focusXp"></em></div><button id="audio">🔊</button></div><div class="focus-content" id="focusContent"></div></div>
+<div class="modal hidden" id="modal"><div class="modal-head"><button id="closeModal">‹</button><h2 id="modalTitle"></h2><div></div></div><div id="modalBody"></div></div>
+<div class="update-toast hidden" id="updateToast">
+  <span>Nouvelle version de Mimi Muscu disponible</span>
+  <button id="applyUpdate">Mettre à jour</button>
+</div>
+<script type="module">
+  import("./js/app.js?v=22.2").catch(error => {
+    console.error("[Mimi Muscu] Erreur de démarrage", error);
+    const box = document.createElement("div");
+    box.className = "boot-error";
+    box.innerHTML = `
+      <strong>Mimi Muscu n’a pas réussi à démarrer.</strong>
+      <span>${String(error?.message || error)}</span>
+      <button onclick="location.reload()">Réessayer</button>
+    `;
+    document.body.appendChild(box);
+  });
+</script></body></html>
