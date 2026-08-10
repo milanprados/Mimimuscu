@@ -1,11 +1,7 @@
-Mimi Muscu V26
+Mimi Muscu V29 — Profil & progression
 
-Routine principale entièrement refaite :
-- 20 min
-- full body
-- 6 jours / semaine
-- cycle de 4 semaines / 24 séances
-- échauffement et étirements intégrés
-- progression automatique, sans sélecteur de niveau ni de durée
+Nouvelle page profil riche et nouveau tableau de progression.
+Le système utilise un indice personnel : 100 = ton niveau au démarrage,
+pas un classement par rapport à la population.
 
-Upload conseillé : remplacer les fichiers par le contenu du ZIP, puis Push.
+Upload complet recommandé, puis Push sur GitHub.
