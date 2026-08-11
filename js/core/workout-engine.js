@@ -181,6 +181,10 @@ export class WorkoutEngine {
       next: this.findNextExercise()
     });
 
+    this.runTimedInterval();
+  }
+
+  runTimedInterval() {
     this.startTimerInterval(() => {
       this.remainingSeconds--;
       this.hooks.tick?.(this.remainingSeconds);
@@ -200,7 +204,7 @@ export class WorkoutEngine {
     this.hooks.rest?.({
       seconds: this.remainingSeconds,
       next,
-      nextExercise: next ? EXERCISES[next.id] : null
+      nextExercise: next ? this.exercises[next.id] : null
     });
 
     if (this.remainingSeconds <= 0) {
@@ -208,6 +212,10 @@ export class WorkoutEngine {
       return;
     }
 
+    this.runRestInterval();
+  }
+
+  runRestInterval() {
     this.startTimerInterval(() => {
       this.remainingSeconds--;
       this.hooks.tick?.(this.remainingSeconds);
@@ -245,16 +253,42 @@ export class WorkoutEngine {
     }
 
     this.hooks.paused?.(false);
+    this.runTimedInterval();
+  }
 
-    this.startTimerInterval(() => {
-      this.remainingSeconds--;
-      this.hooks.tick?.(this.remainingSeconds);
+  /**
+   * Met en pause le minuteur courant pendant l'ouverture d'un guide.
+   * Retourne true uniquement si le moteur tournait réellement : l'UI sait
+   * ainsi si elle doit reprendre automatiquement à la fermeture du guide.
+   */
+  pauseForGuide() {
+    if (!this.timerRunning) return false;
+    this.stopTimer();
 
-      if (this.remainingSeconds <= 0) {
-        this.stopTimer();
-        this.completeCurrentExercise();
-      }
-    });
+    if (this.currentItem?.kind === "exercise") {
+      this.hooks.paused?.(true);
+    }
+
+    return true;
+  }
+
+  resumeAfterGuide() {
+    if (this.timerRunning || this.remainingSeconds <= 0) return;
+
+    const item = this.currentItem;
+    if (!item) return;
+
+    if (item.kind === "rest") {
+      this.runRestInterval();
+      return;
+    }
+
+    const exercise = this.currentExercise;
+    const effectiveMode = item.modeOverride || exercise?.mode;
+    if (exercise && effectiveMode === "time") {
+      this.hooks.paused?.(false);
+      this.runTimedInterval();
+    }
   }
 
   completeRepetitionExercise(reps, effort) {
@@ -347,7 +381,9 @@ export class WorkoutEngine {
       return;
     }
 
-    this.showCountdown(this.runToken);
+    // Le compte à rebours 3-2-1 est inclus dans les trois dernières secondes
+    // du repos. À 0, le mouvement suivant commence donc immédiatement.
+    this.enterCurrentItem();
   }
 
   adaptTargets() {

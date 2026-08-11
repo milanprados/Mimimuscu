@@ -116,3 +116,97 @@ assert.equal(secondState.history[0].programCompleted, true);
 assert.equal(secondState.history[0].counted, false);
 
 console.log("OK — séance perso puis programme le même jour.");
+
+
+// Régression V31.1 : fin automatique d'un minuteur -> repos -> exercice suivant.
+// Le 3-2-1 doit être inclus dans le repos, donc aucun second hook countdown.
+const flowExercises = {
+  hold: {
+    id: "hold", name: "Planche", mode: "time",
+    base: 2, min: 1, max: 60, step: 1
+  },
+  squat: {
+    id: "squat", name: "Squat", mode: "reps",
+    base: 5, min: 1, max: 50, step: 1
+  }
+};
+
+const flowState = {
+  program: {level: "adaptive", index: 0},
+  sessionDraft: null,
+  targets: {hold: 2, squat: 5},
+  bests: {}, sessions: 0, attempts: 0, xp: 0, streak: 0,
+  lastDay: "", history: []
+};
+
+const flowPlan = {
+  items: [
+    {kind: "exercise", id: "hold", phase: "Bloc principal", track: true, adaptive: true, targetOverride: 2},
+    {kind: "rest", seconds: 3, phase: "Repos"},
+    {kind: "exercise", id: "squat", phase: "Bloc principal", track: true, adaptive: true, targetOverride: 5}
+  ],
+  meta: {key: "FLOW", name: "Flow", type: "program"}
+};
+
+let countdownCalls = 0;
+let restPayload = null;
+let repetitionPayload = null;
+let activeInterval = null;
+
+const flowEngine = new WorkoutEngine({
+  state: flowState,
+  exercises: flowExercises,
+  buildProgramPlan: () => flowPlan,
+  buildSessionPlan: () => flowPlan,
+  persist: () => {},
+  now: () => new Date(2026, 7, 10, 20, 0, 0),
+  hooks: {
+    countdown({done}) { countdownCalls++; done(); },
+    timer() {},
+    rest(payload) { restPayload = payload; },
+    exercise(payload) { repetitionPayload = payload; },
+    tick() {},
+    finished() {}
+  }
+});
+
+// Faux setInterval déterministe : on déclenche les secondes à la main.
+flowEngine.startTimerInterval = callback => {
+  flowEngine.timerRunning = true;
+  activeInterval = callback;
+};
+flowEngine.stopTimer = () => {
+  flowEngine.timerRunning = false;
+  activeInterval = null;
+};
+const flowTick = () => {
+  const callback = activeInterval;
+  assert.ok(callback, "Aucun minuteur actif à faire avancer.");
+  callback();
+};
+
+flowEngine.start();
+assert.equal(flowEngine.currentItem.id, "hold");
+assert.equal(countdownCalls, 1, "Le compte à rebours séparé ne doit exister qu'au lancement.");
+
+flowTick();
+flowTick();
+assert.equal(flowEngine.currentItem.kind, "rest", "La fin du minuteur doit ouvrir automatiquement le repos.");
+assert.equal(restPayload?.nextExercise?.id, "squat", "Le repos doit recevoir le prochain exercice sans erreur runtime.");
+
+// Le guide peut mettre le repos en pause puis le reprendre au même temps restant.
+const beforeGuide = flowEngine.remainingSeconds;
+assert.equal(flowEngine.pauseForGuide(), true);
+assert.equal(flowEngine.timerRunning, false);
+flowEngine.resumeAfterGuide();
+assert.equal(flowEngine.timerRunning, true);
+assert.equal(flowEngine.remainingSeconds, beforeGuide);
+
+flowTick();
+flowTick();
+flowTick();
+assert.equal(flowEngine.currentItem.id, "squat", "À 0, l'exercice suivant doit démarrer automatiquement.");
+assert.equal(repetitionPayload?.exercise?.id, "squat");
+assert.equal(countdownCalls, 1, "Pas de 3-2-1 ajouté après le repos : il est inclus dans ses dernières secondes.");
+
+console.log("OK — déroulement V31.1 : minuteurs auto, repos, countdown intégré, guide pause/reprise.");

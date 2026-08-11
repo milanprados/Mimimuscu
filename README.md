@@ -3,6 +3,15 @@
 PWA de musculation au poids du corps : routine full body ~20 min, 6 jours/semaine,
 progression adaptative, calendrier, profil, bibliothèque d'exercices et mode hors-ligne.
 
+## Patch V31.1 — déroulement des séances
+
+- correction du crash qui pouvait faire disparaître les repos ;
+- fin des exercices chronométrés → transition automatique ;
+- compte à rebours 3–2–1 inclus dans les dernières secondes du repos ;
+- aperçu du prochain exercice pendant le repos ;
+- guide technique accessible pendant l'exercice et le repos ;
+- ouverture du guide = pause du minuteur courant, puis reprise au retour.
+
 ## Démarrage rapide
 
 Il n'y a **aucun build obligatoire** et aucune dépendance runtime.

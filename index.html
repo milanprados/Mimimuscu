@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#090a0c">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=31">
+  <link rel="stylesheet" href="./styles.css?v=31.1">
   <title>Mimi Muscu</title>
 </head>
 <body>
@@ -472,6 +472,16 @@
     </header>
     <div class="focus-progress"><span></span></div>
     <div class="focus-content" id="focusContent"></div>
+
+    <div class="workout-guide-overlay hidden" id="workoutGuideOverlay" aria-hidden="true">
+      <header class="workout-guide-head">
+        <button id="closeWorkoutGuide" aria-label="Fermer le guide">←</button>
+        <div><small>GUIDE TECHNIQUE</small><strong id="workoutGuideTitle"></strong></div>
+        <span></span>
+      </header>
+      <div class="workout-guide-body" id="workoutGuideBody"></div>
+      <button class="primary-btn workout-guide-resume" id="workoutGuideResume">Retour à l’exercice</button>
+    </div>
   </div>
 
   <div class="modal hidden exercise-guide-modal" id="modal" aria-hidden="true">
@@ -486,7 +496,7 @@
   </div>
 
   <script type="module">
-    import("./js/app.js?v=31.0").catch(error=>{
+    import("./js/app.js?v=31.1").catch(error=>{
       console.error("[Mimi Muscu] Erreur de démarrage",error);
       const box=document.createElement("div");
       box.className="boot-error";

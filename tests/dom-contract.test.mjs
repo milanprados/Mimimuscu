@@ -29,7 +29,8 @@ const dynamicIds = new Set([
   "count", "done", "early", "equipmentFilter", "finish",
   "minus", "pause", "plus", "quietFilter", "repVal",
   "rest", "skip", "skipRest", "skipTimed", "time",
-  "timerPoseLabel", "timerVisual"
+  "timerPoseLabel", "timerVisual",
+  "recoveryScreen", "recoveryLabel", "recoveryCountdownNote"
 ]);
 
 const missing = [...new Set(referencedIds)]
