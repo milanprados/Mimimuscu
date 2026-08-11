@@ -1,8 +1,8 @@
 /**
- * Cache PWA Soft Editorial V2
+ * Cache PWA Soft Editorial V3
  * Navigation + code : network-first pour recevoir les mises à jour immédiatement.
  */
-const VERSION = "mimi-muscu-soft-editorial-v2";
+const VERSION = "mimi-muscu-soft-editorial-v3";
 const APP_CACHE = `${VERSION}-app`;
 
 const APP_SHELL = [
@@ -19,6 +19,7 @@ const APP_SHELL = [
 
   "./js/ui/navigation.js",
   "./js/ui/theme.js",
+  "./js/ui/workout-theme.js",
   "./js/ui/home.js",
   "./js/ui/workout.js",
   "./js/ui/exercise-library.js",
