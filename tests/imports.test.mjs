@@ -16,10 +16,13 @@ walk("js");
 
 for (const file of files) {
   const source = fs.readFileSync(file, "utf8");
-  const imports = [...source.matchAll(/from\s+["'](\.[^"']+)["']/g)].map(match => match[1]);
+  const imports = [...source.matchAll(/from\s+["'](\.[^"']+)["']/g)].map(
+    (match) => match[1],
+  );
 
   for (const specifier of imports) {
-    const resolved = path.resolve(path.dirname(file), specifier);
+    const cleanSpecifier = specifier.split(/[?#]/, 1)[0];
+    const resolved = path.resolve(path.dirname(file), cleanSpecifier);
     assert.ok(fs.existsSync(resolved), `${file}: import absent ${specifier}`);
   }
 }
