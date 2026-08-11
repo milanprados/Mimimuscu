@@ -16,9 +16,9 @@ assert.ok(workout.includes('À RETENIR'), "Conseils inline absents");
 assert.ok(workout.includes('À ÉVITER'), "Erreurs inline absentes");
 assert.ok(workout.includes('RESPIRATION'), "Respiration inline absente");
 
-assert.ok(html.includes('styles.css?v=31.3'));
-assert.ok(html.includes('app.js?v=31.3'));
+assert.ok(html.includes('styles.css?v=31.4'));
+assert.ok(html.includes('app.js?v=31.4'));
 assert.ok(html.includes('caches.delete'), "Purge de cache de migration absente");
 assert.ok(sw.includes('/\\.(?:js|css|json)$/i') || sw.includes('js|css|json'), "Code/données pas en network-first");
 
-console.log("OK — V31.3 UI visible : guide complet, reset branché, cache invalidé.");
+console.log("OK — V31.4 UI visible : guide complet, reset branché, cache invalidé.");

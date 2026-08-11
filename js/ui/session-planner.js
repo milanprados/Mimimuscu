@@ -1,5 +1,5 @@
 
-import {$, $$, on, openLayer, closeLayer} from "../utils/dom.js";
+import {$, $$, on, openLayer, closeLayer, escapeHtml} from "../utils/dom.js";
 
 /**
  * Séances personnalisées + éditeur de la séance du jour.
@@ -32,7 +32,7 @@ export function createSessionPlanner({
     root.innerHTML=(Array.isArray(state.customSessions)?state.customSessions:[]).map(session=>`
       <div class="custom-session">
         <button data-custom-start="${session.id}" style="background:none;color:white;text-align:left;padding:0">
-          <strong>${session.name}</strong><small>${Array.isArray(session.exercises)?session.exercises.length:0} exos${session.description?` • ${session.description}`:""}</small>
+          <strong>${escapeHtml(session.name)}</strong><small>${Array.isArray(session.exercises)?session.exercises.length:0} exos${session.description?` • ${escapeHtml(session.description)}`:""}</small>
         </button>
         <div class="custom-session-actions">
           <button data-custom-export="${session.id}" title="Exporter">⇩</button>
@@ -202,7 +202,7 @@ export function createSessionPlanner({
   on("#sessionFileInput","change",()=>{const file=$("#sessionFileInput").files?.[0];if(file)importSessionFile(file)});
   on("#showSessionFormat","click",()=>{
     $("#formatExample").textContent=JSON.stringify({
-      app:"mimi-muscu",type:"workout-session",version:3,
+      app:"mimi-muscu",type:"workout-session",version:4,
       name:"Pecs express",description:"20 min, silencieux",level:"custom",
       blocks:[
         {type:"circuit",rounds:3,rest_between_exercises_sec:25,rest_between_rounds_sec:60,

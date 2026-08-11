@@ -10,7 +10,8 @@ const tests = [
   "tests/dom-contract.test.mjs",
   "tests/imports.test.mjs",
   "tests/service-worker.test.mjs",
-  "tests/workout-engine.test.mjs"
+  "tests/workout-engine.test.mjs",
+  "tests/stability-v31-4.test.mjs"
 ];
 
 for (const test of tests) {

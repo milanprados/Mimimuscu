@@ -49,7 +49,7 @@ function readStoredState() {
   return null;
 }
 
-function normalizeCustomSessions(sessions) {
+function normalizeCustomSessions(sessions, exercises) {
   return (Array.isArray(sessions) ? sessions : []).map((session, index) => {
     const normalized = {
       ...session,
@@ -83,8 +83,12 @@ function normalizeCustomSessions(sessions) {
     }
 
     normalized.exercises = normalized.exercises
-      .filter(item => item?.id)
-      .map(item => ({kind: "exercise", ...item}));
+      .filter(item => item?.id && exercises?.[item.id])
+      .map(item => ({
+        kind: "exercise",
+        ...item,
+        restAfter: Math.max(0, Math.min(600, Number(item.restAfter) || 0))
+      }));
 
     return normalized;
   });
@@ -98,13 +102,20 @@ function normalizeState(raw, exercises) {
 
   state.program = {...DEFAULT_STATE.program, ...(state.program || {})};
   state.program.level = "adaptive";
-  state.program.index = Math.max(0, Number(state.program.index) || 0);
+  {
+    const programIndex = Number(state.program.index);
+    state.program.index = Number.isFinite(programIndex) ? Math.max(0, Math.floor(programIndex)) : 0;
+  }
 
   state.profile = {...DEFAULT_STATE.profile, ...(state.profile || {})};
   state.profileMeta = {...DEFAULT_STATE.profileMeta, ...(state.profileMeta || {})};
 
-  state.targets = state.targets || {};
-  state.bests = state.bests || {};
+  state.targets = state.targets && typeof state.targets === "object" && !Array.isArray(state.targets)
+    ? state.targets
+    : {};
+  state.bests = state.bests && typeof state.bests === "object" && !Array.isArray(state.bests)
+    ? state.bests
+    : {};
   state.progressBaseline = {
     ...DEFAULT_STATE.progressBaseline,
     ...(state.progressBaseline || {}),
@@ -112,29 +123,74 @@ function normalizeState(raw, exercises) {
   };
 
   state.history = Array.isArray(state.history)
-    ? state.history.slice(0, PROGRESSION.historyLimit)
+    ? state.history
+        .filter(record => record && typeof record === "object")
+        .map(record => ({
+          ...record,
+          sets: Array.isArray(record.sets) ? record.sets : []
+        }))
+        .slice(0, PROGRESSION.historyLimit)
     : [];
 
-  state.customSessions = normalizeCustomSessions(state.customSessions);
-  state.sessionDraft = state.sessionDraft || null;
+  state.customSessions = normalizeCustomSessions(state.customSessions, exercises);
 
-  state.preferences = {...DEFAULT_STATE.preferences, ...(state.preferences || {})};
-  state.measurements = Array.isArray(state.measurements) ? state.measurements : [];
-  state.goals = Array.isArray(state.goals) ? state.goals : [];
+  if (state.sessionDraft && Array.isArray(state.sessionDraft.exercises)) {
+    state.sessionDraft = {
+      ...state.sessionDraft,
+      exercises: state.sessionDraft.exercises
+        .filter(item => item?.id && exercises?.[item.id])
+        .map(item => ({
+          kind: "exercise",
+          ...item,
+          restAfter: Math.max(0, Math.min(600, Number(item.restAfter) || 0))
+        }))
+    };
+    if (!state.sessionDraft.exercises.length) state.sessionDraft = null;
+  } else {
+    state.sessionDraft = null;
+  }
 
-  state.calendarPrefs = {...DEFAULT_STATE.calendarPrefs, ...(state.calendarPrefs || {})};
+  state.preferences = {
+    ...DEFAULT_STATE.preferences,
+    ...(state.preferences && typeof state.preferences === "object" ? state.preferences : {})
+  };
+  state.measurements = Array.isArray(state.measurements)
+    ? state.measurements.filter(item => item && typeof item === "object")
+    : [];
+  state.goals = Array.isArray(state.goals)
+    ? state.goals.filter(goal => goal && typeof goal === "object")
+    : [];
+
+  state.calendarPrefs = {...DEFAULT_STATE.calendarPrefs, ...(state.calendarPrefs && typeof state.calendarPrefs === "object" ? state.calendarPrefs : {})};
   state.calendarPrefs.restDay = Math.max(
     0,
     Math.min(6, Number(state.calendarPrefs.restDay) || PROGRAM.defaultRestDay)
   );
 
-  state.benchmark = {...DEFAULT_STATE.benchmark, ...(state.benchmark || {})};
-  state.achievements = state.achievements || {};
-  state.backupMeta = {...DEFAULT_STATE.backupMeta, ...(state.backupMeta || {})};
+  state.benchmark = {...DEFAULT_STATE.benchmark, ...(state.benchmark && typeof state.benchmark === "object" ? state.benchmark : {})};
+  state.achievements = state.achievements && typeof state.achievements === "object" && !Array.isArray(state.achievements) ? state.achievements : {};
+  state.backupMeta = {...DEFAULT_STATE.backupMeta, ...(state.backupMeta && typeof state.backupMeta === "object" ? state.backupMeta : {})};
+
+  // Les anciennes sauvegardes et les imports manuels peuvent contenir des nombres
+  // sérialisés comme chaînes. On les remet dans un format stable avant le runtime.
+  for (const key of ["sessions", "attempts", "xp", "streak"]) {
+    const value = Number(state[key]);
+    state[key] = Number.isFinite(value) ? Math.max(0, Math.round(value)) : 0;
+  }
+  state.lastDay = typeof state.lastDay === "string" ? state.lastDay : "";
 
   for (const [id, exercise] of Object.entries(exercises)) {
     if (state.targets[id] == null) {
       state.targets[id] = state.targets[exercise.name] ?? exercise.base;
+    }
+
+    const target = Number(state.targets[id]);
+    state.targets[id] = Number.isFinite(target) ? target : Number(exercise.base) || 1;
+
+    if (state.bests[id] != null) {
+      const best = Number(state.bests[id]);
+      if (Number.isFinite(best) && best >= 0) state.bests[id] = best;
+      else delete state.bests[id];
     }
   }
 

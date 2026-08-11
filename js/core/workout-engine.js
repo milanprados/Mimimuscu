@@ -7,6 +7,8 @@
 import {PROGRESSION} from "../config.js";
 import {localDayKey, previousDayKey} from "../utils/dates.js";
 
+const MIN_COMPLETION_COVERAGE = 0.5;
+
 export class WorkoutEngine {
   constructor({
     state,
@@ -46,6 +48,7 @@ export class WorkoutEngine {
 
     this.redo = false;
     this.advancesProgram = true;
+    this.finished = false;
   }
 
   cancel() {
@@ -68,7 +71,7 @@ export class WorkoutEngine {
     this.advancesProgram = plan.meta.type === "program";
 
     this.currentIndex = 0;
-    this.startedAtMs = Date.now();
+    this.startedAtMs = this.now().getTime();
 
     const token = ++this.runToken;
     this.showCountdown(token);
@@ -428,9 +431,22 @@ export class WorkoutEngine {
   }
 
   finish() {
+    if (this.finished) return;
+    this.finished = true;
     this.stopTimer();
 
     const today = localDayKey(this.now());
+    const trackedSets = this.log;
+    const completedSets = trackedSets.filter(set => !set.skipped);
+    const completionCoverage = trackedSets.length
+      ? completedSets.length / trackedSets.length
+      : 0;
+
+    // Une séance où l'on a passé la majorité des mouvements reste un essai,
+    // mais ne valide ni la journée ni l'avancement du programme.
+    const meaningfulCompletion =
+      completedSets.length > 0
+      && completionCoverage >= MIN_COMPLETION_COVERAGE;
 
     const alreadyCountedToday = this.state.history
       .some(record => record.day === today && record.counted);
@@ -445,12 +461,13 @@ export class WorkoutEngine {
       );
 
     // `counted` pilote streak/séances/jour : au maximum une fois par jour.
-    const counted = !alreadyCountedToday && !this.redo;
+    const counted = meaningfulCompletion && !alreadyCountedToday && !this.redo;
 
     // La validation du programme est indépendante : une séance perso faite avant
     // ne doit pas bloquer la vraie séance du cycle.
     const programCompleted =
-      this.advancesProgram
+      meaningfulCompletion
+      && this.advancesProgram
       && !this.redo
       && !programAlreadyCompletedToday;
 
@@ -470,26 +487,49 @@ export class WorkoutEngine {
       this.state.sessionDraft = null;
     }
 
-    const validSets = this.log.filter(set => !set.skipped);
+    // Un seul PR par exercice et par séance : plusieurs séries au-dessus de
+    // l'ancien record ne doivent pas être annoncées comme plusieurs records.
+    const sessionBestSets = new Map();
+    for (const set of completedSets) {
+      const previous = sessionBestSets.get(set.id);
+      if (!previous || Number(set.actual) > Number(previous.actual)) {
+        sessionBestSets.set(set.id, set);
+      }
+    }
+
     const newRecords = [];
-
-    for (const set of validSets) {
-      if (set.actual > (previousBests[set.id] || 0)) newRecords.push(set);
-
-      this.state.bests[set.id] = Math.max(
-        this.state.bests[set.id] || 0,
-        set.actual
+    for (const [exerciseId, set] of sessionBestSets) {
+      const actual = Number(set.actual) || 0;
+      if (actual > (Number(previousBests[exerciseId]) || 0)) newRecords.push(set);
+      this.state.bests[exerciseId] = Math.max(
+        Number(this.state.bests[exerciseId]) || 0,
+        actual
       );
     }
 
-    const completionRatio = validSets.length
-      ? validSets.filter(set => set.actual >= set.target).length / validSets.length
+    // Le score représente la part réellement accomplie de chaque série suivie.
+    // Une série passée vaut 0 ; 9/10 vaut 90 au lieu de faire tomber le score à 0.
+    const performanceRatio = trackedSets.length
+      ? trackedSets.reduce((sum, set) => {
+          if (set.skipped) return sum;
+          const target = Math.max(1, Number(set.target) || 1);
+          const actual = Math.max(0, Number(set.actual) || 0);
+          return sum + Math.min(1, actual / target);
+        }, 0) / trackedSets.length
       : 0;
 
-    const score = Math.round(completionRatio * 100);
+    const score = Math.round(performanceRatio * 100);
 
-    let xp = Math.round(70 + completionRatio * 50 + (counted ? 25 : 0));
-    if (this.redo) xp = Math.round(xp * 0.45);
+    let xp = 0;
+    if (completedSets.length) {
+      // La couverture évite qu'une séance presque entièrement passée rapporte
+      // autant qu'une vraie séance terminée.
+      xp = Math.round(
+        (70 + performanceRatio * 50 + (counted ? 25 : 0))
+        * completionCoverage
+      );
+      if (this.redo) xp = Math.round(xp * 0.45);
+    }
     this.state.xp += xp;
 
     if (counted) {
@@ -504,7 +544,7 @@ export class WorkoutEngine {
 
     const duration = Math.max(
       1,
-      Math.round((Date.now() - this.startedAtMs) / 1000)
+      Math.round((this.now().getTime() - this.startedAtMs) / 1000)
     );
 
     const record = {
@@ -512,6 +552,7 @@ export class WorkoutEngine {
       day: today,
       counted,
       programCompleted,
+      completionCoverage: Math.round(completionCoverage * 100),
       redo: this.redo,
       xp,
       score,
@@ -537,4 +578,5 @@ export class WorkoutEngine {
       record
     });
   }
+
 }

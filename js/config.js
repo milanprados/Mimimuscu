@@ -2,7 +2,7 @@
  * Mimi Muscu — configuration centrale.
  * Modifie ici les constantes globales plutôt que de les dupliquer ailleurs.
  */
-export const APP_VERSION = "31.3";
+export const APP_VERSION = "31.4";
 
 export const STORAGE = {
   currentKey: "mimiMuscuV31",

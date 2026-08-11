@@ -2,7 +2,7 @@
  * Interface plein écran d'une séance.
  * Toute logique métier reste dans WorkoutEngine.
  */
-import {$, $$, wait, openLayer, closeLayer, formatDuration, on} from "../utils/dom.js";
+import {$, $$, wait, openLayer, closeLayer, formatDuration, on, escapeHtml} from "../utils/dom.js";
 import {preloadExercise} from "../utils/preload.js";
 import {UI} from "../config.js";
 import {getMuscleLoad, levelFromXp} from "../core/progression.js";
@@ -74,7 +74,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
   function renderGuideSteps(items = []) {
     return (items || []).map((text, index) => `
-      <li><span>${index + 1}</span><p>${text}</p></li>`
+      <li><span>${index + 1}</span><p>${escapeHtml(text)}</p></li>`
     ).join("");
   }
 
@@ -102,7 +102,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
           <button class="technique-link" id="${buttonId}">Voir en grand</button>
         </div>
 
-        ${exercise.description ? `<p class="inline-guide-description">${exercise.description}</p>` : ""}
+        ${exercise.description ? `<p class="inline-guide-description">${escapeHtml(exercise.description)}</p>` : ""}
 
         ${setup.length ? `
           <section class="inline-guide-block">
@@ -117,21 +117,21 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
           </section>` : ""}
 
         ${specificNote ? `
-          <div class="inline-guide-note"><span>POINT CLÉ</span><p>${specificNote}</p></div>` : ""}
+          <div class="inline-guide-note"><span>POINT CLÉ</span><p>${escapeHtml(specificNote)}</p></div>` : ""}
 
         ${breathing ? `
-          <div class="inline-guide-breath"><span>RESPIRATION</span><p>${breathing}</p></div>` : ""}
+          <div class="inline-guide-breath"><span>RESPIRATION</span><p>${escapeHtml(breathing)}</p></div>` : ""}
 
         ${tips.length ? `
           <section class="inline-guide-list">
             <small>À RETENIR</small>
-            <ul>${tips.slice(0, 3).map(text => `<li>${text}</li>`).join("")}</ul>
+            <ul>${tips.slice(0, 3).map(text => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
           </section>` : ""}
 
         ${errors.length ? `
           <section class="inline-guide-list danger">
             <small>À ÉVITER</small>
-            <ul>${errors.slice(0, 3).map(text => `<li>${text}</li>`).join("")}</ul>
+            <ul>${errors.slice(0, 3).map(text => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
           </section>` : ""}
       </div>`;
   }
@@ -169,7 +169,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
     $("#workoutGuideBody").innerHTML = `
       ${imageBlock}
-      ${exercise.description ? `<p class="workout-guide-description">${exercise.description}</p>` : ""}
+      ${exercise.description ? `<p class="workout-guide-description">${escapeHtml(exercise.description)}</p>` : ""}
 
       ${(guide.setup || []).length ? `
         <section class="workout-guide-section">
@@ -186,13 +186,13 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
       ${(guide.tips || exercise.tips || []).length ? `
         <section class="workout-guide-section compact">
           <small>À RETENIR</small>
-          <ul>${(guide.tips || exercise.tips || []).slice(0, 3).map(text => `<li>${text}</li>`).join("")}</ul>
+          <ul>${(guide.tips || exercise.tips || []).slice(0, 3).map(text => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
         </section>` : ""}
 
       ${(guide.errors || []).length ? `
         <section class="workout-guide-section compact danger">
           <small>À ÉVITER</small>
-          <ul>${guide.errors.slice(0, 3).map(text => `<li>${text}</li>`).join("")}</ul>
+          <ul>${guide.errors.slice(0, 3).map(text => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
         </section>` : ""}
     `;
 
@@ -238,7 +238,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
       <div class="workout-screen">
         <div class="workout-title">
           <span>${item.phase || "Exercice"}</span>
-          <h2>${exercise.name}</h2>
+          <h2>${escapeHtml(exercise.name)}</h2>
           <div class="target-pill">
             <strong>${target}</strong>
             <small>${exercise.perSide ? " / côté" : " reps"}</small>
@@ -308,7 +308,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
       <div class="workout-screen timed">
         <div class="workout-title">
           <span>${item.phase || "Exercice"}</span>
-          <h2>${exercise.name}</h2>
+          <h2>${escapeHtml(exercise.name)}</h2>
         </div>
 
         <div class="timer-visual" id="timerVisual">
@@ -361,11 +361,11 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
           <div class="next-card">
             <div class="next-copy">
               <small>PROCHAIN EXERCICE</small>
-              <h3>${nextExercise.name}</h3>
+              <h3>${escapeHtml(nextExercise.name)}</h3>
               <strong>${nextTarget}${
                 nextMode === "time" ? " sec" : nextExercise.perSide ? " / côté" : " reps"
               }</strong>
-              ${nextCue ? `<p>${nextCue}</p>` : ""}
+              ${nextCue ? `<p>${escapeHtml(nextCue)}</p>` : ""}
               <button class="technique-link" id="restGuide">? Voir le guide</button>
             </div>
             ${nextImage ? `<div class="next-visual"><img src="${nextImage}" alt=""></div>` : ""}
@@ -408,7 +408,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
     $("#focusContent").innerHTML = `
       <div class="count-screen">
         <span class="count-kicker">PRÊT POUR</span>
-        <h2>${exercise.name}</h2>
+        <h2>${escapeHtml(exercise.name)}</h2>
         <img class="count-image" src="${exercise.thumb || exercise.images[0]}" alt="">
         <div class="count-num" id="count">3</div>
       </div>`;

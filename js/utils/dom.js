@@ -6,6 +6,15 @@ export const $ = selector => document.querySelector(selector);
 export const $$ = selector => [...document.querySelectorAll(selector)];
 export const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
+export function escapeHtml(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 export function on(selectorOrElement, eventName, handler, {required = true} = {}) {
   const element = typeof selectorOrElement === "string"
     ? $(selectorOrElement)

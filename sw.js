@@ -1,9 +1,9 @@
 /**
- * Cache PWA V31.3
+ * Cache PWA V31.4
  * Navigation : network-first.
  * JS/CSS/data/images : cache-first pour un démarrage rapide et un offline fiable.
  */
-const VERSION = "mimi-muscu-v31-3";
+const VERSION = "mimi-muscu-v31-4";
 const APP_CACHE = `${VERSION}-app`;
 
 const APP_SHELL = [

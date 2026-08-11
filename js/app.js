@@ -210,7 +210,7 @@ window.__MIMI_BOOT__.step = "ready";
 
 // PWA -------------------------------------------------------------------------
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./sw.js?v=31.3")
+  navigator.serviceWorker.register("./sw.js?v=31.4")
     .then(registration => {
       if (registration.waiting) $("#updateToast")?.classList.remove("hidden");
 

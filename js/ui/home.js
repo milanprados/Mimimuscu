@@ -4,6 +4,8 @@
  */
 import {$, on, openLayer, closeLayer} from "../utils/dom.js";
 import {PROGRAM} from "../config.js";
+import {isRestDay, localDayKey} from "../utils/dates.js";
+import {isProgramHistoryRecord} from "../core/progression.js";
 
 export function createHomeView({
   state,
@@ -84,17 +86,50 @@ export function createHomeView({
     const template = getProgramTemplate(state.program);
     const position = Number(state.program.index) % PROGRAM.cycleLength;
     const cycle = Math.floor(Number(state.program.index) / PROGRAM.cycleLength) + 1;
+    const todayKey = localDayKey();
+    const programDoneToday = state.history.find(record =>
+      record.day === todayKey
+      && isProgramHistoryRecord(record)
+      && (record.programCompleted === true || record.counted)
+    );
+    const restToday = isRestDay(new Date(), state.calendarPrefs?.restDay ?? PROGRAM.defaultRestDay);
 
-    $("#sessionLabel").textContent = `Semaine ${template.week} • Jour ${template.day}/6`;
-    $("#sessionName").textContent = template.name;
-    $("#sessionFocus").textContent = template.focus;
-    $("#dashDuration").textContent = "~20 min";
-    $("#dailyCoachText").textContent = coachRecommendation(template);
+    const quickStart = $("#quickStart");
+    const prepare = $("#prepareSession");
+    const phaseRoute = document.querySelector(".phase-route");
 
-    $("#readiness").textContent =
-      template.intensity === "léger" ? "LÉGER" : "PROGRESSION";
+    // L'accueil ne doit jamais présenter la séance suivante comme étant "aujourd'hui"
+    // une fois la séance officielle validée, ni proposer un programme un jour de repos.
+    const blockedForToday = Boolean(programDoneToday || restToday);
+    quickStart?.classList.toggle("hidden", blockedForToday);
+    prepare?.classList.toggle("hidden", blockedForToday);
+    phaseRoute?.classList.toggle("hidden", blockedForToday);
 
-    $("#readiness").classList.toggle("light-day", template.intensity === "léger");
+    if (programDoneToday) {
+      $("#sessionLabel").textContent = programDoneToday.sessionName || "Séance du jour";
+      $("#sessionName").textContent = "Séance terminée ✓";
+      $("#sessionFocus").textContent = `Prochaine séance : ${template.name}`;
+      $("#dashDuration").textContent = `${Math.max(1, Math.round((programDoneToday.duration || 0) / 60))} min`;
+      $("#dailyCoachText").textContent = "C’est fait pour aujourd’hui. Récupère, la prochaine séance reste prête pour le prochain jour d’entraînement.";
+      $("#readiness").textContent = "FAIT";
+      $("#readiness").classList.add("light-day");
+    } else if (restToday) {
+      $("#sessionLabel").textContent = "Jour de récupération";
+      $("#sessionName").textContent = "Repos";
+      $("#sessionFocus").textContent = `Prochaine séance : ${template.name}`;
+      $("#dashDuration").textContent = "—";
+      $("#dailyCoachText").textContent = "Repos prévu aujourd’hui. Marche ou mobilité légère si tu en as envie, mais rien n’est à rattraper.";
+      $("#readiness").textContent = "REPOS";
+      $("#readiness").classList.add("light-day");
+    } else {
+      $("#sessionLabel").textContent = `Semaine ${template.week} • Jour ${template.day}/6`;
+      $("#sessionName").textContent = template.name;
+      $("#sessionFocus").textContent = template.focus;
+      $("#dashDuration").textContent = "~20 min";
+      $("#dailyCoachText").textContent = coachRecommendation(template);
+      $("#readiness").textContent = template.intensity === "léger" ? "LÉGER" : "PROGRESSION";
+      $("#readiness").classList.toggle("light-day", template.intensity === "léger");
+    }
 
     $("#cycleLabel").textContent =
       `Cycle ${cycle} • Semaine ${template.week}/4 • Jour ${template.day}/6`;
