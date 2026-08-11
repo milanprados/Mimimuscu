@@ -14,17 +14,13 @@ async function loadJson(relativePath) {
   return response.json();
 }
 
-const [
-  exerciseCatalog,
-  familyCatalog,
-  programCatalog,
-  milestoneCatalog
-] = await Promise.all([
-  loadJson("../../data/exercises.json"),
-  loadJson("../../data/exercise_families.json"),
-  loadJson("../../data/programs.json"),
-  loadJson("../../data/milestones.json")
-]);
+const [exerciseCatalog, familyCatalog, programCatalog, milestoneCatalog] =
+  await Promise.all([
+    loadJson("../../data/exercises.json"),
+    loadJson("../../data/exercise_families.json"),
+    loadJson("../../data/programs.json"),
+    loadJson("../../data/milestones.json"),
+  ]);
 
 function localAssetUrl(path) {
   return new URL(`../../${path}`, import.meta.url).href;
@@ -70,34 +66,34 @@ function normalizeExercise(raw) {
     images: localVisual
       ? [localAssetUrl(raw.visual.start), localAssetUrl(raw.visual.end)]
       : [],
-    thumb: localVisual ? localAssetUrl(raw.visual.thumb) : null
+    thumb: localVisual ? localAssetUrl(raw.visual.thumb) : null,
   };
 }
 
 export const EXERCISES = Object.fromEntries(
-  exerciseCatalog.exercises.map(raw => {
+  exerciseCatalog.exercises.map((raw) => {
     const exercise = normalizeExercise(raw);
     return [exercise.id, exercise];
-  })
+  }),
 );
 
-export const FAMILIES = familyCatalog.families.map(family => ({
+export const FAMILIES = familyCatalog.families.map((family) => ({
   ...family,
   base: EXERCISES[family.base_id],
   allIds: [
     ...(family.variants.easier || []),
     ...(family.variants.standard || []),
     ...(family.variants.variations || []),
-    ...(family.variants.harder || [])
-  ]
+    ...(family.variants.harder || []),
+  ],
 }));
 
 export const PROGRAMS = programCatalog.programs;
 
-export const MILESTONES = milestoneCatalog.milestones.map(item => ({
+export const MILESTONES = milestoneCatalog.milestones.map((item) => ({
   id: item.id,
   exerciseId: item.exercise_id,
   label: item.label,
   value: item.value,
-  mode: item.mode
+  mode: item.mode,
 }));
