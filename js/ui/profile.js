@@ -469,19 +469,18 @@ export function createProfileView({
     $("#backupStatus").textContent = "Sauvegarde exportée ✓";
   });
 
-  on("#resetProgression", "click", () => {
-    const accepted = confirm(
-      "Réinitialiser toute la progression ?\n\n" +
-      "Le programme, les cibles adaptatives, l’XP, les records, l’historique et les objectifs seront remis à zéro.\n\n" +
-      "Ton profil, tes mensurations, tes réglages et tes séances personnalisées seront conservés."
-    );
+  on("#resetProgression", "click", () => openLayer("#resetProgressionModal"));
+  on("#closeResetProgression", "click", () => closeLayer("#resetProgressionModal"));
+  on("#cancelResetProgression", "click", () => closeLayer("#resetProgressionModal"));
 
-    if (!accepted) return;
-
+  on("#confirmResetProgression", "click", () => {
     resetProgression(state, exercises);
     save(state);
+    closeLayer("#resetProgressionModal");
     refresh();
-    $("#backupStatus").textContent = "Progression réinitialisée ✓";
+
+    const status = $("#backupStatus");
+    if (status) status.textContent = "Progression réinitialisée ✓";
   });
 
   on("#importBackup", "click", () => $("#backupFileInput").click());

@@ -224,3 +224,83 @@ button{border:0;cursor:pointer}
 .destructive-outline-btn{min-height:40px;border:1px solid #5a3032;border-radius:12px;background:#211214;color:#ff8a84;padding:0 12px;font-size:9px;font-weight:850}
 @media(max-width:520px){.progress-reset-row{grid-template-columns:1fr}.destructive-outline-btn{width:100%}}
 @media(max-height:720px){.workout-screen .pose-grid{min-height:120px;height:130px}.workout-screen .timer-visual{min-height:155px;height:170px}.inline-exercise-guide{padding:9px}.inline-guide-block li{padding:3px 0}}
+
+/* V31.3 — correctif visible : guide réellement complet + reset propre */
+.inline-guide-description{
+  margin:8px 0 10px;
+  padding:10px 11px;
+  border-radius:12px;
+  background:#0c0f13;
+  color:#bfc6ce;
+  font-size:10px;
+  line-height:1.5;
+}
+.inline-guide-note,.inline-guide-breath{
+  display:grid;
+  grid-template-columns:76px 1fr;
+  gap:8px;
+  align-items:start;
+  padding:9px 0;
+  border-top:1px solid #20262d;
+}
+.inline-guide-note span,.inline-guide-breath span,
+.inline-guide-list>small{
+  color:var(--acid);
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.1em;
+}
+.inline-guide-note p,.inline-guide-breath p{margin:0;color:#c4cad1;font-size:9px;line-height:1.45}
+.inline-guide-list{padding:9px 0 1px;border-top:1px solid #20262d}
+.inline-guide-list ul{margin:6px 0 0;padding-left:17px;color:#c4cad1;font-size:9px;line-height:1.5}
+.inline-guide-list li+li{margin-top:3px}
+.inline-guide-list.danger>small{color:#ff8a84}
+
+.reset-progress-card{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  margin-top:16px;
+  padding:14px;
+  border:1px solid #342629;
+  border-radius:17px;
+  background:#151113;
+}
+.reset-progress-card>div>strong,.reset-progress-card>div>small{display:block}
+.reset-progress-card>div>strong{margin-top:4px;font-size:12px}
+.reset-progress-card>div>small{margin-top:5px;color:#8d8589;font-size:9px;line-height:1.45}
+.reset-progress-btn{
+  min-height:40px;
+  padding:0 13px;
+  border:1px solid #563238;
+  border-radius:12px;
+  background:#211417;
+  color:#ff9b96;
+  font-size:9px;
+  font-weight:900;
+}
+.reset-progress-btn:active{transform:translateY(1px)}
+.reset-confirm-card{
+  background:#111419;
+  border:1px solid #252b32;
+  border-radius:20px;
+  padding:18px;
+  text-align:center;
+}
+.reset-confirm-icon{
+  width:54px;height:54px;margin:2px auto 14px;border-radius:18px;
+  display:grid;place-items:center;background:#241619;color:#ff958f;font-size:24px;font-weight:900;
+}
+.reset-confirm-card>p{margin:0 auto;max-width:390px;color:#c6ccd2;font-size:11px;line-height:1.55}
+.reset-preserved{margin:15px 0 0;padding:11px;border-radius:13px;background:#0d1014;text-align:left}
+.reset-preserved span,.reset-preserved strong{display:block}
+.reset-preserved span{color:var(--acid);font-size:7px;font-weight:900;letter-spacing:.1em}
+.reset-preserved strong{margin-top:4px;font-size:10px;line-height:1.45}
+.reset-confirm-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.reset-confirm-actions button{min-height:45px}
+.reset-confirm-btn{border-radius:13px;background:#7a2e32;color:#fff;font-size:10px;font-weight:900}
+@media(max-width:520px){
+  .reset-progress-card{grid-template-columns:1fr}
+  .reset-progress-btn{width:100%}
+}

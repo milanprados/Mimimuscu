@@ -1,13 +1,5 @@
 # Mimi Muscu
 
-## Patch V31.2 — guide visible + reset progression
-
-- le déroulé complet (position de départ, mouvement, respiration) est visible directement pendant chaque exercice ;
-- le guide détaillé reste accessible sans perdre le minuteur ;
-- un bouton **Réinitialiser la progression** est disponible dans Profil → Données ;
-- le reset efface programme/XP/records/historique/objectifs/cibles adaptatives, mais conserve profil, mensurations, réglages et séances personnalisées.
-
-
 PWA de musculation au poids du corps : routine full body ~20 min, 6 jours/semaine,
 progression adaptative, calendrier, profil, bibliothèque d'exercices et mode hors-ligne.
 

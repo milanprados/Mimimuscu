@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#090a0c">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=31.1">
+  <link rel="stylesheet" href="./styles.css?v=31.3">
   <title>Mimi Muscu</title>
 </head>
 <body>
@@ -292,12 +292,13 @@
           <input id="backupFileInput" type="file" accept=".json,application/json" class="hidden">
           <small id="backupStatus"></small>
 
-          <div class="progress-reset-row">
+          <div class="reset-progress-card">
             <div>
-              <strong>Repartir de zéro</strong>
-              <small>Remet le programme, les records, l’XP et l’historique à zéro. Ton profil et tes mensurations restent.</small>
+              <span class="eyebrow">REPARTIR DE ZÉRO</span>
+              <strong>Réinitialiser ma progression</strong>
+              <small>Efface séances, XP, records, objectifs et adaptation. Ton profil, tes mensurations, tes réglages et tes séances perso restent.</small>
             </div>
-            <button class="destructive-outline-btn" id="resetProgression">Réinitialiser la progression</button>
+            <button class="reset-progress-btn" id="resetProgression" type="button">Réinitialiser</button>
           </div>
         </article>
 
@@ -390,6 +391,28 @@
           <label class="wide"><span>Poids</span><div class="unit-input"><input id="weight" type="number" step="0.1" inputmode="decimal"><b>kg</b></div></label>
         </div>
         <button class="primary-btn" id="saveProfile">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal hidden" id="resetProgressionModal" aria-hidden="true">
+    <div class="modal-shell compact-modal">
+      <header class="modal-head">
+        <button id="closeResetProgression" aria-label="Fermer">←</button>
+        <div><span class="eyebrow">PROGRESSION</span><h2>Repartir de zéro ?</h2></div>
+        <span></span>
+      </header>
+      <div class="reset-confirm-card">
+        <div class="reset-confirm-icon">↺</div>
+        <p>Tu vas remettre à zéro le programme, les cibles adaptatives, l’XP, les records, l’historique et les objectifs.</p>
+        <div class="reset-preserved">
+          <span>Conservé</span>
+          <strong>Profil · mensurations · réglages · séances perso</strong>
+        </div>
+        <div class="reset-confirm-actions">
+          <button class="soft-btn" id="cancelResetProgression" type="button">Annuler</button>
+          <button class="reset-confirm-btn" id="confirmResetProgression" type="button">Oui, réinitialiser</button>
+        </div>
       </div>
     </div>
   </div>
@@ -504,7 +527,14 @@
   </div>
 
   <script type="module">
-    import("./js/app.js?v=31.2").catch(error=>{
+    // V31.3 : on purge uniquement les anciens caches applicatifs avant le boot.
+    // Les données utilisateur sont dans localStorage et ne sont jamais touchées ici.
+    try {
+      const keys = await caches.keys();
+      await Promise.all(keys.filter(key => key.startsWith("mimi-muscu-")).map(key => caches.delete(key)));
+    } catch (_) {}
+
+    import("./js/app.js?v=31.3").catch(error=>{
       console.error("[Mimi Muscu] Erreur de démarrage",error);
       const box=document.createElement("div");
       box.className="boot-error";

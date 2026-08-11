@@ -1,9 +1,9 @@
 /**
- * Cache PWA V31.2
+ * Cache PWA V31.3
  * Navigation : network-first.
  * JS/CSS/data/images : cache-first pour un démarrage rapide et un offline fiable.
  */
-const VERSION = "mimi-muscu-v31-2";
+const VERSION = "mimi-muscu-v31-3";
 const APP_CACHE = `${VERSION}-app`;
 
 const APP_SHELL = [
@@ -87,7 +87,14 @@ self.addEventListener("fetch", event => {
   }
 
   const url = new URL(event.request.url);
-  if (url.origin === self.location.origin) {
-    event.respondWith(cacheFirst(event.request));
+  if (url.origin !== self.location.origin) return;
+
+  // Le code et les données passent par le réseau d'abord : une mise à jour GitHub
+  // ne doit plus rester bloquée derrière une ancienne version du cache PWA.
+  if (/\.(?:js|css|json)$/i.test(url.pathname)) {
+    event.respondWith(networkFirst(event.request));
+    return;
   }
+
+  event.respondWith(cacheFirst(event.request));
 });

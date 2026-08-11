@@ -86,16 +86,23 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
     const guide = exercise?.guide || {};
     const setup = guide.setup || [];
     const execution = guide.execution || [];
+    const tips = guide.tips || exercise?.tips || [];
+    const errors = guide.errors || [];
     const breathing = guide.breathing || exercise?.breathing || "";
+    const specificNote = guide.specific_note || "";
 
-    if (!setup.length && !execution.length && !breathing) return "";
+    if (!exercise?.description && !setup.length && !execution.length && !tips.length && !errors.length && !breathing) {
+      return "";
+    }
 
     return `
       <div class="inline-exercise-guide">
         <div class="inline-guide-head">
           <div><span>COMMENT FAIRE</span><strong>Déroulé complet</strong></div>
-          <button class="technique-link" id="${buttonId}">Guide détaillé</button>
+          <button class="technique-link" id="${buttonId}">Voir en grand</button>
         </div>
+
+        ${exercise.description ? `<p class="inline-guide-description">${exercise.description}</p>` : ""}
 
         ${setup.length ? `
           <section class="inline-guide-block">
@@ -109,8 +116,23 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
             <ol>${renderGuideSteps(execution)}</ol>
           </section>` : ""}
 
+        ${specificNote ? `
+          <div class="inline-guide-note"><span>POINT CLÉ</span><p>${specificNote}</p></div>` : ""}
+
         ${breathing ? `
           <div class="inline-guide-breath"><span>RESPIRATION</span><p>${breathing}</p></div>` : ""}
+
+        ${tips.length ? `
+          <section class="inline-guide-list">
+            <small>À RETENIR</small>
+            <ul>${tips.slice(0, 3).map(text => `<li>${text}</li>`).join("")}</ul>
+          </section>` : ""}
+
+        ${errors.length ? `
+          <section class="inline-guide-list danger">
+            <small>À ÉVITER</small>
+            <ul>${errors.slice(0, 3).map(text => `<li>${text}</li>`).join("")}</ul>
+          </section>` : ""}
       </div>`;
   }
 
