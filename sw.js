@@ -1,9 +1,8 @@
 /**
- * Cache PWA V32.2
- * Navigation : network-first.
- * JS/CSS/data/images : cache-first pour un démarrage rapide et un offline fiable.
+ * Cache PWA Soft Editorial
+ * Navigation + code : network-first pour recevoir les mises à jour immédiatement.
  */
-const VERSION = "mimi-muscu-timer-final-v1";
+const VERSION = "mimi-muscu-soft-editorial-1";
 const APP_CACHE = `${VERSION}-app`;
 
 const APP_SHELL = [
@@ -19,6 +18,7 @@ const APP_SHELL = [
   "./js/core/calendar.js",
 
   "./js/ui/navigation.js",
+  "./js/ui/theme.js",
   "./js/ui/home.js",
   "./js/ui/workout.js",
   "./js/ui/exercise-library.js",
@@ -49,9 +49,7 @@ self.addEventListener("install", event => {
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys()
-      .then(keys => Promise.all(
-        keys.filter(key => key !== APP_CACHE).map(key => caches.delete(key))
-      ))
+      .then(keys => Promise.all(keys.filter(key => key !== APP_CACHE).map(key => caches.delete(key))))
       .then(() => self.clients.claim())
   );
 });
@@ -60,7 +58,6 @@ async function cacheFirst(request) {
   const cache = await caches.open(APP_CACHE);
   const cached = await cache.match(request);
   if (cached) return cached;
-
   const response = await fetch(request);
   if (response.ok) cache.put(request, response.clone());
   return response;
@@ -68,9 +65,8 @@ async function cacheFirst(request) {
 
 async function networkFirst(request) {
   const cache = await caches.open(APP_CACHE);
-
   try {
-    const response = await fetch(request);
+    const response = await fetch(request, {cache:"no-store"});
     if (response.ok) cache.put(request, response.clone());
     return response;
   } catch (_) {
@@ -89,8 +85,6 @@ self.addEventListener("fetch", event => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
-  // Le code et les données passent par le réseau d'abord : une mise à jour GitHub
-  // ne doit plus rester bloquée derrière une ancienne version du cache PWA.
   if (/\.(?:js|css|json)$/i.test(url.pathname)) {
     event.respondWith(networkFirst(event.request));
     return;
