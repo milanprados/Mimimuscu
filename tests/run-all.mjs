@@ -1,0 +1,23 @@
+import {spawnSync} from "node:child_process";
+
+const tests = [
+  "tests/architecture.test.mjs",
+  "tests/program.test.mjs",
+  "tests/calendar.test.mjs",
+  "tests/migrations.test.mjs",
+  "tests/dom-contract.test.mjs",
+  "tests/imports.test.mjs",
+  "tests/service-worker.test.mjs",
+  "tests/workout-engine.test.mjs"
+];
+
+for (const test of tests) {
+  const result = spawnSync(process.execPath, [test], {
+    cwd: process.cwd(),
+    stdio: "inherit"
+  });
+
+  if (result.status !== 0) process.exit(result.status || 1);
+}
+
+console.log("\nOK — suite V31 complète.");

@@ -1,97 +1,230 @@
+/**
+ * Mimi Muscu — point d'entrée.
+ *
+ * app.js assemble les modules et coordonne le refresh.
+ * La logique métier doit rester dans core/, le DOM dans ui/.
+ */
+import {APP_VERSION} from "./config.js";
 
-import {EXERCISES,PROGRAMS,LEVEL_META,workoutTemplate,validateImportedSession,MILESTONES,TEST_SESSION,EXERCISE_LOAD,MUSCLE_GROUPS,compressSessionForDuration,richerSessionToFile,validateRichImportedSession} from "./core/data.js";
-import {load,save,dayKey} from "./core/state.js";
-import {Engine} from "./core/engine.js";
-import {$,$$,on} from "./helpers.js";
-import {createWorkoutUI} from "./ui/workout-ui.js";
-import {initDictionary} from "./ui/dictionary.js";
-import {initSessions} from "./ui/sessions.js";
-import {initDashboard} from "./ui/dashboard.js";
-import {initProfileProgress} from "./ui/profile-progress.js";
+import {EXERCISES, FAMILIES, PROGRAMS, MILESTONES} from "./core/catalog.js";
+import {
+  getProgramTemplate,
+  createProgramSession,
+  buildProgramPlan,
+  buildSessionPlan,
+  sessionToFile,
+  validateImportedSession
+} from "./core/program.js";
+import {loadState, saveState} from "./core/state.js";
+import {
+  ensureProgressBaseline,
+  buildProgressionSnapshot,
+  levelFromXp
+} from "./core/progression.js";
+import {WorkoutEngine} from "./core/workout-engine.js";
 
-const state=load(EXERCISES);
-const level=()=>1+Math.floor(state.xp/500);
-const weight=()=>Number(state.profile.weightKg)||null;
-const kcal=seconds=>{const w=weight();return w?Math.round(4.5*3.5*w/200*(seconds/60)):null};
-const selectedDuration=()=>Number(state.preferences.defaultDuration)||22;
+import {$, on} from "./utils/dom.js";
 
-function showTab(tab){
-  $$("main section").forEach(section=>section.classList.add("hidden"));
-  const target=$(`#${tab}Tab`);
-  if(!target){console.warn(`[Mimi Muscu] onglet inconnu: ${tab}`);return}
-  target.classList.remove("hidden");
-  $$(".tabs button").forEach(button=>button.classList.toggle("active",button.dataset.tab===tab));
+import {createNavigation} from "./ui/navigation.js";
+import {createWorkoutView} from "./ui/workout.js";
+import {createExerciseLibrary} from "./ui/exercise-library.js";
+import {createSessionPlanner} from "./ui/session-planner.js";
+import {createHomeView} from "./ui/home.js";
+import {createCalendarView} from "./ui/calendar.js";
+import {createProfileView} from "./ui/profile.js";
+import {createProgressView} from "./ui/progress.js";
+
+window.__MIMI_BOOT__ = {version: APP_VERSION, step: "data-loaded", errors: []};
+
+const state = loadState(EXERCISES);
+window.__MIMI_BOOT__.step = "state-loaded";
+
+function caloriesForSeconds(seconds) {
+  const weightKg = Number(state.profile.weightKg);
+  if (!weightKg) return null;
+
+  // Approximation volontairement simple (~4.5 MET).
+  return Math.round(4.5 * 3.5 * weightKg / 200 * (seconds / 60));
 }
-$$(".tabs button").forEach(button=>button.addEventListener("click",()=>showTab(button.dataset.tab)));
 
-const workoutUI=createWorkoutUI({state,EXERCISES,MUSCLE_GROUPS,EXERCISE_LOAD,save,kcal,level});
-const engine=new Engine(state,workoutUI.hooks);
-workoutUI.setEngine(engine);
-workoutUI.bindStaticControls();
+function coachText() {
+  const template = getProgramTemplate(state.program);
+  const last = state.history[0];
 
-const launchSession=(session,redo=false)=>{workoutUI.openFocus();engine.start(redo,session)};
-const launchProgram=redo=>{workoutUI.openFocus();engine.start(redo)};
-
-let refresh=()=>{};
-
-const sessions=initSessions({
- state,save,EXERCISES,workoutTemplate,LEVEL_META,
- richerSessionToFile,validateImportedSession,validateRichImportedSession,
- launchSession,launchProgram,refresh:()=>refresh()
-});
-
-const dashboard=initDashboard({
- state,save,EXERCISES,PROGRAMS,LEVEL_META,MILESTONES,TEST_SESSION,
- workoutTemplate,compressSessionForDuration,launchSession,
- openPlanner:sessions.openPlanner,refresh:()=>refresh()
-});
-
-function coachText(){
-  const tpl=workoutTemplate(state.program),last=state.history[0],out=[
+  const lines = [
     "Analyse ma progression et donne-moi des conseils courts, concrets et adaptés à mon objectif esthétique.",
-    `Programme ${LEVEL_META[state.program.level].name}, séance prévue ${tpl.key} ${tpl.name}.`,
-    `Profil: ${state.profile.age||"?"} ans, ${state.profile.heightCm||"?"} cm, ${state.profile.weightKg||"?"} kg.`,
-    `Durée habituelle: ${selectedDuration()} min.`,
-    `Streak: ${state.streak}. XP: ${state.xp}.`
+    `Routine 20 min, semaine ${template.week}/4, jour ${template.day}/6 : ${template.name}.`,
+    `Profil : ${state.profile.age || "?"} ans, ${state.profile.heightCm || "?"} cm, ${state.profile.weightKg || "?"} kg.`,
+    "Objectif : progression esthétique et musculaire au poids du corps, 6 séances par semaine.",
+    `Streak : ${state.streak}. Niveau : ${levelFromXp(state.xp)}. XP : ${state.xp}.`
   ];
-  if(last){out.push(`Dernière séance: ${last.sessionName||"Séance"}, score ${last.score}/100, durée ${last.duration}s.`);for(const set of last.sets||[])out.push(set.skipped?`- ${set.name}: passé`:`- ${set.name}: ${set.actual}/${set.target} (${set.effort})`)}
-  const latest=state.measurements[state.measurements.length-1];if(latest)out.push(`Dernière mesure: ${latest.weightKg||"?"} kg, tour de taille ${latest.waistCm||"?"} cm.`);
-  return out.join("\n");
+
+  if (last) {
+    lines.push(
+      `Dernière séance : ${last.sessionName || "Séance"}, score ${last.score}/100, durée ${last.duration}s.`
+    );
+
+    for (const set of last.sets || []) {
+      lines.push(
+        set.skipped
+          ? `- ${set.name} : passé`
+          : `- ${set.name} : ${set.actual}/${set.target} (${set.effort})`
+      );
+    }
+  }
+
+  const latestMeasurement = state.measurements.at(-1);
+
+  if (latestMeasurement) {
+    lines.push(
+      `Dernière mesure : ${latestMeasurement.weightKg || "?"} kg, tour de taille ${latestMeasurement.waistCm || "?"} cm.`
+    );
+  }
+
+  return lines.join("\n");
 }
 
-const profileProgress=initProfileProgress({
- state,save,EXERCISES,dayKey,selectedDuration,level,coachText,refresh:()=>refresh()
+// Workout ---------------------------------------------------------------------
+window.__MIMI_BOOT__.step = "workout-init";
+
+const workoutView = createWorkoutView({
+  state,
+  exercises: EXERCISES,
+  caloriesForSeconds
 });
 
-initDictionary({EXERCISES});
+const workoutEngine = new WorkoutEngine({
+  state,
+  exercises: EXERCISES,
+  buildProgramPlan,
+  buildSessionPlan,
+  hooks: workoutView.hooks,
+  persist: saveState
+});
 
-on("#redoSession","click",()=>launchProgram(true));
+workoutView.setEngine(workoutEngine);
+workoutView.bindStaticControls();
 
-refresh=()=>{
-  dashboard.render();
-  sessions.renderCustomSessions();
-  profileProgress.render();
-  save(state);
+function launchSession(session, redo = false) {
+  workoutView.open();
+  workoutEngine.start({session, redo});
+}
+
+function launchCurrentProgram(redo = false) {
+  workoutView.open();
+  workoutEngine.start({redo});
+}
+
+// Refresh partagé -------------------------------------------------------------
+let progressionSnapshot = null;
+let refreshApp = () => {};
+
+function getSnapshot() {
+  if (!progressionSnapshot) {
+    progressionSnapshot = buildProgressionSnapshot(state, EXERCISES);
+  }
+  return progressionSnapshot;
+}
+
+// UI --------------------------------------------------------------------------
+window.__MIMI_BOOT__.step = "sessions-init";
+
+const sessionPlanner = createSessionPlanner({
+  state,
+  save: saveState,
+  EXERCISES,
+  workoutTemplate: getProgramTemplate,
+  programSession: createProgramSession,
+  sessionToFile,
+  validateImportedSession,
+  launchSession,
+  refresh: () => refreshApp()
+});
+
+window.__MIMI_BOOT__.step = "home-init";
+
+const homeView = createHomeView({
+  state,
+  milestones: MILESTONES,
+  getProgramTemplate,
+  createProgramSession,
+  launchSession,
+  openPlanner: sessionPlanner.openPlanner
+});
+
+window.__MIMI_BOOT__.step = "calendar-init";
+
+const calendarView = createCalendarView({
+  state,
+  save: saveState,
+  PROGRAMS,
+  programSession: createProgramSession,
+  launchSession
+});
+
+window.__MIMI_BOOT__.step = "library-init";
+createExerciseLibrary({EXERCISES, FAMILIES});
+
+window.__MIMI_BOOT__.step = "profile-init";
+
+const profileView = createProfileView({
+  state,
+  exercises: EXERCISES,
+  save: saveState,
+  refresh: () => refreshApp(),
+  getSnapshot,
+  coachText
+});
+
+const progressView = createProgressView({
+  state,
+  exercises: EXERCISES
+});
+
+const navigation = createNavigation();
+
+// Un seul chemin de rendu prévisible.
+refreshApp = () => {
+  if (ensureProgressBaseline(state, EXERCISES)) saveState(state);
+
+  progressionSnapshot = buildProgressionSnapshot(state, EXERCISES);
+
+  homeView.render();
+  calendarView.render();
+  sessionPlanner.renderCustomSessions();
+  profileView.render(progressionSnapshot);
+  progressView.render(progressionSnapshot);
+
+  saveState(state);
 };
 
-window.addEventListener("mimi:refresh",event=>{
-  refresh();
-  if(event.detail?.tab)showTab(event.detail.tab);
+on("#redoSession", "click", () => launchCurrentProgram(true));
+
+window.addEventListener("mimi:refresh", event => {
+  refreshApp();
+  if (event.detail?.tab) navigation.showTab(event.detail.tab);
 });
 
-refresh();
+refreshApp();
+window.__MIMI_BOOT__.step = "ready";
 
-if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("./sw.js").then(reg=>{
-    if(reg.waiting) $("#updateToast")?.classList.remove("hidden");
-    reg.addEventListener("updatefound",()=>{
-      const worker=reg.installing;
-      worker?.addEventListener("statechange",()=>{
-        if(worker.state==="installed" && navigator.serviceWorker.controller){
-          $("#updateToast")?.classList.remove("hidden");
-        }
+// PWA -------------------------------------------------------------------------
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("./sw.js")
+    .then(registration => {
+      if (registration.waiting) $("#updateToast")?.classList.remove("hidden");
+
+      registration.addEventListener("updatefound", () => {
+        const worker = registration.installing;
+
+        worker?.addEventListener("statechange", () => {
+          if (worker.state === "installed" && navigator.serviceWorker.controller) {
+            $("#updateToast")?.classList.remove("hidden");
+          }
+        });
       });
-    });
-    on("#applyUpdate","click",()=>location.reload());
-  }).catch(console.warn);
+
+      on("#applyUpdate", "click", () => location.reload());
+    })
+    .catch(error => console.warn("[Mimi Muscu] Service worker", error));
 }

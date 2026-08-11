@@ -1,3 +1,19 @@
+/*
+ * Mimi Muscu — styles
+ *
+ * Repères de recherche :
+ *   :root              → couleurs / tokens
+ *   .app-* / .tabs     → shell + navigation
+ *   .today-*           → accueil
+ *   .exercise-*        → bibliothèque
+ *   .modal-*           → modales / planner
+ *   .focus-*           → mode séance
+ *   V28                → familles d'exercices
+ *   V29                → profil / progression
+ *   V30                → calendrier
+ *
+ * La V31 conserve volontairement la DA validée et refond surtout l'architecture JS.
+ */
 
 :root{
   --bg:#090a0c;--surface:#111318;--surface-2:#171a20;--surface-3:#1e2229;

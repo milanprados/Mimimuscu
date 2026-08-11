@@ -1,61 +1,93 @@
-const VERSION="mimi-muscu-v30";
-const APP_CACHE=`${VERSION}-app`;
-const DATA_CACHE=`${VERSION}-data`;
-const IMAGE_CACHE=`${VERSION}-images`;
+/**
+ * Cache PWA V31
+ * Navigation : network-first.
+ * JS/CSS/data/images : cache-first pour un démarrage rapide et un offline fiable.
+ */
+const VERSION = "mimi-muscu-v31";
+const APP_CACHE = `${VERSION}-app`;
 
-const APP_SHELL=[
-  "./","./index.html","./styles.css","./manifest.json",
-  "./js/v30/app.js","./js/v30/helpers.js",
-  "./js/v30/core/data.js","./js/v30/core/engine.js","./js/v30/core/state.js","./js/v30/core/migrations.js","./js/v30/core/calendar.js",
-  "./js/v30/ui/workout-ui.js","./js/v30/ui/dictionary.js","./js/v30/ui/sessions.js","./js/v30/ui/dashboard.js","./js/v30/ui/profile-progress.js","./js/v30/ui/calendar.js",
-  "./js/v30/utils/backup.js","./js/v30/utils/preload.js",
-  "./assets/icons/icon-192.png","./assets/icons/icon-512.png"
+const APP_SHELL = [
+  "./", "./index.html", "./styles.css", "./manifest.json",
+  "./js/app.js", "./js/config.js",
+
+  "./js/core/catalog.js",
+  "./js/core/program.js",
+  "./js/core/state.js",
+  "./js/core/migrations.js",
+  "./js/core/workout-engine.js",
+  "./js/core/progression.js",
+  "./js/core/calendar.js",
+
+  "./js/ui/navigation.js",
+  "./js/ui/home.js",
+  "./js/ui/workout.js",
+  "./js/ui/exercise-library.js",
+  "./js/ui/session-planner.js",
+  "./js/ui/profile.js",
+  "./js/ui/progress.js",
+  "./js/ui/calendar.js",
+
+  "./js/utils/dom.js",
+  "./js/utils/dates.js",
+  "./js/utils/backup.js",
+  "./js/utils/preload.js",
+
+  "./data/exercises.json",
+  "./data/exercise_families.json",
+  "./data/programs.json",
+  "./data/milestones.json",
+
+  "./assets/icons/icon-192.png",
+  "./assets/icons/icon-512.png"
 ];
 
-self.addEventListener("install",event=>{
+self.addEventListener("install", event => {
   self.skipWaiting();
-  event.waitUntil(caches.open(APP_CACHE).then(cache=>cache.addAll(APP_SHELL)));
+  event.waitUntil(caches.open(APP_CACHE).then(cache => cache.addAll(APP_SHELL)));
 });
 
-self.addEventListener("activate",event=>{
+self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys()
-      .then(keys=>Promise.all(keys.filter(k=>!k.startsWith(VERSION)).map(k=>caches.delete(k))))
-      .then(()=>self.clients.claim())
+      .then(keys => Promise.all(
+        keys.filter(key => key !== APP_CACHE).map(key => caches.delete(key))
+      ))
+      .then(() => self.clients.claim())
   );
 });
 
-async function networkFirst(request,cacheName){
-  const cache=await caches.open(cacheName);
-  try{
-    const response=await fetch(request,{cache:"no-store"});
-    if(response.ok)cache.put(request,response.clone());
+async function cacheFirst(request) {
+  const cache = await caches.open(APP_CACHE);
+  const cached = await cache.match(request);
+  if (cached) return cached;
+
+  const response = await fetch(request);
+  if (response.ok) cache.put(request, response.clone());
+  return response;
+}
+
+async function networkFirst(request) {
+  const cache = await caches.open(APP_CACHE);
+
+  try {
+    const response = await fetch(request);
+    if (response.ok) cache.put(request, response.clone());
     return response;
-  }catch(_){
+  } catch (_) {
     return (await cache.match(request)) || Response.error();
   }
 }
 
-async function cacheFirst(request,cacheName){
-  const cache=await caches.open(cacheName);
-  const cached=await cache.match(request);
-  if(cached)return cached;
-  const response=await fetch(request);
-  if(response.ok)cache.put(request,response.clone());
-  return response;
-}
+self.addEventListener("fetch", event => {
+  if (event.request.method !== "GET") return;
 
-self.addEventListener("fetch",event=>{
-  if(event.request.method!=="GET")return;
-  const url=new URL(event.request.url);
+  if (event.request.mode === "navigate") {
+    event.respondWith(networkFirst(event.request));
+    return;
+  }
 
-  if(url.pathname.endsWith(".json") && url.pathname.includes("/data/")){
-    event.respondWith(networkFirst(event.request,DATA_CACHE));return;
-  }
-  if(event.request.destination==="image"){
-    event.respondWith(cacheFirst(event.request,IMAGE_CACHE));return;
-  }
-  if(url.origin===self.location.origin){
-    event.respondWith(networkFirst(event.request,APP_CACHE));return;
+  const url = new URL(event.request.url);
+  if (url.origin === self.location.origin) {
+    event.respondWith(cacheFirst(event.request));
   }
 });

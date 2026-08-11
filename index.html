@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#090a0c">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=30">
+  <link rel="stylesheet" href="./styles.css?v=31">
   <title>Mimi Muscu</title>
 </head>
 <body>
@@ -23,6 +23,7 @@
     </header>
 
     <main id="appMain">
+      <!-- SCREEN: Accueil / séance du jour -->
       <section id="sessionTab" class="screen" aria-hidden="false">
         <div class="screen-intro home-intro">
           <span class="eyebrow">AUJOURD'HUI</span>
@@ -105,6 +106,7 @@
         </article>
       </section>
 
+      <!-- SCREEN: Bibliothèque des exercices -->
       <section id="exercisesTab" class="screen hidden" aria-hidden="true">
         <div class="screen-intro">
           <span class="eyebrow">BIBLIOTHÈQUE</span>
@@ -118,6 +120,7 @@
         <div id="exerciseList" class="exercise-list"></div>
       </section>
 
+      <!-- SCREEN: Progression détaillée -->
       <section id="progressTab" class="screen hidden" aria-hidden="true">
         <div class="screen-intro">
           <span class="eyebrow">ANALYSE</span>
@@ -174,6 +177,7 @@
         </article>
       </section>
 
+      <!-- SCREEN: Profil athlète -->
       <section id="profileTab" class="screen hidden" aria-hidden="true">
         <div class="screen-intro profile-intro">
           <span class="eyebrow">TON PROFIL</span>
@@ -297,6 +301,7 @@
       </section>
     </main>
 
+    <!-- NAVIGATION PRINCIPALE -->
     <nav class="tabs" aria-label="Navigation principale">
       <button class="active" data-tab="session" aria-current="page"><span>⌂</span><small>Accueil</small></button>
       <button data-tab="exercises"><span>◈</span><small>Exos</small></button>
@@ -305,6 +310,7 @@
     </nav>
   </div>
 
+  <!-- MODALS / COUCHES SECONDAIRES -->
   <div class="modal hidden calendar-modal" id="calendarModal" aria-hidden="true">
     <div class="modal-shell calendar-shell">
       <header class="modal-head">
@@ -480,7 +486,7 @@
   </div>
 
   <script type="module">
-    import("./js/v30/app.js?v=30.0").catch(error=>{
+    import("./js/app.js?v=31.0").catch(error=>{
       console.error("[Mimi Muscu] Erreur de démarrage",error);
       const box=document.createElement("div");
       box.className="boot-error";
