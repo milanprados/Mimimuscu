@@ -10,9 +10,12 @@ function ensure(state, key, factory) {
 
 const migrations = {
   20(state) {
-    ensure(state, "preferences", () => ({defaultDuration: 22, autoSuggest: true}));
+    ensure(state, "preferences", () => ({
+      defaultDuration: 22,
+      autoSuggest: true,
+    }));
     ensure(state, "measurements", () => []);
-    ensure(state, "benchmark", () => ({lastDate: "", dueEveryDays: 28}));
+    ensure(state, "benchmark", () => ({ lastDate: "", dueEveryDays: 28 }));
     ensure(state, "achievements", () => ({}));
     return state;
   },
@@ -22,38 +25,48 @@ const migrations = {
     return state;
   },
   22(state) {
-    ensure(state, "backupMeta", () => ({lastExportAt: ""}));
-    if (!state.program) state.program = {level: "beginner", index: 0};
+    ensure(state, "backupMeta", () => ({ lastExportAt: "" }));
+    if (!state.program) state.program = { level: "beginner", index: 0 };
     return state;
   },
-  23(state) { return state; },
-  24(state) { return state; },
-  25(state) { return state; },
+  23(state) {
+    return state;
+  },
+  24(state) {
+    return state;
+  },
+  25(state) {
+    return state;
+  },
   26(state) {
-    state.program = {level: "adaptive", index: 0};
+    state.program = { level: "adaptive", index: 0 };
     state.sessionDraft = null;
     ensure(state, "preferences", () => ({}));
     state.preferences.autoSuggest = true;
     delete state.preferences.defaultDuration;
     return state;
   },
-  27(state) { return state; },
-  28(state) { return state; },
+  27(state) {
+    return state;
+  },
+  28(state) {
+    return state;
+  },
   29(state) {
-    ensure(state, "profileMeta", () => ({nickname: "", startedAt: ""}));
-    ensure(state, "progressBaseline", () => ({createdAt: "", values: {}}));
+    ensure(state, "profileMeta", () => ({ nickname: "", startedAt: "" }));
+    ensure(state, "progressBaseline", () => ({ createdAt: "", values: {} }));
     ensure(state, "goals", () => []);
     return state;
   },
   30(state) {
-    ensure(state, "calendarPrefs", () => ({restDay: 0}));
+    ensure(state, "calendarPrefs", () => ({ restDay: 0 }));
     return state;
   },
   31(state) {
     // V31 change surtout l'architecture, pas le format utilisateur.
-    ensure(state, "calendarPrefs", () => ({restDay: 0}));
+    ensure(state, "calendarPrefs", () => ({ restDay: 0 }));
     return state;
-  }
+  },
 };
 
 export function migrateState(input) {
