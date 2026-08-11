@@ -530,7 +530,7 @@
       await Promise.all(keys.filter(key => key.startsWith("mimi-muscu-")).map(key => caches.delete(key)));
     } catch (_) {}
 
-    import("./js/app.js?v=soft-editorial-v2").catch(error=>{
+    import("./js/app.js?v=soft-editorial-v4").catch(error=>{
       console.error("[Mimi Muscu] Erreur de démarrage",error);
       const box=document.createElement("div");
       box.className="boot-error";
