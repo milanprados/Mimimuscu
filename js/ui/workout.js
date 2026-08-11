@@ -19,7 +19,6 @@ import { getMuscleLoad, levelFromXp } from "../core/progression.js";
 export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
   let engine = null;
   let audioEnabled = true;
-  let imageFlipTimer = null;
   let audioContext = null;
   let reportedReps = 0;
   let reportedEffort = "good";
@@ -86,11 +85,6 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
     } catch {}
   }
 
-  function clearImageFlip() {
-    if (imageFlipTimer) clearInterval(imageFlipTimer);
-    imageFlipTimer = null;
-  }
-
   function open() {
     openLayer("#focus");
   }
@@ -98,8 +92,7 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
   function close() {
     closeWorkoutGuide({ resume: false });
     engine?.cancel();
-    clearImageFlip();
-    $("#focus")?.classList.remove("rest-editorial");
+    $("#focus")?.classList.remove("rest-editorial", "active-editorial");
     closeLayer("#focus");
   }
 
@@ -231,7 +224,9 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
   }
 
   function renderHeader(item) {
-    $("#focus")?.classList.toggle("rest-editorial", item?.kind === "rest");
+    const focus = $("#focus");
+    focus?.classList.toggle("rest-editorial", item?.kind === "rest");
+    focus?.classList.remove("active-editorial");
     $("#focusPhase").textContent = item?.phase || "";
     $("#focusStep").textContent =
       `${engine.currentIndex + 1} / ${engine.planItems.length}`;
@@ -292,7 +287,6 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
   function renderRepetitionExercise({ item, exercise, target, next }) {
     if (next?.id) preloadExercise(exercises[next.id]);
 
-    clearImageFlip();
     renderHeader(item);
 
     reportedReps = target;
@@ -365,39 +359,43 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
   }
 
   function renderTimedExercise({ item, exercise, target }) {
-    clearImageFlip();
     renderHeader(item);
 
+    $("#focus")?.classList.add("active-editorial");
+
+    const heroImage = exercise.thumb || exercise.images?.[0] || "";
+    const description =
+      item.note ||
+      exercise.description ||
+      exercise.tips?.[0] ||
+      "Mouvement propre et contrôlé.";
+
     $("#focusContent").innerHTML = `
-      <div class="workout-screen timed">
-        <div class="workout-title">
-          <span>${item.phase || "Exercice"}</span>
+      <div class="workout-screen timed active-editorial-screen" id="activeExerciseScreen">
+        <div class="active-exercise-hero ${heroImage ? "" : "placeholder"}" aria-hidden="true">
+          ${heroImage ? `<img src="${heroImage}" alt="">` : ""}
+        </div>
+
+        <section class="active-exercise-heading">
+          <span>${escapeHtml(item.phase || "Exercice")}</span>
           <h2>${escapeHtml(exercise.name)}</h2>
+          <p>${escapeHtml(description)}</p>
+          <button id="timerGuide">Guide complet →</button>
+        </section>
+
+        <div class="active-exercise-timer" id="timerVisual" aria-live="polite">
+          <strong id="time">${target}</strong>
+          <div class="active-exercise-timer-pulse" aria-hidden="true"></div>
         </div>
 
-        <div class="timer-visual placeholder-timer" id="timerVisual">
-          <div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div>
-          <span class="timer-tag" id="timerPoseLabel">Mouvement</span>
-          <div class="timer-overlay"><strong id="time">${target}</strong><small>sec</small></div>
-        </div>
-
-        ${renderQuickCue(exercise, "timerGuide")}
-
-        <div class="timer-actions">
-          <button class="primary-btn" id="pause">Pause</button>
-          <button class="soft-btn" id="early">Terminer maintenant</button>
+        <div class="active-exercise-actions">
+          <div>
+            <button class="primary-btn" id="pause">Pause</button>
+            <button class="soft-btn" id="early">Terminer maintenant</button>
+          </div>
           <button class="text-danger" id="skipTimed">Passer l’exercice</button>
         </div>
       </div>`;
-
-    let showEnd = false;
-
-    imageFlipTimer = setInterval(() => {
-      showEnd = !showEnd;
-      $("#timerVisual")?.classList.toggle("swap", showEnd);
-      if ($("#timerPoseLabel"))
-        $("#timerPoseLabel").textContent = showEnd ? "Fin" : "Départ";
-    }, UI.exerciseImageFlipMs);
 
     on("#pause", "click", () => engine.togglePause());
     on("#timerGuide", "click", () => openWorkoutGuide(exercise));
@@ -408,7 +406,6 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
   function renderRest({ seconds, next, nextExercise }) {
     if (nextExercise) preloadExercise(nextExercise);
 
-    clearImageFlip();
     renderHeader(engine.currentItem);
 
     const nextMode = next?.modeOverride || nextExercise?.mode;
@@ -496,7 +493,6 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
   }
 
   async function renderCountdown({ item, exercise, done }) {
-    clearImageFlip();
     renderHeader(item);
 
     $("#focusContent").innerHTML = `
@@ -520,8 +516,7 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
   }
 
   function renderFinished({ xp, score, records, duration, record }) {
-    clearImageFlip();
-    $("#focus")?.classList.remove("rest-editorial");
+    $("#focus")?.classList.remove("rest-editorial", "active-editorial");
 
     const calories = caloriesForSeconds(duration);
     const muscleLoad = getMuscleLoad(record);
@@ -629,7 +624,14 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
       countdown: renderCountdown,
       finished: renderFinished,
       tick(value) {
-        if ($("#time")) $("#time").textContent = value;
+        if ($("#time")) {
+          $("#time").textContent = value;
+          const timer = $("#timerVisual");
+          timer?.classList.toggle("ending", value <= 3);
+          timer?.classList.remove("tick-pulse");
+          if (timer) void timer.offsetWidth;
+          timer?.classList.add("tick-pulse");
+        }
         if ($("#rest")) {
           $("#rest").textContent = value;
           updateRestPresentation(value);
@@ -638,6 +640,7 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
       paused(paused) {
         if ($("#pause"))
           $("#pause").textContent = paused ? "Reprendre" : "Pause";
+        $("#activeExerciseScreen")?.classList.toggle("paused", paused);
       },
     },
   };
