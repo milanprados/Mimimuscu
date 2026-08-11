@@ -489,3 +489,169 @@ textarea,input,select{color:#17334f!important;background:#fff!important;border-c
   .next-card{grid-template-columns:1fr 78px}.next-visual{height:66px}
   .rest-prep>section{padding:7px 9px}.rest-prep li{font-size:9px;line-height:1.32}
 }
+
+/* ==========================================================
+   V32.2 — patch lisibilité final
+   Uniquement des overrides visuels : aucun changement métier.
+   ========================================================== */
+
+/* Graphique de poids : plus de pavé noir quand il y a peu de données. */
+.mini-chart{
+  background:#eef6fb!important;
+  border:1px solid #d4e4ed!important;
+  min-height:95px;
+  box-shadow:none!important;
+}
+.mini-chart .bar{
+  background:linear-gradient(180deg,#78a99a,#5f91af)!important;
+}
+
+/* Cycle : statistiques et pastilles sur fond clair. */
+.cycle-dots i{
+  background:#dbe6ec!important;
+  border:1px solid #ccdce5;
+}
+.cycle-dots i.done{
+  background:#78a99a!important;
+  border-color:#78a99a!important;
+}
+.cycle-dots i.next{
+  background:#e6f1e9!important;
+  border-color:#83a993!important;
+  outline:2px solid #83a993!important;
+  outline-offset:1px;
+}
+.cycle-current-stats>div{
+  background:#eef6fb!important;
+  border:1px solid #d4e4ed!important;
+  color:#153958!important;
+}
+.cycle-current-stats strong{color:#153958!important}
+.cycle-current-stats span{color:#6d8290!important}
+.last-cycle-report{
+  background:#eef6f1!important;
+  border-color:#d2e3d8!important;
+  color:#315e4e!important;
+}
+.last-cycle-report p{color:#688174!important}
+
+/* Heatmap : les jours vides deviennent très clairs au lieu de presque noirs. */
+.activity-heatmap i{
+  background:#e4edf2!important;
+  border:1px solid #d7e3e9;
+}
+.activity-heatmap .heat-1{background:#c7ddd4!important;border-color:#bdd4ca!important}
+.activity-heatmap .heat-2{background:#8fb8a8!important;border-color:#8fb8a8!important}
+.activity-heatmap .heat-3{background:#477e6d!important;border-color:#477e6d!important;box-shadow:none!important}
+.activity-caption{color:#708492!important}
+
+/* Calendrier : une palette claire différencie prévu / repos / hors mois. */
+.calendar-toolbar button{
+  background:#eef6fb!important;
+  border:1px solid #d3e3ec!important;
+  color:#153958!important;
+}
+.calendar-cell{
+  background:#f6fafc!important;
+  border-color:#dce8ee!important;
+  color:#153958!important;
+}
+.calendar-cell>small{color:#78909d!important}
+.calendar-cell.planned{
+  background:#eaf5fb!important;
+  border-color:#c8e0ec!important;
+}
+.calendar-cell.planned>b{color:#397a9f!important}
+.calendar-cell.done{
+  background:#edf6f1!important;
+  border-color:#cde0d5!important;
+}
+.calendar-cell.done>b{color:#477e6d!important}
+.calendar-cell.rest{
+  background:#f1f3f2!important;
+  border-color:#e0e4e2!important;
+}
+.calendar-cell.rest>b{color:#7d898f!important}
+.calendar-cell.outside{
+  opacity:.62!important;
+  background:#f4f4f1!important;
+}
+.calendar-cell.today{
+  box-shadow:inset 0 0 0 2px #6c9db8!important;
+}
+.calendar-cell.selected{
+  outline:2px solid #315d78!important;
+  outline-offset:1px;
+}
+.calendar-legend{color:#667d8c!important}
+
+/* Réglages : adaptation automatique lisible en thème clair. */
+.adapt-card{
+  background:#eaf4ef!important;
+  border:1px solid #cbded4!important;
+  color:#214c3f!important;
+  box-shadow:none!important;
+}
+.adapt-status{color:#214c3f!important}
+.adapt-status span{
+  background:#6f9e8e!important;
+  box-shadow:none!important;
+}
+.adapt-card p{color:#587269!important}
+
+/* Reset : garder le code couleur danger sans revenir au noir. */
+.reset-progress-card{
+  background:#fff7f5!important;
+  border-color:#ecd8d3!important;
+  color:#6c3732!important;
+}
+.reset-progress-card .eyebrow{color:#a46b64!important}
+.reset-progress-card>div>strong{color:#8d4942!important}
+.reset-progress-card>div>small{color:#806965!important}
+.reset-progress-btn{
+  background:#fff!important;
+  border-color:#dfbbb5!important;
+  color:#ad5c53!important;
+}
+
+/* Fiches familles : la carte du mouvement de référence n'est plus sombre. */
+.base-exercise-card{
+  background:#edf6f1!important;
+  border-color:#cbded4!important;
+  color:#153958!important;
+}
+.base-exercise-card strong{color:#153958!important}
+.base-exercise-card small{color:#647d72!important}
+.base-exercise-card>span{color:#477e6d!important}
+
+/* Sous-blocs muscles et notes spécifiques dans les guides. */
+.muscle-grid>div{
+  background:#eef6fb!important;
+  border-color:#d4e4ed!important;
+}
+.muscle-grid small{color:#6e8592!important}
+.muscle-grid strong{color:#153958!important}
+.specific-note{
+  background:#edf6f1!important;
+  border-color:#cbded4!important;
+}
+.specific-note span{color:#477e6d!important}
+.specific-note p{color:#49675c!important}
+.relation-block button{
+  background:#fff!important;
+  border-color:#d9e4e8!important;
+  color:#153958!important;
+}
+.relation-block button span{color:#5b8d7d!important}
+
+/* Carte de profil : contraste constant sur les labels secondaires. */
+.athlete-card,
+.athlete-index,
+.athlete-stats>div{
+  background:#eef6fb!important;
+}
+.athlete-id h2,.athlete-index strong,.athlete-stats strong{color:#153958!important}
+.athlete-id>strong,.athlete-index span,.athlete-index small,.athlete-stats>div>span{color:#657e8d!important}
+
+/* Les gros CTA gardent un bleu profond, les blocs d'information restent clairs. */
+.calendar-start,.primary-btn{background:#164b75;color:#fff}
