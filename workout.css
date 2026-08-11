@@ -3,8 +3,25 @@
        Focus / séance — langage visuel commun
        --------------------------------------------------------------------- */
 .focus {
-  background: #f7f5ef;
-  color: #153f67;
+  --session-bg: #f7f5ef;
+  --session-paper: #fffdfa;
+  --session-navy: #153f67;
+  --session-blue: #315f7d;
+  --session-sky: #eaf4f9;
+  --session-green: #789b8f;
+  --session-muted: #718591;
+  --session-line: #d7e2de;
+  --session-red: #bd6b61;
+  --session-orange: #eb812e;
+  --session-display: Georgia, "Times New Roman", serif;
+  --session-ui:
+    Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+    sans-serif;
+  --session-card-radius: 22px;
+  --session-control-radius: 19px;
+  background: var(--session-bg);
+  color: var(--session-navy);
+  font-family: var(--session-ui);
 }
 .focus-head button {
   background: rgba(255, 253, 250, 0.84);
@@ -42,12 +59,12 @@
 /* ---------------------------------------------------------------------
        REPOS — structure reprise de la preview validée
        --------------------------------------------------------------------- */
-.focus:is(.rest-editorial, .active-editorial) {
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial) {
   padding: 0;
   overflow: hidden;
   background: #f7f5ef;
 }
-.focus:is(.rest-editorial, .active-editorial) .focus-head {
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial) .focus-head {
   position: absolute;
   z-index: 30;
   top: calc(8px + env(safe-area-inset-top));
@@ -58,7 +75,9 @@
   grid-template-columns: 40px 1fr 40px;
   pointer-events: none;
 }
-.focus:is(.rest-editorial, .active-editorial) .focus-head button {
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial)
+  .focus-head
+  button {
   width: 38px;
   height: 38px;
   display: grid;
@@ -71,12 +90,16 @@
   border: 1px solid rgba(255, 255, 255, 0.72);
   box-shadow: 0 7px 24px rgba(18, 56, 95, 0.1);
 }
-.focus:is(.rest-editorial, .active-editorial) .focus-head button svg {
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial)
+  .focus-head
+  button
+  svg {
   display: block;
   width: 24px;
   height: 24px;
 }
-.focus:is(.rest-editorial, .active-editorial) .focus-center {
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial)
+  .focus-center {
   align-self: center;
   justify-self: center;
   display: flex;
@@ -92,33 +115,47 @@
   pointer-events: none;
   white-space: nowrap;
 }
-.focus:is(.rest-editorial, .active-editorial) .focus-center small,
-.focus:is(.rest-editorial, .active-editorial) .focus-center strong,
-.focus:is(.rest-editorial, .active-editorial) .focus-center em {
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial)
+  .focus-center
+  small,
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial)
+  .focus-center
+  strong,
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial)
+  .focus-center
+  em {
   display: inline;
   margin: 0;
   line-height: 1;
   font-style: normal;
 }
-.focus:is(.rest-editorial, .active-editorial) .focus-center small {
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial)
+  .focus-center
+  small {
   color: #153f67;
   font-size: 8px;
   font-weight: 950;
   letter-spacing: 0.12em;
 }
-.focus:is(.rest-editorial, .active-editorial) .focus-center strong {
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial)
+  .focus-center
+  strong {
   color: #153f67;
   font-size: 9px;
   font-weight: 850;
 }
-.focus:is(.rest-editorial, .active-editorial) .focus-center em {
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial)
+  .focus-center
+  em {
   color: #718591;
   font-size: 8px;
 }
-.focus:is(.rest-editorial, .active-editorial) .focus-progress {
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial)
+  .focus-progress {
   display: none;
 }
-.focus:is(.rest-editorial, .active-editorial) .focus-content {
+.focus:is(.rest-editorial, .active-editorial, .summary-editorial)
+  .focus-content {
   flex: 1;
   min-height: 0;
   height: 100%;
@@ -128,7 +165,7 @@
 /* ---------------------------------------------------------------------
        EXERCICE ACTIF — même langage plein écran que le repos
        --------------------------------------------------------------------- */
-.active-editorial-screen {
+.session-editorial-screen {
   position: relative;
   width: 100%;
   height: 100dvh;
@@ -140,7 +177,7 @@
   background: #f7f5ef;
   color: #153f67;
 }
-.active-exercise-hero {
+.session-exercise-hero {
   position: absolute;
   z-index: -2;
   inset: 0;
@@ -158,7 +195,7 @@
     ),
     linear-gradient(180deg, #eaf4f7 0%, #eef3e9 48%, #f7f5ef 83%);
 }
-.active-exercise-hero img {
+.session-exercise-hero img {
   position: absolute;
   left: -16%;
   top: 17%;
@@ -182,7 +219,7 @@
     transparent 100%
   );
 }
-.active-exercise-hero::after {
+.session-exercise-hero::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -194,7 +231,7 @@
     #f7f5ef 88%
   );
 }
-.active-exercise-hero.placeholder::before {
+.session-exercise-hero.placeholder::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -205,14 +242,14 @@
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
-.active-exercise-heading {
+.session-exercise-heading {
   position: relative;
   z-index: 4;
   max-width: 88%;
   margin: 0 auto;
   text-align: center;
 }
-.active-exercise-heading > span {
+.session-exercise-heading > span {
   display: block;
   color: #789b8f;
   font-size: 9px;
@@ -221,7 +258,7 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
 }
-.active-exercise-heading h2 {
+.session-exercise-heading h2 {
   margin: 7px 0 7px;
   color: #153f67;
   font-family: Georgia, "Times New Roman", serif;
@@ -229,7 +266,7 @@
   line-height: 0.94;
   letter-spacing: -0.045em;
 }
-.active-exercise-heading p {
+.session-exercise-heading p {
   max-width: 360px;
   margin: 0 auto;
   color: #657d89;
@@ -240,7 +277,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.active-exercise-heading button {
+.session-exercise-heading button {
   margin-top: 5px;
   padding: 5px 8px;
   background: rgba(255, 253, 250, 0.52);
@@ -249,7 +286,7 @@
   font-size: 9px;
   font-weight: 800;
 }
-.active-exercise-timer {
+.session-main-metric {
   position: absolute;
   z-index: 5;
   left: 50%;
@@ -267,7 +304,7 @@
     inset 0 0 0 10px rgba(234, 244, 249, 0.18);
   backdrop-filter: blur(5px);
 }
-.active-exercise-timer strong {
+.session-main-metric strong {
   position: relative;
   z-index: 2;
   color: #153f67;
@@ -284,10 +321,10 @@
   font-variant-numeric: tabular-nums;
   transform: translateX(-0.04em);
 }
-.active-exercise-timer.ending strong {
+.session-timer.ending strong {
   color: #eb812e;
 }
-.active-exercise-timer-pulse {
+.session-timer-pulse {
   position: absolute;
   inset: -1px;
   border: 2px solid rgba(111, 167, 195, 0.38);
@@ -295,7 +332,7 @@
   opacity: 0;
   pointer-events: none;
 }
-.active-exercise-timer.tick-pulse .active-exercise-timer-pulse {
+.session-timer.tick-pulse .session-timer-pulse {
   animation: activeTimerPulse 0.42s ease-out;
 }
 @keyframes activeTimerPulse {
@@ -308,72 +345,234 @@
     transform: scale(1.1);
   }
 }
-.active-editorial-screen.paused .active-exercise-timer strong {
+.session-editorial-screen.paused .session-timer strong {
   opacity: 0.58;
 }
-.active-exercise-actions {
+.session-bottom-actions {
   position: absolute;
   z-index: 10;
   left: 16px;
   right: 16px;
   bottom: calc(14px + env(safe-area-inset-bottom));
 }
-.active-exercise-actions > div {
+.session-action-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 9px;
 }
-.active-exercise-actions button {
+.session-action-grid button {
+  width: 100%;
+  height: 58px;
+  min-width: 0;
   min-height: 58px;
-  border-radius: 19px;
+  padding: 0 10px;
+  border-radius: var(--session-control-radius);
   font-size: 14px;
   font-weight: 850;
+  line-height: 1.05;
 }
-.active-exercise-actions .primary-btn {
-  background: #153f67;
+.session-primary-action {
+  min-height: 54px;
+  border: 1px solid var(--session-navy);
+  border-radius: var(--session-control-radius);
+  background: var(--session-navy);
   color: white;
+  font: 850 14px/1 var(--session-ui);
 }
-.active-exercise-actions .soft-btn {
+.session-secondary-action {
+  min-height: 54px;
+  border-radius: var(--session-control-radius);
   background: rgba(255, 253, 250, 0.88);
-  border: 1px solid #d7e2de;
-  color: #315f7d;
+  border: 1px solid var(--session-line);
+  color: var(--session-blue);
   box-shadow: 0 10px 30px rgba(21, 63, 103, 0.06);
 }
-.active-exercise-actions .text-danger {
+.session-skip-action {
   display: block;
   width: 100%;
   min-height: 34px;
   margin-top: 5px;
   background: transparent;
-  color: #bd6b61;
+  color: var(--session-red);
   font-size: 10px;
   font-weight: 700;
 }
 
+/* Répétitions : même scène, même hiérarchie et mêmes contrôles que le timer. */
+.session-rep-target {
+  grid-template-rows: 1fr auto;
+  align-content: center;
+  gap: 7px;
+  padding: 24px;
+}
+.session-rep-target strong {
+  align-self: end;
+  font-size: clamp(76px, 23vw, 108px);
+}
+.session-rep-target small {
+  align-self: start;
+  color: var(--session-green);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.repetition-editorial-screen {
+  padding-bottom: calc(252px + env(safe-area-inset-bottom));
+}
+.repetition-actions {
+  padding: 12px;
+  border: 1px solid rgba(215, 226, 222, 0.92);
+  border-radius: var(--session-card-radius);
+  background: rgba(255, 253, 250, 0.86);
+  box-shadow: 0 14px 38px rgba(21, 63, 103, 0.07);
+  backdrop-filter: blur(12px);
+}
+.session-rep-adjust {
+  display: grid;
+  grid-template-columns: 52px 1fr 52px;
+  align-items: center;
+  gap: 8px;
+}
+.session-rep-adjust > button {
+  width: 52px;
+  height: 48px;
+  border: 1px solid var(--session-line);
+  border-radius: 16px;
+  background: var(--session-sky);
+  color: var(--session-navy);
+  font-size: 26px;
+  line-height: 1;
+}
+.session-rep-adjust > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+}
+.session-rep-adjust strong {
+  color: var(--session-navy);
+  font-size: 28px;
+  font-variant-numeric: tabular-nums;
+}
+.session-rep-adjust small,
+.session-effort-label {
+  color: var(--session-muted);
+  font-size: 9px;
+}
+.session-effort-label {
+  margin: 9px 0 6px;
+  text-align: center;
+}
+.session-effort {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-bottom: 9px;
+}
+.session-effort button {
+  min-height: 38px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  background: #f1f2ef;
+  color: #657783;
+  font-size: 10px;
+  font-weight: 800;
+}
+.session-effort button.sel {
+  border-color: #abc9bd;
+  background: #e2eee9;
+  color: #4f7869;
+}
+.repetition-actions > .session-primary-action {
+  width: 100%;
+}
+.session-secondary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 28px;
+  gap: 10px;
+}
+.session-secondary-row .session-skip-action {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+.session-secondary-row span {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--session-muted);
+  font-size: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Compte à rebours : aucune variante visuelle parallèle. */
+.countdown-editorial-screen .session-main-metric,
+.session-countdown {
+  color: var(--session-orange);
+  font-family: var(--session-ui);
+  font-size: clamp(96px, 30vw, 132px);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.session-auto-note {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: calc(26px + env(safe-area-inset-bottom));
+  margin: 0;
+  color: var(--session-muted);
+  font-size: 10px;
+  text-align: center;
+}
+
 @media (max-height: 720px) {
-  .active-editorial-screen {
+  .session-editorial-screen {
     padding-top: calc(62px + env(safe-area-inset-top));
   }
-  .active-exercise-heading h2 {
+  .session-exercise-heading h2 {
     font-size: clamp(30px, 8vw, 38px);
   }
-  .active-exercise-heading p {
+  .session-exercise-heading p {
     -webkit-line-clamp: 1;
   }
-  .active-exercise-hero img {
+  .session-exercise-hero img {
     top: 14%;
     height: 59%;
   }
-  .active-exercise-timer {
+  .session-main-metric {
     top: 52%;
     width: min(41vw, 150px);
     height: min(41vw, 150px);
   }
-  .active-exercise-timer strong {
+  .session-main-metric strong {
     font-size: clamp(72px, 22vw, 98px);
   }
-  .active-exercise-actions button {
+  .session-action-grid button {
+    height: 50px;
     min-height: 50px;
+  }
+  .repetition-editorial-screen {
+    padding-bottom: calc(232px + env(safe-area-inset-bottom));
+  }
+  .repetition-actions {
+    padding: 9px;
+  }
+  .session-rep-adjust > button {
+    height: 42px;
+  }
+  .session-effort-label {
+    margin-top: 6px;
+  }
+  .session-effort button {
+    min-height: 34px;
+  }
+  .repetition-actions > .session-primary-action {
+    min-height: 46px;
   }
 }
 
@@ -738,4 +937,209 @@
   .rest-editorial-next-row {
     gap: 15px;
   }
+}
+
+/* ---------------------------------------------------------------------
+   GUIDE ET BILAN — mêmes composants, mêmes couleurs, mêmes deux polices
+   --------------------------------------------------------------------- */
+.focus .workout-guide-overlay {
+  z-index: 60;
+  padding: calc(8px + env(safe-area-inset-top)) 14px
+    calc(12px + env(safe-area-inset-bottom));
+  gap: 10px;
+  background: var(--session-bg);
+  color: var(--session-navy);
+}
+.focus .workout-guide-head {
+  height: 46px;
+  grid-template-columns: 40px 1fr 40px;
+}
+.focus .workout-guide-head button {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--session-line);
+  border-radius: 50%;
+  background: var(--session-paper);
+  color: var(--session-navy);
+  box-shadow: 0 7px 24px rgba(18, 56, 95, 0.08);
+}
+.focus .workout-guide-head button svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+}
+.focus .workout-guide-head small {
+  color: var(--session-green);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+.focus .workout-guide-head strong {
+  margin-top: 3px;
+  color: var(--session-navy);
+  font-family: var(--session-display);
+  font-size: 17px;
+  line-height: 1;
+}
+.focus .workout-guide-body {
+  padding: 2px 0 8px;
+  scrollbar-width: none;
+}
+.focus .workout-guide-body::-webkit-scrollbar {
+  display: none;
+}
+.focus .workout-guide-images {
+  gap: 8px;
+}
+.focus .workout-guide-images figure {
+  border: 1px solid var(--session-line);
+  border-radius: var(--session-card-radius);
+  background: linear-gradient(145deg, #e8f2f5, #edf2e9);
+}
+.focus .workout-guide-images figure > span {
+  background: rgba(255, 253, 250, 0.78);
+  color: var(--session-blue);
+}
+.focus .workout-guide-description {
+  color: #5f7480;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.focus .workout-guide-section {
+  margin-top: 8px;
+  padding: 13px;
+  border: 1px solid var(--session-line);
+  border-radius: var(--session-card-radius);
+  background: rgba(255, 253, 250, 0.82);
+}
+.focus .workout-guide-section > small {
+  color: var(--session-green);
+}
+.focus .workout-guide-section ol li {
+  border-color: #e3e9e5;
+}
+.focus .workout-guide-section ol li > span {
+  background: var(--session-sky);
+  color: var(--session-navy);
+}
+.focus .workout-guide-section p,
+.focus .workout-guide-section ul {
+  color: #536b78;
+}
+.focus .workout-guide-section.danger > small {
+  color: var(--session-red);
+}
+.focus .workout-guide-resume {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid var(--session-navy);
+  border-radius: var(--session-control-radius);
+  background: var(--session-navy);
+  color: white;
+  font: 850 14px/1 var(--session-ui);
+}
+
+.focus.summary-editorial .focus-center {
+  visibility: hidden;
+}
+.session-summary-screen {
+  width: min(100%, 520px);
+  height: 100dvh;
+  margin: 0 auto;
+  padding: calc(76px + env(safe-area-inset-top)) 16px
+    calc(18px + env(safe-area-inset-bottom));
+  overflow: auto;
+  scrollbar-width: none;
+  text-align: center;
+  background:
+    radial-gradient(
+      circle at 18% 14%,
+      rgba(111, 167, 195, 0.17),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 82% 18%,
+      rgba(120, 155, 143, 0.17),
+      transparent 25%
+    ),
+    var(--session-bg);
+}
+.session-summary-screen::-webkit-scrollbar {
+  display: none;
+}
+.session-summary-kicker {
+  color: var(--session-green);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+.session-summary-screen h2 {
+  margin: 8px 0 2px;
+  color: var(--session-navy);
+  font-family: var(--session-display);
+  font-size: clamp(38px, 11vw, 54px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+.session-summary-xp {
+  margin: 8px 0 14px;
+  color: var(--session-blue);
+  font-size: 30px;
+  font-weight: 900;
+}
+.session-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.session-summary-grid > div,
+.session-summary-card {
+  border: 1px solid var(--session-line);
+  border-radius: var(--session-card-radius);
+  background: rgba(255, 253, 250, 0.82);
+}
+.session-summary-grid > div {
+  padding: 13px 10px;
+}
+.session-summary-grid strong {
+  display: block;
+  color: var(--session-navy);
+  font-size: 21px;
+}
+.session-summary-grid span {
+  color: var(--session-muted);
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.session-summary-card {
+  margin-top: 8px;
+  padding: 14px;
+  text-align: left;
+}
+.session-summary-card h3 {
+  margin: 0 0 7px;
+  color: var(--session-green);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.session-summary-card p {
+  margin: 4px 0;
+  color: #536b78;
+  font-size: 10px;
+  line-height: 1.45;
+}
+.session-summary-actions {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+.session-summary-actions > button {
+  width: 100%;
 }

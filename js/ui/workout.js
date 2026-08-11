@@ -92,7 +92,11 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
   function close() {
     closeWorkoutGuide({ resume: false });
     engine?.cancel();
-    $("#focus")?.classList.remove("rest-editorial", "active-editorial");
+    $("#focus")?.classList.remove(
+      "rest-editorial",
+      "active-editorial",
+      "summary-editorial",
+    );
     closeLayer("#focus");
   }
 
@@ -226,7 +230,7 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
   function renderHeader(item) {
     const focus = $("#focus");
     focus?.classList.toggle("rest-editorial", item?.kind === "rest");
-    focus?.classList.remove("active-editorial");
+    focus?.classList.remove("active-editorial", "summary-editorial");
     $("#focusPhase").textContent = item?.phase || "";
     $("#focusStep").textContent =
       `${engine.currentIndex + 1} / ${engine.planItems.length}`;
@@ -242,28 +246,35 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
     }
   }
 
-  function poseImages() {
-    return `
-      <div class="pose-grid placeholder-poses" aria-label="Illustrations à venir">
-        <figure class="pose placeholder-pose"><figcaption>Départ</figcaption><div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div></figure>
-        <figure class="pose placeholder-pose"><figcaption>Fin</figcaption><div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div></figure>
-      </div>`;
-  }
-
-  function renderQuickCue(exercise, buttonId) {
+  function exerciseCue(item, exercise) {
     const guide = exercise?.guide || {};
-    const cue =
+    return (
+      item?.note ||
+      exercise?.description ||
       guide.specific_note ||
       guide.execution?.[0] ||
       guide.setup?.[0] ||
       exercise?.tips?.[0] ||
-      "Mouvement lent et contrôlé.";
+      "Mouvement lent et contrôlé."
+    );
+  }
+
+  function renderSessionHero(exercise) {
+    const image = exercise?.thumb || exercise?.images?.[0] || "";
     return `
-      <div class="quick-cue">
-        <span class="quick-cue-icon">❧</span>
-        <p>${escapeHtml(cue)}</p>
-        <button class="technique-link" id="${buttonId}">Guide</button>
+      <div class="session-exercise-hero ${image ? "" : "placeholder"}" aria-hidden="true">
+        ${image ? `<img src="${image}" alt="">` : ""}
       </div>`;
+  }
+
+  function renderSessionHeading(item, exercise, guideId) {
+    return `
+      <section class="session-exercise-heading">
+        <span>${escapeHtml(item?.phase || "Exercice")}</span>
+        <h2>${escapeHtml(exercise.name)}</h2>
+        <p>${escapeHtml(exerciseCue(item, exercise))}</p>
+        ${guideId ? `<button id="${guideId}">Guide complet →</button>` : ""}
+      </section>`;
   }
 
   function renderRestPrep(exercise) {
@@ -288,44 +299,36 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
     if (next?.id) preloadExercise(exercises[next.id]);
 
     renderHeader(item);
+    $("#focus")?.classList.add("active-editorial");
 
     reportedReps = target;
     reportedEffort = "good";
 
     $("#focusContent").innerHTML = `
-      <div class="workout-screen">
-        <div class="workout-title">
-          <span>${item.phase || "Exercice"}</span>
-          <h2>${escapeHtml(exercise.name)}</h2>
-          <div class="target-pill">
-            <strong>${target}</strong>
-            <small>${exercise.perSide ? " / côté" : " reps"}</small>
-          </div>
+      <div class="workout-screen session-editorial-screen repetition-editorial-screen" id="activeExerciseScreen">
+        ${renderSessionHero(exercise)}
+        ${renderSessionHeading(item, exercise, "repGuide")}
+
+        <div class="session-main-metric session-rep-target" aria-label="Objectif">
+          <strong>${target}</strong>
+          <small>${exercise.perSide ? "par côté" : "répétitions"}</small>
         </div>
 
-        ${poseImages()}
-
-        ${renderQuickCue(exercise, "repGuide")}
-
-        <div class="workout-controls">
-          <div class="rep-row">
+        <div class="session-bottom-actions repetition-actions">
+          <div class="session-rep-adjust">
             <button id="minus" aria-label="Retirer une répétition">−</button>
             <div><strong id="repVal">${target}</strong><small>réalisées</small></div>
             <button id="plus" aria-label="Ajouter une répétition">+</button>
           </div>
-
-          <div class="effort-label">Comment c’était ?</div>
-
-          <div class="effort">
+          <div class="session-effort-label">Comment c’était ?</div>
+          <div class="session-effort">
             <button data-effort="easy">Facile</button>
             <button data-effort="good" class="sel">Propre</button>
             <button data-effort="hard">Dur</button>
           </div>
-
-          <button class="primary-btn workout-done" id="done">Terminé</button>
-
-          <div class="workout-secondary">
-            <button id="skip">Passer</button>
+          <button class="session-primary-action" id="done">Terminé</button>
+          <div class="session-secondary-row">
+            <button class="session-skip-action" id="skip">Passer l’exercice</button>
             <span>${next ? `Après : ${exercises[next.id]?.name || "exercice suivant"}` : "Dernier exercice"}</span>
           </div>
         </div>
@@ -363,37 +366,22 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
 
     $("#focus")?.classList.add("active-editorial");
 
-    const heroImage = exercise.thumb || exercise.images?.[0] || "";
-    const description =
-      item.note ||
-      exercise.description ||
-      exercise.tips?.[0] ||
-      "Mouvement propre et contrôlé.";
-
     $("#focusContent").innerHTML = `
-      <div class="workout-screen timed active-editorial-screen" id="activeExerciseScreen">
-        <div class="active-exercise-hero ${heroImage ? "" : "placeholder"}" aria-hidden="true">
-          ${heroImage ? `<img src="${heroImage}" alt="">` : ""}
-        </div>
+      <div class="workout-screen timed session-editorial-screen" id="activeExerciseScreen">
+        ${renderSessionHero(exercise)}
+        ${renderSessionHeading(item, exercise, "timerGuide")}
 
-        <section class="active-exercise-heading">
-          <span>${escapeHtml(item.phase || "Exercice")}</span>
-          <h2>${escapeHtml(exercise.name)}</h2>
-          <p>${escapeHtml(description)}</p>
-          <button id="timerGuide">Guide complet →</button>
-        </section>
-
-        <div class="active-exercise-timer" id="timerVisual" aria-live="polite">
+        <div class="session-main-metric session-timer" id="timerVisual" aria-live="polite">
           <strong id="time">${target}</strong>
-          <div class="active-exercise-timer-pulse" aria-hidden="true"></div>
+          <div class="session-timer-pulse" aria-hidden="true"></div>
         </div>
 
-        <div class="active-exercise-actions">
-          <div>
-            <button class="primary-btn" id="pause">Pause</button>
-            <button class="soft-btn" id="early">Terminer maintenant</button>
+        <div class="session-bottom-actions timed-session-actions">
+          <div class="session-action-grid">
+            <button class="session-secondary-action" id="pause">Pause</button>
+            <button class="session-primary-action" id="early">Terminer maintenant</button>
           </div>
-          <button class="text-danger" id="skipTimed">Passer l’exercice</button>
+          <button class="session-skip-action" id="skipTimed">Passer l’exercice</button>
         </div>
       </div>`;
 
@@ -494,13 +482,14 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
 
   async function renderCountdown({ item, exercise, done }) {
     renderHeader(item);
+    $("#focus")?.classList.add("active-editorial");
 
     $("#focusContent").innerHTML = `
-      <div class="count-screen">
-        <span class="count-kicker">PRÊT POUR</span>
-        <h2>${escapeHtml(exercise.name)}</h2>
-        <div class="count-image placeholder-count"><div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div></div>
-        <div class="count-num" id="count">3</div>
+      <div class="count-screen session-editorial-screen countdown-editorial-screen">
+        ${renderSessionHero(exercise)}
+        ${renderSessionHeading(item, exercise)}
+        <div class="session-main-metric session-countdown" id="count" aria-live="assertive">3</div>
+        <p class="session-auto-note">La séance démarre automatiquement</p>
       </div>`;
 
     speak(`Prochain exercice ${exercise.name}`);
@@ -517,6 +506,10 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
 
   function renderFinished({ xp, score, records, duration, record }) {
     $("#focus")?.classList.remove("rest-editorial", "active-editorial");
+    $("#focus")?.classList.add("summary-editorial");
+    $("#focusPhase").textContent = "BILAN";
+    $("#focusStep").textContent = "";
+    $("#focusXp").textContent = "";
 
     const calories = caloriesForSeconds(duration);
     const muscleLoad = getMuscleLoad(record);
@@ -549,31 +542,34 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
     }
 
     $("#focusContent").innerHTML = `
-      <div class="reward">
-        <div class="muted">SÉANCE TERMINÉE</div>
-        <div class="xp">+${xp} XP</div>
+      <div class="session-summary-screen">
+        <div class="session-summary-kicker">SÉANCE TERMINÉE</div>
+        <h2>Beau travail.</h2>
+        <div class="session-summary-xp">+${xp} XP</div>
 
-        <div class="reward-grid">
+        <div class="session-summary-grid">
           <div><strong>${score}/100</strong><span>score</span></div>
-          <div><strong>🔥 ${state.streak}</strong><span>streak</span></div>
+          <div><strong>${state.streak}</strong><span>jours de suite</span></div>
           <div><strong>${formatDuration(duration)}</strong><span>durée</span></div>
           <div><strong>${calories ? `~${calories}` : "—"}</strong><span>kcal</span></div>
         </div>
 
-        <div class="analysis-card"><h3>Charge musculaire</h3><p>${muscleBars || "Séance légère"}</p></div>
+        <div class="session-summary-card"><h3>Charge musculaire</h3><p>${muscleBars || "Séance légère"}</p></div>
 
-        <div class="analysis-card">
+        <div class="session-summary-card">
           <h3>Coach</h3>
           <p>${
             changedTargets.length
               ? `Progression appliquée : ${changedTargets.slice(0, 3).join(" • ")}.`
               : "Objectifs maintenus : continue à privilégier la technique."
           }</p>
-          <p>${records.length ? `🏆 ${records.length} nouveau${records.length > 1 ? "x" : ""} record${records.length > 1 ? "s" : ""}.` : ""}</p>
+          <p>${records.length ? `${records.length} nouveau${records.length > 1 ? "x" : ""} record${records.length > 1 ? "s" : ""}.` : ""}</p>
         </div>
 
-        <button class="primary-btn yellow-bg" id="finish">Terminer</button>
-        <button class="ghost" id="askCoachAfter" style="margin-top:8px;width:100%">Demander au coach</button>
+        <div class="session-summary-actions">
+          <button class="session-primary-action" id="finish">Terminer</button>
+          <button class="session-secondary-action" id="askCoachAfter">Demander au coach</button>
+        </div>
       </div>`;
 
     on("#finish", "click", () => {

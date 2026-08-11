@@ -11,11 +11,14 @@ const workout = fs.readFileSync(
 );
 assert.ok(css.includes("V32 — Soft Athletic Minimalism"));
 assert.match(css, /\.focus-content\s*\{[^}]*overflow:\s*hidden/s);
-assert.ok(workout.includes('renderQuickCue(exercise, "repGuide")'));
+assert.ok(workout.includes("renderSessionHero(exercise)"));
+assert.ok(workout.includes("session-editorial-screen"));
+assert.ok(workout.includes("session-primary-action"));
 assert.ok(workout.includes("renderRestPrep(nextExercise)"));
-assert.ok(workout.includes("Illustration à venir"));
 assert.ok(workout.includes("rest-editorial-hero"));
 assert.ok(workoutCss.includes(".rest-editorial-how-scroll"));
+assert.ok(workoutCss.includes(".repetition-editorial-screen"));
+assert.ok(workoutCss.includes(".session-summary-screen"));
 console.log(
-  "OK — UI éditoriale : séance non-scrollable, repos enrichi, placeholders.",
+  "OK — UI éditoriale : parcours séance unifié et écrans actifs non-scrollables.",
 );
