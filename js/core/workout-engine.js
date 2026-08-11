@@ -4,8 +4,8 @@
  * Il ne manipule jamais le DOM. L'interface lui fournit des hooks.
  * Cela rend la logique testable sans navigateur.
  */
-import {PROGRESSION} from "../config.js";
-import {localDayKey, previousDayKey} from "../utils/dates.js";
+import { PROGRESSION } from "../config.js";
+import { localDayKey, previousDayKey } from "../utils/dates.js";
 
 const MIN_COMPLETION_COVERAGE = 0.5;
 
@@ -17,7 +17,7 @@ export class WorkoutEngine {
     buildSessionPlan,
     hooks = {},
     persist,
-    now = () => new Date()
+    now = () => new Date(),
   }) {
     this.state = state;
     this.exercises = exercises;
@@ -57,7 +57,7 @@ export class WorkoutEngine {
     this.resetRuntime();
   }
 
-  start({redo = false, session = null} = {}) {
+  start({ redo = false, session = null } = {}) {
     this.cancel();
 
     this.redo = redo;
@@ -91,9 +91,7 @@ export class WorkoutEngine {
     if (!exercise) return 0;
 
     const explicit =
-      item?.targetOverride
-      ?? item?.repsOverride
-      ?? item?.durationOverride;
+      item?.targetOverride ?? item?.repsOverride ?? item?.durationOverride;
 
     if (explicit != null) return Math.max(1, Math.round(explicit));
 
@@ -103,9 +101,8 @@ export class WorkoutEngine {
     if (scale === 1) return base;
 
     const scaled = Math.round(base * scale);
-    const lowerBound = exercise.mode === "time"
-      ? 10
-      : Math.min(exercise.min || 1, base);
+    const lowerBound =
+      exercise.mode === "time" ? 10 : Math.min(exercise.min || 1, base);
 
     return Math.max(lowerBound, scaled);
   }
@@ -138,7 +135,7 @@ export class WorkoutEngine {
       done: () => {
         if (token !== this.runToken) return;
         this.enterCurrentItem();
-      }
+      },
     });
   }
 
@@ -172,7 +169,7 @@ export class WorkoutEngine {
       item,
       exercise,
       target,
-      next: this.findNextExercise()
+      next: this.findNextExercise(),
     });
   }
 
@@ -181,7 +178,7 @@ export class WorkoutEngine {
       item,
       exercise,
       target,
-      next: this.findNextExercise()
+      next: this.findNextExercise(),
     });
 
     this.runTimedInterval();
@@ -207,7 +204,7 @@ export class WorkoutEngine {
     this.hooks.rest?.({
       seconds: this.remainingSeconds,
       next,
-      nextExercise: next ? this.exercises[next.id] : null
+      nextExercise: next ? this.exercises[next.id] : null,
     });
 
     if (this.remainingSeconds <= 0) {
@@ -301,7 +298,7 @@ export class WorkoutEngine {
   }
 
   completeCurrentExercise(early = false) {
-    this.recordCurrentExercise({early});
+    this.recordCurrentExercise({ early });
     this.advance();
   }
 
@@ -320,7 +317,7 @@ export class WorkoutEngine {
         effort: "skipped",
         skipped: true,
         adaptive: item.adaptive !== false,
-        phase: item.phase || "Bloc principal"
+        phase: item.phase || "Bloc principal",
       });
     }
 
@@ -333,7 +330,7 @@ export class WorkoutEngine {
     this.advanceAfterRest();
   }
 
-  recordCurrentExercise({early = false} = {}) {
+  recordCurrentExercise({ early = false } = {}) {
     const item = this.currentItem;
 
     if (!item || item.kind !== "exercise" || item.track === false) return;
@@ -342,13 +339,12 @@ export class WorkoutEngine {
     const effectiveMode = item.modeOverride || exercise.mode;
     const target = this.getTarget(item.id, item);
 
-    const actual = effectiveMode === "reps"
-      ? this.currentReps
-      : (
-        this.remainingSeconds <= 0
+    const actual =
+      effectiveMode === "reps"
+        ? this.currentReps
+        : this.remainingSeconds <= 0
           ? target
-          : Math.max(0, target - this.remainingSeconds)
-      );
+          : Math.max(0, target - this.remainingSeconds);
 
     this.log.push({
       id: item.id,
@@ -360,7 +356,7 @@ export class WorkoutEngine {
       skipped: false,
       early,
       adaptive: item.adaptive !== false,
-      phase: item.phase || "Bloc principal"
+      phase: item.phase || "Bloc principal",
     });
   }
 
@@ -401,12 +397,13 @@ export class WorkoutEngine {
       const exercise = this.exercises[exerciseId];
       const current = Number(this.state.targets[exerciseId]) || exercise.base;
 
-      const ratios = sets.map(set => set.actual / set.target);
-      const average = ratios.reduce((sum, value) => sum + value, 0) / ratios.length;
+      const ratios = sets.map((set) => set.actual / set.target);
+      const average =
+        ratios.reduce((sum, value) => sum + value, 0) / ratios.length;
 
-      const easy = sets.filter(set => set.effort === "easy").length;
-      const hard = sets.filter(set => set.effort === "hard").length;
-      const full = sets.filter(set => set.actual >= set.target).length;
+      const easy = sets.filter((set) => set.effort === "easy").length;
+      const hard = sets.filter((set) => set.effort === "hard").length;
+      const full = sets.filter((set) => set.actual >= set.target).length;
 
       let next = current;
 
@@ -425,7 +422,7 @@ export class WorkoutEngine {
 
       this.state.targets[exerciseId] = Math.max(
         exercise.min,
-        Math.min(exercise.max, next)
+        Math.min(exercise.max, next),
       );
     }
   }
@@ -437,7 +434,7 @@ export class WorkoutEngine {
 
     const today = localDayKey(this.now());
     const trackedSets = this.log;
-    const completedSets = trackedSets.filter(set => !set.skipped);
+    const completedSets = trackedSets.filter((set) => !set.skipped);
     const completionCoverage = trackedSets.length
       ? completedSets.length / trackedSets.length
       : 0;
@@ -445,20 +442,18 @@ export class WorkoutEngine {
     // Une séance où l'on a passé la majorité des mouvements reste un essai,
     // mais ne valide ni la journée ni l'avancement du programme.
     const meaningfulCompletion =
-      completedSets.length > 0
-      && completionCoverage >= MIN_COMPLETION_COVERAGE;
+      completedSets.length > 0 && completionCoverage >= MIN_COMPLETION_COVERAGE;
 
-    const alreadyCountedToday = this.state.history
-      .some(record => record.day === today && record.counted);
+    const alreadyCountedToday = this.state.history.some(
+      (record) => record.day === today && record.counted,
+    );
 
-    const programAlreadyCompletedToday = this.state.history
-      .some(record =>
-        record.day === today
-        && (
-          record.programCompleted === true
-          || (record.counted && record.sessionType === "program")
-        )
-      );
+    const programAlreadyCompletedToday = this.state.history.some(
+      (record) =>
+        record.day === today &&
+        (record.programCompleted === true ||
+          (record.counted && record.sessionType === "program")),
+    );
 
     // `counted` pilote streak/séances/jour : au maximum une fois par jour.
     const counted = meaningfulCompletion && !alreadyCountedToday && !this.redo;
@@ -466,13 +461,13 @@ export class WorkoutEngine {
     // La validation du programme est indépendante : une séance perso faite avant
     // ne doit pas bloquer la vraie séance du cycle.
     const programCompleted =
-      meaningfulCompletion
-      && this.advancesProgram
-      && !this.redo
-      && !programAlreadyCompletedToday;
+      meaningfulCompletion &&
+      this.advancesProgram &&
+      !this.redo &&
+      !programAlreadyCompletedToday;
 
     this.state.attempts++;
-    const previousBests = {...this.state.bests};
+    const previousBests = { ...this.state.bests };
 
     if (counted || programCompleted) {
       this.adaptTargets();
@@ -500,10 +495,11 @@ export class WorkoutEngine {
     const newRecords = [];
     for (const [exerciseId, set] of sessionBestSets) {
       const actual = Number(set.actual) || 0;
-      if (actual > (Number(previousBests[exerciseId]) || 0)) newRecords.push(set);
+      if (actual > (Number(previousBests[exerciseId]) || 0))
+        newRecords.push(set);
       this.state.bests[exerciseId] = Math.max(
         Number(this.state.bests[exerciseId]) || 0,
-        actual
+        actual,
       );
     }
 
@@ -525,8 +521,7 @@ export class WorkoutEngine {
       // La couverture évite qu'une séance presque entièrement passée rapporte
       // autant qu'une vraie séance terminée.
       xp = Math.round(
-        (70 + performanceRatio * 50 + (counted ? 25 : 0))
-        * completionCoverage
+        (70 + performanceRatio * 50 + (counted ? 25 : 0)) * completionCoverage,
       );
       if (this.redo) xp = Math.round(xp * 0.45);
     }
@@ -535,16 +530,19 @@ export class WorkoutEngine {
     if (counted) {
       const yesterday = previousDayKey(this.now());
 
-      this.state.streak = this.state.lastDay === yesterday
-        ? this.state.streak + 1
-        : (this.state.lastDay === today ? this.state.streak : 1);
+      this.state.streak =
+        this.state.lastDay === yesterday
+          ? this.state.streak + 1
+          : this.state.lastDay === today
+            ? this.state.streak
+            : 1;
 
       this.state.lastDay = today;
     }
 
     const duration = Math.max(
       1,
-      Math.round((this.now().getTime() - this.startedAtMs) / 1000)
+      Math.round((this.now().getTime() - this.startedAtMs) / 1000),
     );
 
     const record = {
@@ -562,7 +560,7 @@ export class WorkoutEngine {
       sessionKey: this.planMeta.key || "",
       sessionType: this.planMeta.type || "custom",
 
-      sets: this.log
+      sets: this.log,
     };
 
     this.state.history.unshift(record);
@@ -575,8 +573,7 @@ export class WorkoutEngine {
       score,
       records: newRecords,
       duration,
-      record
+      record,
     });
   }
-
 }
