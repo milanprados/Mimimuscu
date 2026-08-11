@@ -31,10 +31,10 @@ assert.ok(workout.includes("À RETENIR"), "Conseils inline absents");
 assert.ok(workout.includes("À ÉVITER"), "Erreurs inline absentes");
 assert.ok(workout.includes("RESPIRATION"), "Respiration inline absente");
 
-assert.ok(html.includes("styles.css?v=34.0"));
-assert.ok(html.includes("theme.css?v=34.0"));
-assert.ok(html.includes("workout.css?v=34.0"));
-assert.ok(html.includes("app.js?v=34.0"));
+assert.ok(html.includes("styles.css?v=34.1"));
+assert.ok(html.includes("theme.css?v=34.1"));
+assert.ok(html.includes("workout.css?v=34.1"));
+assert.ok(html.includes("app.js?v=34.1"));
 assert.ok(
   !html.includes("caches.delete"),
   "Le boot ne doit pas vider le cache PWA à chaque ouverture",
