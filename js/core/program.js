@@ -4,9 +4,9 @@
  * Les JSON décrivent des blocs lisibles par un humain.
  * Le moteur reçoit ensuite une liste plate d'étapes explicites.
  */
-import {EXERCISES, PROGRAMS} from "./catalog.js";
+import { EXERCISES, PROGRAMS } from "./catalog.js";
 
-const clone = value => JSON.parse(JSON.stringify(value));
+const clone = (value) => JSON.parse(JSON.stringify(value));
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const boundedInt = (value, fallback, min, max) => {
@@ -28,7 +28,7 @@ export function compileProgramBlocks(blocks = []) {
       targetScale: boundedNumber(block.target_scale, 1, 0.1, 5),
       track: block.track !== false,
       adaptive: block.adaptive !== false,
-      modeOverride: block.mode_override || null
+      modeOverride: block.mode_override || null,
     };
 
     if (block.type === "exercise") {
@@ -42,7 +42,7 @@ export function compileProgramBlocks(blocks = []) {
           targetOverride: block.target_override ?? null,
           tempo: block.tempo || null,
           note: block.note || "",
-          test: Boolean(block.test)
+          test: Boolean(block.test),
         });
       }
       continue;
@@ -55,13 +55,16 @@ export function compileProgramBlocks(blocks = []) {
       for (let round = 0; round < rounds; round++) {
         items.forEach((entry, itemIndex) => {
           const id = typeof entry === "string" ? entry : entry.exercise_id;
-          const scale = typeof entry === "object" && entry.target_scale != null
-            ? boundedNumber(entry.target_scale, common.targetScale, 0.1, 5)
-            : common.targetScale;
+          const scale =
+            typeof entry === "object" && entry.target_scale != null
+              ? boundedNumber(entry.target_scale, common.targetScale, 0.1, 5)
+              : common.targetScale;
 
           const lastInRound = itemIndex === items.length - 1;
           const restAfter = lastInRound
-            ? (round < rounds - 1 ? boundedInt(block.rest_between_rounds_sec, 0, 0, 600) : 0)
+            ? round < rounds - 1
+              ? boundedInt(block.rest_between_rounds_sec, 0, 0, 600)
+              : 0
             : boundedInt(block.rest_between_exercises_sec, 0, 0, 600);
 
           exercises.push({
@@ -70,7 +73,7 @@ export function compileProgramBlocks(blocks = []) {
             round: round + 1,
             restAfter,
             targetScale: scale || 1,
-            note: block.note || ""
+            note: block.note || "",
           });
         });
       }
@@ -94,13 +97,13 @@ export function getProgramTemplate(programState = {}) {
     ...template,
     absoluteIndex,
     exerciseIds: compileProgramBlocks(template.blocks)
-      .filter(item => item.track !== false)
-      .map(item => item.id)
+      .filter((item) => item.track !== false)
+      .map((item) => item.id),
   };
 }
 
 export function getProgramTemplateAtIndex(index = 0) {
-  return getProgramTemplate({index});
+  return getProgramTemplate({ index });
 }
 
 export function createProgramSession(programState) {
@@ -116,13 +119,15 @@ export function createProgramSession(programState) {
     day: template.day,
     intensity: template.intensity,
     durationTarget: 20,
-    exercises: compileProgramBlocks(template.blocks)
+    exercises: compileProgramBlocks(template.blocks),
   };
 }
 
 export function createProgramSessionAtIndex(index = 0) {
   const parsed = Number(index);
-  return createProgramSession({index: Number.isFinite(parsed) ? Math.max(0, Math.floor(parsed)) : 0});
+  return createProgramSession({
+    index: Number.isFinite(parsed) ? Math.max(0, Math.floor(parsed)) : 0,
+  });
 }
 
 /**
@@ -132,15 +137,16 @@ export function createProgramSessionAtIndex(index = 0) {
 export function createWorkoutPlan(exercises = [], metadata = {}) {
   const items = [];
 
-  const safeExercises = (Array.isArray(exercises) ? exercises : [])
-    .filter(item => item?.id && EXERCISES[item.id]);
+  const safeExercises = (Array.isArray(exercises) ? exercises : []).filter(
+    (item) => item?.id && EXERCISES[item.id],
+  );
 
   safeExercises.forEach((item, index) => {
-    items.push({kind: "exercise", ...item});
+    items.push({ kind: "exercise", ...item });
 
     const rest = boundedInt(item.restAfter, 0, 0, 600);
     if (index < safeExercises.length - 1 && rest > 0) {
-      items.push({kind: "rest", seconds: rest, phase: "Repos"});
+      items.push({ kind: "rest", seconds: rest, phase: "Repos" });
     }
   });
 
@@ -150,8 +156,8 @@ export function createWorkoutPlan(exercises = [], metadata = {}) {
       key: metadata.key || "custom",
       name: metadata.name || "Séance",
       focus: metadata.focus || "",
-      type: metadata.type || "custom"
-    }
+      type: metadata.type || "custom",
+    },
   };
 }
 
@@ -159,9 +165,9 @@ export function buildProgramPlan(programState, sessionDraft = null) {
   const template = getProgramTemplate(programState);
 
   const validDraft = Boolean(
-    sessionDraft
-    && sessionDraft.templateKey === template.key
-    && Array.isArray(sessionDraft.exercises)
+    sessionDraft &&
+      sessionDraft.templateKey === template.key &&
+      Array.isArray(sessionDraft.exercises),
   );
 
   const exercises = validDraft
@@ -172,7 +178,7 @@ export function buildProgramPlan(programState, sessionDraft = null) {
     key: template.key,
     name: template.name,
     focus: template.focus,
-    type: "program"
+    type: "program",
   });
 }
 
@@ -181,34 +187,33 @@ export function buildSessionPlan(session) {
     ? clone(session.exercises)
     : compileProgramBlocks(session?.blocks || []);
 
-  const defaultPhase = session?.type === "program"
-    ? "Bloc principal"
-    : "Personnalisé";
+  const defaultPhase =
+    session?.type === "program" ? "Bloc principal" : "Personnalisé";
 
-  const exercises = source.map(item => ({
+  const exercises = source.map((item) => ({
     ...item,
     kind: "exercise",
-    phase: item.phase || defaultPhase
+    phase: item.phase || defaultPhase,
   }));
 
   return createWorkoutPlan(exercises, {
     key: session?.templateKey || session?.id || "custom",
     name: session?.name || "Séance personnalisée",
     focus: session?.description || "Personnalisée",
-    type: session?.type || "custom"
+    type: session?.type || "custom",
   });
 }
 
 export function sessionToFile(session) {
   const canonicalExercises = Array.isArray(session?.exercises)
-    ? session.exercises.filter(item => item?.id)
+    ? session.exercises.filter((item) => item?.id)
     : [];
 
   // Toujours exporter l'état réellement utilisé par le moteur. Un ancien `blocks[]`
   // peut rester attaché à une séance importée puis modifiée : le réutiliser ferait
   // réapparaître l'ancienne version lors d'un export.
   const blocks = canonicalExercises.length
-    ? canonicalExercises.map(item => ({
+    ? canonicalExercises.map((item) => ({
         type: "exercise",
         phase: item.phase || "Personnalisé",
         exercise_id: item.id,
@@ -220,9 +225,11 @@ export function sessionToFile(session) {
         track: item.track !== false,
         adaptive: item.adaptive !== false,
         tempo: item.tempo || null,
-        note: item.note || ""
+        note: item.note || "",
       }))
-    : (Array.isArray(session?.blocks) ? clone(session.blocks) : []);
+    : Array.isArray(session?.blocks)
+      ? clone(session.blocks)
+      : [];
 
   return {
     app: "mimi-muscu",
@@ -231,7 +238,7 @@ export function sessionToFile(session) {
     name: String(session?.name || "Séance personnalisée").slice(0, 80),
     description: String(session?.description || "").slice(0, 240),
     level: "custom",
-    blocks
+    blocks,
   };
 }
 
@@ -244,7 +251,7 @@ export function validateImportedSession(raw) {
 
   // Compatibilité avec l'ancien format exercises[] d'import.
   if (!blocks && Array.isArray(raw.exercises)) {
-    blocks = raw.exercises.map(item => ({
+    blocks = raw.exercises.map((item) => ({
       type: "exercise",
       exercise_id: item.exercise_id || item.id,
       sets: item.sets || 1,
@@ -256,7 +263,7 @@ export function validateImportedSession(raw) {
       track: item.track !== false,
       adaptive: item.adaptive !== false,
       tempo: item.tempo || null,
-      note: item.note || ""
+      note: item.note || "",
     }));
   }
 
@@ -281,7 +288,6 @@ export function validateImportedSession(raw) {
     blocks: clone(blocks),
     exercises,
     createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString()
+    updatedAt: new Date().toISOString(),
   };
 }
-
