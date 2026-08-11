@@ -1,4 +1,4 @@
-import {spawnSync} from "node:child_process";
+import { spawnSync } from "node:child_process";
 
 const tests = [
   "tests/architecture.test.mjs",
@@ -12,16 +12,17 @@ const tests = [
   "tests/service-worker.test.mjs",
   "tests/workout-engine.test.mjs",
   "tests/stability-v31-4.test.mjs",
-  "tests/v32-soft-ui.test.mjs"
+  "tests/v32-soft-ui.test.mjs",
+  "tests/maintenance-v34.test.mjs",
 ];
 
 for (const test of tests) {
   const result = spawnSync(process.execPath, [test], {
     cwd: process.cwd(),
-    stdio: "inherit"
+    stdio: "inherit",
   });
 
   if (result.status !== 0) process.exit(result.status || 1);
 }
 
-console.log("\nOK — suite V31 complète.");
+console.log("\nOK — suite V34 complète.");
