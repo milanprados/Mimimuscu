@@ -11,6 +11,16 @@
   --mimi-line: #dce5e1;
   --mimi-muted: #718591;
   --mimi-orange: #eb812e;
+  --mimi-font-display: Georgia, "Times New Roman", serif;
+  --mimi-font-ui:
+    Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+    sans-serif;
+  --mimi-radius-card: 22px;
+  --mimi-radius-control: 15px;
+  --mimi-radius-pill: 999px;
+  --mimi-card-background: rgba(255, 253, 250, 0.78);
+  --mimi-card-border: 1px solid var(--mimi-line);
+  --mimi-card-shadow: 0 14px 34px rgba(24, 63, 91, 0.055);
   --bg: var(--mimi-cream);
   --surface: var(--mimi-paper);
   --surface-2: var(--mimi-sky);
@@ -31,6 +41,7 @@ html,
 body {
   background: var(--mimi-cream);
   color: var(--mimi-blue);
+  font-family: var(--mimi-font-ui);
 }
 body {
   margin: 0;
@@ -42,6 +53,30 @@ body::after {
 }
 button {
   -webkit-tap-highlight-color: transparent;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(21, 63, 103, 0.42);
+  outline-offset: 2px;
+}
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.ui-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
 }
 
 .app-shell {
@@ -56,7 +91,7 @@ button {
   backdrop-filter: none;
 }
 .brand-wordmark {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--mimi-font-display);
   font-size: 25px;
   line-height: 1;
   font-weight: 700;
@@ -73,6 +108,7 @@ button {
   color: var(--mimi-blue-2);
   box-shadow: none;
   padding: 8px 11px;
+  border-radius: var(--mimi-radius-pill);
 }
 
 .eyebrow {
@@ -84,7 +120,7 @@ button {
   padding: 25px 2px 16px;
 }
 .screen-intro h1 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--mimi-font-display);
   color: var(--mimi-blue);
   font-size: 43px;
   line-height: 0.96;
@@ -133,16 +169,19 @@ button {
   box-shadow: 0 14px 34px rgba(24, 63, 91, 0.05);
 }
 #sessionTab .home-intro::after {
-  content: "ILLUSTRATION";
+  content: "";
   position: absolute;
-  top: 92px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: #839a98;
-  font-size: 8px;
-  font-weight: 850;
-  letter-spacing: 0.18em;
+  top: 66px;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  border: 2px solid rgba(21, 63, 103, 0.17);
+  border-radius: 50%;
+  box-shadow:
+    -26px 22px 0 -18px rgba(120, 155, 143, 0.58),
+    28px -13px 0 -21px rgba(21, 63, 103, 0.34);
+  transform: translateX(-50%);
+  color: transparent;
 }
 #sessionTab .home-intro h1 {
   font-size: 41px;
@@ -180,7 +219,7 @@ button {
   color: #809099;
 }
 .today-duration strong {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--mimi-font-display);
   color: var(--mimi-blue);
   font-size: 20px;
 }
@@ -220,7 +259,12 @@ button {
   background: var(--mimi-blue);
   color: white;
   box-shadow: none;
-  border-radius: 16px;
+  border-radius: var(--mimi-radius-control);
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
 }
 .hero-go {
   height: 56px;
@@ -229,6 +273,12 @@ button {
 .hero-go span {
   background: white;
   color: var(--mimi-blue);
+}
+.hero-go span .ui-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  stroke-width: 1.5;
 }
 .hero-edit {
   color: #647c89;
@@ -239,9 +289,9 @@ button {
 .section-block,
 .today-done,
 .coach-note {
-  background: rgba(255, 255, 255, 0.56);
-  border: 1px solid var(--mimi-line);
-  box-shadow: none;
+  background: var(--mimi-card-background);
+  border: var(--mimi-card-border);
+  box-shadow: var(--mimi-card-shadow);
   backdrop-filter: none;
   color: var(--mimi-blue);
 }
@@ -249,7 +299,7 @@ button {
 .cycle-panel,
 .section-block,
 .today-done {
-  border-radius: 21px;
+  border-radius: var(--mimi-radius-card);
 }
 .calendar-home-card {
   background: var(--mimi-sky-2);
@@ -262,6 +312,10 @@ button {
   background: white;
   color: var(--mimi-blue-2);
 }
+.coach-icon .ui-icon {
+  width: 18px;
+  height: 18px;
+}
 .coach-note p,
 .today-done p,
 .section-copy {
@@ -269,7 +323,8 @@ button {
 }
 .section-title strong {
   color: var(--mimi-blue);
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1.2;
 }
 .section-title b,
 .link-btn {
@@ -279,6 +334,17 @@ button {
   background: var(--mimi-sky);
   border-color: #d5e5eb;
   color: var(--mimi-blue-2);
+  min-height: 38px;
+  border-radius: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding-inline: 11px;
+}
+.compact-btn .ui-icon {
+  width: 15px;
+  height: 15px;
 }
 .progress-track,
 .milestone-bar {
@@ -322,13 +388,35 @@ button {
   box-shadow: 0 12px 34px rgba(21, 63, 103, 0.11);
   backdrop-filter: blur(18px);
   border-radius: 23px;
+  padding: 5px;
 }
 .tabs button {
   color: #87959b;
+  border-radius: 17px;
+  gap: 3px;
+  transition:
+    background-color 0.16s ease,
+    color 0.16s ease;
+}
+.tabs button > span {
+  display: grid;
+  place-items: center;
+  height: 24px;
+}
+.tabs button .ui-icon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.65;
 }
 .tabs button.active {
   background: var(--mimi-sky);
   color: var(--mimi-blue);
+}
+.tabs button.active .ui-icon {
+  stroke-width: 2;
+}
+.tabs button:focus-visible {
+  outline-offset: -2px;
 }
 .tabs button.active small {
   color: var(--mimi-blue);
@@ -348,6 +436,12 @@ button {
 }
 .search-wrap span {
   color: #83959c;
+  display: grid;
+  place-items: center;
+}
+.search-wrap span .ui-icon {
+  width: 18px;
+  height: 18px;
 }
 .search-wrap input {
   color: var(--mimi-blue);
@@ -393,14 +487,17 @@ button {
   display: none;
 }
 .exercise-thumb::after {
-  content: "○";
+  content: "";
   position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: #9aaca7;
-  font-size: 31px;
-  font-weight: 200;
+  width: 24px;
+  height: 24px;
+  left: 50%;
+  top: 50%;
+  border: 2px solid #9aaca7;
+  border-radius: 50%;
+  box-shadow: 16px 10px 0 -10px #9aaca7;
+  transform: translate(-70%, -65%);
+  opacity: 0.72;
 }
 .exercise-copy {
   padding-top: 3px;
@@ -453,7 +550,7 @@ button {
   color: var(--mimi-muted);
 }
 .metric strong {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--mimi-font-display);
   color: var(--mimi-blue);
   font-size: 31px;
 }
@@ -519,7 +616,7 @@ button {
   border: 1px solid var(--mimi-line);
   color: var(--mimi-blue);
   box-shadow: none;
-  border-radius: 27px;
+  border-radius: calc(var(--mimi-radius-card) + 5px);
   padding: 18px;
 }
 .athlete-avatar {
@@ -544,6 +641,13 @@ button {
   background: white;
   border: 1px solid var(--mimi-line);
   color: var(--mimi-blue-2);
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.athlete-edit .ui-icon {
+  width: 17px;
+  height: 17px;
 }
 .athlete-index {
   background: rgba(255, 255, 255, 0.62);
@@ -551,7 +655,7 @@ button {
   border-radius: 20px;
 }
 .athlete-index strong {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--mimi-font-display);
   font-size: 49px;
 }
 .athlete-stats > div {
@@ -607,7 +711,7 @@ button {
   color: var(--mimi-blue);
 }
 .modal-head h2 {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--mimi-font-display);
   color: var(--mimi-blue);
 }
 .modal-form,
@@ -658,6 +762,56 @@ select {
   background: rgba(255, 255, 255, 0.68);
   border-color: var(--mimi-line);
   color: var(--mimi-blue);
+  border-radius: var(--mimi-radius-control);
+}
+.modal-head > button:not(.calendar-today-btn),
+.workout-guide-head > button {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.modal-head > button:not(.calendar-today-btn) .ui-icon,
+.workout-guide-head > button .ui-icon {
+  width: 21px;
+  height: 21px;
+}
+.calendar-toolbar button {
+  display: grid;
+  place-items: center;
+}
+.calendar-toolbar button .ui-icon {
+  width: 19px;
+  height: 19px;
+}
+.modal-form,
+.planner-summary,
+.planner-row,
+.custom-editor-row,
+.picker-card,
+.guide-section,
+.family-hero,
+.variant-card,
+.base-exercise-card,
+.muscle-grid > div,
+.specific-note,
+.relation-block button {
+  border-radius: var(--mimi-radius-card);
+  box-shadow: 0 8px 24px rgba(24, 63, 91, 0.035);
+}
+.form-grid input,
+.modal-form input,
+.modal-form select,
+textarea,
+input,
+select {
+  border-radius: var(--mimi-radius-control);
+}
+.modal-form input,
+.modal-form select {
+  min-height: 48px;
 }
 
 /* Le mode séance garde son layout et ses timers déjà validés. */

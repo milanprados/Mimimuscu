@@ -15,6 +15,49 @@
     <title>Mimi Muscu</title>
   </head>
   <body>
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-home" viewBox="0 0 24 24">
+        <path
+          d="M4 11.2 12 4l8 7.2v8.3a.5.5 0 0 1-.5.5h-5v-6h-5v6h-5a.5.5 0 0 1-.5-.5Z"
+        />
+      </symbol>
+      <symbol id="icon-exercises" viewBox="0 0 24 24">
+        <path d="M7 8v8M4.5 9.5v5M17 8v8m2.5-6.5v5M7 12h10" />
+      </symbol>
+      <symbol id="icon-progress" viewBox="0 0 24 24">
+        <path d="M5 19V9m7 10V5m7 14v-7" />
+      </symbol>
+      <symbol id="icon-profile" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="3.25" />
+        <path d="M5.5 20c.8-4 3-6 6.5-6s5.7 2 6.5 6" />
+      </symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="10.5" cy="10.5" r="5.5" />
+        <path d="m15 15 4 4" />
+      </symbol>
+      <symbol id="icon-play" viewBox="0 0 24 24">
+        <path d="m9 7 8 5-8 5Z" />
+      </symbol>
+      <symbol id="icon-arrow-up-right" viewBox="0 0 24 24">
+        <path d="M7 17 17 7M9 7h8v8" />
+      </symbol>
+      <symbol id="icon-edit" viewBox="0 0 24 24">
+        <path d="m5 16.5-.8 3.3 3.3-.8L18 8.5 15.5 6Z" />
+        <path d="m14 7.5 2.5 2.5" />
+      </symbol>
+      <symbol id="icon-plus" viewBox="0 0 24 24">
+        <path d="M12 5v14M5 12h14" />
+      </symbol>
+      <symbol id="icon-back" viewBox="0 0 24 24">
+        <path d="m15 6-6 6 6 6" />
+      </symbol>
+      <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+        <path d="m14 8-4 4 4 4" />
+      </symbol>
+      <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+        <path d="m10 8 4 4-4 4" />
+      </symbol>
+    </svg>
     <div class="app-shell">
       <header class="app-header">
         <div class="brand-lockup">
@@ -57,7 +100,10 @@
               Technique · force générale
             </p>
             <button class="hero-go" id="quickStart">
-              <span>▶</span> Lancer la séance
+              <span
+                ><svg class="ui-icon"><use href="#icon-play" /></svg
+              ></span>
+              Lancer la séance
             </button>
             <button class="hero-edit" id="prepareSession">
               Voir le détail & modifier
@@ -103,7 +149,9 @@
           </article>
 
           <article class="coach-note">
-            <div class="coach-icon">↗</div>
+            <div class="coach-icon">
+              <svg class="ui-icon"><use href="#icon-arrow-up-right" /></svg>
+            </div>
             <div>
               <span class="eyebrow">COACH DU JOUR</span>
               <p id="dailyCoachText">
@@ -129,7 +177,7 @@
                 <span class="eyebrow">À TOI</span><strong>Mes séances</strong>
               </div>
               <button class="compact-btn" id="newCustomSession">
-                ＋ Créer
+                <svg class="ui-icon"><use href="#icon-plus" /></svg>Créer
               </button>
             </div>
             <div id="customSessionList"></div>
@@ -163,7 +211,8 @@
           </div>
           <div class="search-panel">
             <div class="search-wrap">
-              <span>⌕</span
+              <span
+                ><svg class="ui-icon"><use href="#icon-search" /></svg></span
               ><input
                 id="search"
                 type="search"
@@ -291,7 +340,13 @@
                 <h2 id="profileNickname">Mimi Athlete</h2>
                 <strong id="profileTitle">Démarrage</strong>
               </div>
-              <button class="athlete-edit" id="openEditProfile">✎</button>
+              <button
+                class="athlete-edit"
+                id="openEditProfile"
+                aria-label="Modifier le profil"
+              >
+                <svg class="ui-icon"><use href="#icon-edit" /></svg>
+              </button>
             </div>
 
             <div class="athlete-level">
@@ -395,7 +450,9 @@
                 <span class="eyebrow">OBJECTIFS PERSO</span
                 ><strong>Mes prochains caps</strong>
               </div>
-              <button class="compact-btn" id="addGoal">＋ Ajouter</button>
+              <button class="compact-btn" id="addGoal">
+                <svg class="ui-icon"><use href="#icon-plus" /></svg>Ajouter
+              </button>
             </div>
             <div id="profileGoals"></div>
           </article>
@@ -405,7 +462,9 @@
               <div>
                 <span class="eyebrow">CORPS</span><strong>Mensurations</strong>
               </div>
-              <button class="compact-btn" id="addMeasurement">＋ Mesure</button>
+              <button class="compact-btn" id="addMeasurement">
+                <svg class="ui-icon"><use href="#icon-plus" /></svg>Mesure
+              </button>
             </div>
             <div class="profile-body-summary" id="profileBodySummary"></div>
           </article>
@@ -485,13 +544,25 @@
       <!-- NAVIGATION PRINCIPALE -->
       <nav class="tabs" aria-label="Navigation principale">
         <button class="active" data-tab="session" aria-current="page">
-          <span>⌂</span><small>Accueil</small>
+          <span
+            ><svg class="ui-icon"><use href="#icon-home" /></svg></span
+          ><small>Accueil</small>
         </button>
-        <button data-tab="exercises"><span>◈</span><small>Exos</small></button>
+        <button data-tab="exercises">
+          <span
+            ><svg class="ui-icon"><use href="#icon-exercises" /></svg></span
+          ><small>Exos</small>
+        </button>
         <button data-tab="progress">
-          <span>▥</span><small>Progrès</small>
+          <span
+            ><svg class="ui-icon"><use href="#icon-progress" /></svg></span
+          ><small>Progrès</small>
         </button>
-        <button data-tab="profile"><span>○</span><small>Profil</small></button>
+        <button data-tab="profile">
+          <span
+            ><svg class="ui-icon"><use href="#icon-profile" /></svg></span
+          ><small>Profil</small>
+        </button>
       </nav>
     </div>
 
@@ -503,7 +574,9 @@
     >
       <div class="modal-shell calendar-shell">
         <header class="modal-head">
-          <button id="closeCalendar">←</button>
+          <button id="closeCalendar" aria-label="Fermer le calendrier">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <span class="eyebrow">PLANNING</span>
             <h2>Calendrier</h2>
@@ -512,9 +585,13 @@
         </header>
 
         <div class="calendar-toolbar">
-          <button id="calendarPrev">‹</button>
+          <button id="calendarPrev" aria-label="Mois précédent">
+            <svg class="ui-icon"><use href="#icon-chevron-left" /></svg>
+          </button>
           <strong id="calendarMonthLabel">août 2026</strong>
-          <button id="calendarNext">›</button>
+          <button id="calendarNext" aria-label="Mois suivant">
+            <svg class="ui-icon"><use href="#icon-chevron-right" /></svg>
+          </button>
         </div>
 
         <div class="calendar-legend">
@@ -570,7 +647,9 @@
     <div class="modal hidden" id="milestoneModal" aria-hidden="true">
       <div class="modal-shell">
         <header class="modal-head">
-          <button id="closeMilestoneModal">←</button>
+          <button id="closeMilestoneModal" aria-label="Fermer">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <span class="eyebrow">OBJECTIFS</span>
             <h2>Mes repères</h2>
@@ -584,7 +663,9 @@
     <div class="modal hidden" id="profileEditModal" aria-hidden="true">
       <div class="modal-shell compact-modal">
         <header class="modal-head">
-          <button id="closeProfileEdit">←</button>
+          <button id="closeProfileEdit" aria-label="Fermer">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <span class="eyebrow">PROFIL</span>
             <h2>Mes informations</h2>
@@ -627,7 +708,9 @@
     <div class="modal hidden" id="resetProgressionModal" aria-hidden="true">
       <div class="modal-shell compact-modal">
         <header class="modal-head">
-          <button id="closeResetProgression" aria-label="Fermer">←</button>
+          <button id="closeResetProgression" aria-label="Fermer">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <span class="eyebrow">PROGRESSION</span>
             <h2>Repartir de zéro ?</h2>
@@ -663,7 +746,9 @@
     <div class="modal hidden" id="goalModal" aria-hidden="true">
       <div class="modal-shell compact-modal">
         <header class="modal-head">
-          <button id="closeGoalModal">←</button>
+          <button id="closeGoalModal" aria-label="Fermer">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <span class="eyebrow">OBJECTIF</span>
             <h2>Nouveau cap</h2>
@@ -698,7 +783,9 @@
     <div class="modal hidden" id="measurementModal" aria-hidden="true">
       <div class="modal-shell compact-modal">
         <header class="modal-head">
-          <button id="closeMeasurementModal">←</button>
+          <button id="closeMeasurementModal" aria-label="Fermer">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <span class="eyebrow">PROGRESSION</span>
             <h2>Nouvelle mesure</h2>
@@ -725,7 +812,9 @@
     <div class="modal hidden" id="customEditor" aria-hidden="true">
       <div class="modal-shell">
         <header class="modal-head">
-          <button id="closeCustomEditor">←</button>
+          <button id="closeCustomEditor" aria-label="Fermer">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <span class="eyebrow">MES SÉANCES</span>
             <h2 id="customEditorTitle">Nouvelle séance</h2>
@@ -766,7 +855,9 @@
     <div class="modal hidden" id="formatModal" aria-hidden="true">
       <div class="modal-shell">
         <header class="modal-head">
-          <button id="closeFormatModal">←</button>
+          <button id="closeFormatModal" aria-label="Fermer">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <span class="eyebrow">IMPORT</span>
             <h2>Format JSON</h2>
@@ -783,7 +874,9 @@
     <div class="modal hidden" id="planner" aria-hidden="true">
       <div class="modal-shell planner-shell">
         <header class="modal-head">
-          <button id="closePlanner">←</button>
+          <button id="closePlanner" aria-label="Fermer">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <span class="eyebrow">AVANT DE COMMENCER</span>
             <h2>Ta séance</h2>
@@ -806,7 +899,9 @@
     <div class="modal hidden" id="exercisePicker" aria-hidden="true">
       <div class="modal-shell">
         <header class="modal-head">
-          <button id="closePicker">←</button>
+          <button id="closePicker" aria-label="Fermer">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <span class="eyebrow">REMPLACER</span>
             <h2>Choisir un exercice</h2>
@@ -814,7 +909,8 @@
           <span></span>
         </header>
         <div class="search-wrap picker-search">
-          <span>⌕</span
+          <span
+            ><svg class="ui-icon"><use href="#icon-search" /></svg></span
           ><input id="pickerSearch" type="search" placeholder="Rechercher" />
         </div>
         <div id="pickerList"></div>
@@ -851,7 +947,9 @@
         aria-hidden="true"
       >
         <header class="workout-guide-head">
-          <button id="closeWorkoutGuide" aria-label="Fermer le guide">←</button>
+          <button id="closeWorkoutGuide" aria-label="Fermer le guide">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <small>GUIDE TECHNIQUE</small
             ><strong id="workoutGuideTitle"></strong>
@@ -875,7 +973,9 @@
     >
       <div class="modal-shell guide-shell">
         <header class="modal-head guide-head">
-          <button id="closeModal">←</button>
+          <button id="closeModal" aria-label="Fermer">
+            <svg class="ui-icon"><use href="#icon-back" /></svg>
+          </button>
           <div>
             <span class="eyebrow">EXERCICE</span>
             <h2 id="modalTitle"></h2>
