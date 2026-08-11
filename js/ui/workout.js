@@ -309,12 +309,6 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
         ${renderSessionHero(exercise)}
         ${renderSessionHeading(item, exercise, "repGuide")}
 
-        <div class="session-main-metric session-rep-target" aria-label="Objectif">
-          <span>Objectif</span>
-          <strong>${target}</strong>
-          <small>${exercise.perSide ? "par côté" : "répétitions"}</small>
-        </div>
-
         <div class="session-bottom-actions repetition-actions">
           <div class="session-rep-adjust">
             <button id="minus" aria-label="Retirer une répétition">−</button>
