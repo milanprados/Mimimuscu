@@ -2,7 +2,7 @@
  * Calcul pur du planning futur.
  * Aucun DOM ici, donc ce module est facile à tester.
  */
-import {addDays, isRestDay, localDayKey, startOfDay} from "../utils/dates.js";
+import { addDays, isRestDay, localDayKey, startOfDay } from "../utils/dates.js";
 
 export function buildRollingSchedule({
   today = new Date(),
@@ -10,7 +10,7 @@ export function buildRollingSchedule({
   programTemplates = [],
   restDay = 0,
   programDoneToday = false,
-  days = 400
+  days = 400,
 } = {}) {
   const result = [];
   const firstDay = startOfDay(today);
@@ -22,12 +22,12 @@ export function buildRollingSchedule({
     const key = localDayKey(date);
 
     if (isRestDay(date, restDay)) {
-      result.push({key, date, type: "rest"});
+      result.push({ key, date, type: "rest" });
       continue;
     }
 
     if (offset === 0 && programDoneToday) {
-      result.push({key, date, type: "done-today"});
+      result.push({ key, date, type: "done-today" });
       continue;
     }
 
@@ -44,7 +44,7 @@ export function buildRollingSchedule({
       cycle: Math.floor(nextProgramIndex / 24) + 1,
       position: nextProgramIndex % 24,
       week: template?.week || Math.floor((nextProgramIndex % 24) / 6) + 1,
-      day: template?.day || (nextProgramIndex % 6) + 1
+      day: template?.day || (nextProgramIndex % 6) + 1,
     });
 
     nextProgramIndex++;
