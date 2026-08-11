@@ -199,16 +199,17 @@
   text-transform: uppercase;
 }
 .rest-editorial-next-row {
-  display: grid;
-  width: min(100%, 360px);
-  margin: 0 auto;
-  grid-template-columns: 84px minmax(0, 1fr);
+  display: flex;
+  width: 100%;
+  margin: 0;
   gap: 18px;
   justify-content: center;
   align-items: center;
 }
 .rest-editorial-next-copy {
   min-width: 0;
+  max-width: calc(100% - 96px);
+  flex: 0 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -474,8 +475,6 @@
 
 @media (max-width: 390px) {
   .rest-editorial-next-row {
-    width: 100%;
-    grid-template-columns: 78px minmax(0, 1fr);
     gap: 15px;
   }
 }
