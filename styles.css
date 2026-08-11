@@ -304,3 +304,76 @@ button{border:0;cursor:pointer}
   .reset-progress-card{grid-template-columns:1fr}
   .reset-progress-btn{width:100%}
 }
+
+/* ==========================================================
+   V32 — Soft Athletic Minimalism
+   Refonte visuelle claire inspirée de la maquette validée.
+   ========================================================== */
+:root{
+  --bg:#f7f6f1;--surface:#ffffff;--surface-2:#f2f3ef;--surface-3:#e9eeea;
+  --line:#dfe4df;--line-soft:#e9ece8;--text:#0b2746;--muted:#71808d;
+  --acid:#0b355d;--acid-dark:#e9f0f6;--orange:#c77349;--blue:#5e8296;
+  --green:#789b8f;--red:#c7675c;--radius:22px;--shadow:0 12px 34px rgba(21,48,70,.08)
+}
+html{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif}
+body{background:var(--bg);color:var(--text)}
+body:before,body:after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(20px);opacity:.35;pointer-events:none}
+body:before{width:260px;height:260px;right:-130px;top:-80px;background:#dbe7df}
+body:after{width:220px;height:220px;left:-140px;bottom:5%;background:#ebe5d7}
+.app-shell{max-width:640px;padding-inline:14px}
+.app-header{height:74px;background:linear-gradient(var(--bg) 80%,transparent)}
+.brand-wordmark{font-family:Georgia,"Times New Roman",serif;font-size:25px;letter-spacing:-.04em;color:#0b2746;white-space:nowrap}
+.brand-wordmark span{font-family:Georgia,serif;color:var(--green);font-size:17px;margin-left:3px}
+.level-chip{background:#fff;border:1px solid var(--line);color:#34596f;box-shadow:none}
+.screen-intro{padding:18px 2px 12px}.screen-intro h1{font-family:Georgia,"Times New Roman",serif;color:#0b2746;font-size:34px;letter-spacing:-.035em;line-height:1.02}.home-intro h1{font-size:36px}.eyebrow{color:#72877f;letter-spacing:.13em}
+
+.today-card,.cycle-panel,.section-block,.today-done,.calendar-home-card,.coach-note,.metric,.profile-hero,.analysis-card{background:rgba(255,255,255,.88)!important;border:1px solid var(--line)!important;box-shadow:var(--shadow)!important;backdrop-filter:blur(12px)}
+.today-card{border-radius:24px;padding:17px}.today-card:after{background:radial-gradient(circle,rgba(120,155,143,.15),transparent 68%)}
+.status-pill{background:#e6efeb;color:#47695f}.status-pill.light-day{background:#edf3f7;color:#3b5c70}
+.today-duration span,.today-focus,.today-done p,.coach-note p{color:var(--muted)}
+.phase-route div{background:#fafaf7;border-color:#e5e8e3}.phase-dot.warm{background:#8eaaa1}.phase-dot.main{background:#0b355d}.phase-dot.cool{background:#b2c4b8}
+.hero-go,.primary-btn{background:#0b355d!important;color:#fff!important;box-shadow:none!important}.hero-go span{background:#fff;color:#0b355d}.hero-edit{color:#607685}
+.progress-track,.milestone-bar{background:#e6e9e5}.progress-track span,.milestone-bar div{background:#789b8f}
+.coach-icon{background:#edf3ef;color:#6b9284}.link-btn,.compact-btn{color:#315a70}.compact-btn{background:#f7f8f5;border-color:#e0e4df}
+.library-actions button,.two-actions button{background:#fafaf7;border-color:#e2e5e0;color:#536675}
+
+.tabs{background:rgba(255,255,255,.94);border:1px solid #d9dfdc;box-shadow:0 10px 35px rgba(29,58,78,.12);backdrop-filter:blur(24px)}
+.tabs button{color:#82909b}.tabs button.active{background:#edf2f0;color:#0b355d}.tabs button.active small{color:#0b355d}
+
+.search-panel{background:linear-gradient(var(--bg) 88%,transparent)}
+.search-wrap{background:#fff;border-color:#dce2df}.search-wrap input{color:#17334f}.search-wrap input::placeholder{color:#99a4ad}.search-wrap span{color:#7f8d97}
+.filter-chip{background:#fff;border-color:#dde2de;color:#5e7180}.filter-chip.active{background:#0b355d;border-color:#0b355d;color:#fff}
+.exercise-card{background:#fff;border-color:#e0e4df;color:#17334f;box-shadow:0 5px 16px rgba(34,62,82,.04)}
+.exercise-thumb{background:#f5f5f0;position:relative}.exercise-thumb img{display:none}.exercise-thumb:after{content:"◌";position:absolute;inset:0;display:grid;place-items:center;color:#b3beb8;font-size:28px}
+.exercise-card small{color:#7c8993}.exercise-arrow{color:#789b8f}.exercise-meta span{background:#f2f4f0;border-color:#e0e5df;color:#6f7f89}
+
+.modal,.focus{background:#f7f6f1;color:#0b2746}.modal-shell{background:#f7f6f1;color:#0b2746}.modal-head{background:linear-gradient(#f7f6f1 82%,transparent)}.modal-head button,.focus-head button{background:#fff;border:1px solid #dfe4df;color:#17334f}.modal-head h2{font-family:Georgia,"Times New Roman",serif;color:#0b2746}
+.guide-images figure,.guide-section,.muscle-strip>div,.variant-grid>div,.workout-guide-section,.workout-guide-images figure{background:#fff;border-color:#dfe4df;color:#17334f}
+.guide-images img,.workout-guide-images img{display:none}.guide-images figure:after,.workout-guide-images figure:after{content:"Illustration à venir";position:absolute;inset:0;display:grid;place-items:center;color:#a2afa8;font-size:11px}.guide-images figcaption{z-index:2;background:#fff;color:#0b355d;border:1px solid #e0e4df}
+.guide-section-label,.guide-steps li>span{color:#668d80}.guide-steps li>span{background:#edf3ef}.guide-section p,.guide-section li{color:#5d6f7a}.guide-steps li{border-color:#edf0ec}.guide-section.danger .guide-section-label{color:#bf6b61}
+
+/* Séance : un seul écran, aucune nécessité de scroller. */
+.focus{padding:calc(6px + env(safe-area-inset-top)) 12px calc(8px + env(safe-area-inset-bottom));background:#f7f6f1}
+.focus-head{height:50px}.focus-center small{color:#80909a}.focus-center strong{color:#17334f}.focus-center em{color:#789b8f}.focus-progress{background:#e3e8e4;margin-bottom:5px}.focus-progress span{background:#0b355d}
+.focus-content{overflow:hidden}
+.workout-screen{gap:7px;height:100%;overflow:hidden}.workout-title h2{font-family:Georgia,"Times New Roman",serif;color:#0b2746;font-size:28px;margin:2px 0 3px}.workout-title>span{color:#789b8f}.target-pill{background:transparent;border:0;padding:1px 8px}.target-pill strong{font-size:42px;color:#0b355d}.target-pill small{color:#5e7180;font-size:13px}
+.pose-grid{min-height:115px;max-height:28vh;gap:8px;flex:1}.pose{background:#fbfaf7;border:1px solid #dfe3dd;border-radius:18px}.pose figcaption{background:transparent;color:#637581;font-size:8px}.pose-placeholder{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#b2bcb6}.pose-placeholder span{font-size:34px;font-weight:200}.pose-placeholder small{font-size:8px;text-transform:uppercase;letter-spacing:.08em}
+.quick-cue{display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:8px;background:#fff;border:1px solid #e1e5df;border-radius:14px;padding:8px 10px;min-height:46px}.quick-cue-icon{color:#789b8f;font-size:16px}.quick-cue p{margin:0;font-size:10px;line-height:1.25;color:#596d78;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.technique-link{background:transparent;color:#345d73;font-size:9px;font-weight:800;padding:6px}
+.workout-controls{background:#fff;border-color:#dfe4df;padding:8px;border-radius:17px}.rep-row button{background:#f0f3ef;color:#0b355d}.rep-row strong{color:#0b2746}.rep-row small,.effort-label{color:#82909a}.effort button{background:#f3f4f1;color:#63737e}.effort button.sel{background:#e4eee9;color:#4f786b;outline:1px solid #b8cec5}.workout-done{min-height:44px}.workout-secondary button{color:#ba6a61}.workout-secondary span{color:#82909a}
+.timer-visual{background:#fbfaf7;border-color:#dfe4df;min-height:150px}.timer-overlay{background:transparent}.timer-overlay strong{color:#0b355d;text-shadow:none;font-family:Georgia,"Times New Roman",serif}.timer-overlay small{color:#758591}.timer-tag{background:#fff;color:#667983;border:1px solid #e0e4df}.timer-actions .soft-btn{background:#fff;border:1px solid #dfe4df;color:#34566c}.timer-actions .text-danger{color:#b9655c}
+
+/* Repos = moment pédagogique : plus d'infos, mais toujours compact. */
+.recovery-screen{justify-content:flex-start;gap:8px;padding-top:3px;overflow:hidden}.recovery-orbit{width:112px;height:112px;flex:0 0 112px;background:#f9faf6;border:3px solid #98b1a7;box-shadow:none}.recovery-orbit strong{font-family:Georgia,"Times New Roman",serif;color:#0b355d;font-size:42px}.recovery-orbit small{color:#758980}.recovery-label{color:#789b8f}.next-card{background:#fff;border-color:#dfe4df;border-radius:18px;padding:10px;grid-template-columns:1fr 92px}.next-copy h3{font-family:Georgia,"Times New Roman",serif;color:#0b2746;font-size:18px;margin:3px 0}.next-copy strong{color:#789b8f}.next-copy small{color:#819099}.next-copy p{font-size:9px;color:#667782;line-height:1.3;margin:5px 0}.next-visual{background:#faf9f5;height:82px}.rest-prep{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.rest-prep>div{background:#fff;border:1px solid #e1e5df;border-radius:13px;padding:8px;min-height:60px}.rest-prep small{display:block;color:#789b8f;font-size:7px;font-weight:900;letter-spacing:.09em}.rest-prep p{margin:4px 0 0;font-size:8px;line-height:1.28;color:#5d6f79;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.recovery-countdown-note{font-size:8px;color:#819099}.recovery-screen>.soft-btn{background:#fff;border:1px solid #dfe4df;color:#526977;min-height:38px}.recovery-screen.preparing .recovery-orbit{border-color:#0b355d}.recovery-screen.preparing .recovery-label{color:#0b355d}
+.count-screen{color:#0b2746}.count-screen h2{font-family:Georgia,"Times New Roman",serif}.count-image{background:#fff;border-color:#dfe4df}.count-num{color:#0b355d}
+
+/* Profil / progrès / calendrier */
+.metric,.stat-card,.profile-card,.calendar-day,.calendar-agenda-item{background:#fff!important;border-color:#dfe4df!important;color:#17334f!important}.metric strong,.stat-card strong{color:#0b2746}.metric span,.stat-card span{color:#7b8993}.calendar-day.today{outline:2px solid #789b8f}.calendar-status.done{background:#e4eee9;color:#55796d}.calendar-status.planned{background:#e8eef4;color:#3f6177}.calendar-status.rest{background:#f1eee7;color:#83755e}
+.reset-progress-btn,.destructive-btn{background:#fff5f3!important;color:#b65f56!important;border:1px solid #edd5d1!important}
+textarea,input,select{color:#17334f!important;background:#fff!important;border-color:#dfe4df!important}
+
+/* Les anciennes illustrations restent volontairement masquées en V32. */
+.placeholder-next .pose-placeholder,.placeholder-count .pose-placeholder,.placeholder-timer .pose-placeholder{color:#b4beb8}.placeholder-count{display:flex;align-items:center;justify-content:center}
+
+@media (max-height:720px){
+  .focus-head{height:44px}.workout-title h2{font-size:24px}.target-pill strong{font-size:34px}.pose-grid{min-height:90px;max-height:22vh}.quick-cue{min-height:40px;padding:6px 8px}.workout-controls{padding:6px}.rep-row button{height:40px}.workout-done{min-height:40px}.recovery-orbit{width:92px;height:92px;flex-basis:92px}.recovery-orbit strong{font-size:34px}.next-visual{height:70px}.rest-prep>div{min-height:52px;padding:6px}.rest-prep p{font-size:7.5px}.tabs{height:64px}
+}

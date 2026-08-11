@@ -219,9 +219,34 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
   function poseImages(exercise) {
     return `
-      <div class="pose-grid">
-        <figure class="pose"><figcaption>Départ</figcaption><img src="${exercise.images[0]}" alt=""></figure>
-        <figure class="pose"><figcaption>Fin</figcaption><img src="${exercise.images[1]}" alt=""></figure>
+      <div class="pose-grid placeholder-poses" aria-label="Illustrations à venir">
+        <figure class="pose placeholder-pose"><figcaption>Départ</figcaption><div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div></figure>
+        <figure class="pose placeholder-pose"><figcaption>Fin</figcaption><div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div></figure>
+      </div>`;
+  }
+
+  function renderQuickCue(exercise, buttonId) {
+    const guide = exercise?.guide || {};
+    const cue = guide.specific_note || guide.execution?.[0] || guide.setup?.[0] || exercise?.tips?.[0] || "Mouvement lent et contrôlé.";
+    return `
+      <div class="quick-cue">
+        <span class="quick-cue-icon">❧</span>
+        <p>${escapeHtml(cue)}</p>
+        <button class="technique-link" id="${buttonId}">Guide</button>
+      </div>`;
+  }
+
+  function renderRestPrep(exercise) {
+    if (!exercise) return "";
+    const guide = exercise.guide || {};
+    const setup = (guide.setup || []).slice(0, 2);
+    const execution = (guide.execution || []).slice(0, 2);
+    const breathing = guide.breathing || exercise.breathing || "";
+    return `
+      <div class="rest-prep">
+        ${setup.length ? `<div><small>POSITION</small><p>${setup.map(escapeHtml).join(" · ")}</p></div>` : ""}
+        ${execution.length ? `<div><small>MOUVEMENT</small><p>${execution.map(escapeHtml).join(" · ")}</p></div>` : ""}
+        ${breathing ? `<div><small>RESPIRATION</small><p>${escapeHtml(breathing)}</p></div>` : ""}
       </div>`;
   }
 
@@ -247,7 +272,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
         ${poseImages(exercise)}
 
-        ${renderInlineExerciseGuide(exercise, "repGuide")}
+        ${renderQuickCue(exercise, "repGuide")}
 
         <div class="workout-controls">
           <div class="rep-row">
@@ -311,14 +336,13 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
           <h2>${escapeHtml(exercise.name)}</h2>
         </div>
 
-        <div class="timer-visual" id="timerVisual">
-          <img class="start" src="${exercise.images[0]}" alt="">
-          <img class="end" src="${exercise.images[1]}" alt="">
-          <span class="timer-tag" id="timerPoseLabel">Départ</span>
+        <div class="timer-visual placeholder-timer" id="timerVisual">
+          <div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div>
+          <span class="timer-tag" id="timerPoseLabel">Mouvement</span>
           <div class="timer-overlay"><strong id="time">${target}</strong><small>sec</small></div>
         </div>
 
-        ${renderInlineExerciseGuide(exercise, "timerGuide")}
+        ${renderQuickCue(exercise, "timerGuide")}
 
         <div class="timer-actions">
           <button class="primary-btn" id="pause">Pause</button>
@@ -368,8 +392,9 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
               ${nextCue ? `<p>${escapeHtml(nextCue)}</p>` : ""}
               <button class="technique-link" id="restGuide">? Voir le guide</button>
             </div>
-            ${nextImage ? `<div class="next-visual"><img src="${nextImage}" alt=""></div>` : ""}
+            <div class="next-visual placeholder-next"><div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div></div>
           </div>
+          ${renderRestPrep(nextExercise)}
         ` : ""}
 
         <div class="recovery-countdown-note" id="recoveryCountdownNote">Le 3–2–1 est inclus dans le repos.</div>
@@ -409,7 +434,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
       <div class="count-screen">
         <span class="count-kicker">PRÊT POUR</span>
         <h2>${escapeHtml(exercise.name)}</h2>
-        <img class="count-image" src="${exercise.thumb || exercise.images[0]}" alt="">
+        <div class="count-image placeholder-count"><div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div></div>
         <div class="count-num" id="count">3</div>
       </div>`;
 

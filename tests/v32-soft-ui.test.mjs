@@ -1,0 +1,10 @@
+import fs from "node:fs";
+import assert from "node:assert/strict";
+const css=fs.readFileSync(new URL("../styles.css", import.meta.url),"utf8");
+const workout=fs.readFileSync(new URL("../js/ui/workout.js", import.meta.url),"utf8");
+assert.ok(css.includes("V32 — Soft Athletic Minimalism"));
+assert.ok(css.includes(".focus-content{overflow:hidden}"));
+assert.ok(workout.includes("renderQuickCue(exercise, \"repGuide\")"));
+assert.ok(workout.includes("renderRestPrep(nextExercise)"));
+assert.ok(workout.includes("Illustration à venir"));
+console.log("OK — V32 soft UI : séance non-scrollable, guide court, repos enrichi, placeholders.");

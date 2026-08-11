@@ -11,7 +11,8 @@ const tests = [
   "tests/imports.test.mjs",
   "tests/service-worker.test.mjs",
   "tests/workout-engine.test.mjs",
-  "tests/stability-v31-4.test.mjs"
+  "tests/stability-v31-4.test.mjs",
+  "tests/v32-soft-ui.test.mjs"
 ];
 
 for (const test of tests) {

@@ -3,21 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-  <meta name="theme-color" content="#090a0c">
+  <meta name="theme-color" content="#f7f6f1">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=31.4">
+  <link rel="stylesheet" href="./styles.css?v=32.0">
   <title>Mimi Muscu</title>
 </head>
 <body>
   <div class="app-shell">
     <header class="app-header">
       <div class="brand-lockup">
-        <div class="brand-mark">M</div>
-        <div>
-          <strong>Mimi Muscu</strong>
-          <small>20 min · full body · 6j/7</small>
-        </div>
+        <div class="brand-wordmark">Mimi Muscu<span>❧</span></div>
       </div>
       <div class="level-chip" id="homeLevel">LV 1</div>
     </header>
@@ -534,7 +530,7 @@
       await Promise.all(keys.filter(key => key.startsWith("mimi-muscu-")).map(key => caches.delete(key)));
     } catch (_) {}
 
-    import("./js/app.js?v=31.4").catch(error=>{
+    import("./js/app.js?v=32.0").catch(error=>{
       console.error("[Mimi Muscu] Erreur de démarrage",error);
       const box=document.createElement("div");
       box.className="boot-error";
