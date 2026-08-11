@@ -376,12 +376,20 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
     const nextMode = next?.modeOverride || nextExercise?.mode;
     const nextTarget = next && nextExercise ? engine.getTarget(next.id, next) : null;
+    const nextTargetText = nextExercise
+      ? `${nextTarget}${nextMode === "time" ? " sec" : nextExercise.perSide ? " / côté" : " reps"}`
+      : "";
     const nextCue = next?.note || nextExercise?.tips?.[0] || "";
     const nextImage = nextExercise?.thumb || nextExercise?.images?.[0] || "";
 
     $("#focusContent").innerHTML = `
       <div class="recovery-screen" id="recoveryScreen">
-        <div class="recovery-orbit" id="recoveryOrbit"><strong id="rest">${seconds}</strong></div>
+        <div class="recovery-orbit" id="recoveryOrbit">
+          <svg class="recovery-digit-svg" viewBox="0 0 100 100" aria-hidden="true">
+            <text id="rest" x="50" y="50" text-anchor="middle" dominant-baseline="central">${seconds}</text>
+          </svg>
+          <div class="recovery-orbit-pulse" aria-hidden="true"></div>
+        </div>
         <div class="recovery-label" id="recoveryLabel">RÉCUPÈRE</div>
 
         ${nextExercise ? `
@@ -389,64 +397,56 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
             <div class="next-copy">
               <small>PROCHAIN EXERCICE</small>
               <h3>${escapeHtml(nextExercise.name)}</h3>
-              <strong>${nextTarget}${
-                nextMode === "time" ? " sec" : nextExercise.perSide ? " / côté" : " reps"
-              }</strong>
-              ${nextCue ? `<p>${escapeHtml(nextCue)}</p>` : ""}
+              <strong>${escapeHtml(nextTargetText)}</strong>
+              <p>${escapeHtml(nextCue || "Mouvement propre et contrôlé.")}</p>
               <button class="technique-link" id="restGuide">? Voir le guide</button>
             </div>
-            <div class="next-visual placeholder-next"><div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div></div>
+            <div class="next-visual ${nextImage ? "" : "placeholder-next"}">
+              ${nextImage ? `<img src="${nextImage}" alt="">` : `<div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div>`}
+            </div>
           </div>
           ${renderRestPrep(nextExercise)}
         ` : ""}
 
-        <div class="recovery-countdown-note" id="recoveryCountdownNote">Le 3–2–1 est inclus dans le repos.</div>
+        <div class="rest-countdown-note hidden" id="restCountdownNote"></div>
         <button class="soft-btn" id="skipRest">Passer le repos</button>
       </div>`;
 
-    restInitialSeconds = seconds;
-    updateRestCountdown(seconds);
+    updateRestPresentation(seconds);
     speak(`Récupération. Prochain exercice ${nextExercise?.name || "fin"}`);
-    on("#restGuide", "click", () => openWorkoutGuide(nextExercise), {required: false});
+
+    if (nextExercise) on("#restGuide", "click", () => openWorkoutGuide(nextExercise));
     on("#skipRest", "click", () => engine.skipRest());
   }
 
-  let restInitialSeconds = 0;
-
-  function updateRestCountdown(value) {
-    const rest = $("#rest");
+  function updateRestPresentation(value) {
+    const screen = $("#recoveryScreen");
+    const label = $("#recoveryLabel");
+    const note = $("#restCountdownNote");
     const orbit = $("#recoveryOrbit");
-    if (!rest || !orbit) return;
 
-    if (!restInitialSeconds || value > restInitialSeconds) {
-      restInitialSeconds = value;
-    }
+    if (!screen || !label || !orbit) return;
 
-    rest.textContent = value;
+    const total = Math.max(1, Number(engine?.currentItem?.seconds) || Number(value) || 1);
+    const remaining = Math.max(0, Number(value) || 0);
+    const progress = Math.max(0, Math.min(1, remaining / total));
+    orbit.style.setProperty("--rest-progress", `${progress * 100}%`);
 
-    const progress = restInitialSeconds > 0
-      ? Math.max(0, Math.min(100, value / restInitialSeconds * 100))
-      : 0;
-
-    orbit.style.setProperty("--rest-progress", `${progress}%`);
-
-    const preparing = value > 0 && value <= 3;
-    $("#recoveryScreen")?.classList.toggle("preparing", preparing);
-
-    // Relance la pulse à chaque seconde, même si la classe était déjà présente.
+    // Relance la pulse à chaque seconde sans toucher à la géométrie du cercle.
     orbit.classList.remove("tick-pulse");
     void orbit.offsetWidth;
     orbit.classList.add("tick-pulse");
 
-    const label = $("#recoveryLabel");
-    if (label) label.textContent = preparing ? "PRÊT" : "RÉCUPÈRE";
+    const preparing = remaining <= 3;
+    screen.classList.toggle("preparing", preparing);
+    label.textContent = preparing ? "PRÊT" : "RÉCUPÈRE";
 
-    const note = $("#recoveryCountdownNote");
-    if (note) note.textContent = preparing
-      ? `Départ dans ${value}…`
-      : "Le 3–2–1 est inclus dans le repos.";
+    if (note) {
+      note.classList.toggle("hidden", !preparing);
+      note.textContent = preparing ? `Départ dans ${remaining}...` : "";
+    }
 
-    if (preparing) tone(value === 1 ? 920 : 680);
+    if (preparing) tone(remaining === 1 ? 920 : 680);
   }
 
   async function renderCountdown({item, exercise, done}) {
@@ -548,9 +548,6 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
   }
 
   function bindStaticControls() {
-    on("#closeWorkoutGuide", "click", () => closeWorkoutGuide());
-    on("#workoutGuideResume", "click", () => closeWorkoutGuide());
-
     on("#exitFocus", "click", () => {
       if (confirm("Quitter la séance ?")) close();
     });
@@ -559,6 +556,9 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
       audioEnabled = !audioEnabled;
       $("#audio").textContent = audioEnabled ? "🔊" : "🔇";
     });
+
+    on("#workoutGuideClose", "click", () => closeWorkoutGuide());
+    on("#workoutGuideResume", "click", () => closeWorkoutGuide());
   }
 
   return {
@@ -574,7 +574,10 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
       finished: renderFinished,
       tick(value) {
         if ($("#time")) $("#time").textContent = value;
-        if ($("#rest")) updateRestCountdown(value);
+        if ($("#rest")) {
+          $("#rest").textContent = value;
+          updateRestPresentation(value);
+        }
       },
       paused(paused) {
         if ($("#pause")) $("#pause").textContent = paused ? "Reprendre" : "Pause";
