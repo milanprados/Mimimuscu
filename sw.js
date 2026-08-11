@@ -2,7 +2,7 @@
  * Cache PWA V34
  * Navigation + code : network-first pour recevoir les mises à jour immédiatement.
  */
-const VERSION = "mimi-muscu-v34.0";
+const VERSION = "mimi-muscu-v34.1";
 const APP_CACHE = `${VERSION}-app`;
 
 const APP_SHELL = [
