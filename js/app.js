@@ -26,9 +26,7 @@ import {WorkoutEngine} from "./core/workout-engine.js";
 import {$, on} from "./utils/dom.js";
 
 import {createNavigation} from "./ui/navigation.js";
-import {installAppTheme} from "./ui/theme.js?v=soft-editorial-1";
-// Cache-bust explicite : iOS PWA garde parfois les modules ES secondaires
-// même quand app.js et le CSS ont déjà été rafraîchis.
+import {installAppTheme} from "./ui/theme.js?v=soft-editorial-v2";
 import {createWorkoutView} from "./ui/workout.js?v=timer-number-fix-1";
 import {createExerciseLibrary} from "./ui/exercise-library.js";
 import {createSessionPlanner} from "./ui/session-planner.js";
@@ -37,7 +35,6 @@ import {createCalendarView} from "./ui/calendar.js";
 import {createProfileView} from "./ui/profile.js";
 import {createProgressView} from "./ui/progress.js";
 
-// Le design est piloté depuis le JS, comme le reste de l'UI.
 installAppTheme();
 
 window.__MIMI_BOOT__ = {version: APP_VERSION, step: "data-loaded", errors: []};
@@ -48,8 +45,6 @@ window.__MIMI_BOOT__.step = "state-loaded";
 function caloriesForSeconds(seconds) {
   const weightKg = Number(state.profile.weightKg);
   if (!weightKg) return null;
-
-  // Approximation volontairement simple (~4.5 MET).
   return Math.round(4.5 * 3.5 * weightKg / 200 * (seconds / 60));
 }
 
@@ -66,38 +61,23 @@ function coachText() {
   ];
 
   if (last) {
-    lines.push(
-      `Dernière séance : ${last.sessionName || "Séance"}, score ${last.score}/100, durée ${last.duration}s.`
-    );
-
+    lines.push(`Dernière séance : ${last.sessionName || "Séance"}, score ${last.score}/100, durée ${last.duration}s.`);
     for (const set of last.sets || []) {
-      lines.push(
-        set.skipped
-          ? `- ${set.name} : passé`
-          : `- ${set.name} : ${set.actual}/${set.target} (${set.effort})`
-      );
+      lines.push(set.skipped ? `- ${set.name} : passé` : `- ${set.name} : ${set.actual}/${set.target} (${set.effort})`);
     }
   }
 
   const latestMeasurement = state.measurements.at(-1);
-
   if (latestMeasurement) {
-    lines.push(
-      `Dernière mesure : ${latestMeasurement.weightKg || "?"} kg, tour de taille ${latestMeasurement.waistCm || "?"} cm.`
-    );
+    lines.push(`Dernière mesure : ${latestMeasurement.weightKg || "?"} kg, tour de taille ${latestMeasurement.waistCm || "?"} cm.`);
   }
 
   return lines.join("\n");
 }
 
-// Workout ---------------------------------------------------------------------
 window.__MIMI_BOOT__.step = "workout-init";
 
-const workoutView = createWorkoutView({
-  state,
-  exercises: EXERCISES,
-  caloriesForSeconds
-});
+const workoutView = createWorkoutView({state, exercises: EXERCISES, caloriesForSeconds});
 
 const workoutEngine = new WorkoutEngine({
   state,
@@ -121,18 +101,14 @@ function launchCurrentProgram(redo = false) {
   workoutEngine.start({redo});
 }
 
-// Refresh partagé -------------------------------------------------------------
 let progressionSnapshot = null;
 let refreshApp = () => {};
 
 function getSnapshot() {
-  if (!progressionSnapshot) {
-    progressionSnapshot = buildProgressionSnapshot(state, EXERCISES);
-  }
+  if (!progressionSnapshot) progressionSnapshot = buildProgressionSnapshot(state, EXERCISES);
   return progressionSnapshot;
 }
 
-// UI --------------------------------------------------------------------------
 window.__MIMI_BOOT__.step = "sessions-init";
 
 const sessionPlanner = createSessionPlanner({
@@ -148,7 +124,6 @@ const sessionPlanner = createSessionPlanner({
 });
 
 window.__MIMI_BOOT__.step = "home-init";
-
 const homeView = createHomeView({
   state,
   milestones: MILESTONES,
@@ -159,7 +134,6 @@ const homeView = createHomeView({
 });
 
 window.__MIMI_BOOT__.step = "calendar-init";
-
 const calendarView = createCalendarView({
   state,
   save: saveState,
@@ -172,7 +146,6 @@ window.__MIMI_BOOT__.step = "library-init";
 createExerciseLibrary({EXERCISES, FAMILIES});
 
 window.__MIMI_BOOT__.step = "profile-init";
-
 const profileView = createProfileView({
   state,
   exercises: EXERCISES,
@@ -182,25 +155,17 @@ const profileView = createProfileView({
   coachText
 });
 
-const progressView = createProgressView({
-  state,
-  exercises: EXERCISES
-});
-
+const progressView = createProgressView({state, exercises: EXERCISES});
 const navigation = createNavigation();
 
-// Un seul chemin de rendu prévisible.
 refreshApp = () => {
   if (ensureProgressBaseline(state, EXERCISES)) saveState(state);
-
   progressionSnapshot = buildProgressionSnapshot(state, EXERCISES);
-
   homeView.render();
   calendarView.render();
   sessionPlanner.renderCustomSessions();
   profileView.render(progressionSnapshot);
   progressView.render(progressionSnapshot);
-
   saveState(state);
 };
 
@@ -214,22 +179,18 @@ window.addEventListener("mimi:refresh", event => {
 refreshApp();
 window.__MIMI_BOOT__.step = "ready";
 
-// PWA -------------------------------------------------------------------------
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./sw.js?v=soft-editorial-1")
+  navigator.serviceWorker.register("./sw.js?v=soft-editorial-v2")
     .then(registration => {
       if (registration.waiting) $("#updateToast")?.classList.remove("hidden");
-
       registration.addEventListener("updatefound", () => {
         const worker = registration.installing;
-
         worker?.addEventListener("statechange", () => {
           if (worker.state === "installed" && navigator.serviceWorker.controller) {
             $("#updateToast")?.classList.remove("hidden");
           }
         });
       });
-
       on("#applyUpdate", "click", () => location.reload());
     })
     .catch(error => console.warn("[Mimi Muscu] Service worker", error));
