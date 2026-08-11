@@ -26,7 +26,9 @@ import {WorkoutEngine} from "./core/workout-engine.js";
 import {$, on} from "./utils/dom.js";
 
 import {createNavigation} from "./ui/navigation.js";
-import {createWorkoutView} from "./ui/workout.js";
+// Cache-bust explicite : iOS PWA garde parfois les modules ES secondaires
+// même quand app.js et le CSS ont déjà été rafraîchis.
+import {createWorkoutView} from "./ui/workout.js?v=timer-number-fix-1";
 import {createExerciseLibrary} from "./ui/exercise-library.js";
 import {createSessionPlanner} from "./ui/session-planner.js";
 import {createHomeView} from "./ui/home.js";
@@ -210,7 +212,7 @@ window.__MIMI_BOOT__.step = "ready";
 
 // PWA -------------------------------------------------------------------------
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./sw.js?v=31.4")
+  navigator.serviceWorker.register("./sw.js?v=timer-number-fix-1")
     .then(registration => {
       if (registration.waiting) $("#updateToast")?.classList.remove("hidden");
 
