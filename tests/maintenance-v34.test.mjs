@@ -14,9 +14,9 @@ const uiSource = fs
   .map((name) => fs.readFileSync(`js/ui/${name}`, "utf8"))
   .join("\n");
 
-assert.ok(html.includes('href="./theme.css?v=34.0"'));
-assert.ok(html.includes('href="./workout.css?v=34.0"'));
-assert.ok(html.includes('import("./js/app.js?v=34.0")'));
+assert.ok(html.includes('href="./theme.css?v=34.1"'));
+assert.ok(html.includes('href="./workout.css?v=34.1"'));
+assert.ok(html.includes('import("./js/app.js?v=34.1")'));
 assert.ok(
   html.includes('<button id="exitFocus" aria-label="Quitter la séance">'),
 );
@@ -44,7 +44,15 @@ assert.ok(!workout.includes('id="restCountdownNote"'));
 assert.ok(workout.includes("preparing && remaining > 0"));
 
 assert.ok(styles.includes(".rest-editorial-next-row"));
-assert.match(styles, /grid-template-columns:\s*84px minmax\(0,\s*1fr\)/);
+assert.match(styles, /\.rest-editorial-next-row\s*\{[^}]*display:\s*flex/s);
+assert.match(
+  styles,
+  /\.rest-editorial-next-row\s*\{[^}]*justify-content:\s*center/s,
+);
+assert.match(
+  styles,
+  /\.rest-editorial-next-copy\s*\{[^}]*max-width:\s*calc\(100% - 96px\)/s,
+);
 assert.match(styles, /scrollbar-width:\s*none/);
 assert.equal(
   [...styles.matchAll(/!important/g)].length,
@@ -56,7 +64,7 @@ assert.ok(serviceWorker.includes('"./theme.css"'));
 assert.ok(serviceWorker.includes('"./workout.css"'));
 assert.ok(!serviceWorker.includes('"./js/ui/theme.js"'));
 assert.ok(!serviceWorker.includes('"./js/ui/workout-theme.js"'));
-assert.ok(serviceWorker.includes('const VERSION = "mimi-muscu-v34.0"'));
+assert.ok(serviceWorker.includes('const VERSION = "mimi-muscu-v34.1"'));
 
 console.log(
   "OK — maintenance V34 : CSS statique, repos direct, cache cohérent.",
