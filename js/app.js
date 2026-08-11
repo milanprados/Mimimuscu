@@ -28,6 +28,7 @@ import {$, on} from "./utils/dom.js";
 import {createNavigation} from "./ui/navigation.js";
 import {installAppTheme} from "./ui/theme.js?v=soft-editorial-v2";
 import {installWorkoutTheme} from "./ui/workout-theme.js?v=editorial-rest-v1";
+import {installWorkoutRestTweaks} from "./ui/workout-rest-tweaks.js?v=editorial-rest-v2";
 // Cache-bust explicite : iOS PWA garde parfois les modules ES secondaires
 // même quand app.js et le CSS ont déjà été rafraîchis.
 import {createWorkoutView} from "./ui/workout.js?v=timer-number-fix-1";
@@ -40,6 +41,7 @@ import {createProgressView} from "./ui/progress.js";
 
 installAppTheme();
 installWorkoutTheme();
+installWorkoutRestTweaks();
 
 window.__MIMI_BOOT__ = {version: APP_VERSION, step: "data-loaded", errors: []};
 
@@ -217,7 +219,7 @@ window.__MIMI_BOOT__.step = "ready";
 
 // PWA -------------------------------------------------------------------------
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./sw.js?v=soft-editorial-v3")
+  navigator.serviceWorker.register("./sw.js?v=soft-editorial-v4")
     .then(registration => {
       if (registration.waiting) $("#updateToast")?.classList.remove("hidden");
 
