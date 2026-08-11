@@ -14,9 +14,9 @@ const uiSource = fs
   .map((name) => fs.readFileSync(`js/ui/${name}`, "utf8"))
   .join("\n");
 
-assert.ok(html.includes('href="./theme.css?v=34.1"'));
-assert.ok(html.includes('href="./workout.css?v=34.1"'));
-assert.ok(html.includes('import("./js/app.js?v=34.1")'));
+assert.ok(html.includes('href="./theme.css?v=34.2"'));
+assert.ok(html.includes('href="./workout.css?v=34.2"'));
+assert.ok(html.includes('import("./js/app.js?v=34.2")'));
 assert.ok(
   html.includes('<button id="exitFocus" aria-label="Quitter la séance">'),
 );
@@ -64,7 +64,7 @@ assert.ok(serviceWorker.includes('"./theme.css"'));
 assert.ok(serviceWorker.includes('"./workout.css"'));
 assert.ok(!serviceWorker.includes('"./js/ui/theme.js"'));
 assert.ok(!serviceWorker.includes('"./js/ui/workout-theme.js"'));
-assert.ok(serviceWorker.includes('const VERSION = "mimi-muscu-v34.1"'));
+assert.ok(serviceWorker.includes('const VERSION = "mimi-muscu-v34.2"'));
 
 console.log(
   "OK — maintenance V34 : CSS statique, repos direct, cache cohérent.",

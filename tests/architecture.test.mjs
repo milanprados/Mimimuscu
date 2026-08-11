@@ -39,9 +39,9 @@ assert.ok(
 );
 
 const html = fs.readFileSync("index.html", "utf8");
-assert.match(html, /import\("\.\/js\/app\.js\?v=34\.1"\)/);
-assert.ok(html.includes('href="./theme.css?v=34.1"'));
-assert.ok(html.includes('href="./workout.css?v=34.1"'));
+assert.match(html, /import\("\.\/js\/app\.js\?v=34\.2"\)/);
+assert.ok(html.includes('href="./theme.css?v=34.2"'));
+assert.ok(html.includes('href="./workout.css?v=34.2"'));
 assert.ok(!html.includes("/js/v30/"));
 
 console.log("OK — architecture V34 canonique.");
