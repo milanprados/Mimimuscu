@@ -377,3 +377,115 @@ textarea,input,select{color:#17334f!important;background:#fff!important;border-c
 @media (max-height:720px){
   .focus-head{height:44px}.workout-title h2{font-size:24px}.target-pill strong{font-size:34px}.pose-grid{min-height:90px;max-height:22vh}.quick-cue{min-height:40px;padding:6px 8px}.workout-controls{padding:6px}.rep-row button{height:40px}.workout-done{min-height:40px}.recovery-orbit{width:92px;height:92px;flex-basis:92px}.recovery-orbit strong{font-size:34px}.next-visual{height:70px}.rest-prep>div{min-height:52px;padding:6px}.rest-prep p{font-size:7.5px}.tabs{height:64px}
 }
+
+
+/* ==========================================================
+   V32.1 — Lisibilité / repos / bibliothèque
+   Correctif ciblé après test réel sur iPhone.
+   ========================================================== */
+:root{
+  --soft-blue:#eaf4fb;
+  --soft-blue-2:#f4f9fc;
+  --soft-blue-line:#cfe0ea;
+  --navy:#153958;
+  --navy-2:#315d78;
+  --copy:#405f72;
+}
+
+/* Les blocs hérités de la DA sombre passent en surfaces claires. */
+.axis-row,
+.athlete-card,
+.athlete-index,
+.athlete-stats>div,
+.body-summary>div,
+.record-tile,
+.before-after-card,
+.goal-card,
+.profile-body-summary>div,
+.family-hero,
+.variant-card,
+.calendar-progress-card,
+.week-day,
+.selected-metrics>div,
+.calendar-selected-card,
+.calendar-agenda-card,
+.calendar-settings-card,
+.index-explainer{
+  background:var(--soft-blue)!important;
+  border-color:var(--soft-blue-line)!important;
+  color:var(--navy)!important;
+  box-shadow:none!important;
+}
+.axis-head strong,.axis-head b,.athlete-id h2,.athlete-index strong,
+.athlete-stats strong,.record-tile strong,.before-after-card strong,
+.goal-top strong,.profile-body-summary strong,.family-hero strong,
+.variant-card strong,.week-day b{color:var(--navy)!important}
+.axis-head small,.axis-foot,.athlete-id>strong,.athlete-index span,.athlete-index small,
+.athlete-stats>div>span,.record-tile small,.before-after-card>small,
+.goal-top small,.profile-body-summary small,.profile-body-summary span,
+.family-hero p,.variant-card small,.week-day small{color:#698091!important}
+.axis-track,.xp-track,.goal-track{background:#d7e4ec!important}
+.axis-track i{background:#6f8798!important;opacity:.65}
+.axis-track span,.xp-track span,.goal-track span{background:linear-gradient(90deg,#92af9f,#4d88ab)!important}
+.athlete-avatar{background:#dcecf6!important;color:var(--navy)!important;box-shadow:none!important}
+.athlete-edit{background:#fff!important;border:1px solid var(--soft-blue-line)!important;color:var(--navy)!important}
+.athlete-index .positive{background:#dce9d5!important;color:#527044!important}
+.athlete-index .negative{background:#f8e2df!important;color:#a6534c!important}
+
+/* Planning : lisible en thème clair, sans petites cartes presque noires. */
+.calendar-home-card{background:#fff!important}
+.week-day{background:#eef6fb!important}
+.week-day.today{outline:2px solid #6f9ab3!important;box-shadow:none!important}
+.week-day.planned i{background:#63a5d2!important}.week-day.done i{background:#729e88!important}.week-day.rest i{background:#9aa9b3!important}
+.calendar-today-row{border-color:#d8e3e9!important}
+.home-next-row strong{color:var(--navy)!important}.home-next-row span,.home-next-row em{color:#718897!important}
+
+/* Bibliothèque : le contenu ne doit jamais apparaître dans la zone entre
+   le header sticky et la recherche sticky. */
+.app-header{background:var(--bg)!important}
+.search-panel{
+  top:74px!important;
+  background:var(--bg)!important;
+  padding-top:6px;
+  box-shadow:0 -18px 0 18px var(--bg),0 12px 18px -18px rgba(35,64,82,.28);
+}
+.exercise-list{position:relative;z-index:1}
+.search-panel{z-index:120}
+.family-hero{background:var(--soft-blue)!important}
+.family-visual,.variant-thumb{background:#f7fbfd!important}
+.variant-card{color:var(--navy)!important}
+
+/* Repos : instructions complètes en bullets, sans texte tronqué. */
+.recovery-screen{
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain;
+  padding-bottom:8px;
+}
+.rest-prep{
+  display:flex!important;
+  flex-direction:column;
+  gap:7px!important;
+}
+.rest-prep>section{
+  width:100%;
+  background:var(--soft-blue-2);
+  border:1px solid var(--soft-blue-line);
+  border-radius:14px;
+  padding:9px 11px;
+}
+.rest-prep small{display:block;color:#668d80;font-size:8px;font-weight:900;letter-spacing:.11em}
+.rest-prep ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:5px}
+.rest-prep li{position:relative;padding-left:13px;color:var(--copy);font-size:10px;line-height:1.38}
+.rest-prep li:before{content:"•";position:absolute;left:1px;top:0;color:#6f9b8d;font-weight:900}
+.next-copy p{display:block!important;overflow:visible!important;-webkit-line-clamp:unset!important;font-size:10px!important;line-height:1.4!important}
+
+/* Le CTA de mise à jour hérité ne redevient pas sombre. */
+.update-toast{background:#edf6fb!important;border-color:#cbdfe9!important;color:var(--navy)!important}
+.update-toast button{background:#dcecf6!important;color:var(--navy)!important}
+
+@media (max-height:760px){
+  .recovery-orbit{width:86px;height:86px;flex-basis:86px}.recovery-orbit strong{font-size:32px}
+  .next-card{grid-template-columns:1fr 78px}.next-visual{height:66px}
+  .rest-prep>section{padding:7px 9px}.rest-prep li{font-size:9px;line-height:1.32}
+}

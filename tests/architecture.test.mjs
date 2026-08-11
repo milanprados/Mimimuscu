@@ -22,7 +22,7 @@ const jsEntries = fs.readdirSync("js");
 assert.ok(!jsEntries.some(name => /^v\d/i.test(name)), "Un ancien dossier js/vXX existe encore.");
 
 const html = fs.readFileSync("index.html", "utf8");
-assert.ok(html.includes('import("./js/app.js?v=32.0")'));
+assert.ok(html.includes('import("./js/app.js?v=32.1")'));
 assert.ok(!html.includes("/js/v30/"));
 
 console.log("OK — architecture V32 canonique.");

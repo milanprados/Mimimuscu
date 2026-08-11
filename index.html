@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f7f6f1">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=32.0">
+  <link rel="stylesheet" href="./styles.css?v=32.1">
   <title>Mimi Muscu</title>
 </head>
 <body>
@@ -530,7 +530,7 @@
       await Promise.all(keys.filter(key => key.startsWith("mimi-muscu-")).map(key => caches.delete(key)));
     } catch (_) {}
 
-    import("./js/app.js?v=32.0").catch(error=>{
+    import("./js/app.js?v=32.1").catch(error=>{
       console.error("[Mimi Muscu] Erreur de démarrage",error);
       const box=document.createElement("div");
       box.className="boot-error";

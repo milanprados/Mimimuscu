@@ -239,14 +239,17 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
   function renderRestPrep(exercise) {
     if (!exercise) return "";
     const guide = exercise.guide || {};
-    const setup = (guide.setup || []).slice(0, 2);
-    const execution = (guide.execution || []).slice(0, 2);
+    const setup = (guide.setup || []).slice(0, 3);
+    const execution = (guide.execution || []).slice(0, 4);
     const breathing = guide.breathing || exercise.breathing || "";
+    const bulletList = items => items.length
+      ? `<ul>${items.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
+      : "";
     return `
       <div class="rest-prep">
-        ${setup.length ? `<div><small>POSITION</small><p>${setup.map(escapeHtml).join(" · ")}</p></div>` : ""}
-        ${execution.length ? `<div><small>MOUVEMENT</small><p>${execution.map(escapeHtml).join(" · ")}</p></div>` : ""}
-        ${breathing ? `<div><small>RESPIRATION</small><p>${escapeHtml(breathing)}</p></div>` : ""}
+        ${setup.length ? `<section><small>POSITION</small>${bulletList(setup)}</section>` : ""}
+        ${execution.length ? `<section><small>MOUVEMENT</small>${bulletList(execution)}</section>` : ""}
+        ${breathing ? `<section><small>RESPIRATION</small><ul><li>${escapeHtml(breathing)}</li></ul></section>` : ""}
       </div>`;
   }
 
