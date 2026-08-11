@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
-import {buildRollingSchedule} from "../js/core/calendar.js";
-import {localDayKey, monthCells} from "../js/utils/dates.js";
+import { buildRollingSchedule } from "../js/core/calendar.js";
+import { localDayKey, monthCells } from "../js/utils/dates.js";
 
-const templates = Array.from({length: 24}, (_, index) => ({
-  key: `W${Math.floor(index / 6) + 1}D${index % 6 + 1}`,
+const templates = Array.from({ length: 24 }, (_, index) => ({
+  key: `W${Math.floor(index / 6) + 1}D${(index % 6) + 1}`,
   week: Math.floor(index / 6) + 1,
-  day: index % 6 + 1
+  day: (index % 6) + 1,
 }));
 
 const monday = new Date(2026, 7, 10);
@@ -15,7 +15,7 @@ const schedule = buildRollingSchedule({
   programIndex: 0,
   programTemplates: templates,
   restDay: 0,
-  days: 8
+  days: 8,
 });
 
 assert.equal(schedule[0].template.key, "W1D1");
@@ -29,7 +29,7 @@ const afterWorkout = buildRollingSchedule({
   programTemplates: templates,
   restDay: 0,
   programDoneToday: true,
-  days: 2
+  days: 2,
 });
 
 assert.equal(afterWorkout[0].type, "done-today");

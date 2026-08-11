@@ -7,8 +7,8 @@ const shellMatch = source.match(/const APP_SHELL = \[([\s\S]*?)\];/);
 assert.ok(shellMatch, "APP_SHELL introuvable.");
 
 const paths = [...shellMatch[1].matchAll(/"(\.\/[^\"]+)"/g)]
-  .map(match => match[1].replace(/^\.\//, ""))
-  .filter(path => path && path !== "");
+  .map((match) => match[1].replace(/^\.\//, ""))
+  .filter((path) => path && path !== "");
 
 for (const path of paths) {
   assert.ok(fs.existsSync(path), `Asset PWA absent : ${path}`);

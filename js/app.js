@@ -4,46 +4,43 @@
  * app.js assemble les modules et coordonne le refresh.
  * La logique métier doit rester dans core/, le DOM dans ui/.
  */
-import {APP_VERSION} from "./config.js";
+import { APP_VERSION } from "./config.js";
 
-import {EXERCISES, FAMILIES, PROGRAMS, MILESTONES} from "./core/catalog.js";
+import { EXERCISES, FAMILIES, PROGRAMS, MILESTONES } from "./core/catalog.js";
 import {
   getProgramTemplate,
   createProgramSession,
   buildProgramPlan,
   buildSessionPlan,
   sessionToFile,
-  validateImportedSession
+  validateImportedSession,
 } from "./core/program.js";
-import {loadState, saveState} from "./core/state.js";
+import { loadState, saveState } from "./core/state.js";
 import {
   ensureProgressBaseline,
   buildProgressionSnapshot,
-  levelFromXp
+  levelFromXp,
 } from "./core/progression.js";
-import {WorkoutEngine} from "./core/workout-engine.js";
+import { WorkoutEngine } from "./core/workout-engine.js";
 
-import {$, on} from "./utils/dom.js";
+import { $, on } from "./utils/dom.js";
 
-import {createNavigation} from "./ui/navigation.js";
-import {installAppTheme} from "./ui/theme.js?v=soft-editorial-v2";
-import {installWorkoutTheme} from "./ui/workout-theme.js?v=editorial-rest-v1";
-import {installWorkoutRestTweaks} from "./ui/workout-rest-tweaks.js?v=editorial-rest-v2";
+import { createNavigation } from "./ui/navigation.js";
 // Cache-bust explicite : iOS PWA garde parfois les modules ES secondaires
 // même quand app.js et le CSS ont déjà été rafraîchis.
-import {createWorkoutView} from "./ui/workout.js?v=timer-number-fix-1";
-import {createExerciseLibrary} from "./ui/exercise-library.js";
-import {createSessionPlanner} from "./ui/session-planner.js";
-import {createHomeView} from "./ui/home.js";
-import {createCalendarView} from "./ui/calendar.js";
-import {createProfileView} from "./ui/profile.js";
-import {createProgressView} from "./ui/progress.js";
+import { createWorkoutView } from "./ui/workout.js?v=34.0";
+import { createExerciseLibrary } from "./ui/exercise-library.js";
+import { createSessionPlanner } from "./ui/session-planner.js";
+import { createHomeView } from "./ui/home.js";
+import { createCalendarView } from "./ui/calendar.js";
+import { createProfileView } from "./ui/profile.js";
+import { createProgressView } from "./ui/progress.js";
 
-installAppTheme();
-installWorkoutTheme();
-installWorkoutRestTweaks();
-
-window.__MIMI_BOOT__ = {version: APP_VERSION, step: "data-loaded", errors: []};
+window.__MIMI_BOOT__ = {
+  version: APP_VERSION,
+  step: "data-loaded",
+  errors: [],
+};
 
 const state = loadState(EXERCISES);
 window.__MIMI_BOOT__.step = "state-loaded";
@@ -53,7 +50,7 @@ function caloriesForSeconds(seconds) {
   if (!weightKg) return null;
 
   // Approximation volontairement simple (~4.5 MET).
-  return Math.round(4.5 * 3.5 * weightKg / 200 * (seconds / 60));
+  return Math.round(((4.5 * 3.5 * weightKg) / 200) * (seconds / 60));
 }
 
 function coachText() {
@@ -65,19 +62,19 @@ function coachText() {
     `Routine 20 min, semaine ${template.week}/4, jour ${template.day}/6 : ${template.name}.`,
     `Profil : ${state.profile.age || "?"} ans, ${state.profile.heightCm || "?"} cm, ${state.profile.weightKg || "?"} kg.`,
     "Objectif : progression esthétique et musculaire au poids du corps, 6 séances par semaine.",
-    `Streak : ${state.streak}. Niveau : ${levelFromXp(state.xp)}. XP : ${state.xp}.`
+    `Streak : ${state.streak}. Niveau : ${levelFromXp(state.xp)}. XP : ${state.xp}.`,
   ];
 
   if (last) {
     lines.push(
-      `Dernière séance : ${last.sessionName || "Séance"}, score ${last.score}/100, durée ${last.duration}s.`
+      `Dernière séance : ${last.sessionName || "Séance"}, score ${last.score}/100, durée ${last.duration}s.`,
     );
 
     for (const set of last.sets || []) {
       lines.push(
         set.skipped
           ? `- ${set.name} : passé`
-          : `- ${set.name} : ${set.actual}/${set.target} (${set.effort})`
+          : `- ${set.name} : ${set.actual}/${set.target} (${set.effort})`,
       );
     }
   }
@@ -86,7 +83,7 @@ function coachText() {
 
   if (latestMeasurement) {
     lines.push(
-      `Dernière mesure : ${latestMeasurement.weightKg || "?"} kg, tour de taille ${latestMeasurement.waistCm || "?"} cm.`
+      `Dernière mesure : ${latestMeasurement.weightKg || "?"} kg, tour de taille ${latestMeasurement.waistCm || "?"} cm.`,
     );
   }
 
@@ -99,7 +96,7 @@ window.__MIMI_BOOT__.step = "workout-init";
 const workoutView = createWorkoutView({
   state,
   exercises: EXERCISES,
-  caloriesForSeconds
+  caloriesForSeconds,
 });
 
 const workoutEngine = new WorkoutEngine({
@@ -108,7 +105,7 @@ const workoutEngine = new WorkoutEngine({
   buildProgramPlan,
   buildSessionPlan,
   hooks: workoutView.hooks,
-  persist: saveState
+  persist: saveState,
 });
 
 workoutView.setEngine(workoutEngine);
@@ -116,12 +113,12 @@ workoutView.bindStaticControls();
 
 function launchSession(session, redo = false) {
   workoutView.open();
-  workoutEngine.start({session, redo});
+  workoutEngine.start({ session, redo });
 }
 
 function launchCurrentProgram(redo = false) {
   workoutView.open();
-  workoutEngine.start({redo});
+  workoutEngine.start({ redo });
 }
 
 // Refresh partagé -------------------------------------------------------------
@@ -147,7 +144,7 @@ const sessionPlanner = createSessionPlanner({
   sessionToFile,
   validateImportedSession,
   launchSession,
-  refresh: () => refreshApp()
+  refresh: () => refreshApp(),
 });
 
 window.__MIMI_BOOT__.step = "home-init";
@@ -158,7 +155,7 @@ const homeView = createHomeView({
   getProgramTemplate,
   createProgramSession,
   launchSession,
-  openPlanner: sessionPlanner.openPlanner
+  openPlanner: sessionPlanner.openPlanner,
 });
 
 window.__MIMI_BOOT__.step = "calendar-init";
@@ -168,11 +165,11 @@ const calendarView = createCalendarView({
   save: saveState,
   PROGRAMS,
   programSession: createProgramSession,
-  launchSession
+  launchSession,
 });
 
 window.__MIMI_BOOT__.step = "library-init";
-createExerciseLibrary({EXERCISES, FAMILIES});
+createExerciseLibrary({ EXERCISES, FAMILIES });
 
 window.__MIMI_BOOT__.step = "profile-init";
 
@@ -182,12 +179,12 @@ const profileView = createProfileView({
   save: saveState,
   refresh: () => refreshApp(),
   getSnapshot,
-  coachText
+  coachText,
 });
 
 const progressView = createProgressView({
   state,
-  exercises: EXERCISES
+  exercises: EXERCISES,
 });
 
 const navigation = createNavigation();
@@ -209,7 +206,7 @@ refreshApp = () => {
 
 on("#redoSession", "click", () => launchCurrentProgram(true));
 
-window.addEventListener("mimi:refresh", event => {
+window.addEventListener("mimi:refresh", (event) => {
   refreshApp();
   if (event.detail?.tab) navigation.showTab(event.detail.tab);
 });
@@ -219,15 +216,19 @@ window.__MIMI_BOOT__.step = "ready";
 
 // PWA -------------------------------------------------------------------------
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./sw.js?v=soft-editorial-v4")
-    .then(registration => {
+  navigator.serviceWorker
+    .register("./sw.js?v=34.0")
+    .then((registration) => {
       if (registration.waiting) $("#updateToast")?.classList.remove("hidden");
 
       registration.addEventListener("updatefound", () => {
         const worker = registration.installing;
 
         worker?.addEventListener("statechange", () => {
-          if (worker.state === "installed" && navigator.serviceWorker.controller) {
+          if (
+            worker.state === "installed" &&
+            navigator.serviceWorker.controller
+          ) {
             $("#updateToast")?.classList.remove("hidden");
           }
         });
@@ -235,5 +236,5 @@ if ("serviceWorker" in navigator) {
 
       on("#applyUpdate", "click", () => location.reload());
     })
-    .catch(error => console.warn("[Mimi Muscu] Service worker", error));
+    .catch((error) => console.warn("[Mimi Muscu] Service worker", error));
 }

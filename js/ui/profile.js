@@ -1,26 +1,28 @@
 /**
  * Onglet Profil : fiche athlète, objectifs personnels, mensurations et sauvegarde.
  */
-import {$, $$, on, openLayer, closeLayer} from "../utils/dom.js";
-import {localDayKey} from "../utils/dates.js";
-import {PROGRESSION, PROGRAM} from "../config.js";
+import { $, $$, on, openLayer, closeLayer } from "../utils/dom.js";
+import { localDayKey } from "../utils/dates.js";
+import { PROGRESSION, PROGRAM } from "../config.js";
 import {
   PROGRESSION_AXES,
   getGoalCurrentValue,
   getGoalProgress,
   isProgramHistoryRecord,
-  levelFromXp
+  levelFromXp,
 } from "../core/progression.js";
-import {createBackup, validateBackup, downloadJson} from "../utils/backup.js";
-import {replaceState, resetProgression} from "../core/state.js";
+import { createBackup, validateBackup, downloadJson } from "../utils/backup.js";
+import { replaceState, resetProgression } from "../core/state.js";
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
-const roundOne = value => Math.round(value * 10) / 10;
-const percentText = value => `${value >= 0 ? "+" : ""}${Math.round(value)}%`;
+const roundOne = (value) => Math.round(value * 10) / 10;
+const percentText = (value) => `${value >= 0 ? "+" : ""}${Math.round(value)}%`;
 
 function createId() {
-  return globalThis.crypto?.randomUUID?.()
-    || `goal-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  return (
+    globalThis.crypto?.randomUUID?.() ||
+    `goal-${Date.now()}-${Math.random().toString(16).slice(2)}`
+  );
 }
 
 function titleForSessions(count) {
@@ -37,12 +39,13 @@ function formatExerciseValue(exercise, value) {
 }
 
 function renderAxes(snapshot) {
-  return Object.entries(PROGRESSION_AXES).map(([key, axis]) => {
-    const value = snapshot.indices[key];
-    const gain = value - PROGRESSION.baselineIndex;
-    const width = clamp((value - 70) / 80 * 100, 6, 100);
+  return Object.entries(PROGRESSION_AXES)
+    .map(([key, axis]) => {
+      const value = snapshot.indices[key];
+      const gain = value - PROGRESSION.baselineIndex;
+      const width = clamp(((value - 70) / 80) * 100, 6, 100);
 
-    return `
+      return `
       <div class="axis-row compact">
         <div class="axis-head">
           <div><strong>${axis.label}</strong><small>${axis.hint}</small></div>
@@ -50,14 +53,15 @@ function renderAxes(snapshot) {
         </div>
         <div class="axis-track">
           <span style="width:${width}%"></span>
-          <i style="left:${clamp((100 - 70) / 80 * 100, 0, 100)}%"></i>
+          <i style="left:${clamp(((100 - 70) / 80) * 100, 0, 100)}%"></i>
         </div>
         <div class="axis-foot">
           <span>100 = départ</span>
           <em class="${gain >= 0 ? "up" : "down"}">${percentText(gain)}</em>
         </div>
       </div>`;
-  }).join("");
+    })
+    .join("");
 }
 
 function performanceNarrative(snapshot, sessions) {
@@ -66,7 +70,10 @@ function performanceNarrative(snapshot, sessions) {
   }
 
   const axes = Object.entries(PROGRESSION_AXES)
-    .map(([key, axis]) => ({label: axis.label, gain: snapshot.indices[key] - 100}))
+    .map(([key, axis]) => ({
+      label: axis.label,
+      gain: snapshot.indices[key] - 100,
+    }))
     .sort((a, b) => b.gain - a.gain);
 
   const best = axes[0];
@@ -84,24 +91,27 @@ function performanceNarrative(snapshot, sessions) {
 }
 
 function cycleStats(records) {
-  if (!records.length) return {score: null, minutes: 0, repetitions: 0};
+  if (!records.length) return { score: null, minutes: 0, repetitions: 0 };
 
   let repetitions = 0;
 
   for (const record of records) {
     for (const set of record.sets || []) {
-      if (!set.skipped && set.mode === "reps") repetitions += Number(set.actual) || 0;
+      if (!set.skipped && set.mode === "reps")
+        repetitions += Number(set.actual) || 0;
     }
   }
 
   return {
     score: Math.round(
-      records.reduce((sum, record) => sum + Number(record.score || 0), 0) / records.length
+      records.reduce((sum, record) => sum + Number(record.score || 0), 0) /
+        records.length,
     ),
     minutes: Math.round(
-      records.reduce((sum, record) => sum + Number(record.duration || 0), 0) / 60
+      records.reduce((sum, record) => sum + Number(record.duration || 0), 0) /
+        60,
     ),
-    repetitions
+    repetitions,
   };
 }
 
@@ -111,45 +121,66 @@ export function createProfileView({
   save,
   refresh,
   getSnapshot,
-  coachText
+  coachText,
 }) {
   function initials() {
     const name = (state.profileMeta.nickname || "Mimi Muscu").trim();
-    return name.split(/\s+/).slice(0, 2).map(part => part[0]?.toUpperCase()).join("") || "MM";
+    return (
+      name
+        .split(/\s+/)
+        .slice(0, 2)
+        .map((part) => part[0]?.toUpperCase())
+        .join("") || "MM"
+    );
   }
 
   function renderActivity(snapshot) {
-    const activeDays = snapshot.activityDays.filter(day => day.count).length;
-    const lastWeek = snapshot.activityDays.slice(-7).filter(day => day.count).length;
+    const activeDays = snapshot.activityDays.filter((day) => day.count).length;
+    const lastWeek = snapshot.activityDays
+      .slice(-7)
+      .filter((day) => day.count).length;
 
-    $("#activityHeatmap").innerHTML = snapshot.activityDays.map(day =>
-      `<i class="heat-${Math.min(3, day.count)}" title="${day.date.toLocaleDateString("fr-FR")}"></i>`
-    ).join("");
+    $("#activityHeatmap").innerHTML = snapshot.activityDays
+      .map(
+        (day) =>
+          `<i class="heat-${Math.min(3, day.count)}" title="${day.date.toLocaleDateString("fr-FR")}"></i>`,
+      )
+      .join("");
 
-    $("#activityCaption").textContent = `${activeDays} jours actifs sur les 42 derniers jours`;
+    $("#activityCaption").textContent =
+      `${activeDays} jours actifs sur les 42 derniers jours`;
     $("#weeklyConsistency").textContent = `${lastWeek}/6`;
   }
 
   function renderCycle(snapshot) {
     const cycle = snapshot.cycle;
-    const programRecords = state.history.filter(record =>
-      isProgramHistoryRecord(record)
-      && (record.programCompleted === true || record.counted)
+    const programRecords = state.history.filter(
+      (record) =>
+        isProgramHistoryRecord(record) &&
+        (record.programCompleted === true || record.counted),
     );
 
     const currentRecords = programRecords.slice(0, cycle.position);
-    const previousRecords = cycle.completed >= PROGRAM.cycleLength
-      ? programRecords.slice(cycle.position, cycle.position + PROGRAM.cycleLength)
-      : [];
+    const previousRecords =
+      cycle.completed >= PROGRAM.cycleLength
+        ? programRecords.slice(
+            cycle.position,
+            cycle.position + PROGRAM.cycleLength,
+          )
+        : [];
 
     const current = cycleStats(currentRecords);
     const previous = cycleStats(previousRecords);
 
-    $("#profileCycleTitle").textContent = `Cycle ${cycle.cycle} · Semaine ${cycle.week}/4`;
-    $("#profileCycleCount").textContent = `${cycle.position}/${PROGRAM.cycleLength}`;
+    $("#profileCycleTitle").textContent =
+      `Cycle ${cycle.cycle} · Semaine ${cycle.week}/4`;
+    $("#profileCycleCount").textContent =
+      `${cycle.position}/${PROGRAM.cycleLength}`;
 
-    $("#profileCycleDots").innerHTML = Array.from({length: PROGRAM.cycleLength}, (_, index) =>
-      `<i class="${index < cycle.position ? "done" : index === cycle.position ? "next" : ""}"></i>`
+    $("#profileCycleDots").innerHTML = Array.from(
+      { length: PROGRAM.cycleLength },
+      (_, index) =>
+        `<i class="${index < cycle.position ? "done" : index === cycle.position ? "next" : ""}"></i>`,
     ).join("");
 
     $("#cycleCurrentStats").innerHTML = `
@@ -173,12 +204,16 @@ export function createProfileView({
     const rows = snapshot.records.slice(0, 6);
 
     $("#profileRecords").innerHTML = rows.length
-      ? rows.map(item => `
+      ? rows
+          .map(
+            (item) => `
           <div class="record-tile">
             <span>PR</span>
             <strong>${formatExerciseValue(item.exercise, item.best)}</strong>
             <small>${item.exercise.name}</small>
-          </div>`).join("")
+          </div>`,
+          )
+          .join("")
       : `<div class="empty-state">Tes premiers records apparaîtront après quelques séances.</div>`;
   }
 
@@ -186,7 +221,9 @@ export function createProfileView({
     const rows = snapshot.beforeAfter.slice(0, 4);
 
     $("#profileSinceStart").innerHTML = rows.length
-      ? rows.map(item => `
+      ? rows
+          .map(
+            (item) => `
           <div class="before-after-card">
             <small>${item.exercise.name}</small>
             <div>
@@ -195,7 +232,9 @@ export function createProfileView({
               <strong>${formatExerciseValue(item.exercise, item.current)}</strong>
             </div>
             <em>${percentText(item.gainPercent)}</em>
-          </div>`).join("")
+          </div>`,
+          )
+          .join("")
       : `<div class="empty-state">Il faut quelques repères pour comparer le départ à aujourd’hui.</div>`;
   }
 
@@ -216,21 +255,23 @@ export function createProfileView({
       return;
     }
 
-    $("#profileGoals").innerHTML = state.goals.map(goal => {
-      const current = getGoalCurrentValue(goal, state, exercises, snapshot);
-      const progress = getGoalProgress(goal, state, exercises, snapshot);
-      const unit = goalUnit(goal);
+    $("#profileGoals").innerHTML = state.goals
+      .map((goal) => {
+        const current = getGoalCurrentValue(goal, state, exercises, snapshot);
+        const progress = getGoalProgress(goal, state, exercises, snapshot);
+        const unit = goalUnit(goal);
 
-      const label = goal.type === "exercise"
-        ? exercises[goal.exerciseId]?.name || "Exercice"
-        : goal.type === "weight"
-          ? "Poids"
-          : "Tour de taille";
+        const label =
+          goal.type === "exercise"
+            ? exercises[goal.exerciseId]?.name || "Exercice"
+            : goal.type === "weight"
+              ? "Poids"
+              : "Tour de taille";
 
-      const format = value =>
-        value == null ? "—" : `${roundOne(Number(value))} ${unit}`;
+        const format = (value) =>
+          value == null ? "—" : `${roundOne(Number(value))} ${unit}`;
 
-      return `
+        return `
         <div class="goal-card">
           <div class="goal-top">
             <div><small>${label}</small><strong>${format(current)} → ${format(goal.target)}</strong></div>
@@ -239,11 +280,14 @@ export function createProfileView({
           <div class="goal-track"><span style="width:${progress}%"></span></div>
           <em>${progress}%</em>
         </div>`;
-    }).join("");
+      })
+      .join("");
 
-    $$("[data-delete-goal]").forEach(button => {
+    $$("[data-delete-goal]").forEach((button) => {
       button.addEventListener("click", () => {
-        state.goals = state.goals.filter(goal => goal.id !== button.dataset.deleteGoal);
+        state.goals = state.goals.filter(
+          (goal) => goal.id !== button.dataset.deleteGoal,
+        );
         save(state);
         refresh();
       });
@@ -252,9 +296,10 @@ export function createProfileView({
 
   function renderBody(snapshot) {
     const body = snapshot.body;
-    const delta = (value, unit) => value == null
-      ? "Pas encore de comparaison"
-      : `${value > 0 ? "+" : ""}${value} ${unit} depuis la première mesure`;
+    const delta = (value, unit) =>
+      value == null
+        ? "Pas encore de comparaison"
+        : `${value > 0 ? "+" : ""}${value} ${unit} depuis la première mesure`;
 
     $("#profileBodySummary").innerHTML = `
       <div>
@@ -275,14 +320,16 @@ export function createProfileView({
 
     $("#homeLevel").textContent = `LV ${level}`;
     $("#profileAvatar").textContent = initials();
-    $("#profileNickname").textContent = (state.profileMeta.nickname || "Mimi Athlete").trim();
+    $("#profileNickname").textContent = (
+      state.profileMeta.nickname || "Mimi Athlete"
+    ).trim();
     $("#profileTitle").textContent = titleForSessions(state.sessions);
 
     $("#profileLevel").textContent = `LV ${level}`;
     $("#profileXpLabel").textContent =
       `${xpInLevel} / ${PROGRESSION.xpPerLevel} XP vers LV ${level + 1}`;
     $("#profileXpBar").style.width =
-      `${Math.round(xpInLevel / PROGRESSION.xpPerLevel * 100)}%`;
+      `${Math.round((xpInLevel / PROGRESSION.xpPerLevel) * 100)}%`;
 
     $("#profileIndex").textContent = snapshot.indices.physical;
     const delta = snapshot.indices.physical - PROGRESSION.baselineIndex;
@@ -292,14 +339,18 @@ export function createProfileView({
     $("#profileSessions").textContent = state.sessions;
     $("#profileStreak").textContent = state.streak;
     $("#profileRegularity").textContent = `${snapshot.indices.regularity}%`;
-    $("#profileTotalReps").textContent = snapshot.totals.repetitions.toLocaleString("fr-FR");
+    $("#profileTotalReps").textContent =
+      snapshot.totals.repetitions.toLocaleString("fr-FR");
 
-    $("#profileNarrative").textContent = performanceNarrative(snapshot, state.sessions);
+    $("#profileNarrative").textContent = performanceNarrative(
+      snapshot,
+      state.sessions,
+    );
     $("#profileAxes").innerHTML = renderAxes(snapshot);
     $("#coachPrompt").value = coachText();
 
-    const todayDone = state.history.some(record =>
-      record.day === localDayKey() && record.counted
+    const todayDone = state.history.some(
+      (record) => record.day === localDayKey() && record.counted,
     );
     $("#todayText").textContent = todayDone
       ? "Une séance est enregistrée aujourd’hui."
@@ -330,7 +381,7 @@ export function createProfileView({
     state.profile = {
       age: $("#age").value,
       heightCm: $("#height").value,
-      weightKg: $("#weight").value
+      weightKg: $("#weight").value,
     };
 
     if (state.profile.weightKg && !state.measurements.length) {
@@ -338,7 +389,7 @@ export function createProfileView({
         date: new Date().toISOString(),
         weightKg: Number(state.profile.weightKg),
         waistCm: null,
-        note: "Mesure initiale"
+        note: "Mesure initiale",
       });
     }
 
@@ -370,7 +421,7 @@ export function createProfileView({
       date: new Date().toISOString(),
       weightKg: weight || null,
       waistCm: waist || null,
-      note: $("#measureNote").value.trim()
+      note: $("#measureNote").value.trim(),
     });
 
     state.measurements = state.measurements.slice(-180);
@@ -386,14 +437,17 @@ export function createProfileView({
     $("#goalExercise").innerHTML = Object.entries(exercises)
       .filter(([, exercise]) => exercise.quiet && exercise.equipment === "none")
       .sort((a, b) => a[1].name.localeCompare(b[1].name, "fr"))
-      .map(([id, exercise]) => `<option value="${id}">${exercise.name}</option>`)
+      .map(
+        ([id, exercise]) => `<option value="${id}">${exercise.name}</option>`,
+      )
       .join("");
   }
 
   function syncGoalForm() {
     const type = $("#goalType").value;
     $("#goalExerciseWrap").classList.toggle("hidden", type !== "exercise");
-    $("#goalUnit").textContent = type === "weight" ? "kg" : type === "waist" ? "cm" : "";
+    $("#goalUnit").textContent =
+      type === "weight" ? "kg" : type === "waist" ? "cm" : "";
     $("#goalTarget").step = type === "exercise" ? "1" : "0.1";
   }
 
@@ -425,9 +479,10 @@ export function createProfileView({
       exerciseId = $("#goalExercise").value;
       startValue = Number(state.bests[exerciseId]) || 0;
     } else {
-      startValue = type === "weight"
-        ? snapshot.body.currentWeight
-        : snapshot.body.currentWaist;
+      startValue =
+        type === "weight"
+          ? snapshot.body.currentWeight
+          : snapshot.body.currentWaist;
 
       if (startValue == null) {
         alert("Ajoute d’abord une mesure actuelle.");
@@ -441,7 +496,7 @@ export function createProfileView({
       exerciseId,
       target,
       startValue,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     });
 
     state.goals = state.goals.slice(-12);
@@ -463,15 +518,19 @@ export function createProfileView({
 
     downloadJson(
       `mimi-muscu-backup-${new Date().toISOString().slice(0, 10)}.json`,
-      backup
+      backup,
     );
 
     $("#backupStatus").textContent = "Sauvegarde exportée ✓";
   });
 
   on("#resetProgression", "click", () => openLayer("#resetProgressionModal"));
-  on("#closeResetProgression", "click", () => closeLayer("#resetProgressionModal"));
-  on("#cancelResetProgression", "click", () => closeLayer("#resetProgressionModal"));
+  on("#closeResetProgression", "click", () =>
+    closeLayer("#resetProgressionModal"),
+  );
+  on("#cancelResetProgression", "click", () =>
+    closeLayer("#resetProgressionModal"),
+  );
 
   on("#confirmResetProgression", "click", () => {
     resetProgression(state, exercises);
@@ -491,7 +550,10 @@ export function createProfileView({
 
     try {
       const imported = validateBackup(JSON.parse(await file.text()));
-      if (!confirm("Remplacer toutes les données locales par cette sauvegarde ?")) return;
+      if (
+        !confirm("Remplacer toutes les données locales par cette sauvegarde ?")
+      )
+        return;
       replaceState(imported);
       location.reload();
     } catch (error) {
@@ -502,9 +564,9 @@ export function createProfileView({
   on("#openChat", "click", async () => {
     try {
       await navigator.clipboard.writeText($("#coachPrompt").value);
-    } catch (_) {}
+    } catch {}
     window.open("https://chatgpt.com/", "_blank");
   });
 
-  return {render};
+  return { render };
 }

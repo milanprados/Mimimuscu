@@ -2,19 +2,19 @@
  * État persistant.
  * Ce module est le seul endroit qui connaît les clés localStorage.
  */
-import {STORAGE, PROGRAM, PROGRESSION} from "../config.js";
-import {migrateState, CURRENT_STATE_VERSION} from "./migrations.js";
+import { STORAGE, PROGRAM, PROGRESSION } from "../config.js";
+import { migrateState, CURRENT_STATE_VERSION } from "./migrations.js";
 
 const DEFAULT_STATE = {
   version: CURRENT_STATE_VERSION,
-  program: {level: "adaptive", index: 0},
+  program: { level: "adaptive", index: 0 },
 
-  profile: {age: "", heightCm: "", weightKg: ""},
-  profileMeta: {nickname: "", startedAt: ""},
+  profile: { age: "", heightCm: "", weightKg: "" },
+  profileMeta: { nickname: "", startedAt: "" },
 
   targets: {},
   bests: {},
-  progressBaseline: {createdAt: "", values: {}},
+  progressBaseline: { createdAt: "", values: {} },
 
   sessions: 0,
   attempts: 0,
@@ -26,15 +26,15 @@ const DEFAULT_STATE = {
   sessionDraft: null,
   customSessions: [],
 
-  preferences: {autoSuggest: true},
+  preferences: { autoSuggest: true },
   measurements: [],
   goals: [],
 
-  calendarPrefs: {restDay: PROGRAM.defaultRestDay},
+  calendarPrefs: { restDay: PROGRAM.defaultRestDay },
 
-  benchmark: {lastDate: "", dueEveryDays: 28},
+  benchmark: { lastDate: "", dueEveryDays: 28 },
   achievements: {},
-  backupMeta: {lastExportAt: ""}
+  backupMeta: { lastExportAt: "" },
 };
 
 function readStoredState() {
@@ -56,14 +56,16 @@ function normalizeCustomSessions(sessions, exercises) {
       id: session.id || `legacy-${index}-${Date.now()}`,
       type: "custom",
       name: session.name || "Séance personnalisée",
-      description: session.description || ""
+      description: session.description || "",
     };
 
     if (!Array.isArray(normalized.exercises)) {
       normalized.exercises = [];
 
       // Conversion des très anciennes séances basées uniquement sur blocks[].
-      for (const block of Array.isArray(normalized.blocks) ? normalized.blocks : []) {
+      for (const block of Array.isArray(normalized.blocks)
+        ? normalized.blocks
+        : []) {
         if (block?.type !== "exercise" || !block.exercise_id) continue;
 
         const sets = Math.max(1, Number(block.sets) || 1);
@@ -76,18 +78,18 @@ function normalizeCustomSessions(sessions, exercises) {
             targetOverride: block.target_override ?? null,
             tempo: block.tempo || null,
             note: block.note || "",
-            phase: "Personnalisé"
+            phase: "Personnalisé",
           });
         }
       }
     }
 
     normalized.exercises = normalized.exercises
-      .filter(item => item?.id && exercises?.[item.id])
-      .map(item => ({
+      .filter((item) => item?.id && exercises?.[item.id])
+      .map((item) => ({
         kind: "exercise",
         ...item,
-        restAfter: Math.max(0, Math.min(600, Number(item.restAfter) || 0))
+        restAfter: Math.max(0, Math.min(600, Number(item.restAfter) || 0)),
       }));
 
     return normalized;
@@ -97,53 +99,67 @@ function normalizeCustomSessions(sessions, exercises) {
 function normalizeState(raw, exercises) {
   const state = migrateState({
     ...structuredClone(DEFAULT_STATE),
-    ...(raw || {})
+    ...(raw || {}),
   });
 
-  state.program = {...DEFAULT_STATE.program, ...(state.program || {})};
+  state.program = { ...DEFAULT_STATE.program, ...(state.program || {}) };
   state.program.level = "adaptive";
   {
     const programIndex = Number(state.program.index);
-    state.program.index = Number.isFinite(programIndex) ? Math.max(0, Math.floor(programIndex)) : 0;
+    state.program.index = Number.isFinite(programIndex)
+      ? Math.max(0, Math.floor(programIndex))
+      : 0;
   }
 
-  state.profile = {...DEFAULT_STATE.profile, ...(state.profile || {})};
-  state.profileMeta = {...DEFAULT_STATE.profileMeta, ...(state.profileMeta || {})};
+  state.profile = { ...DEFAULT_STATE.profile, ...(state.profile || {}) };
+  state.profileMeta = {
+    ...DEFAULT_STATE.profileMeta,
+    ...(state.profileMeta || {}),
+  };
 
-  state.targets = state.targets && typeof state.targets === "object" && !Array.isArray(state.targets)
-    ? state.targets
-    : {};
-  state.bests = state.bests && typeof state.bests === "object" && !Array.isArray(state.bests)
-    ? state.bests
-    : {};
+  state.targets =
+    state.targets &&
+    typeof state.targets === "object" &&
+    !Array.isArray(state.targets)
+      ? state.targets
+      : {};
+  state.bests =
+    state.bests &&
+    typeof state.bests === "object" &&
+    !Array.isArray(state.bests)
+      ? state.bests
+      : {};
   state.progressBaseline = {
     ...DEFAULT_STATE.progressBaseline,
     ...(state.progressBaseline || {}),
-    values: {...(state.progressBaseline?.values || {})}
+    values: { ...(state.progressBaseline?.values || {}) },
   };
 
   state.history = Array.isArray(state.history)
     ? state.history
-        .filter(record => record && typeof record === "object")
-        .map(record => ({
+        .filter((record) => record && typeof record === "object")
+        .map((record) => ({
           ...record,
-          sets: Array.isArray(record.sets) ? record.sets : []
+          sets: Array.isArray(record.sets) ? record.sets : [],
         }))
         .slice(0, PROGRESSION.historyLimit)
     : [];
 
-  state.customSessions = normalizeCustomSessions(state.customSessions, exercises);
+  state.customSessions = normalizeCustomSessions(
+    state.customSessions,
+    exercises,
+  );
 
   if (state.sessionDraft && Array.isArray(state.sessionDraft.exercises)) {
     state.sessionDraft = {
       ...state.sessionDraft,
       exercises: state.sessionDraft.exercises
-        .filter(item => item?.id && exercises?.[item.id])
-        .map(item => ({
+        .filter((item) => item?.id && exercises?.[item.id])
+        .map((item) => ({
           kind: "exercise",
           ...item,
-          restAfter: Math.max(0, Math.min(600, Number(item.restAfter) || 0))
-        }))
+          restAfter: Math.max(0, Math.min(600, Number(item.restAfter) || 0)),
+        })),
     };
     if (!state.sessionDraft.exercises.length) state.sessionDraft = null;
   } else {
@@ -152,24 +168,46 @@ function normalizeState(raw, exercises) {
 
   state.preferences = {
     ...DEFAULT_STATE.preferences,
-    ...(state.preferences && typeof state.preferences === "object" ? state.preferences : {})
+    ...(state.preferences && typeof state.preferences === "object"
+      ? state.preferences
+      : {}),
   };
   state.measurements = Array.isArray(state.measurements)
-    ? state.measurements.filter(item => item && typeof item === "object")
+    ? state.measurements.filter((item) => item && typeof item === "object")
     : [];
   state.goals = Array.isArray(state.goals)
-    ? state.goals.filter(goal => goal && typeof goal === "object")
+    ? state.goals.filter((goal) => goal && typeof goal === "object")
     : [];
 
-  state.calendarPrefs = {...DEFAULT_STATE.calendarPrefs, ...(state.calendarPrefs && typeof state.calendarPrefs === "object" ? state.calendarPrefs : {})};
+  state.calendarPrefs = {
+    ...DEFAULT_STATE.calendarPrefs,
+    ...(state.calendarPrefs && typeof state.calendarPrefs === "object"
+      ? state.calendarPrefs
+      : {}),
+  };
   state.calendarPrefs.restDay = Math.max(
     0,
-    Math.min(6, Number(state.calendarPrefs.restDay) || PROGRAM.defaultRestDay)
+    Math.min(6, Number(state.calendarPrefs.restDay) || PROGRAM.defaultRestDay),
   );
 
-  state.benchmark = {...DEFAULT_STATE.benchmark, ...(state.benchmark && typeof state.benchmark === "object" ? state.benchmark : {})};
-  state.achievements = state.achievements && typeof state.achievements === "object" && !Array.isArray(state.achievements) ? state.achievements : {};
-  state.backupMeta = {...DEFAULT_STATE.backupMeta, ...(state.backupMeta && typeof state.backupMeta === "object" ? state.backupMeta : {})};
+  state.benchmark = {
+    ...DEFAULT_STATE.benchmark,
+    ...(state.benchmark && typeof state.benchmark === "object"
+      ? state.benchmark
+      : {}),
+  };
+  state.achievements =
+    state.achievements &&
+    typeof state.achievements === "object" &&
+    !Array.isArray(state.achievements)
+      ? state.achievements
+      : {};
+  state.backupMeta = {
+    ...DEFAULT_STATE.backupMeta,
+    ...(state.backupMeta && typeof state.backupMeta === "object"
+      ? state.backupMeta
+      : {}),
+  };
 
   // Les anciennes sauvegardes et les imports manuels peuvent contenir des nombres
   // sérialisés comme chaînes. On les remet dans un format stable avant le runtime.
@@ -185,7 +223,9 @@ function normalizeState(raw, exercises) {
     }
 
     const target = Number(state.targets[id]);
-    state.targets[id] = Number.isFinite(target) ? target : Number(exercise.base) || 1;
+    state.targets[id] = Number.isFinite(target)
+      ? target
+      : Number(exercise.base) || 1;
 
     if (state.bests[id] != null) {
       const best = Number(state.bests[id]);
@@ -202,13 +242,16 @@ function normalizeState(raw, exercises) {
  * Le profil, les mensurations, les préférences et les séances personnalisées sont conservés.
  */
 export function resetProgression(state, exercises) {
-  state.program = {...(state.program || {}), level: "adaptive", index: 0};
+  state.program = { ...(state.program || {}), level: "adaptive", index: 0 };
 
   state.targets = Object.fromEntries(
-    Object.entries(exercises || {}).map(([id, exercise]) => [id, Number(exercise.base) || 1])
+    Object.entries(exercises || {}).map(([id, exercise]) => [
+      id,
+      Number(exercise.base) || 1,
+    ]),
   );
   state.bests = {};
-  state.progressBaseline = {createdAt: "", values: {}};
+  state.progressBaseline = { createdAt: "", values: {} };
 
   state.sessions = 0;
   state.attempts = 0;
@@ -222,10 +265,15 @@ export function resetProgression(state, exercises) {
   state.achievements = {};
   state.benchmark = {
     ...DEFAULT_STATE.benchmark,
-    dueEveryDays: state.benchmark?.dueEveryDays || DEFAULT_STATE.benchmark.dueEveryDays
+    dueEveryDays:
+      state.benchmark?.dueEveryDays || DEFAULT_STATE.benchmark.dueEveryDays,
   };
 
-  state.profileMeta = {...DEFAULT_STATE.profileMeta, ...(state.profileMeta || {}), startedAt: ""};
+  state.profileMeta = {
+    ...DEFAULT_STATE.profileMeta,
+    ...(state.profileMeta || {}),
+    startedAt: "",
+  };
   return state;
 }
 

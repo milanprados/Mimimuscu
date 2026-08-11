@@ -1,13 +1,19 @@
 /**
- * Cache PWA Soft Editorial V3
+ * Cache PWA V34
  * Navigation + code : network-first pour recevoir les mises à jour immédiatement.
  */
-const VERSION = "mimi-muscu-soft-editorial-v3";
+const VERSION = "mimi-muscu-v34.0";
 const APP_CACHE = `${VERSION}-app`;
 
 const APP_SHELL = [
-  "./", "./index.html", "./styles.css", "./manifest.json",
-  "./js/app.js", "./js/config.js",
+  "./",
+  "./index.html",
+  "./styles.css",
+  "./theme.css",
+  "./workout.css",
+  "./manifest.json",
+  "./js/app.js",
+  "./js/config.js",
 
   "./js/core/catalog.js",
   "./js/core/program.js",
@@ -18,8 +24,6 @@ const APP_SHELL = [
   "./js/core/calendar.js",
 
   "./js/ui/navigation.js",
-  "./js/ui/theme.js",
-  "./js/ui/workout-theme.js",
   "./js/ui/home.js",
   "./js/ui/workout.js",
   "./js/ui/exercise-library.js",
@@ -39,19 +43,28 @@ const APP_SHELL = [
   "./data/milestones.json",
 
   "./assets/icons/icon-192.png",
-  "./assets/icons/icon-512.png"
+  "./assets/icons/icon-512.png",
 ];
 
-self.addEventListener("install", event => {
+self.addEventListener("install", (event) => {
   self.skipWaiting();
-  event.waitUntil(caches.open(APP_CACHE).then(cache => cache.addAll(APP_SHELL)));
+  event.waitUntil(
+    caches.open(APP_CACHE).then((cache) => cache.addAll(APP_SHELL)),
+  );
 });
 
-self.addEventListener("activate", event => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys()
-      .then(keys => Promise.all(keys.filter(key => key !== APP_CACHE).map(key => caches.delete(key))))
-      .then(() => self.clients.claim())
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(
+          keys
+            .filter((key) => key !== APP_CACHE)
+            .map((key) => caches.delete(key)),
+        ),
+      )
+      .then(() => self.clients.claim()),
   );
 });
 
@@ -67,7 +80,7 @@ async function cacheFirst(request) {
 async function networkFirst(request) {
   const cache = await caches.open(APP_CACHE);
   try {
-    const response = await fetch(request, {cache:"no-store"});
+    const response = await fetch(request, { cache: "no-store" });
     if (response.ok) cache.put(request, response.clone());
     return response;
   } catch (_) {
@@ -75,7 +88,7 @@ async function networkFirst(request) {
   }
 }
 
-self.addEventListener("fetch", event => {
+self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
   if (event.request.mode === "navigate") {

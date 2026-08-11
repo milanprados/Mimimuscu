@@ -44,18 +44,23 @@ export function monthCells(year, month) {
   const first = new Date(year, month, 1);
   const offset = (first.getDay() + 6) % 7;
   const start = addDays(first, -offset);
-  return Array.from({length: 42}, (_, i) => addDays(start, i));
+  return Array.from({ length: 42 }, (_, i) => addDays(start, i));
 }
 
 export function formatShortDate(date) {
   return new Intl.DateTimeFormat("fr-FR", {
-    weekday: "short", day: "numeric", month: "short"
+    weekday: "short",
+    day: "numeric",
+    month: "short",
   }).format(date);
 }
 
 export function formatLongDate(date) {
   const text = new Intl.DateTimeFormat("fr-FR", {
-    weekday: "long", day: "numeric", month: "long", year: "numeric"
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   }).format(date);
   return text.charAt(0).toUpperCase() + text.slice(1);
 }

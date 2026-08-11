@@ -1,542 +1,904 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-  <meta name="theme-color" content="#f7f6f1">
-  <link rel="manifest" href="./manifest.json">
-  <link rel="apple-touch-icon" href="./assets/icons/icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=32.2">
-  <title>Mimi Muscu</title>
-</head>
-<body>
-  <div class="app-shell">
-    <header class="app-header">
-      <div class="brand-lockup">
-        <div class="brand-wordmark">Mimi Muscu<span>❧</span></div>
-      </div>
-      <div class="level-chip" id="homeLevel">LV 1</div>
-    </header>
-
-    <main id="appMain">
-      <!-- SCREEN: Accueil / séance du jour -->
-      <section id="sessionTab" class="screen" aria-hidden="false">
-        <div class="screen-intro home-intro">
-          <span class="eyebrow">AUJOURD'HUI</span>
-          <h1 id="sessionName">Fondations A</h1>
-          <p id="sessionLabel">Semaine 1 · Jour 1/6</p>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no"
+    />
+    <meta name="theme-color" content="#f7f6f1" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="apple-touch-icon" href="./assets/icons/icon-192.png" />
+    <link rel="stylesheet" href="./styles.css?v=34.0" />
+    <link rel="stylesheet" href="./theme.css?v=34.0" />
+    <link rel="stylesheet" href="./workout.css?v=34.0" />
+    <title>Mimi Muscu</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand-lockup">
+          <div class="brand-wordmark">Mimi Muscu<span>❧</span></div>
         </div>
+        <div class="level-chip" id="homeLevel">LV 1</div>
+      </header>
 
-        <article class="today-card">
-          <div class="today-top">
-            <div class="status-pill" id="readiness">PROGRESSION</div>
-            <div class="today-duration"><span>Durée</span><strong id="dashDuration">~20 min</strong></div>
+      <main id="appMain">
+        <!-- SCREEN: Accueil / séance du jour -->
+        <section id="sessionTab" class="screen" aria-hidden="false">
+          <div class="screen-intro home-intro">
+            <span class="eyebrow">AUJOURD'HUI</span>
+            <h1 id="sessionName">Fondations A</h1>
+            <p id="sessionLabel">Semaine 1 · Jour 1/6</p>
           </div>
-          <div class="phase-route" aria-label="Déroulé de la séance">
-            <div><span class="phase-dot warm"></span><strong>Échauffement</strong><small>mise en route</small></div>
-            <div><span class="phase-dot main"></span><strong>Full body</strong><small>2 tours</small></div>
-            <div><span class="phase-dot cool"></span><strong>Retour au calme</strong><small>mobilité</small></div>
-          </div>
-          <p class="today-focus" id="sessionFocus">Technique · force générale</p>
-          <button class="hero-go" id="quickStart"><span>▶</span> Lancer la séance</button>
-          <button class="hero-edit" id="prepareSession">Voir le détail & modifier</button>
-        </article>
 
-        <article class="calendar-home-card">
-          <div class="calendar-home-head">
-            <div><span class="eyebrow">PLANNING</span><strong id="calendarTodayDate">Aujourd’hui</strong></div>
-            <button class="link-btn" id="openCalendar">Calendrier →</button>
-          </div>
-          <div class="home-week-strip" id="homeWeekStrip"></div>
-          <div class="calendar-today-row">
-            <div><span class="calendar-status planned" id="calendarTodayBadge">PRÉVU</span></div>
-            <div><strong id="calendarTodayTitle">Séance du jour</strong><small id="calendarTodaySub"></small></div>
-          </div>
-          <div class="home-upcoming" id="homeUpcoming"></div>
-        </article>
-
-        <article class="cycle-panel">
-          <div class="section-title">
-            <div>
-              <span class="eyebrow">CYCLE EN COURS</span>
-              <strong id="cycleLabel">Cycle 1 · Semaine 1/4 · Jour 1/6</strong>
+          <article class="today-card">
+            <div class="today-top">
+              <div class="status-pill" id="readiness">PROGRESSION</div>
+              <div class="today-duration">
+                <span>Durée</span><strong id="dashDuration">~20 min</strong>
+              </div>
             </div>
-            <b id="cycleProgressText">1 / 24</b>
-          </div>
-          <div class="progress-track"><span id="cycleProgressBar" style="width:4%"></span></div>
-        </article>
+            <div class="phase-route" aria-label="Déroulé de la séance">
+              <div>
+                <span class="phase-dot warm"></span><strong>Échauffement</strong
+                ><small>mise en route</small>
+              </div>
+              <div>
+                <span class="phase-dot main"></span><strong>Full body</strong
+                ><small>2 tours</small>
+              </div>
+              <div>
+                <span class="phase-dot cool"></span
+                ><strong>Retour au calme</strong><small>mobilité</small>
+              </div>
+            </div>
+            <p class="today-focus" id="sessionFocus">
+              Technique · force générale
+            </p>
+            <button class="hero-go" id="quickStart">
+              <span>▶</span> Lancer la séance
+            </button>
+            <button class="hero-edit" id="prepareSession">
+              Voir le détail & modifier
+            </button>
+          </article>
 
-        <article class="coach-note">
-          <div class="coach-icon">↗</div>
+          <article class="calendar-home-card">
+            <div class="calendar-home-head">
+              <div>
+                <span class="eyebrow">PLANNING</span
+                ><strong id="calendarTodayDate">Aujourd’hui</strong>
+              </div>
+              <button class="link-btn" id="openCalendar">Calendrier →</button>
+            </div>
+            <div class="home-week-strip" id="homeWeekStrip"></div>
+            <div class="calendar-today-row">
+              <div>
+                <span class="calendar-status planned" id="calendarTodayBadge"
+                  >PRÉVU</span
+                >
+              </div>
+              <div>
+                <strong id="calendarTodayTitle">Séance du jour</strong
+                ><small id="calendarTodaySub"></small>
+              </div>
+            </div>
+            <div class="home-upcoming" id="homeUpcoming"></div>
+          </article>
+
+          <article class="cycle-panel">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">CYCLE EN COURS</span>
+                <strong id="cycleLabel"
+                  >Cycle 1 · Semaine 1/4 · Jour 1/6</strong
+                >
+              </div>
+              <b id="cycleProgressText">1 / 24</b>
+            </div>
+            <div class="progress-track">
+              <span id="cycleProgressBar" style="width: 4%"></span>
+            </div>
+          </article>
+
+          <article class="coach-note">
+            <div class="coach-icon">↗</div>
+            <div>
+              <span class="eyebrow">COACH DU JOUR</span>
+              <p id="dailyCoachText">
+                Priorité au mouvement propre et régulier.
+              </p>
+            </div>
+          </article>
+
+          <article class="section-block">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">OBJECTIFS</span
+                ><strong>Repères du moment</strong>
+              </div>
+              <button class="link-btn" id="openMilestones">Tout voir</button>
+            </div>
+            <div id="milestonePreview"></div>
+          </article>
+
+          <article class="section-block custom-library">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">À TOI</span><strong>Mes séances</strong>
+              </div>
+              <button class="compact-btn" id="newCustomSession">
+                ＋ Créer
+              </button>
+            </div>
+            <div id="customSessionList"></div>
+            <div class="library-actions">
+              <button id="importSessionBtn">Importer</button>
+              <button id="showSessionFormat">Format JSON</button>
+            </div>
+            <input
+              id="sessionFileInput"
+              type="file"
+              accept=".json,application/json"
+              class="hidden"
+            />
+          </article>
+
+          <article class="today-done">
+            <span class="eyebrow">AUJOURD'HUI</span>
+            <p id="todayText">Aucune séance terminée.</p>
+            <button class="link-btn hidden" id="redoSession">
+              Refaire la séance
+            </button>
+          </article>
+        </section>
+
+        <!-- SCREEN: Bibliothèque des exercices -->
+        <section id="exercisesTab" class="screen hidden" aria-hidden="true">
+          <div class="screen-intro">
+            <span class="eyebrow">BIBLIOTHÈQUE</span>
+            <h1>Exercices</h1>
+            <p id="exerciseCount">25 familles · 111 mouvements</p>
+          </div>
+          <div class="search-panel">
+            <div class="search-wrap">
+              <span>⌕</span
+              ><input
+                id="search"
+                type="search"
+                placeholder="Chercher un mouvement"
+              />
+            </div>
+            <div class="chips" id="chips"></div>
+          </div>
+          <div id="exerciseList" class="exercise-list"></div>
+        </section>
+
+        <!-- SCREEN: Progression détaillée -->
+        <section id="progressTab" class="screen hidden" aria-hidden="true">
+          <div class="screen-intro">
+            <span class="eyebrow">ANALYSE</span>
+            <h1>Progression</h1>
+            <p>Les chiffres derrière ta progression, sans score mystère.</p>
+          </div>
+
+          <div class="metric-grid progress-metrics">
+            <div class="metric">
+              <span>Séances</span><strong id="sessions">0</strong>
+            </div>
+            <div class="metric"><span>XP</span><strong id="xp">0</strong></div>
+            <div class="metric">
+              <span>Série</span><strong id="streak">0</strong>
+            </div>
+            <div class="metric">
+              <span>Répétitions</span><strong id="totalReps">0</strong>
+            </div>
+            <div class="metric">
+              <span>Minutes</span><strong id="totalMinutes">0</strong>
+            </div>
+            <div class="metric">
+              <span>Score moyen</span><strong id="avgScore">—</strong>
+            </div>
+          </div>
+
+          <article class="section-block index-explainer">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">NIVEAU PHYSIQUE</span
+                ><strong>Indices personnels</strong>
+              </div>
+              <span class="baseline-chip">100 = départ</span>
+            </div>
+            <p class="section-copy" id="progressNarrative"></p>
+            <div id="progressAxes" class="axes-stack"></div>
+          </article>
+
+          <article class="section-block">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">AVANT / MAINTENANT</span
+                ><strong>Depuis le début</strong>
+              </div>
+            </div>
+            <div id="progressSinceStart" class="before-after-grid"></div>
+          </article>
+
+          <article class="section-block">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">ADAPTATION</span
+                ><strong>Objectifs actuels</strong>
+              </div>
+            </div>
+            <p class="section-copy">
+              Ce sont les cibles utilisées par les prochaines séances. Elles
+              montent ou descendent selon tes performances.
+            </p>
+            <div id="targets" class="targets-list rich-targets"></div>
+          </article>
+
+          <article class="section-block calendar-progress-card">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">PLANNING</span
+                ><strong>Calendrier d’entraînement</strong>
+              </div>
+              <button class="compact-btn" id="openCalendarProgress">
+                Ouvrir
+              </button>
+            </div>
+            <p class="section-copy">
+              Retrouve les séances faites, les prochains jours du cycle et ton
+              jour de repos.
+            </p>
+          </article>
+
+          <article class="section-block body-card">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">PHYSIQUE</span
+                ><strong>Évolution du poids</strong>
+              </div>
+            </div>
+            <div class="body-summary" id="bodySummary"></div>
+            <div class="mini-chart" id="weightChart"></div>
+          </article>
+
+          <article class="section-block">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">JOURNAL</span><strong>Historique</strong>
+              </div>
+            </div>
+            <div id="history"></div>
+          </article>
+        </section>
+
+        <!-- SCREEN: Profil athlète -->
+        <section id="profileTab" class="screen hidden" aria-hidden="true">
+          <div class="screen-intro profile-intro">
+            <span class="eyebrow">TON PROFIL</span>
+            <h1>Fiche athlète</h1>
+            <p>Une vue simple de ton niveau aujourd’hui.</p>
+          </div>
+
+          <article class="athlete-card">
+            <div class="athlete-top">
+              <div class="athlete-avatar" id="profileAvatar">MM</div>
+              <div class="athlete-id">
+                <span class="eyebrow">MIMI MUSCU</span>
+                <h2 id="profileNickname">Mimi Athlete</h2>
+                <strong id="profileTitle">Démarrage</strong>
+              </div>
+              <button class="athlete-edit" id="openEditProfile">✎</button>
+            </div>
+
+            <div class="athlete-level">
+              <div>
+                <strong id="profileLevel">LV 1</strong
+                ><small id="profileXpLabel">0 / 500 XP</small>
+              </div>
+              <div class="xp-track">
+                <span id="profileXpBar" style="width: 0%"></span>
+              </div>
+            </div>
+
+            <div class="athlete-index">
+              <div>
+                <span>Indice physique</span>
+                <strong id="profileIndex">100</strong>
+                <small>100 = ton niveau de départ</small>
+              </div>
+              <b id="profileIndexDelta" class="positive">+0%</b>
+            </div>
+
+            <div class="athlete-stats">
+              <div>
+                <strong id="profileSessions">0</strong><span>séances</span>
+              </div>
+              <div>
+                <strong>🔥 <span id="profileStreak">0</span></strong
+                ><span>série</span>
+              </div>
+              <div>
+                <strong id="profileRegularity">0%</strong
+                ><span>régularité 28j</span>
+              </div>
+              <div>
+                <strong id="profileTotalReps">0</strong><span>répétitions</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="section-block profile-performance">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">TON NIVEAU</span><strong>4 axes</strong>
+              </div>
+              <span class="baseline-chip">personnel</span>
+            </div>
+            <p class="profile-narrative" id="profileNarrative"></p>
+            <div id="profileAxes" class="axes-stack"></div>
+          </article>
+
+          <article class="section-block">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">CYCLE EN COURS</span
+                ><strong id="profileCycleTitle">Cycle 1 · Semaine 1/4</strong>
+              </div>
+              <b class="acid" id="profileCycleCount">0/24</b>
+            </div>
+            <div class="cycle-dots" id="profileCycleDots"></div>
+            <div class="cycle-current-stats" id="cycleCurrentStats"></div>
+            <div class="last-cycle-report hidden" id="lastCycleReport"></div>
+          </article>
+
+          <article class="section-block">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">RÉGULARITÉ</span
+                ><strong>42 derniers jours</strong>
+              </div>
+              <div class="weekly-score">
+                <b id="weeklyConsistency">0/6</b><span>7 jours</span>
+              </div>
+            </div>
+            <div class="activity-heatmap" id="activityHeatmap"></div>
+            <small class="activity-caption" id="activityCaption"></small>
+          </article>
+
+          <article class="section-block">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">RECORDS</span
+                ><strong>Meilleures performances</strong>
+              </div>
+            </div>
+            <div class="records-grid" id="profileRecords"></div>
+          </article>
+
+          <article class="section-block">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">DEPUIS LE DÉBUT</span
+                ><strong>Ce qui a vraiment bougé</strong>
+              </div>
+            </div>
+            <div class="before-after-grid" id="profileSinceStart"></div>
+          </article>
+
+          <article class="section-block goals-section">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">OBJECTIFS PERSO</span
+                ><strong>Mes prochains caps</strong>
+              </div>
+              <button class="compact-btn" id="addGoal">＋ Ajouter</button>
+            </div>
+            <div id="profileGoals"></div>
+          </article>
+
+          <article class="section-block body-profile-card">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">CORPS</span><strong>Mensurations</strong>
+              </div>
+              <button class="compact-btn" id="addMeasurement">＋ Mesure</button>
+            </div>
+            <div class="profile-body-summary" id="profileBodySummary"></div>
+          </article>
+
+          <article class="settings-divider">
+            <span>Réglages & données</span>
+          </article>
+
+          <article class="adapt-card">
+            <div class="adapt-status">
+              <span></span>Adaptation automatique active
+            </div>
+            <p>
+              Les reps et les temps évoluent selon tes résultats et ton
+              ressenti. Rien à choisir manuellement.
+            </p>
+            <input id="autoSuggest" type="checkbox" checked class="hidden" />
+          </article>
+
+          <article class="section-block">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">DONNÉES</span><strong>Sauvegarde</strong>
+              </div>
+            </div>
+            <p class="section-copy">
+              Exporte profil, progression, records, mensurations et séances
+              personnalisées.
+            </p>
+            <div class="two-actions">
+              <button id="exportBackup">Exporter</button>
+              <button id="importBackup">Importer</button>
+            </div>
+            <input
+              id="backupFileInput"
+              type="file"
+              accept=".json,application/json"
+              class="hidden"
+            />
+            <small id="backupStatus"></small>
+
+            <div class="reset-progress-card">
+              <div>
+                <span class="eyebrow">REPARTIR DE ZÉRO</span>
+                <strong>Réinitialiser ma progression</strong>
+                <small
+                  >Efface séances, XP, records, objectifs et adaptation. Ton
+                  profil, tes mensurations, tes réglages et tes séances perso
+                  restent.</small
+                >
+              </div>
+              <button
+                class="reset-progress-btn"
+                id="resetProgression"
+                type="button"
+              >
+                Réinitialiser
+              </button>
+            </div>
+          </article>
+
+          <article class="section-block coach-export">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">COACH IA</span
+                ><strong>Bilan pour ChatGPT</strong>
+              </div>
+            </div>
+            <textarea id="coachPrompt" readonly></textarea>
+            <button class="primary-btn" id="openChat">
+              Copier & ouvrir ChatGPT
+            </button>
+          </article>
+        </section>
+      </main>
+
+      <!-- NAVIGATION PRINCIPALE -->
+      <nav class="tabs" aria-label="Navigation principale">
+        <button class="active" data-tab="session" aria-current="page">
+          <span>⌂</span><small>Accueil</small>
+        </button>
+        <button data-tab="exercises"><span>◈</span><small>Exos</small></button>
+        <button data-tab="progress">
+          <span>▥</span><small>Progrès</small>
+        </button>
+        <button data-tab="profile"><span>○</span><small>Profil</small></button>
+      </nav>
+    </div>
+
+    <!-- MODALS / COUCHES SECONDAIRES -->
+    <div
+      class="modal hidden calendar-modal"
+      id="calendarModal"
+      aria-hidden="true"
+    >
+      <div class="modal-shell calendar-shell">
+        <header class="modal-head">
+          <button id="closeCalendar">←</button>
           <div>
-            <span class="eyebrow">COACH DU JOUR</span>
-            <p id="dailyCoachText">Priorité au mouvement propre et régulier.</p>
+            <span class="eyebrow">PLANNING</span>
+            <h2>Calendrier</h2>
           </div>
+          <button class="calendar-today-btn" id="calendarTodayBtn">Auj.</button>
+        </header>
+
+        <div class="calendar-toolbar">
+          <button id="calendarPrev">‹</button>
+          <strong id="calendarMonthLabel">août 2026</strong>
+          <button id="calendarNext">›</button>
+        </div>
+
+        <div class="calendar-legend">
+          <span><i class="done"></i>Fait</span>
+          <span><i class="planned"></i>Prévu</span>
+          <span><i class="rest"></i>Repos</span>
+          <span><i class="today"></i>Aujourd’hui</span>
+        </div>
+
+        <div class="calendar-weekdays">
+          <span>L</span><span>M</span><span>M</span><span>J</span><span>V</span
+          ><span>S</span><span>D</span>
+        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+
+        <article class="calendar-selected-card">
+          <span class="eyebrow" id="calendarSelectedDate">Aujourd’hui</span>
+          <div id="calendarSelected"></div>
         </article>
 
-        <article class="section-block">
+        <article class="calendar-agenda-card">
           <div class="section-title">
-            <div><span class="eyebrow">OBJECTIFS</span><strong>Repères du moment</strong></div>
-            <button class="link-btn" id="openMilestones">Tout voir</button>
-          </div>
-          <div id="milestonePreview"></div>
-        </article>
-
-        <article class="section-block custom-library">
-          <div class="section-title">
-            <div><span class="eyebrow">À TOI</span><strong>Mes séances</strong></div>
-            <button class="compact-btn" id="newCustomSession">＋ Créer</button>
-          </div>
-          <div id="customSessionList"></div>
-          <div class="library-actions">
-            <button id="importSessionBtn">Importer</button>
-            <button id="showSessionFormat">Format JSON</button>
-          </div>
-          <input id="sessionFileInput" type="file" accept=".json,application/json" class="hidden">
-        </article>
-
-        <article class="today-done">
-          <span class="eyebrow">AUJOURD'HUI</span>
-          <p id="todayText">Aucune séance terminée.</p>
-          <button class="link-btn hidden" id="redoSession">Refaire la séance</button>
-        </article>
-      </section>
-
-      <!-- SCREEN: Bibliothèque des exercices -->
-      <section id="exercisesTab" class="screen hidden" aria-hidden="true">
-        <div class="screen-intro">
-          <span class="eyebrow">BIBLIOTHÈQUE</span>
-          <h1>Exercices</h1>
-          <p id="exerciseCount">25 familles · 111 mouvements</p>
-        </div>
-        <div class="search-panel">
-          <div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Chercher un mouvement"></div>
-          <div class="chips" id="chips"></div>
-        </div>
-        <div id="exerciseList" class="exercise-list"></div>
-      </section>
-
-      <!-- SCREEN: Progression détaillée -->
-      <section id="progressTab" class="screen hidden" aria-hidden="true">
-        <div class="screen-intro">
-          <span class="eyebrow">ANALYSE</span>
-          <h1>Progression</h1>
-          <p>Les chiffres derrière ta progression, sans score mystère.</p>
-        </div>
-
-        <div class="metric-grid progress-metrics">
-          <div class="metric"><span>Séances</span><strong id="sessions">0</strong></div>
-          <div class="metric"><span>XP</span><strong id="xp">0</strong></div>
-          <div class="metric"><span>Série</span><strong id="streak">0</strong></div>
-          <div class="metric"><span>Répétitions</span><strong id="totalReps">0</strong></div>
-          <div class="metric"><span>Minutes</span><strong id="totalMinutes">0</strong></div>
-          <div class="metric"><span>Score moyen</span><strong id="avgScore">—</strong></div>
-        </div>
-
-        <article class="section-block index-explainer">
-          <div class="section-title">
-            <div><span class="eyebrow">NIVEAU PHYSIQUE</span><strong>Indices personnels</strong></div>
-            <span class="baseline-chip">100 = départ</span>
-          </div>
-          <p class="section-copy" id="progressNarrative"></p>
-          <div id="progressAxes" class="axes-stack"></div>
-        </article>
-
-        <article class="section-block">
-          <div class="section-title"><div><span class="eyebrow">AVANT / MAINTENANT</span><strong>Depuis le début</strong></div></div>
-          <div id="progressSinceStart" class="before-after-grid"></div>
-        </article>
-
-        <article class="section-block">
-          <div class="section-title"><div><span class="eyebrow">ADAPTATION</span><strong>Objectifs actuels</strong></div></div>
-          <p class="section-copy">Ce sont les cibles utilisées par les prochaines séances. Elles montent ou descendent selon tes performances.</p>
-          <div id="targets" class="targets-list rich-targets"></div>
-        </article>
-
-        <article class="section-block calendar-progress-card">
-          <div class="section-title">
-            <div><span class="eyebrow">PLANNING</span><strong>Calendrier d’entraînement</strong></div>
-            <button class="compact-btn" id="openCalendarProgress">Ouvrir</button>
-          </div>
-          <p class="section-copy">Retrouve les séances faites, les prochains jours du cycle et ton jour de repos.</p>
-        </article>
-
-        <article class="section-block body-card">
-          <div class="section-title"><div><span class="eyebrow">PHYSIQUE</span><strong>Évolution du poids</strong></div></div>
-          <div class="body-summary" id="bodySummary"></div>
-          <div class="mini-chart" id="weightChart"></div>
-        </article>
-
-        <article class="section-block">
-          <div class="section-title"><div><span class="eyebrow">JOURNAL</span><strong>Historique</strong></div></div>
-          <div id="history"></div>
-        </article>
-      </section>
-
-      <!-- SCREEN: Profil athlète -->
-      <section id="profileTab" class="screen hidden" aria-hidden="true">
-        <div class="screen-intro profile-intro">
-          <span class="eyebrow">TON PROFIL</span>
-          <h1>Fiche athlète</h1>
-          <p>Une vue simple de ton niveau aujourd’hui.</p>
-        </div>
-
-        <article class="athlete-card">
-          <div class="athlete-top">
-            <div class="athlete-avatar" id="profileAvatar">MM</div>
-            <div class="athlete-id">
-              <span class="eyebrow">MIMI MUSCU</span>
-              <h2 id="profileNickname">Mimi Athlete</h2>
-              <strong id="profileTitle">Démarrage</strong>
-            </div>
-            <button class="athlete-edit" id="openEditProfile">✎</button>
-          </div>
-
-          <div class="athlete-level">
-            <div><strong id="profileLevel">LV 1</strong><small id="profileXpLabel">0 / 500 XP</small></div>
-            <div class="xp-track"><span id="profileXpBar" style="width:0%"></span></div>
-          </div>
-
-          <div class="athlete-index">
             <div>
-              <span>Indice physique</span>
-              <strong id="profileIndex">100</strong>
-              <small>100 = ton niveau de départ</small>
+              <span class="eyebrow">À VENIR</span
+              ><strong>Prochains jours</strong>
             </div>
-            <b id="profileIndexDelta" class="positive">+0%</b>
           </div>
+          <div id="calendarUpcomingList"></div>
+        </article>
 
-          <div class="athlete-stats">
-            <div><strong id="profileSessions">0</strong><span>séances</span></div>
-            <div><strong>🔥 <span id="profileStreak">0</span></strong><span>série</span></div>
-            <div><strong id="profileRegularity">0%</strong><span>régularité 28j</span></div>
-            <div><strong id="profileTotalReps">0</strong><span>répétitions</span></div>
+        <article class="calendar-settings-card">
+          <div>
+            <span class="eyebrow">RYTHME HEBDO</span>
+            <strong>Jour de repos</strong>
+            <small
+              >Les séances futures se décalent automatiquement si tu rates une
+              journée.</small
+            >
           </div>
-        </article>
-
-        <article class="section-block profile-performance">
-          <div class="section-title">
-            <div><span class="eyebrow">TON NIVEAU</span><strong>4 axes</strong></div>
-            <span class="baseline-chip">personnel</span>
-          </div>
-          <p class="profile-narrative" id="profileNarrative"></p>
-          <div id="profileAxes" class="axes-stack"></div>
-        </article>
-
-        <article class="section-block">
-          <div class="section-title">
-            <div><span class="eyebrow">CYCLE EN COURS</span><strong id="profileCycleTitle">Cycle 1 · Semaine 1/4</strong></div>
-            <b class="acid" id="profileCycleCount">0/24</b>
-          </div>
-          <div class="cycle-dots" id="profileCycleDots"></div>
-          <div class="cycle-current-stats" id="cycleCurrentStats"></div>
-          <div class="last-cycle-report hidden" id="lastCycleReport"></div>
-        </article>
-
-        <article class="section-block">
-          <div class="section-title">
-            <div><span class="eyebrow">RÉGULARITÉ</span><strong>42 derniers jours</strong></div>
-            <div class="weekly-score"><b id="weeklyConsistency">0/6</b><span>7 jours</span></div>
-          </div>
-          <div class="activity-heatmap" id="activityHeatmap"></div>
-          <small class="activity-caption" id="activityCaption"></small>
-        </article>
-
-        <article class="section-block">
-          <div class="section-title"><div><span class="eyebrow">RECORDS</span><strong>Meilleures performances</strong></div></div>
-          <div class="records-grid" id="profileRecords"></div>
-        </article>
-
-        <article class="section-block">
-          <div class="section-title"><div><span class="eyebrow">DEPUIS LE DÉBUT</span><strong>Ce qui a vraiment bougé</strong></div></div>
-          <div class="before-after-grid" id="profileSinceStart"></div>
-        </article>
-
-        <article class="section-block goals-section">
-          <div class="section-title">
-            <div><span class="eyebrow">OBJECTIFS PERSO</span><strong>Mes prochains caps</strong></div>
-            <button class="compact-btn" id="addGoal">＋ Ajouter</button>
-          </div>
-          <div id="profileGoals"></div>
-        </article>
-
-        <article class="section-block body-profile-card">
-          <div class="section-title">
-            <div><span class="eyebrow">CORPS</span><strong>Mensurations</strong></div>
-            <button class="compact-btn" id="addMeasurement">＋ Mesure</button>
-          </div>
-          <div class="profile-body-summary" id="profileBodySummary"></div>
-        </article>
-
-        <article class="settings-divider">
-          <span>Réglages & données</span>
-        </article>
-
-        <article class="adapt-card">
-          <div class="adapt-status"><span></span>Adaptation automatique active</div>
-          <p>Les reps et les temps évoluent selon tes résultats et ton ressenti. Rien à choisir manuellement.</p>
-          <input id="autoSuggest" type="checkbox" checked class="hidden">
-        </article>
-
-        <article class="section-block">
-          <div class="section-title"><div><span class="eyebrow">DONNÉES</span><strong>Sauvegarde</strong></div></div>
-          <p class="section-copy">Exporte profil, progression, records, mensurations et séances personnalisées.</p>
-          <div class="two-actions">
-            <button id="exportBackup">Exporter</button>
-            <button id="importBackup">Importer</button>
-          </div>
-          <input id="backupFileInput" type="file" accept=".json,application/json" class="hidden">
-          <small id="backupStatus"></small>
-
-          <div class="reset-progress-card">
-            <div>
-              <span class="eyebrow">REPARTIR DE ZÉRO</span>
-              <strong>Réinitialiser ma progression</strong>
-              <small>Efface séances, XP, records, objectifs et adaptation. Ton profil, tes mensurations, tes réglages et tes séances perso restent.</small>
-            </div>
-            <button class="reset-progress-btn" id="resetProgression" type="button">Réinitialiser</button>
-          </div>
-        </article>
-
-        <article class="section-block coach-export">
-          <div class="section-title"><div><span class="eyebrow">COACH IA</span><strong>Bilan pour ChatGPT</strong></div></div>
-          <textarea id="coachPrompt" readonly></textarea>
-          <button class="primary-btn" id="openChat">Copier & ouvrir ChatGPT</button>
-        </article>
-      </section>
-    </main>
-
-    <!-- NAVIGATION PRINCIPALE -->
-    <nav class="tabs" aria-label="Navigation principale">
-      <button class="active" data-tab="session" aria-current="page"><span>⌂</span><small>Accueil</small></button>
-      <button data-tab="exercises"><span>◈</span><small>Exos</small></button>
-      <button data-tab="progress"><span>▥</span><small>Progrès</small></button>
-      <button data-tab="profile"><span>○</span><small>Profil</small></button>
-    </nav>
-  </div>
-
-  <!-- MODALS / COUCHES SECONDAIRES -->
-  <div class="modal hidden calendar-modal" id="calendarModal" aria-hidden="true">
-    <div class="modal-shell calendar-shell">
-      <header class="modal-head">
-        <button id="closeCalendar">←</button>
-        <div><span class="eyebrow">PLANNING</span><h2>Calendrier</h2></div>
-        <button class="calendar-today-btn" id="calendarTodayBtn">Auj.</button>
-      </header>
-
-      <div class="calendar-toolbar">
-        <button id="calendarPrev">‹</button>
-        <strong id="calendarMonthLabel">août 2026</strong>
-        <button id="calendarNext">›</button>
-      </div>
-
-      <div class="calendar-legend">
-        <span><i class="done"></i>Fait</span>
-        <span><i class="planned"></i>Prévu</span>
-        <span><i class="rest"></i>Repos</span>
-        <span><i class="today"></i>Aujourd’hui</span>
-      </div>
-
-      <div class="calendar-weekdays"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
-      <div class="calendar-grid" id="calendarGrid"></div>
-
-      <article class="calendar-selected-card">
-        <span class="eyebrow" id="calendarSelectedDate">Aujourd’hui</span>
-        <div id="calendarSelected"></div>
-      </article>
-
-      <article class="calendar-agenda-card">
-        <div class="section-title"><div><span class="eyebrow">À VENIR</span><strong>Prochains jours</strong></div></div>
-        <div id="calendarUpcomingList"></div>
-      </article>
-
-      <article class="calendar-settings-card">
-        <div>
-          <span class="eyebrow">RYTHME HEBDO</span>
-          <strong>Jour de repos</strong>
-          <small>Les séances futures se décalent automatiquement si tu rates une journée.</small>
-        </div>
-        <select id="restDaySelect">
-          <option value="1">Lundi</option>
-          <option value="2">Mardi</option>
-          <option value="3">Mercredi</option>
-          <option value="4">Jeudi</option>
-          <option value="5">Vendredi</option>
-          <option value="6">Samedi</option>
-          <option value="0">Dimanche</option>
-        </select>
-      </article>
-    </div>
-  </div>
-
-  <div class="modal hidden" id="milestoneModal" aria-hidden="true">
-    <div class="modal-shell">
-      <header class="modal-head"><button id="closeMilestoneModal">←</button><div><span class="eyebrow">OBJECTIFS</span><h2>Mes repères</h2></div><span></span></header>
-      <div id="milestoneList"></div>
-    </div>
-  </div>
-
-  <div class="modal hidden" id="profileEditModal" aria-hidden="true">
-    <div class="modal-shell compact-modal">
-      <header class="modal-head"><button id="closeProfileEdit">←</button><div><span class="eyebrow">PROFIL</span><h2>Mes informations</h2></div><span></span></header>
-      <div class="modal-form">
-        <label><span>Prénom / pseudo</span><input id="nickname" maxlength="40" placeholder="Mimi Athlete"></label>
-        <div class="form-grid">
-          <label><span>Âge</span><input id="age" type="number" inputmode="numeric"></label>
-          <label><span>Taille</span><div class="unit-input"><input id="height" type="number" inputmode="numeric"><b>cm</b></div></label>
-          <label class="wide"><span>Poids</span><div class="unit-input"><input id="weight" type="number" step="0.1" inputmode="decimal"><b>kg</b></div></label>
-        </div>
-        <button class="primary-btn" id="saveProfile">Enregistrer</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal hidden" id="resetProgressionModal" aria-hidden="true">
-    <div class="modal-shell compact-modal">
-      <header class="modal-head">
-        <button id="closeResetProgression" aria-label="Fermer">←</button>
-        <div><span class="eyebrow">PROGRESSION</span><h2>Repartir de zéro ?</h2></div>
-        <span></span>
-      </header>
-      <div class="reset-confirm-card">
-        <div class="reset-confirm-icon">↺</div>
-        <p>Tu vas remettre à zéro le programme, les cibles adaptatives, l’XP, les records, l’historique et les objectifs.</p>
-        <div class="reset-preserved">
-          <span>Conservé</span>
-          <strong>Profil · mensurations · réglages · séances perso</strong>
-        </div>
-        <div class="reset-confirm-actions">
-          <button class="soft-btn" id="cancelResetProgression" type="button">Annuler</button>
-          <button class="reset-confirm-btn" id="confirmResetProgression" type="button">Oui, réinitialiser</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal hidden" id="goalModal" aria-hidden="true">
-    <div class="modal-shell compact-modal">
-      <header class="modal-head"><button id="closeGoalModal">←</button><div><span class="eyebrow">OBJECTIF</span><h2>Nouveau cap</h2></div><span></span></header>
-      <div class="modal-form">
-        <label><span>Type</span>
-          <select id="goalType">
-            <option value="exercise">Performance exercice</option>
-            <option value="weight">Poids</option>
-            <option value="waist">Tour de taille</option>
+          <select id="restDaySelect">
+            <option value="1">Lundi</option>
+            <option value="2">Mardi</option>
+            <option value="3">Mercredi</option>
+            <option value="4">Jeudi</option>
+            <option value="5">Vendredi</option>
+            <option value="6">Samedi</option>
+            <option value="0">Dimanche</option>
           </select>
-        </label>
-        <label id="goalExerciseWrap"><span>Exercice</span><select id="goalExercise"></select></label>
-        <label><span>Cible</span><div class="unit-input"><input id="goalTarget" type="number" step="1"><b id="goalUnit"></b></div></label>
-        <button class="primary-btn" id="saveGoal">Ajouter l’objectif</button>
+        </article>
       </div>
     </div>
-  </div>
 
-  <div class="modal hidden" id="measurementModal" aria-hidden="true">
-    <div class="modal-shell compact-modal">
-      <header class="modal-head"><button id="closeMeasurementModal">←</button><div><span class="eyebrow">PROGRESSION</span><h2>Nouvelle mesure</h2></div><span></span></header>
-      <div class="modal-form">
-        <label><span>Poids (kg)</span><input id="measureWeight" type="number" step="0.1"></label>
-        <label><span>Tour de taille (cm)</span><input id="measureWaist" type="number" step="0.1"></label>
-        <label><span>Note</span><input id="measureNote" maxlength="120"></label>
-        <button class="primary-btn" id="saveMeasurement">Enregistrer</button>
+    <div class="modal hidden" id="milestoneModal" aria-hidden="true">
+      <div class="modal-shell">
+        <header class="modal-head">
+          <button id="closeMilestoneModal">←</button>
+          <div>
+            <span class="eyebrow">OBJECTIFS</span>
+            <h2>Mes repères</h2>
+          </div>
+          <span></span>
+        </header>
+        <div id="milestoneList"></div>
       </div>
     </div>
-  </div>
 
-  <div class="modal hidden" id="customEditor" aria-hidden="true">
-    <div class="modal-shell">
-      <header class="modal-head"><button id="closeCustomEditor">←</button><div><span class="eyebrow">MES SÉANCES</span><h2 id="customEditorTitle">Nouvelle séance</h2></div><span></span></header>
-      <div class="modal-form inline-form">
-        <label><span>Nom</span><input id="customName" maxlength="80" placeholder="Ex : Full body rapide"></label>
-        <label><span>Description</span><input id="customDescription" maxlength="240" placeholder="Optionnel"></label>
-      </div>
-      <div id="customEditorList"></div>
-      <button class="add-exercise" id="customAddExercise">＋ Ajouter un exercice</button>
-      <div class="planner-actions">
-        <button class="destructive-btn" id="deleteCustomSession">Supprimer</button>
-        <button class="primary-btn" id="saveCustomSession">Enregistrer</button>
+    <div class="modal hidden" id="profileEditModal" aria-hidden="true">
+      <div class="modal-shell compact-modal">
+        <header class="modal-head">
+          <button id="closeProfileEdit">←</button>
+          <div>
+            <span class="eyebrow">PROFIL</span>
+            <h2>Mes informations</h2>
+          </div>
+          <span></span>
+        </header>
+        <div class="modal-form">
+          <label
+            ><span>Prénom / pseudo</span
+            ><input id="nickname" maxlength="40" placeholder="Mimi Athlete"
+          /></label>
+          <div class="form-grid">
+            <label
+              ><span>Âge</span
+              ><input id="age" type="number" inputmode="numeric"
+            /></label>
+            <label
+              ><span>Taille</span>
+              <div class="unit-input">
+                <input id="height" type="number" inputmode="numeric" /><b>cm</b>
+              </div></label
+            >
+            <label class="wide"
+              ><span>Poids</span>
+              <div class="unit-input">
+                <input
+                  id="weight"
+                  type="number"
+                  step="0.1"
+                  inputmode="decimal"
+                /><b>kg</b>
+              </div></label
+            >
+          </div>
+          <button class="primary-btn" id="saveProfile">Enregistrer</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="modal hidden" id="formatModal" aria-hidden="true">
-    <div class="modal-shell">
-      <header class="modal-head"><button id="closeFormatModal">←</button><div><span class="eyebrow">IMPORT</span><h2>Format JSON</h2></div><span></span></header>
-      <p class="section-copy">Format que Mimi Muscu peut importer directement.</p>
-      <pre id="formatExample"></pre>
-    </div>
-  </div>
-
-  <div class="modal hidden" id="planner" aria-hidden="true">
-    <div class="modal-shell planner-shell">
-      <header class="modal-head"><button id="closePlanner">←</button><div><span class="eyebrow">AVANT DE COMMENCER</span><h2>Ta séance</h2></div><span></span></header>
-      <div class="planner-summary">
-        <span id="plannerLabel"></span>
-        <h3 id="plannerName"></h3>
-        <p id="plannerMeta"></p>
+    <div class="modal hidden" id="resetProgressionModal" aria-hidden="true">
+      <div class="modal-shell compact-modal">
+        <header class="modal-head">
+          <button id="closeResetProgression" aria-label="Fermer">←</button>
+          <div>
+            <span class="eyebrow">PROGRESSION</span>
+            <h2>Repartir de zéro ?</h2>
+          </div>
+          <span></span>
+        </header>
+        <div class="reset-confirm-card">
+          <div class="reset-confirm-icon">↺</div>
+          <p>
+            Tu vas remettre à zéro le programme, les cibles adaptatives, l’XP,
+            les records, l’historique et les objectifs.
+          </p>
+          <div class="reset-preserved">
+            <span>Conservé</span>
+            <strong>Profil · mensurations · réglages · séances perso</strong>
+          </div>
+          <div class="reset-confirm-actions">
+            <button class="soft-btn" id="cancelResetProgression" type="button">
+              Annuler
+            </button>
+            <button
+              class="reset-confirm-btn"
+              id="confirmResetProgression"
+              type="button"
+            >
+              Oui, réinitialiser
+            </button>
+          </div>
+        </div>
       </div>
-      <div id="plannerList"></div>
-      <div class="planner-actions">
-        <button class="soft-btn" id="resetPlanner">Réinitialiser</button>
-        <button class="primary-btn" id="startPlannedSession">Démarrer</button>
+    </div>
+
+    <div class="modal hidden" id="goalModal" aria-hidden="true">
+      <div class="modal-shell compact-modal">
+        <header class="modal-head">
+          <button id="closeGoalModal">←</button>
+          <div>
+            <span class="eyebrow">OBJECTIF</span>
+            <h2>Nouveau cap</h2>
+          </div>
+          <span></span>
+        </header>
+        <div class="modal-form">
+          <label
+            ><span>Type</span>
+            <select id="goalType">
+              <option value="exercise">Performance exercice</option>
+              <option value="weight">Poids</option>
+              <option value="waist">Tour de taille</option>
+            </select>
+          </label>
+          <label id="goalExerciseWrap"
+            ><span>Exercice</span
+            ><select id="goalExercise"></select
+          ></label>
+          <label
+            ><span>Cible</span>
+            <div class="unit-input">
+              <input id="goalTarget" type="number" step="1" /><b
+                id="goalUnit"
+              ></b></div
+          ></label>
+          <button class="primary-btn" id="saveGoal">Ajouter l’objectif</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="modal hidden" id="exercisePicker" aria-hidden="true">
-    <div class="modal-shell">
-      <header class="modal-head"><button id="closePicker">←</button><div><span class="eyebrow">REMPLACER</span><h2>Choisir un exercice</h2></div><span></span></header>
-      <div class="search-wrap picker-search"><span>⌕</span><input id="pickerSearch" type="search" placeholder="Rechercher"></div>
-      <div id="pickerList"></div>
+    <div class="modal hidden" id="measurementModal" aria-hidden="true">
+      <div class="modal-shell compact-modal">
+        <header class="modal-head">
+          <button id="closeMeasurementModal">←</button>
+          <div>
+            <span class="eyebrow">PROGRESSION</span>
+            <h2>Nouvelle mesure</h2>
+          </div>
+          <span></span>
+        </header>
+        <div class="modal-form">
+          <label
+            ><span>Poids (kg)</span
+            ><input id="measureWeight" type="number" step="0.1"
+          /></label>
+          <label
+            ><span>Tour de taille (cm)</span
+            ><input id="measureWaist" type="number" step="0.1"
+          /></label>
+          <label
+            ><span>Note</span><input id="measureNote" maxlength="120"
+          /></label>
+          <button class="primary-btn" id="saveMeasurement">Enregistrer</button>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="focus hidden" id="focus" aria-hidden="true">
-    <header class="focus-head">
-      <button id="exitFocus">×</button>
-      <div class="focus-center"><small id="focusPhase"></small><strong id="focusStep"></strong><em id="focusXp"></em></div>
-      <button id="audio">🔊</button>
-    </header>
-    <div class="focus-progress"><span></span></div>
-    <div class="focus-content" id="focusContent"></div>
+    <div class="modal hidden" id="customEditor" aria-hidden="true">
+      <div class="modal-shell">
+        <header class="modal-head">
+          <button id="closeCustomEditor">←</button>
+          <div>
+            <span class="eyebrow">MES SÉANCES</span>
+            <h2 id="customEditorTitle">Nouvelle séance</h2>
+          </div>
+          <span></span>
+        </header>
+        <div class="modal-form inline-form">
+          <label
+            ><span>Nom</span
+            ><input
+              id="customName"
+              maxlength="80"
+              placeholder="Ex : Full body rapide"
+          /></label>
+          <label
+            ><span>Description</span
+            ><input
+              id="customDescription"
+              maxlength="240"
+              placeholder="Optionnel"
+          /></label>
+        </div>
+        <div id="customEditorList"></div>
+        <button class="add-exercise" id="customAddExercise">
+          ＋ Ajouter un exercice
+        </button>
+        <div class="planner-actions">
+          <button class="destructive-btn" id="deleteCustomSession">
+            Supprimer
+          </button>
+          <button class="primary-btn" id="saveCustomSession">
+            Enregistrer
+          </button>
+        </div>
+      </div>
+    </div>
 
-    <div class="workout-guide-overlay hidden" id="workoutGuideOverlay" aria-hidden="true">
-      <header class="workout-guide-head">
-        <button id="closeWorkoutGuide" aria-label="Fermer le guide">←</button>
-        <div><small>GUIDE TECHNIQUE</small><strong id="workoutGuideTitle"></strong></div>
-        <span></span>
+    <div class="modal hidden" id="formatModal" aria-hidden="true">
+      <div class="modal-shell">
+        <header class="modal-head">
+          <button id="closeFormatModal">←</button>
+          <div>
+            <span class="eyebrow">IMPORT</span>
+            <h2>Format JSON</h2>
+          </div>
+          <span></span>
+        </header>
+        <p class="section-copy">
+          Format que Mimi Muscu peut importer directement.
+        </p>
+        <pre id="formatExample"></pre>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="planner" aria-hidden="true">
+      <div class="modal-shell planner-shell">
+        <header class="modal-head">
+          <button id="closePlanner">←</button>
+          <div>
+            <span class="eyebrow">AVANT DE COMMENCER</span>
+            <h2>Ta séance</h2>
+          </div>
+          <span></span>
+        </header>
+        <div class="planner-summary">
+          <span id="plannerLabel"></span>
+          <h3 id="plannerName"></h3>
+          <p id="plannerMeta"></p>
+        </div>
+        <div id="plannerList"></div>
+        <div class="planner-actions">
+          <button class="soft-btn" id="resetPlanner">Réinitialiser</button>
+          <button class="primary-btn" id="startPlannedSession">Démarrer</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal hidden" id="exercisePicker" aria-hidden="true">
+      <div class="modal-shell">
+        <header class="modal-head">
+          <button id="closePicker">←</button>
+          <div>
+            <span class="eyebrow">REMPLACER</span>
+            <h2>Choisir un exercice</h2>
+          </div>
+          <span></span>
+        </header>
+        <div class="search-wrap picker-search">
+          <span>⌕</span
+          ><input id="pickerSearch" type="search" placeholder="Rechercher" />
+        </div>
+        <div id="pickerList"></div>
+      </div>
+    </div>
+
+    <div class="focus hidden" id="focus" aria-hidden="true">
+      <header class="focus-head">
+        <button id="exitFocus" aria-label="Quitter la séance">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 8L16 16M16 8L8 16" />
+          </svg>
+        </button>
+        <div class="focus-center">
+          <small id="focusPhase"></small><strong id="focusStep"></strong
+          ><em id="focusXp"></em>
+        </div>
+        <button id="audio" aria-label="Couper le son" aria-pressed="true">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path class="speaker" d="M6.5 10.2H9.5L13.5 7V17L9.5 13.8H6.5Z" />
+            <path
+              class="wave"
+              d="M16 9.2C16.8 10 17.2 10.9 17.2 12C17.2 13.1 16.8 14 16 14.8"
+            />
+          </svg>
+        </button>
       </header>
-      <div class="workout-guide-body" id="workoutGuideBody"></div>
-      <button class="primary-btn workout-guide-resume" id="workoutGuideResume">Retour à l’exercice</button>
+      <div class="focus-progress"><span></span></div>
+      <div class="focus-content" id="focusContent"></div>
+
+      <div
+        class="workout-guide-overlay hidden"
+        id="workoutGuideOverlay"
+        aria-hidden="true"
+      >
+        <header class="workout-guide-head">
+          <button id="closeWorkoutGuide" aria-label="Fermer le guide">←</button>
+          <div>
+            <small>GUIDE TECHNIQUE</small
+            ><strong id="workoutGuideTitle"></strong>
+          </div>
+          <span></span>
+        </header>
+        <div class="workout-guide-body" id="workoutGuideBody"></div>
+        <button
+          class="primary-btn workout-guide-resume"
+          id="workoutGuideResume"
+        >
+          Retour à l’exercice
+        </button>
+      </div>
     </div>
-  </div>
 
-  <div class="modal hidden exercise-guide-modal" id="modal" aria-hidden="true">
-    <div class="modal-shell guide-shell">
-      <header class="modal-head guide-head"><button id="closeModal">←</button><div><span class="eyebrow">EXERCICE</span><h2 id="modalTitle"></h2></div><span></span></header>
-      <div id="modalBody"></div>
+    <div
+      class="modal hidden exercise-guide-modal"
+      id="modal"
+      aria-hidden="true"
+    >
+      <div class="modal-shell guide-shell">
+        <header class="modal-head guide-head">
+          <button id="closeModal">←</button>
+          <div>
+            <span class="eyebrow">EXERCICE</span>
+            <h2 id="modalTitle"></h2>
+          </div>
+          <span></span>
+        </header>
+        <div id="modalBody"></div>
+      </div>
     </div>
-  </div>
 
-  <div class="update-toast hidden" id="updateToast">
-    <span>Nouvelle version disponible</span><button id="applyUpdate">Mettre à jour</button>
-  </div>
+    <div class="update-toast hidden" id="updateToast">
+      <span>Nouvelle version disponible</span
+      ><button id="applyUpdate">Mettre à jour</button>
+    </div>
 
-  <script type="module">
-    // V31.4 : on purge uniquement les anciens caches applicatifs avant le boot.
-    // Les données utilisateur sont dans localStorage et ne sont jamais touchées ici.
-    try {
-      const keys = await caches.keys();
-      await Promise.all(keys.filter(key => key.startsWith("mimi-muscu-")).map(key => caches.delete(key)));
-    } catch (_) {}
-
-    import("./js/app.js?v=soft-editorial-v4").catch(error=>{
-      console.error("[Mimi Muscu] Erreur de démarrage",error);
-      const box=document.createElement("div");
-      box.className="boot-error";
-      box.innerHTML=`<strong>Mimi Muscu n’a pas réussi à démarrer.</strong><span>${String(error?.message||error)}<br><small>Étape : ${window.__MIMI_BOOT__?.step||"import"}</small></span><button onclick="location.reload()">Réessayer</button>`;
-      document.body.appendChild(box);
-    });
-  </script>
-</body>
+    <script type="module">
+      import("./js/app.js?v=34.0").catch((error) => {
+        console.error("[Mimi Muscu] Erreur de démarrage", error);
+        const box = document.createElement("div");
+        box.className = "boot-error";
+        box.innerHTML = `<strong>Mimi Muscu n’a pas réussi à démarrer.</strong><span>${String(error?.message || error)}<br><small>Étape : ${window.__MIMI_BOOT__?.step || "import"}</small></span><button onclick="location.reload()">Réessayer</button>`;
+        document.body.appendChild(box);
+      });
+    </script>
+  </body>
 </html>

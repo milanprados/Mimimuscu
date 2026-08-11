@@ -1,4 +1,4 @@
-# Architecture V31
+# Architecture V34
 
 ## Vue générale
 
@@ -19,21 +19,33 @@ js/core/catalog.js
    └── js/core/calendar.js ────────► js/ui/calendar.js
 
 js/app.js assemble les modules et déclenche le refresh global.
+
+styles.css   → structure et composants partagés
+theme.css    → palette éditoriale claire et pages principales
+workout.css  → mode séance, minuteurs et écran de repos
 ```
 
 ## Dossiers
 
 ### `data/`
+
 Source de vérité du contenu. Une personne peut modifier le programme ou une fiche
 d'exercice sans toucher au moteur.
 
 ### `js/core/`
+
 Logique métier. On essaie de garder ce dossier sans DOM pour pouvoir le tester.
 
 ### `js/ui/`
+
 Affichage, boutons, modales et génération HTML.
 
+Le CSS n'est jamais injecté depuis JavaScript. Les écrans génèrent directement
+leur markup final : il n'y a pas de couche de présentation qui réorganise le DOM
+après rendu.
+
 ### `js/utils/`
+
 Dates locales, DOM, sauvegarde et preload.
 
 ## Flux d'une séance
@@ -90,7 +102,9 @@ la journée n'est pas comptée deux fois, mais le cycle avance bien.
 `sw.js` utilise :
 
 - **network-first** pour la navigation HTML ;
-- **cache-first** pour JS, CSS, JSON et images.
+- **network-first** pour JS, CSS et JSON ;
+- **cache-first** pour les images et autres assets statiques.
 
-Cela évite de refaire une requête réseau par module à chaque ouverture tout en
-permettant à un nouveau déploiement HTML d'être vu rapidement.
+Le numéro de version du cache est mis à jour à chaque livraison. Le service
+worker supprime alors les caches applicatifs obsolètes sans toucher au
+`localStorage`.
