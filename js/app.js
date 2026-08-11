@@ -26,9 +26,7 @@ import { WorkoutEngine } from "./core/workout-engine.js";
 import { $, on } from "./utils/dom.js";
 
 import { createNavigation } from "./ui/navigation.js";
-// Cache-bust explicite : iOS PWA garde parfois les modules ES secondaires
-// même quand app.js et le CSS ont déjà été rafraîchis.
-import { createWorkoutView } from "./ui/workout.js?v=34.2";
+import { createWorkoutView } from "./ui/workout.js";
 import { createExerciseLibrary } from "./ui/exercise-library.js";
 import { createSessionPlanner } from "./ui/session-planner.js";
 import { createHomeView } from "./ui/home.js";
@@ -217,24 +215,10 @@ window.__MIMI_BOOT__.step = "ready";
 // PWA -------------------------------------------------------------------------
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
-    .register("./sw.js?v=34.2")
+    .register("./sw.js", { updateViaCache: "none" })
     .then((registration) => {
-      if (registration.waiting) $("#updateToast")?.classList.remove("hidden");
-
-      registration.addEventListener("updatefound", () => {
-        const worker = registration.installing;
-
-        worker?.addEventListener("statechange", () => {
-          if (
-            worker.state === "installed" &&
-            navigator.serviceWorker.controller
-          ) {
-            $("#updateToast")?.classList.remove("hidden");
-          }
-        });
-      });
-
-      on("#applyUpdate", "click", () => location.reload());
+      // Vérifie sw.js à chaque démarrage, indépendamment du cache HTTP d'iOS.
+      return registration.update();
     })
     .catch((error) => console.warn("[Mimi Muscu] Service worker", error));
 }

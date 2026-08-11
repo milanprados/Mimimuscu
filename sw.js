@@ -1,9 +1,9 @@
 /**
- * Cache PWA V34
- * Navigation + code : network-first pour recevoir les mises à jour immédiatement.
+ * Cache PWA sans numéro de livraison manuel.
+ * Chaque ressource est revalidée en ligne puis conservée pour le mode hors ligne.
  */
-const VERSION = "mimi-muscu-v34.2";
-const APP_CACHE = `${VERSION}-app`;
+const APP_CACHE = "mimi-muscu-app-shell";
+const LEGACY_CACHE_PREFIX = "mimi-muscu-";
 
 const APP_SHELL = [
   "./",
@@ -60,7 +60,10 @@ self.addEventListener("activate", (event) => {
       .then((keys) =>
         Promise.all(
           keys
-            .filter((key) => key !== APP_CACHE)
+            .filter(
+              (key) =>
+                key.startsWith(LEGACY_CACHE_PREFIX) && key !== APP_CACHE,
+            )
             .map((key) => caches.delete(key)),
         ),
       )
@@ -68,41 +71,27 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-async function cacheFirst(request) {
-  const cache = await caches.open(APP_CACHE);
-  const cached = await cache.match(request);
-  if (cached) return cached;
-  const response = await fetch(request);
-  if (response.ok) cache.put(request, response.clone());
-  return response;
-}
-
 async function networkFirst(request) {
   const cache = await caches.open(APP_CACHE);
   try {
-    const response = await fetch(request, { cache: "no-store" });
+    // "no-cache" autorise les réponses 304 : contenu frais sans tout retélécharger.
+    const response = await fetch(request, { cache: "no-cache" });
     if (response.ok) cache.put(request, response.clone());
     return response;
   } catch (_) {
-    return (await cache.match(request)) || Response.error();
+    const cached = await cache.match(request);
+    if (cached) return cached;
+    if (request.mode === "navigate") {
+      return (await cache.match("./index.html")) || Response.error();
+    }
+    return Response.error();
   }
 }
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
-  if (event.request.mode === "navigate") {
-    event.respondWith(networkFirst(event.request));
-    return;
-  }
-
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
-
-  if (/\.(?:js|css|json)$/i.test(url.pathname)) {
-    event.respondWith(networkFirst(event.request));
-    return;
-  }
-
-  event.respondWith(cacheFirst(event.request));
+  event.respondWith(networkFirst(event.request));
 });

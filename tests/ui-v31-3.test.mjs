@@ -31,18 +31,15 @@ assert.ok(workout.includes("À RETENIR"), "Conseils inline absents");
 assert.ok(workout.includes("À ÉVITER"), "Erreurs inline absentes");
 assert.ok(workout.includes("RESPIRATION"), "Respiration inline absente");
 
-assert.ok(html.includes("styles.css?v=34.2"));
-assert.ok(html.includes("theme.css?v=34.2"));
-assert.ok(html.includes("workout.css?v=34.2"));
-assert.ok(html.includes("app.js?v=34.2"));
+assert.ok(html.includes('href="./styles.css"'));
+assert.ok(html.includes('href="./theme.css"'));
+assert.ok(html.includes('href="./workout.css"'));
+assert.ok(html.includes('import("./js/app.js")'));
 assert.ok(
   !html.includes("caches.delete"),
   "Le boot ne doit pas vider le cache PWA à chaque ouverture",
 );
-assert.ok(
-  sw.includes("/\\.(?:js|css|json)$/i") || sw.includes("js|css|json"),
-  "Code/données pas en network-first",
-);
+assert.ok(sw.includes("event.respondWith(networkFirst(event.request))"));
 
 console.log(
   "OK — V32 UI visible : guide complet, reset branché, cache invalidé.",

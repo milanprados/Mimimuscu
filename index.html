@@ -9,9 +9,9 @@
     <meta name="theme-color" content="#f7f6f1" />
     <link rel="manifest" href="./manifest.json" />
     <link rel="apple-touch-icon" href="./assets/icons/icon-192.png" />
-    <link rel="stylesheet" href="./styles.css?v=34.2" />
-    <link rel="stylesheet" href="./theme.css?v=34.2" />
-    <link rel="stylesheet" href="./workout.css?v=34.2" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./theme.css" />
+    <link rel="stylesheet" href="./workout.css" />
     <title>Mimi Muscu</title>
   </head>
   <body>
@@ -886,13 +886,8 @@
       </div>
     </div>
 
-    <div class="update-toast hidden" id="updateToast">
-      <span>Nouvelle version disponible</span
-      ><button id="applyUpdate">Mettre à jour</button>
-    </div>
-
     <script type="module">
-      import("./js/app.js?v=34.2").catch((error) => {
+      import("./js/app.js").catch((error) => {
         console.error("[Mimi Muscu] Erreur de démarrage", error);
         const box = document.createElement("div");
         box.className = "boot-error";

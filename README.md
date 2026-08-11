@@ -62,5 +62,6 @@ Pour comprendre les flux, lis [`ARCHITECTURE.md`](./ARCHITECTURE.md).
 - tests des chemins critiques avant déploiement.
 - aucun CSS injecté depuis JavaScript ;
 - aucun observateur chargé de réorganiser un écran après son rendu ;
-- le numéro de livraison est `34.2` dans `index.html`, `js/config.js`,
-  les imports iOS sensibles de `js/app.js` et `sw.js`.
+- `APP_VERSION` décrit la version produit, mais ne sert jamais à invalider le cache ;
+- aucun suffixe `?v=` n'est nécessaire : le service worker revalide automatiquement
+  les fichiers modifiés et conserve leur dernière version pour le mode hors ligne.

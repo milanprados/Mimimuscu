@@ -14,7 +14,9 @@ for (const path of paths) {
   assert.ok(fs.existsSync(path), `Asset PWA absent : ${path}`);
 }
 
-assert.ok(source.includes("cacheFirst"));
 assert.ok(source.includes("networkFirst"));
+assert.ok(source.includes('const APP_CACHE = "mimi-muscu-app-shell"'));
+assert.ok(source.includes('cache: "no-cache"'));
+assert.ok(!source.includes("const VERSION"));
 
 console.log(`OK — service worker : ${paths.length} assets shell valides.`);

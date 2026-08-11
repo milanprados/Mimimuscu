@@ -1667,33 +1667,6 @@ button {
   margin: 3px 0;
 }
 
-.update-toast {
-  position: fixed;
-  z-index: 5000;
-  left: 12px;
-  right: 12px;
-  bottom: calc(90px + env(safe-area-inset-bottom));
-  max-width: 580px;
-  margin: auto;
-  background: #191e24;
-  border: 1px solid #353d46;
-  border-radius: 15px;
-  padding: 11px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: var(--shadow);
-}
-.update-toast span {
-  font-size: 10px;
-}
-.update-toast button {
-  background: var(--acid);
-  border-radius: 9px;
-  padding: 7px 9px;
-  font-size: 9px;
-  font-weight: 900;
-}
 .boot-error {
   position: fixed;
   z-index: 9999;
@@ -4413,17 +4386,6 @@ select {
   -webkit-line-clamp: unset;
   font-size: 10px;
   line-height: 1.4;
-}
-
-/* Le CTA de mise à jour hérité ne redevient pas sombre. */
-.update-toast {
-  background: #edf6fb;
-  border-color: #cbdfe9;
-  color: var(--navy);
-}
-.update-toast button {
-  background: #dcecf6;
-  color: var(--navy);
 }
 
 @media (max-height: 760px) {
