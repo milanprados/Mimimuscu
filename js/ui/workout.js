@@ -310,6 +310,7 @@ export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
         ${renderSessionHeading(item, exercise, "repGuide")}
 
         <div class="session-main-metric session-rep-target" aria-label="Objectif">
+          <span>Objectif</span>
           <strong>${target}</strong>
           <small>${exercise.perSide ? "par côté" : "répétitions"}</small>
         </div>
