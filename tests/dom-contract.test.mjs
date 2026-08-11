@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 
 const html = fs.readFileSync("index.html", "utf8");
 const htmlIds = new Set(
-  [...html.matchAll(/id="([A-Za-z0-9_-]+)"/g)].map(match => match[1])
+  [...html.matchAll(/id="([A-Za-z0-9_-]+)"/g)].map((match) => match[1]),
 );
 
 const jsFiles = [];
@@ -19,22 +19,39 @@ function walk(directory) {
 
 walk("js");
 
-const source = jsFiles.map(file => fs.readFileSync(file, "utf8")).join("\n");
-const referencedIds = [
-  ...source.matchAll(/\$\("#([A-Za-z0-9_-]+)"\)/g)
-].map(match => match[1]);
+const source = jsFiles.map((file) => fs.readFileSync(file, "utf8")).join("\n");
+const generatedIds = new Set(
+  [...source.matchAll(/id="([A-Za-z0-9_-]+)"/g)].map((match) => match[1]),
+);
+const referencedIds = [...source.matchAll(/\$\("#([A-Za-z0-9_-]+)"\)/g)].map(
+  (match) => match[1],
+);
 
 const dynamicIds = new Set([
-  "addExercise", "askCoachAfter", "calendarStartToday",
-  "count", "done", "early", "equipmentFilter", "finish",
-  "minus", "pause", "plus", "quietFilter", "repVal",
-  "rest", "skip", "skipRest", "skipTimed", "time",
-  "timerPoseLabel", "timerVisual",
-  "recoveryScreen", "recoveryLabel", "recoveryCountdownNote"
+  "addExercise",
+  "askCoachAfter",
+  "calendarStartToday",
+  "count",
+  "done",
+  "early",
+  "equipmentFilter",
+  "finish",
+  "minus",
+  "pause",
+  "plus",
+  "quietFilter",
+  "repVal",
+  "repGuide",
+  "restGuide",
+  "skip",
+  "skipTimed",
+  "time",
+  "timerGuide",
 ]);
 
-const missing = [...new Set(referencedIds)]
-  .filter(id => !htmlIds.has(id) && !dynamicIds.has(id));
+const missing = [...new Set(referencedIds)].filter(
+  (id) => !htmlIds.has(id) && !generatedIds.has(id) && !dynamicIds.has(id),
+);
 
 assert.deepEqual(missing, [], `IDs HTML manquants : ${missing.join(", ")}`);
 
