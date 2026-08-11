@@ -725,3 +725,230 @@ textarea,input,select{color:#17334f!important;background:#fff!important;border-c
   .recovery-orbit{width:94px;height:94px;flex-basis:94px}
   .recovery-orbit strong{font-size:44px!important}
 }
+
+/* ========================================================================
+   MINI PATCH — timers / countdown : centrage + typo + intégration visuelle
+   ======================================================================== */
+
+/* Même typo que le reste de l'app pour tous les gros chiffres chronométrés. */
+.timer-overlay strong,
+.count-num,
+.recovery-orbit strong{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif!important;
+  font-weight:900!important;
+  font-variant-numeric:tabular-nums lining-nums;
+  letter-spacing:-.055em;
+}
+
+/* Timer d'exercice : plus flat, sans effet éditorial/serif. */
+.timer-overlay strong{
+  line-height:1!important;
+  text-shadow:none!important;
+}
+
+/* Countdown initial 3 / 2 / 1. */
+.count-num{
+  line-height:1!important;
+}
+
+/* Repos : le disque se fond dans le fond crème au lieu d'être blanc. */
+.recovery-screen{
+  padding-top:12px!important;
+}
+.recovery-orbit{
+  --ring-color:#174c78;
+  --pulse-color:rgba(180,216,239,.42);
+  position:relative!important;
+  background:var(--bg,#f7f6f1)!important;
+  box-shadow:none!important;
+  margin-top:3px;
+}
+
+/* Anneau plus fin et plus doux. */
+.recovery-orbit::before{
+  inset:-4px!important;
+  background:conic-gradient(var(--ring-color) var(--rest-progress),#d8e6ee 0)!important;
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px))!important;
+  mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px))!important;
+}
+
+/* Pulse léger autour du cercle, pas un flash à l'intérieur. */
+.recovery-orbit::after{
+  inset:-2px!important;
+  background:var(--pulse-color)!important;
+}
+
+/* Position absolue = vrai centre géométrique, indépendant des métriques de fonte. */
+.recovery-orbit strong{
+  position:absolute!important;
+  inset:0!important;
+  display:grid!important;
+  place-items:center!important;
+  margin:0!important;
+  padding:0!important;
+  width:100%!important;
+  height:100%!important;
+  line-height:1!important;
+  transform:none!important;
+  font-size:52px!important;
+  color:#123e64!important;
+}
+
+/* Les trois dernières secondes deviennent orange. */
+.recovery-screen.preparing .recovery-orbit{
+  --ring-color:#eb812d;
+  --pulse-color:rgba(245,178,117,.34);
+  background:var(--bg,#f7f6f1)!important;
+}
+.recovery-screen.preparing .recovery-orbit strong{
+  color:#e97822!important;
+}
+
+@media(max-height:700px){
+  .recovery-screen{padding-top:9px!important}
+  .recovery-orbit strong{font-size:42px!important}
+}
+
+
+/* ========================================================================
+   TIMER REPOS — version validée
+   - jauge proportionnelle à la durée totale
+   - démarre pleine et se vide sans rotation
+   - même comportement pour 5 s, 20 s, 60 s...
+   - orange uniquement sur les 3 dernières secondes
+   - chiffre et cercle partagent exactement le même repère géométrique
+   ======================================================================== */
+
+.recovery-screen{
+  padding-top:12px!important;
+}
+
+.recovery-orbit{
+  --rest-progress:100%;
+  --rest-ring:#1d5c91;
+  --rest-track:#dbe7ef;
+  --rest-pulse:rgba(85,165,220,.24);
+
+  position:relative!important;
+  isolation:isolate;
+  width:116px!important;
+  height:116px!important;
+  flex:0 0 116px!important;
+  margin-top:3px!important;
+  border:0!important;
+  border-radius:50%!important;
+  box-shadow:none!important;
+
+  /* Le premier point reste à 12 h.
+     Seule la longueur de la portion colorée diminue. */
+  background:
+    conic-gradient(
+      from -90deg,
+      var(--rest-ring) var(--rest-progress),
+      var(--rest-track) 0
+    )!important;
+
+  overflow:visible!important;
+}
+
+/* Intérieur = exactement le fond crème de l'app. */
+.recovery-orbit::before{
+  content:""!important;
+  position:absolute!important;
+  inset:7px!important;
+  z-index:1!important;
+  border-radius:50%!important;
+  background:var(--bg,#f7f5ef)!important;
+  -webkit-mask:none!important;
+  mask:none!important;
+}
+
+/* L'ancien pseudo pulse est désactivé : le pulse a son propre élément. */
+.recovery-orbit::after{
+  content:none!important;
+  display:none!important;
+}
+
+.recovery-digit-svg{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:3;
+  overflow:visible;
+}
+
+.recovery-digit-svg text{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif;
+  font-size:48px;
+  font-weight:900;
+  letter-spacing:0;
+  font-variant-numeric:tabular-nums;
+  fill:#1d5c91;
+}
+
+.recovery-orbit-pulse{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  border-radius:50%;
+  pointer-events:none;
+}
+
+.recovery-orbit.tick-pulse .recovery-orbit-pulse{
+  animation:mimiRestPulseBlue .36s ease-out;
+}
+
+.recovery-screen.preparing .recovery-orbit{
+  --rest-ring:#ef8128;
+  --rest-pulse:rgba(239,129,40,.26);
+  background:
+    conic-gradient(
+      from -90deg,
+      var(--rest-ring) var(--rest-progress),
+      var(--rest-track) 0
+    )!important;
+}
+
+.recovery-screen.preparing .recovery-digit-svg text{
+  fill:#ef8128;
+}
+
+.recovery-screen.preparing .recovery-orbit.tick-pulse .recovery-orbit-pulse{
+  animation:mimiRestPulseOrange .36s ease-out;
+}
+
+.recovery-screen.preparing .recovery-label{
+  color:#ef8128!important;
+}
+
+@keyframes mimiRestPulseBlue{
+  0%{box-shadow:0 0 0 0 rgba(85,165,220,.24)}
+  100%{box-shadow:0 0 0 17px rgba(85,165,220,0)}
+}
+
+@keyframes mimiRestPulseOrange{
+  0%{box-shadow:0 0 0 0 rgba(239,129,40,.26)}
+  100%{box-shadow:0 0 0 17px rgba(239,129,40,0)}
+}
+
+/* Même typographie flat pour le timer d'exercice et le countdown initial. */
+.timer-overlay strong,
+.count-num{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif!important;
+  font-weight:900!important;
+  font-variant-numeric:tabular-nums!important;
+  letter-spacing:0!important;
+  line-height:1!important;
+  text-shadow:none!important;
+}
+
+@media(max-height:700px){
+  .recovery-screen{padding-top:9px!important}
+  .recovery-orbit{
+    width:94px!important;
+    height:94px!important;
+    flex-basis:94px!important;
+  }
+  .recovery-digit-svg text{font-size:46px}
+}

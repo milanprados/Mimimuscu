@@ -3,7 +3,7 @@
  * Navigation : network-first.
  * JS/CSS/data/images : cache-first pour un démarrage rapide et un offline fiable.
  */
-const VERSION = "mimi-muscu-v32-countdown-patch";
+const VERSION = "mimi-muscu-timer-final-v1";
 const APP_CACHE = `${VERSION}-app`;
 
 const APP_SHELL = [
