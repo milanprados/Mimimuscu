@@ -2,12 +2,21 @@
  * Interface plein écran d'une séance.
  * Toute logique métier reste dans WorkoutEngine.
  */
-import {$, $$, wait, openLayer, closeLayer, formatDuration, on, escapeHtml} from "../utils/dom.js";
-import {preloadExercise} from "../utils/preload.js";
-import {UI} from "../config.js";
-import {getMuscleLoad, levelFromXp} from "../core/progression.js";
+import {
+  $,
+  $$,
+  wait,
+  openLayer,
+  closeLayer,
+  formatDuration,
+  on,
+  escapeHtml,
+} from "../utils/dom.js";
+import { preloadExercise } from "../utils/preload.js";
+import { UI } from "../config.js";
+import { getMuscleLoad, levelFromXp } from "../core/progression.js";
 
-export function createWorkoutView({state, exercises, caloriesForSeconds}) {
+export function createWorkoutView({ state, exercises, caloriesForSeconds }) {
   let engine = null;
   let audioEnabled = true;
   let imageFlipTimer = null;
@@ -15,6 +24,27 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
   let reportedReps = 0;
   let reportedEffort = "good";
   let resumeTimerAfterGuide = false;
+
+  const audioIcon = (enabled) => `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path class="speaker" d="M6.5 10.2H9.5L13.5 7V17L9.5 13.8H6.5Z"/>
+      ${
+        enabled
+          ? `<path class="wave" d="M16 9.2C16.8 10 17.2 10.9 17.2 12C17.2 13.1 16.8 14 16 14.8"/>`
+          : `<path class="muted-wave" d="M16 9L20 15M20 9L16 15"/>`
+      }
+    </svg>`;
+
+  function renderAudioControl() {
+    const button = $("#audio");
+    if (!button) return;
+    button.innerHTML = audioIcon(audioEnabled);
+    button.setAttribute(
+      "aria-label",
+      audioEnabled ? "Couper le son" : "Activer le son",
+    );
+    button.setAttribute("aria-pressed", String(audioEnabled));
+  }
 
   function setEngine(value) {
     engine = value;
@@ -53,7 +83,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
       gain.gain.value = 0.04;
       oscillator.start();
       oscillator.stop(context.currentTime + 0.08);
-    } catch (_) {}
+    } catch {}
   }
 
   function clearImageFlip() {
@@ -66,77 +96,23 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
   }
 
   function close() {
-    closeWorkoutGuide({resume: false});
+    closeWorkoutGuide({ resume: false });
     engine?.cancel();
     clearImageFlip();
+    $("#focus")?.classList.remove("rest-editorial");
     closeLayer("#focus");
   }
 
   function renderGuideSteps(items = []) {
-    return (items || []).map((text, index) => `
-      <li><span>${index + 1}</span><p>${escapeHtml(text)}</p></li>`
-    ).join("");
+    return (items || [])
+      .map(
+        (text, index) => `
+      <li><span>${index + 1}</span><p>${escapeHtml(text)}</p></li>`,
+      )
+      .join("");
   }
 
-  /**
-   * Affiche le déroulé essentiel directement pendant la séance.
-   * Le bouton de guide détaillé reste disponible pour les erreurs, variantes, etc.
-   */
-  function renderInlineExerciseGuide(exercise, buttonId) {
-    const guide = exercise?.guide || {};
-    const setup = guide.setup || [];
-    const execution = guide.execution || [];
-    const tips = guide.tips || exercise?.tips || [];
-    const errors = guide.errors || [];
-    const breathing = guide.breathing || exercise?.breathing || "";
-    const specificNote = guide.specific_note || "";
-
-    if (!exercise?.description && !setup.length && !execution.length && !tips.length && !errors.length && !breathing) {
-      return "";
-    }
-
-    return `
-      <div class="inline-exercise-guide">
-        <div class="inline-guide-head">
-          <div><span>COMMENT FAIRE</span><strong>Déroulé complet</strong></div>
-          <button class="technique-link" id="${buttonId}">Voir en grand</button>
-        </div>
-
-        ${exercise.description ? `<p class="inline-guide-description">${escapeHtml(exercise.description)}</p>` : ""}
-
-        ${setup.length ? `
-          <section class="inline-guide-block">
-            <small>1 · POSITION DE DÉPART</small>
-            <ol>${renderGuideSteps(setup)}</ol>
-          </section>` : ""}
-
-        ${execution.length ? `
-          <section class="inline-guide-block">
-            <small>2 · MOUVEMENT</small>
-            <ol>${renderGuideSteps(execution)}</ol>
-          </section>` : ""}
-
-        ${specificNote ? `
-          <div class="inline-guide-note"><span>POINT CLÉ</span><p>${escapeHtml(specificNote)}</p></div>` : ""}
-
-        ${breathing ? `
-          <div class="inline-guide-breath"><span>RESPIRATION</span><p>${escapeHtml(breathing)}</p></div>` : ""}
-
-        ${tips.length ? `
-          <section class="inline-guide-list">
-            <small>À RETENIR</small>
-            <ul>${tips.slice(0, 3).map(text => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
-          </section>` : ""}
-
-        ${errors.length ? `
-          <section class="inline-guide-list danger">
-            <small>À ÉVITER</small>
-            <ul>${errors.slice(0, 3).map(text => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
-          </section>` : ""}
-      </div>`;
-  }
-
-  function closeWorkoutGuide({resume = true} = {}) {
+  function closeWorkoutGuide({ resume = true } = {}) {
     const overlay = $("#workoutGuideOverlay");
     if (!overlay || overlay.classList.contains("hidden")) return;
 
@@ -156,44 +132,96 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
     const guide = exercise.guide || {};
     $("#workoutGuideTitle").textContent = exercise.name;
     $("#workoutGuideResume").textContent = resumeTimerAfterGuide
-      ? (engine.currentItem?.kind === "rest" ? "Reprendre le repos" : "Reprendre")
+      ? engine.currentItem?.kind === "rest"
+        ? "Reprendre le repos"
+        : "Reprendre"
       : "Retour à l’exercice";
 
-    const images = Array.isArray(exercise.images) ? exercise.images.filter(Boolean) : [];
-    const imageBlock = images.length ? `
+    const images = Array.isArray(exercise.images)
+      ? exercise.images.filter(Boolean)
+      : [];
+    const imageBlock = images.length
+      ? `
       <div class="workout-guide-images">
-        ${images.slice(0, 2).map((src, index) => `
-          <figure><span>${index === 0 ? "Départ" : "Fin"}</span><img src="${src}" alt=""></figure>`
-        ).join("")}
-      </div>` : "";
+        ${images
+          .slice(0, 2)
+          .map(
+            (src, index) => `
+          <figure><span>${index === 0 ? "Départ" : "Fin"}</span><img src="${src}" alt=""></figure>`,
+          )
+          .join("")}
+      </div>`
+      : "";
 
     $("#workoutGuideBody").innerHTML = `
       ${imageBlock}
       ${exercise.description ? `<p class="workout-guide-description">${escapeHtml(exercise.description)}</p>` : ""}
 
-      ${(guide.setup || []).length ? `
+      ${
+        (guide.setup || []).length
+          ? `
         <section class="workout-guide-section">
           <small>POSITION DE DÉPART</small>
           <ol>${renderGuideSteps(guide.setup)}</ol>
-        </section>` : ""}
+        </section>`
+          : ""
+      }
 
-      ${(guide.execution || []).length ? `
+      ${
+        (guide.execution || []).length
+          ? `
         <section class="workout-guide-section">
           <small>MOUVEMENT</small>
           <ol>${renderGuideSteps(guide.execution)}</ol>
-        </section>` : ""}
+        </section>`
+          : ""
+      }
 
-      ${(guide.tips || exercise.tips || []).length ? `
+      ${
+        guide.specific_note
+          ? `
+        <section class="workout-guide-section compact">
+          <small>POINT CLÉ</small>
+          <p>${escapeHtml(guide.specific_note)}</p>
+        </section>`
+          : ""
+      }
+
+      ${
+        guide.breathing || exercise.breathing
+          ? `
+        <section class="workout-guide-section compact">
+          <small>RESPIRATION</small>
+          <p>${escapeHtml(guide.breathing || exercise.breathing)}</p>
+        </section>`
+          : ""
+      }
+
+      ${
+        (guide.tips || exercise.tips || []).length
+          ? `
         <section class="workout-guide-section compact">
           <small>À RETENIR</small>
-          <ul>${(guide.tips || exercise.tips || []).slice(0, 3).map(text => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
-        </section>` : ""}
+          <ul>${(guide.tips || exercise.tips || [])
+            .slice(0, 3)
+            .map((text) => `<li>${escapeHtml(text)}</li>`)
+            .join("")}</ul>
+        </section>`
+          : ""
+      }
 
-      ${(guide.errors || []).length ? `
+      ${
+        (guide.errors || []).length
+          ? `
         <section class="workout-guide-section compact danger">
           <small>À ÉVITER</small>
-          <ul>${guide.errors.slice(0, 3).map(text => `<li>${escapeHtml(text)}</li>`).join("")}</ul>
-        </section>` : ""}
+          <ul>${guide.errors
+            .slice(0, 3)
+            .map((text) => `<li>${escapeHtml(text)}</li>`)
+            .join("")}</ul>
+        </section>`
+          : ""
+      }
     `;
 
     const overlay = $("#workoutGuideOverlay");
@@ -203,21 +231,23 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
   }
 
   function renderHeader(item) {
+    $("#focus")?.classList.toggle("rest-editorial", item?.kind === "rest");
     $("#focusPhase").textContent = item?.phase || "";
     $("#focusStep").textContent =
       `${engine.currentIndex + 1} / ${engine.planItems.length}`;
 
-    $("#focusXp").textContent =
-      `LV ${levelFromXp(state.xp)} • ${state.xp} XP`;
+    $("#focusXp").textContent = `LV ${levelFromXp(state.xp)} • ${state.xp} XP`;
 
     const bar = document.querySelector(".focus-progress span");
     if (bar) {
-      const progress = (engine.currentIndex + 1) / Math.max(1, engine.planItems.length) * 100;
+      const progress =
+        ((engine.currentIndex + 1) / Math.max(1, engine.planItems.length)) *
+        100;
       bar.style.width = `${Math.max(2, Math.min(100, progress))}%`;
     }
   }
 
-  function poseImages(exercise) {
+  function poseImages() {
     return `
       <div class="pose-grid placeholder-poses" aria-label="Illustrations à venir">
         <figure class="pose placeholder-pose"><figcaption>Départ</figcaption><div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div></figure>
@@ -227,7 +257,12 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
   function renderQuickCue(exercise, buttonId) {
     const guide = exercise?.guide || {};
-    const cue = guide.specific_note || guide.execution?.[0] || guide.setup?.[0] || exercise?.tips?.[0] || "Mouvement lent et contrôlé.";
+    const cue =
+      guide.specific_note ||
+      guide.execution?.[0] ||
+      guide.setup?.[0] ||
+      exercise?.tips?.[0] ||
+      "Mouvement lent et contrôlé.";
     return `
       <div class="quick-cue">
         <span class="quick-cue-icon">❧</span>
@@ -242,9 +277,10 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
     const setup = (guide.setup || []).slice(0, 3);
     const execution = (guide.execution || []).slice(0, 4);
     const breathing = guide.breathing || exercise.breathing || "";
-    const bulletList = items => items.length
-      ? `<ul>${items.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
-      : "";
+    const bulletList = (items) =>
+      items.length
+        ? `<ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
+        : "";
     return `
       <div class="rest-prep">
         ${setup.length ? `<section><small>POSITION</small>${bulletList(setup)}</section>` : ""}
@@ -253,7 +289,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
       </div>`;
   }
 
-  function renderRepetitionExercise({item, exercise, target, next}) {
+  function renderRepetitionExercise({ item, exercise, target, next }) {
     if (next?.id) preloadExercise(exercises[next.id]);
 
     clearImageFlip();
@@ -273,7 +309,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
           </div>
         </div>
 
-        ${poseImages(exercise)}
+        ${poseImages()}
 
         ${renderQuickCue(exercise, "repGuide")}
 
@@ -311,24 +347,24 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
       $("#repVal").textContent = reportedReps;
     });
 
-    $$("[data-effort]").forEach(button => {
+    $$("[data-effort]").forEach((button) => {
       button.addEventListener("click", () => {
         reportedEffort = button.dataset.effort;
-        $$("[data-effort]").forEach(candidate =>
-          candidate.classList.toggle("sel", candidate === button)
+        $$("[data-effort]").forEach((candidate) =>
+          candidate.classList.toggle("sel", candidate === button),
         );
       });
     });
 
     on("#done", "click", () =>
-      engine.completeRepetitionExercise(reportedReps, reportedEffort)
+      engine.completeRepetitionExercise(reportedReps, reportedEffort),
     );
 
     on("#repGuide", "click", () => openWorkoutGuide(exercise));
     on("#skip", "click", () => engine.skipCurrentExercise());
   }
 
-  function renderTimedExercise({item, exercise, target}) {
+  function renderTimedExercise({ item, exercise, target }) {
     clearImageFlip();
     renderHeader(item);
 
@@ -359,7 +395,8 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
     imageFlipTimer = setInterval(() => {
       showEnd = !showEnd;
       $("#timerVisual")?.classList.toggle("swap", showEnd);
-      if ($("#timerPoseLabel")) $("#timerPoseLabel").textContent = showEnd ? "Fin" : "Départ";
+      if ($("#timerPoseLabel"))
+        $("#timerPoseLabel").textContent = showEnd ? "Fin" : "Départ";
     }, UI.exerciseImageFlipMs);
 
     on("#pause", "click", () => engine.togglePause());
@@ -368,14 +405,15 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
     on("#skipTimed", "click", () => engine.skipCurrentExercise());
   }
 
-  function renderRest({seconds, next, nextExercise}) {
+  function renderRest({ seconds, next, nextExercise }) {
     if (nextExercise) preloadExercise(nextExercise);
 
     clearImageFlip();
     renderHeader(engine.currentItem);
 
     const nextMode = next?.modeOverride || nextExercise?.mode;
-    const nextTarget = next && nextExercise ? engine.getTarget(next.id, next) : null;
+    const nextTarget =
+      next && nextExercise ? engine.getTarget(next.id, next) : null;
     const nextTargetText = nextExercise
       ? `${nextTarget}${nextMode === "time" ? " sec" : nextExercise.perSide ? " / côté" : " reps"}`
       : "";
@@ -383,51 +421,65 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
     const nextImage = nextExercise?.thumb || nextExercise?.images?.[0] || "";
 
     $("#focusContent").innerHTML = `
-      <div class="recovery-screen" id="recoveryScreen">
-        <div class="recovery-orbit" id="recoveryOrbit">
-          <svg class="recovery-digit-svg" viewBox="0 0 100 100" aria-hidden="true">
-            <text id="rest" x="50" y="50" text-anchor="middle" dominant-baseline="central">${seconds}</text>
-          </svg>
-          <div class="recovery-orbit-pulse" aria-hidden="true"></div>
+      <div class="recovery-screen editorial-rest" id="recoveryScreen">
+        <div class="rest-editorial-hero ${nextImage ? "" : "placeholder"}">
+          ${nextImage ? `<img src="${nextImage}" alt="">` : ""}
         </div>
-        <div class="recovery-label" id="recoveryLabel">RÉCUPÈRE</div>
 
-        ${nextExercise ? `
-          <div class="next-card">
-            <div class="next-copy">
-              <small>PROCHAIN EXERCICE</small>
-              <h3>${escapeHtml(nextExercise.name)}</h3>
-              <strong>${escapeHtml(nextTargetText)}</strong>
-              <p>${escapeHtml(nextCue || "Mouvement propre et contrôlé.")}</p>
-              <button class="technique-link" id="restGuide">? Voir le guide</button>
+        <section class="rest-editorial-next">
+          <div class="rest-editorial-next-row">
+            <div class="recovery-orbit" id="recoveryOrbit">
+              <svg class="recovery-digit-svg" viewBox="0 0 100 100" aria-hidden="true">
+                <text id="rest" x="50" y="50" text-anchor="middle" dominant-baseline="central">${seconds}</text>
+              </svg>
+              <div class="recovery-orbit-pulse" aria-hidden="true"></div>
             </div>
-            <div class="next-visual ${nextImage ? "" : "placeholder-next"}">
-              ${nextImage ? `<img src="${nextImage}" alt="">` : `<div class="pose-placeholder"><span>◌</span><small>Illustration à venir</small></div>`}
+
+            <div class="rest-editorial-next-copy">
+              <div class="rest-editorial-kicker">PROCHAIN EXERCICE</div>
+              <h3>${escapeHtml(nextExercise?.name || "Fin de séance")}</h3>
+              ${nextTargetText ? `<strong>${escapeHtml(nextTargetText)}</strong>` : ""}
+              <p>${escapeHtml(nextCue || "Mouvement propre et contrôlé.")}</p>
             </div>
           </div>
-          ${renderRestPrep(nextExercise)}
-        ` : ""}
+        </section>
 
-        <div class="rest-countdown-note hidden" id="restCountdownNote"></div>
+        ${
+          nextExercise
+            ? `
+          <section class="rest-editorial-how">
+            <div class="rest-editorial-how-head">COMMENT FAIRE</div>
+            <div class="rest-editorial-how-scroll">
+              ${renderRestPrep(nextExercise)}
+              <div class="rest-editorial-guide-separator"></div>
+              <button class="rest-editorial-guide" id="restGuide">Guide complet →</button>
+            </div>
+          </section>
+        `
+            : ""
+        }
+
         <button class="soft-btn" id="skipRest">Passer le repos</button>
       </div>`;
 
     updateRestPresentation(seconds);
     speak(`Récupération. Prochain exercice ${nextExercise?.name || "fin"}`);
 
-    if (nextExercise) on("#restGuide", "click", () => openWorkoutGuide(nextExercise));
+    if (nextExercise)
+      on("#restGuide", "click", () => openWorkoutGuide(nextExercise));
     on("#skipRest", "click", () => engine.skipRest());
   }
 
   function updateRestPresentation(value) {
     const screen = $("#recoveryScreen");
-    const label = $("#recoveryLabel");
-    const note = $("#restCountdownNote");
     const orbit = $("#recoveryOrbit");
 
-    if (!screen || !label || !orbit) return;
+    if (!screen || !orbit) return;
 
-    const total = Math.max(1, Number(engine?.currentItem?.seconds) || Number(value) || 1);
+    const total = Math.max(
+      1,
+      Number(engine?.currentItem?.seconds) || Number(value) || 1,
+    );
     const remaining = Math.max(0, Number(value) || 0);
     const progress = Math.max(0, Math.min(1, remaining / total));
     orbit.style.setProperty("--rest-progress", `${progress * 100}%`);
@@ -439,17 +491,11 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
     const preparing = remaining <= 3;
     screen.classList.toggle("preparing", preparing);
-    label.textContent = preparing ? "PRÊT" : "RÉCUPÈRE";
 
-    if (note) {
-      note.classList.toggle("hidden", !preparing);
-      note.textContent = preparing ? `Départ dans ${remaining}...` : "";
-    }
-
-    if (preparing) tone(remaining === 1 ? 920 : 680);
+    if (preparing && remaining > 0) tone(remaining === 1 ? 920 : 680);
   }
 
-  async function renderCountdown({item, exercise, done}) {
+  async function renderCountdown({ item, exercise, done }) {
     clearImageFlip();
     renderHeader(item);
 
@@ -473,8 +519,9 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
     done();
   }
 
-  function renderFinished({xp, score, records, duration, record}) {
+  function renderFinished({ xp, score, records, duration, record }) {
     clearImageFlip();
+    $("#focus")?.classList.remove("rest-editorial");
 
     const calories = caloriesForSeconds(duration);
     const muscleLoad = getMuscleLoad(record);
@@ -486,10 +533,12 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
     const maxLoad = Math.max(1, ...topMuscles.map(([, value]) => value));
 
-    const muscleBars = topMuscles.map(([muscle, value]) => {
-      const blocks = Math.max(1, Math.round(value / maxLoad * 8));
-      return `${muscle} ${"█".repeat(blocks)}${"░".repeat(8 - blocks)}`;
-    }).join("<br>");
+    const muscleBars = topMuscles
+      .map(([muscle, value]) => {
+        const blocks = Math.max(1, Math.round((value / maxLoad) * 8));
+        return `${muscle} ${"█".repeat(blocks)}${"░".repeat(8 - blocks)}`;
+      })
+      .join("<br>");
 
     const changedTargets = [];
 
@@ -498,7 +547,9 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
       const nextTarget = state.targets[set.id];
       if (nextTarget && nextTarget !== set.target) {
-        changedTargets.push(`${exercises[set.id].name}: ${set.target} → ${nextTarget}`);
+        changedTargets.push(
+          `${exercises[set.id].name}: ${set.target} → ${nextTarget}`,
+        );
       }
     }
 
@@ -532,16 +583,20 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
     on("#finish", "click", () => {
       close();
-      window.dispatchEvent(new CustomEvent("mimi:refresh", {detail: {tab: "progress"}}));
+      window.dispatchEvent(
+        new CustomEvent("mimi:refresh", { detail: { tab: "progress" } }),
+      );
     });
 
     on("#askCoachAfter", "click", async () => {
       close();
-      window.dispatchEvent(new CustomEvent("mimi:refresh", {detail: {tab: "profile"}}));
+      window.dispatchEvent(
+        new CustomEvent("mimi:refresh", { detail: { tab: "profile" } }),
+      );
 
       try {
         await navigator.clipboard.writeText($("#coachPrompt")?.value || "");
-      } catch (_) {}
+      } catch {}
 
       window.open("https://chatgpt.com/", "_blank");
     });
@@ -554,11 +609,12 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
     on("#audio", "click", () => {
       audioEnabled = !audioEnabled;
-      $("#audio").textContent = audioEnabled ? "🔊" : "🔇";
+      renderAudioControl();
     });
 
-    on("#workoutGuideClose", "click", () => closeWorkoutGuide());
+    on("#closeWorkoutGuide", "click", () => closeWorkoutGuide());
     on("#workoutGuideResume", "click", () => closeWorkoutGuide());
+    renderAudioControl();
   }
 
   return {
@@ -580,8 +636,9 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
         }
       },
       paused(paused) {
-        if ($("#pause")) $("#pause").textContent = paused ? "Reprendre" : "Pause";
-      }
-    }
+        if ($("#pause"))
+          $("#pause").textContent = paused ? "Reprendre" : "Pause";
+      },
+    },
   };
 }
