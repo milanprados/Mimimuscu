@@ -78,6 +78,42 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
     ).join("");
   }
 
+  /**
+   * Affiche le déroulé essentiel directement pendant la séance.
+   * Le bouton de guide détaillé reste disponible pour les erreurs, variantes, etc.
+   */
+  function renderInlineExerciseGuide(exercise, buttonId) {
+    const guide = exercise?.guide || {};
+    const setup = guide.setup || [];
+    const execution = guide.execution || [];
+    const breathing = guide.breathing || exercise?.breathing || "";
+
+    if (!setup.length && !execution.length && !breathing) return "";
+
+    return `
+      <div class="inline-exercise-guide">
+        <div class="inline-guide-head">
+          <div><span>COMMENT FAIRE</span><strong>Déroulé complet</strong></div>
+          <button class="technique-link" id="${buttonId}">Guide détaillé</button>
+        </div>
+
+        ${setup.length ? `
+          <section class="inline-guide-block">
+            <small>1 · POSITION DE DÉPART</small>
+            <ol>${renderGuideSteps(setup)}</ol>
+          </section>` : ""}
+
+        ${execution.length ? `
+          <section class="inline-guide-block">
+            <small>2 · MOUVEMENT</small>
+            <ol>${renderGuideSteps(execution)}</ol>
+          </section>` : ""}
+
+        ${breathing ? `
+          <div class="inline-guide-breath"><span>RESPIRATION</span><p>${breathing}</p></div>` : ""}
+      </div>`;
+  }
+
   function closeWorkoutGuide({resume = true} = {}) {
     const overlay = $("#workoutGuideOverlay");
     if (!overlay || overlay.classList.contains("hidden")) return;
@@ -189,11 +225,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
         ${poseImages(exercise)}
 
-        <div class="cue-card">
-          <span>CONSIGNE</span>
-          <p>${exercise.tips?.[0] || "Mouvement propre et contrôlé."}</p>
-          <button class="technique-link" id="repGuide">? Voir le guide</button>
-        </div>
+        ${renderInlineExerciseGuide(exercise, "repGuide")}
 
         <div class="workout-controls">
           <div class="rep-row">
@@ -264,11 +296,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
           <div class="timer-overlay"><strong id="time">${target}</strong><small>sec</small></div>
         </div>
 
-        <div class="cue-card">
-          <span>CONSIGNE</span>
-          <p>${exercise.tips?.[0] || "Mouvement contrôlé."}</p>
-          <button class="technique-link" id="timerGuide">? Voir le guide</button>
-        </div>
+        ${renderInlineExerciseGuide(exercise, "timerGuide")}
 
         <div class="timer-actions">
           <button class="primary-btn" id="pause">Pause</button>

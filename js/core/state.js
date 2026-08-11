@@ -141,6 +141,38 @@ function normalizeState(raw, exercises) {
   return state;
 }
 
+/**
+ * Remet uniquement la progression sportive à zéro.
+ * Le profil, les mensurations, les préférences et les séances personnalisées sont conservés.
+ */
+export function resetProgression(state, exercises) {
+  state.program = {...(state.program || {}), level: "adaptive", index: 0};
+
+  state.targets = Object.fromEntries(
+    Object.entries(exercises || {}).map(([id, exercise]) => [id, Number(exercise.base) || 1])
+  );
+  state.bests = {};
+  state.progressBaseline = {createdAt: "", values: {}};
+
+  state.sessions = 0;
+  state.attempts = 0;
+  state.xp = 0;
+  state.streak = 0;
+  state.lastDay = "";
+  state.history = [];
+
+  // Ces données dépendent directement de l'ancienne progression.
+  state.goals = [];
+  state.achievements = {};
+  state.benchmark = {
+    ...DEFAULT_STATE.benchmark,
+    dueEveryDays: state.benchmark?.dueEveryDays || DEFAULT_STATE.benchmark.dueEveryDays
+  };
+
+  state.profileMeta = {...DEFAULT_STATE.profileMeta, ...(state.profileMeta || {}), startedAt: ""};
+  return state;
+}
+
 export function loadState(exercises) {
   const state = normalizeState(readStoredState(), exercises);
   saveState(state);

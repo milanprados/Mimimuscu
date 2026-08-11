@@ -12,7 +12,7 @@ import {
   levelFromXp
 } from "../core/progression.js";
 import {createBackup, validateBackup, downloadJson} from "../utils/backup.js";
-import {replaceState} from "../core/state.js";
+import {replaceState, resetProgression} from "../core/state.js";
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 const roundOne = value => Math.round(value * 10) / 10;
@@ -467,6 +467,21 @@ export function createProfileView({
     );
 
     $("#backupStatus").textContent = "Sauvegarde exportée ✓";
+  });
+
+  on("#resetProgression", "click", () => {
+    const accepted = confirm(
+      "Réinitialiser toute la progression ?\n\n" +
+      "Le programme, les cibles adaptatives, l’XP, les records, l’historique et les objectifs seront remis à zéro.\n\n" +
+      "Ton profil, tes mensurations, tes réglages et tes séances personnalisées seront conservés."
+    );
+
+    if (!accepted) return;
+
+    resetProgression(state, exercises);
+    save(state);
+    refresh();
+    $("#backupStatus").textContent = "Progression réinitialisée ✓";
   });
 
   on("#importBackup", "click", () => $("#backupFileInput").click());

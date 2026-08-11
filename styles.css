@@ -195,3 +195,32 @@ button{border:0;cursor:pointer}
 .recovery-countdown-note{min-height:16px;color:#747e89;font-size:9px;text-align:center}.recovery-screen.preparing .recovery-orbit{border-color:#7c922d;background:radial-gradient(circle,#293615,#11150d)}.recovery-screen.preparing .recovery-label,.recovery-screen.preparing .recovery-countdown-note{color:var(--acid)}
 
 .workout-guide-overlay{position:absolute;inset:0;z-index:5;background:#08090b;padding:calc(8px + env(safe-area-inset-top)) 12px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:9px}.workout-guide-overlay.hidden{display:none}.workout-guide-head{height:54px;display:grid;grid-template-columns:42px 1fr 42px;align-items:center;gap:8px}.workout-guide-head button{width:40px;height:40px;border-radius:13px;background:#171b20;color:#fff;font-size:17px}.workout-guide-head div{text-align:center}.workout-guide-head small{display:block;color:var(--acid);font-size:8px;letter-spacing:.12em}.workout-guide-head strong{display:block;margin-top:3px;font-size:14px}.workout-guide-body{min-height:0;overflow:auto;padding:2px 0 8px}.workout-guide-images{display:grid;grid-template-columns:1fr 1fr;gap:8px}.workout-guide-images figure{position:relative;margin:0;aspect-ratio:4/3;background:#0d1014;border:1px solid #252c34;border-radius:17px;overflow:hidden}.workout-guide-images img{width:100%;height:100%;object-fit:contain}.workout-guide-images figure>span{position:absolute;top:7px;left:7px;z-index:1;background:#0b0e11cc;border-radius:7px;padding:4px 6px;color:#c7ced5;font-size:8px;font-weight:850}.workout-guide-description{margin:10px 2px;color:#bdc4cc;font-size:11px;line-height:1.5}.workout-guide-section{margin-top:8px;padding:12px;background:#111419;border:1px solid #232a32;border-radius:16px}.workout-guide-section>small{display:block;color:var(--acid);font-size:8px;font-weight:900;letter-spacing:.12em}.workout-guide-section ol{list-style:none;margin:8px 0 0;padding:0}.workout-guide-section ol li{display:grid;grid-template-columns:23px 1fr;gap:8px;padding:7px 0;border-top:1px solid #20262d}.workout-guide-section ol li:first-child{border-top:0}.workout-guide-section ol li>span{width:22px;height:22px;border-radius:7px;background:#22282e;color:var(--acid);display:grid;place-items:center;font-size:8px;font-weight:900}.workout-guide-section p{margin:2px 0 0;color:#bdc4cc;font-size:10px;line-height:1.45}.workout-guide-section ul{margin:8px 0 0;padding-left:17px;color:#bdc4cc;font-size:10px;line-height:1.5}.workout-guide-section.danger>small{color:#ff837c}.workout-guide-resume{min-height:46px}
+
+
+/* V31.2 — guide complet dans la séance + reset de progression */
+.workout-screen{overflow-y:auto;overscroll-behavior:contain;padding-bottom:2px}
+.workout-screen .pose-grid,.workout-screen .timer-visual{flex:0 0 auto}
+.workout-screen .pose-grid{min-height:150px;height:clamp(150px,24vh,210px)}
+.workout-screen .timer-visual{min-height:190px;height:clamp(190px,30vh,260px)}
+.inline-exercise-guide{background:#111419;border:1px solid #252c33;border-radius:17px;padding:11px;flex:0 0 auto}
+.inline-guide-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+.inline-guide-head>div span,.inline-guide-head>div strong{display:block}
+.inline-guide-head>div span{color:var(--acid);font-size:7px;font-weight:950;letter-spacing:.13em}
+.inline-guide-head>div strong{font-size:12px;margin-top:3px}
+.inline-guide-head .technique-link{flex:0 0 auto}
+.inline-guide-block{padding:8px 0;border-top:1px solid #20262d}
+.inline-guide-block>small{display:block;color:#8f98a3;font-size:7px;font-weight:900;letter-spacing:.1em}
+.inline-guide-block ol{list-style:none;margin:5px 0 0;padding:0}
+.inline-guide-block li{display:grid;grid-template-columns:20px 1fr;gap:7px;align-items:start;padding:4px 0}
+.inline-guide-block li>span{width:19px;height:19px;border-radius:6px;background:#22282e;color:var(--acid);display:grid;place-items:center;font-size:7px;font-weight:900}
+.inline-guide-block li p{margin:1px 0 0;color:#c4cad1;font-size:9px;line-height:1.4}
+.inline-guide-breath{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;padding-top:8px;border-top:1px solid #20262d}
+.inline-guide-breath span{color:var(--acid);font-size:7px;font-weight:900;letter-spacing:.1em}
+.inline-guide-breath p{margin:0;color:#c4cad1;font-size:9px;line-height:1.4}
+.progress-reset-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid #252c33}
+.progress-reset-row strong,.progress-reset-row small{display:block}
+.progress-reset-row strong{font-size:11px}
+.progress-reset-row small{max-width:390px;margin-top:4px;color:#7e8893;font-size:8px;line-height:1.45}
+.destructive-outline-btn{min-height:40px;border:1px solid #5a3032;border-radius:12px;background:#211214;color:#ff8a84;padding:0 12px;font-size:9px;font-weight:850}
+@media(max-width:520px){.progress-reset-row{grid-template-columns:1fr}.destructive-outline-btn{width:100%}}
+@media(max-height:720px){.workout-screen .pose-grid{min-height:120px;height:130px}.workout-screen .timer-visual{min-height:155px;height:170px}.inline-exercise-guide{padding:9px}.inline-guide-block li{padding:3px 0}}

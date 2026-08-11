@@ -291,6 +291,14 @@
           </div>
           <input id="backupFileInput" type="file" accept=".json,application/json" class="hidden">
           <small id="backupStatus"></small>
+
+          <div class="progress-reset-row">
+            <div>
+              <strong>Repartir de zéro</strong>
+              <small>Remet le programme, les records, l’XP et l’historique à zéro. Ton profil et tes mensurations restent.</small>
+            </div>
+            <button class="destructive-outline-btn" id="resetProgression">Réinitialiser la progression</button>
+          </div>
         </article>
 
         <article class="section-block coach-export">
@@ -496,7 +504,7 @@
   </div>
 
   <script type="module">
-    import("./js/app.js?v=31.1").catch(error=>{
+    import("./js/app.js?v=31.2").catch(error=>{
       console.error("[Mimi Muscu] Erreur de démarrage",error);
       const box=document.createElement("div");
       box.className="boot-error";
