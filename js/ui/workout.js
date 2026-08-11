@@ -381,7 +381,7 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
 
     $("#focusContent").innerHTML = `
       <div class="recovery-screen" id="recoveryScreen">
-        <div class="recovery-orbit"><strong id="rest">${seconds}</strong><small>sec</small></div>
+        <div class="recovery-orbit" id="recoveryOrbit"><strong id="rest">${seconds}</strong></div>
         <div class="recovery-label" id="recoveryLabel">RÉCUPÈRE</div>
 
         ${nextExercise ? `
@@ -404,19 +404,39 @@ export function createWorkoutView({state, exercises, caloriesForSeconds}) {
         <button class="soft-btn" id="skipRest">Passer le repos</button>
       </div>`;
 
+    restInitialSeconds = seconds;
     updateRestCountdown(seconds);
     speak(`Récupération. Prochain exercice ${nextExercise?.name || "fin"}`);
     on("#restGuide", "click", () => openWorkoutGuide(nextExercise), {required: false});
     on("#skipRest", "click", () => engine.skipRest());
   }
 
+  let restInitialSeconds = 0;
+
   function updateRestCountdown(value) {
     const rest = $("#rest");
-    if (!rest) return;
+    const orbit = $("#recoveryOrbit");
+    if (!rest || !orbit) return;
+
+    if (!restInitialSeconds || value > restInitialSeconds) {
+      restInitialSeconds = value;
+    }
 
     rest.textContent = value;
+
+    const progress = restInitialSeconds > 0
+      ? Math.max(0, Math.min(100, value / restInitialSeconds * 100))
+      : 0;
+
+    orbit.style.setProperty("--rest-progress", `${progress}%`);
+
     const preparing = value > 0 && value <= 3;
     $("#recoveryScreen")?.classList.toggle("preparing", preparing);
+
+    // Relance la pulse à chaque seconde, même si la classe était déjà présente.
+    orbit.classList.remove("tick-pulse");
+    void orbit.offsetWidth;
+    orbit.classList.add("tick-pulse");
 
     const label = $("#recoveryLabel");
     if (label) label.textContent = preparing ? "PRÊT" : "RÉCUPÈRE";

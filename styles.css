@@ -655,3 +655,73 @@ textarea,input,select{color:#17334f!important;background:#fff!important;border-c
 
 /* Les gros CTA gardent un bleu profond, les blocs d'information restent clairs. */
 .calendar-start,.primary-btn{background:#164b75;color:#fff}
+
+/* --------------------------------------------------------------------------
+   MICRO PATCH — countdown repos
+   Cercle blanc, chiffre centré, anneau animé et pulse à chaque seconde.
+   -------------------------------------------------------------------------- */
+.recovery-orbit{
+  --rest-progress:100%;
+  --ring-color:#0b4a78;
+  --pulse-color:rgba(167,211,241,.48);
+  position:relative;
+  isolation:isolate;
+  width:116px;
+  height:116px;
+  flex:0 0 116px;
+  border:0!important;
+  background:#fff!important;
+  box-shadow:0 8px 24px rgba(24,65,96,.08)!important;
+  display:grid;
+  place-items:center;
+  overflow:visible;
+}
+.recovery-orbit::before{
+  content:"";
+  position:absolute;
+  inset:-5px;
+  z-index:-1;
+  border-radius:50%;
+  background:conic-gradient(var(--ring-color) var(--rest-progress), #dce9f2 0);
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));
+  mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));
+}
+.recovery-orbit::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  border-radius:50%;
+  background:var(--pulse-color);
+  opacity:0;
+  transform:scale(.96);
+  pointer-events:none;
+}
+.recovery-orbit.tick-pulse::after{animation:mimiRestPulse .42s ease-out}
+.recovery-orbit strong{
+  margin:0!important;
+  line-height:1!important;
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-size:54px!important;
+  font-weight:700!important;
+  color:#0b355d!important;
+  transform:translateY(-1px);
+}
+.recovery-orbit small{display:none!important}
+.recovery-screen.preparing .recovery-orbit{
+  --ring-color:#ef8b3a;
+  --pulse-color:rgba(255,205,156,.48);
+  background:#fff!important;
+}
+.recovery-screen.preparing .recovery-orbit strong{color:#e87824!important}
+.recovery-screen.preparing .recovery-label{color:#e87824!important}
+
+@keyframes mimiRestPulse{
+  0%{opacity:.68;transform:scale(.94)}
+  100%{opacity:0;transform:scale(1.28)}
+}
+
+@media(max-height:700px){
+  .recovery-orbit{width:94px;height:94px;flex-basis:94px}
+  .recovery-orbit strong{font-size:44px!important}
+}
