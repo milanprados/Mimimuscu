@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
-import {migrateState, CURRENT_STATE_VERSION} from "../js/core/migrations.js";
+import { migrateState, CURRENT_STATE_VERSION } from "../js/core/migrations.js";
 
 const old = {
   version: 22,
-  program: {level: "beginner", index: 4},
-  history: [{day: "2026-08-01"}]
+  program: { level: "beginner", index: 4 },
+  history: [{ day: "2026-08-01" }],
 };
 
 const migrated = migrateState(old);
