@@ -62,5 +62,5 @@ Pour comprendre les flux, lis [`ARCHITECTURE.md`](./ARCHITECTURE.md).
 - tests des chemins critiques avant déploiement.
 - aucun CSS injecté depuis JavaScript ;
 - aucun observateur chargé de réorganiser un écran après son rendu ;
-- le numéro de livraison est `34.0` dans `index.html`, `js/config.js`,
+- le numéro de livraison est `34.1` dans `index.html`, `js/config.js`,
   les imports iOS sensibles de `js/app.js` et `sw.js`.
