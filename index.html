@@ -31,6 +31,11 @@
         <circle cx="12" cy="8" r="3.25" />
         <path d="M5.5 20c.8-4 3-6 6.5-6s5.7 2 6.5 6" />
       </symbol>
+      <symbol id="icon-blocks" viewBox="0 0 24 24">
+        <rect x="4" y="4" width="7" height="7" rx="1" />
+        <rect x="13" y="4" width="7" height="7" rx="1" />
+        <rect x="13" y="13" width="7" height="7" rx="1" />
+      </symbol>
       <symbol id="icon-search" viewBox="0 0 24 24">
         <circle cx="10.5" cy="10.5" r="5.5" />
         <path d="m15 15 4 4" />
@@ -324,6 +329,82 @@
           </article>
         </section>
 
+        <!-- SCREEN: Tetris mobile -->
+        <section id="tetrisTab" class="screen hidden" aria-hidden="true">
+          <div class="screen-intro tetris-intro">
+            <span class="eyebrow">PAUSE ACTIVE</span>
+            <h1>Tetris</h1>
+            <p>Une partie rapide entre deux séances.</p>
+          </div>
+
+          <div class="tetris-game" id="tetrisGame">
+            <div class="tetris-hud" aria-live="polite">
+              <div><span>Score</span><strong id="tetrisScore">0</strong></div>
+              <div><span>Lignes</span><strong id="tetrisLines">0</strong></div>
+              <div><span>Record</span><strong id="tetrisBest">0</strong></div>
+            </div>
+
+            <div class="tetris-stage">
+              <div class="tetris-board-wrap">
+                <canvas
+                  id="tetrisBoard"
+                  class="tetris-board"
+                  width="300"
+                  height="600"
+                  aria-label="Grille de Tetris"
+                ></canvas>
+                <div class="tetris-overlay" id="tetrisOverlay">
+                  <span id="tetrisOverlayLabel">PRÊT ?</span>
+                  <strong id="tetrisOverlayTitle">Mimi Blocks</strong>
+                  <button id="tetrisStart">Jouer</button>
+                </div>
+              </div>
+
+              <aside class="tetris-side">
+                <div class="tetris-next-card">
+                  <span>Suivant</span>
+                  <canvas
+                    id="tetrisNext"
+                    width="96"
+                    height="96"
+                    aria-label="Prochaine pièce"
+                  ></canvas>
+                </div>
+                <div class="tetris-level-card">
+                  <span>Niveau</span><strong id="tetrisLevel">1</strong>
+                </div>
+                <button class="tetris-pause" id="tetrisPause">Pause</button>
+                <button class="tetris-new" id="tetrisNew">Rejouer</button>
+              </aside>
+            </div>
+
+            <div class="tetris-controls" aria-label="Commandes du jeu">
+              <button data-tetris-action="rotate" aria-label="Tourner la pièce">
+                ↻
+              </button>
+              <button data-tetris-action="left" aria-label="Déplacer à gauche">
+                ←
+              </button>
+              <button data-tetris-action="down" aria-label="Descendre">
+                ↓
+              </button>
+              <button data-tetris-action="right" aria-label="Déplacer à droite">
+                →
+              </button>
+              <button
+                class="tetris-drop"
+                data-tetris-action="drop"
+                aria-label="Faire tomber la pièce"
+              >
+                Poser
+              </button>
+            </div>
+            <p class="tetris-help">
+              Glisse sur la grille ou utilise les boutons.
+            </p>
+          </div>
+        </section>
+
         <!-- SCREEN: Profil athlète -->
         <section id="profileTab" class="screen hidden" aria-hidden="true">
           <div class="screen-intro profile-intro">
@@ -552,6 +633,11 @@
           <span
             ><svg class="ui-icon"><use href="#icon-exercises" /></svg></span
           ><small>Exos</small>
+        </button>
+        <button data-tab="tetris">
+          <span
+            ><svg class="ui-icon"><use href="#icon-blocks" /></svg></span
+          ><small>Tetris</small>
         </button>
         <button data-tab="progress">
           <span

@@ -31,6 +31,7 @@ const APP_SHELL = [
   "./js/ui/profile.js",
   "./js/ui/progress.js",
   "./js/ui/calendar.js",
+  "./js/ui/tetris.js",
 
   "./js/utils/dom.js",
   "./js/utils/dates.js",
@@ -61,8 +62,7 @@ self.addEventListener("activate", (event) => {
         Promise.all(
           keys
             .filter(
-              (key) =>
-                key.startsWith(LEGACY_CACHE_PREFIX) && key !== APP_CACHE,
+              (key) => key.startsWith(LEGACY_CACHE_PREFIX) && key !== APP_CACHE,
             )
             .map((key) => caches.delete(key)),
         ),

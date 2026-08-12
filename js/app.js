@@ -33,6 +33,7 @@ import { createHomeView } from "./ui/home.js";
 import { createCalendarView } from "./ui/calendar.js";
 import { createProfileView } from "./ui/profile.js";
 import { createProgressView } from "./ui/progress.js";
+import { createTetrisGame } from "./ui/tetris.js";
 
 window.__MIMI_BOOT__ = {
   version: APP_VERSION,
@@ -185,7 +186,10 @@ const progressView = createProgressView({
   exercises: EXERCISES,
 });
 
-const navigation = createNavigation();
+const tetrisGame = createTetrisGame();
+const navigation = createNavigation({
+  onTabChanged: (tabName) => tetrisGame.setActive(tabName === "tetris"),
+});
 
 // Un seul chemin de rendu prévisible.
 refreshApp = () => {

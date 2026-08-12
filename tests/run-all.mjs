@@ -14,6 +14,7 @@ const tests = [
   "tests/stability-v31-4.test.mjs",
   "tests/v32-soft-ui.test.mjs",
   "tests/maintenance-v34.test.mjs",
+  "tests/tetris-ui.test.mjs",
 ];
 
 for (const test of tests) {
